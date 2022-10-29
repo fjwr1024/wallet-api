@@ -6,7 +6,7 @@ export const AppDataSource = new DataSource({
   type: 'mysql',
   host: 'wallet-db',
   port: 3306,
-  username: 'root',
+  username: 'admin',
   password: 'password',
   database: 'develop',
   synchronize: false,

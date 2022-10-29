@@ -29,7 +29,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: develop
-      MYSQL_USER: root
+      MYSQL_USER: admin
       MYSQL_PASSWORD: password
     cap_add:
       - SYS_NICE
