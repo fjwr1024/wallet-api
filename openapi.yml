@@ -1,0 +1,187 @@
+openapi: '3.0.2'
+info:
+  title: WalletAPI Sample
+  description: |
+    # WalletAPI
+    - auth
+    - users
+    - nft
+  # termsOfService: 'https://example.com/'
+  # contact:
+  #   name: "Support"
+  #   url: "会社のURL等"
+  #   email: "sample@email.com"
+  version: '1.0'
+tags:
+  - name: auth
+    description: 認証
+  - name: users
+    description: ユーザーに関するもの
+  - name: nft
+    description: nftに関するもの
+  - name: spl-token
+    description: spl-tokenに関するもの
+
+paths:
+  '/auth/login':
+    post:
+      tags:
+        - auth
+      summary: ログイン
+      description: 'メールアドレスとパスワードをキーにログイン'
+      requestBody:
+        description: ログイン用リクエストボディ
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/loginUser'
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: 認証されていないアクセス
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+  '/auth/login-check':
+    get:
+      tags:
+        - auth
+      summary: ログインチェックAPI
+      description: ログインに成功した場合は success 失敗した場合401が返却される
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: 'object'
+                properties:
+                  message:
+                    type: string
+                    example: 'success'
+        '401':
+          description: 認証されていないアクセス
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+      security:
+        - Bearer: []
+
+components:
+  securitySchemes:
+    Bearer:
+      type: http
+      scheme: bearer
+      description: Credentials or access token for API
+
+  schemas:
+    BadRequest:
+      title: 不正なリクエスト
+      type: object
+      properties:
+        code:
+          description: |-
+            不正なリクエストです。
+            Validationによるエラーなど、クライアントからのリクエストに誤りがあるときにこのエラーを返します。
+          type: string
+          example: 400
+        message:
+          description: 画面に表示するエラーメッセージ
+          type: string
+          example: 郵便番号の形式が違います
+    Unauthorized:
+      title: 認証されてないリクエスト
+      type: object
+      properties:
+        code:
+          description: |-
+            認証の失敗です。
+            ログインするとき、入力した内容に誤りがあるとこのエラーを返します。
+          type: string
+          example: 401
+        message:
+          description: 画面に表示するエラーメッセージ
+          type: string
+          example: 認証されていないアクセスです。
+    NotFound:
+      title: 指定のリソースが存在しない
+      type: object
+      properties:
+        code:
+          description: |-
+            リソースが見つかりません。
+            指定された条件のデータが存在しないときにこのエラーを返します。
+          type: string
+          example: 404
+        message:
+          description: 画面に表示するエラーメッセージ
+          type: string
+          example: 指定のリソースは存在しません。
+    Conflict:
+      title: リソース競合
+      type: object
+      properties:
+        code:
+          description: |-
+            リソース競合です。
+            POSTしたときに既に値が存在していたときや、PUTしたときに古い値で更新しようとしたときなどにこのエラーを返します。
+          type: string
+          example: 404
+        message:
+          description: 画面に表示するエラーメッセージ
+          type: string
+          example: 郵便番号の形式が違います
+    InternalServerError:
+      title: サーバー内エラー
+      type: object
+      properties:
+        code:
+          description: |-
+            サーバー内部でエラーが発生した場合にこのエラーを返します
+          type: string
+          example: 500
+        message:
+          description: 画面に表示するエラーメッセージ
+          type: string
+          example: システムエラーが発生しました。時間を置いてもう一度お試しください。
+
+    User:
+      title: ユーザ
+      type: object
+      properties:
+        user_id:
+          description: ユーザーID
+          type: number
+          nullable: false
+        wallet_address:
+          description: ウォレットアドレス
+          type: string
+          nullable: false
+          minLength: 32
+          maxLength: 44
+        passeord:
+          description: パスワード
+          type: string
+          nullable: false
+          minLength: 8
+          maxLength: 255
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    loginUser:
+      type: object
+      properties:
+        email: { type: string }
+        password: { type: string }

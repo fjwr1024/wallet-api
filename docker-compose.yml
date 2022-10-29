@@ -1,0 +1,35 @@
+version: '3.9'
+services:
+  api-server:
+    container_name: wallet-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    tty: true
+    restart: always
+    ports:
+      - '3000:3000'
+    volumes:
+      - type: bind
+        source: .
+        target: /api-server
+    depends_on:
+      - wallet-db
+
+  wallet-db:
+    container_name: wallet-db
+    image: mysql:8.0
+    hostname: wallet-db
+    restart: always
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./docker/db/data:/var/lib/mysql
+      - ./docker/db/my.cnf:/etc/mysql/conf.d
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: develop
+      MYSQL_USER: root
+      MYSQL_PASSWORD: password
+    cap_add:
+      - SYS_NICE
