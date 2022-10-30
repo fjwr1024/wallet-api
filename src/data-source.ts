@@ -15,6 +15,7 @@ export const AppDataSource = new DataSource({
   migrations: ['src/migration/*.ts'],
 });
 
+//TODO: docker compose で起動後、timeoutするので調査
 AppDataSource.initialize()
   .then(() => {
     console.log('Data Source has been initialized!');
