@@ -32,7 +32,7 @@
     "@nestjs/passport": "^9.0.0",
     "@nestjs/platform-express": "^9.0.5",
     "@nestjs/typeorm": "9.0.0",
-    "@solana-suite/core": "latest",
+    "@solana-suite/core": "0.3.12",
     "@solana-suite/nft": "latest",
     "@solana-suite/shared": "latest",
     "class-transformer": "^0.5.1",
