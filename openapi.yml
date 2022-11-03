@@ -72,6 +72,29 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Unauthorized'
+  '/users/{userId}':
+    get:
+      tags:
+        - users
+      summary: ユーザー情報を取得する
+      description: 指定したユーザーの情報をDBから取得する
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: 'object'
+                properties:
+                  user:
+                    type: string
+                    example: 'success'
+        '401':
+          description: 認証されていないアクセス
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
       security:
         - Bearer: []
 

@@ -26,6 +26,15 @@ export class UserService {
     return res;
   }
 
+  public async getUserWalletAddress(userId: number): Promise<User> {
+    const res = await this.userRepository.getUserWalletAddress(userId);
+
+    if (!res) {
+      throw new InternalServerErrorException('User is not found');
+    }
+    return res;
+  }
+
   public async getTokenAmount(getTokenAmountDto: GetTokenAmountDto) {
     const tokenAmount = await getTokenAmount(getTokenAmountDto.walletAddress);
     console.log('service', tokenAmount);

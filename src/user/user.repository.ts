@@ -18,11 +18,25 @@ export class UserRepository extends Repository<User> {
   }
 
   async getUser(userId): Promise<User> {
-    const user = new User();
-    AppDataSource.manager.findOneBy(User, {
+    const res = AppDataSource.manager.findOneBy(User, {
       userId,
     });
 
-    return user;
+    return res;
+  }
+
+  // TODO: 型指定修正
+  async getUserWalletAddress(userId): Promise<any> {
+    const res = await AppDataSource.manager.find(User, {
+      select: {
+        userId: true,
+        walletAddress: true,
+      },
+      where: {
+        userId,
+      },
+    });
+
+    return res;
   }
 }
