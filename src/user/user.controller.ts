@@ -5,7 +5,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { GetTokenAmountDto } from './dto/get-token-amount.dto';
 import { UserService } from './user.service';
 
-@Controller('user')
+@Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
@@ -16,13 +16,19 @@ export class UserController {
   }
 
   @Get('user-info/:userId')
-  async getUserInfo(@Param('useId', ParseIntPipe) userId: number): Promise<User> {
+  async getUserInfo(@Param('userId', ParseIntPipe) userId: number): Promise<User> {
     const res = await this.userService.getUserInfo(userId);
     return res;
   }
 
+  @Get('user-wallet-address/:userId')
+  async getUserWalletAddress(@Param('userId', ParseIntPipe) userId: number): Promise<User> {
+    const res = await this.userService.getUserWalletAddress(userId);
+    return res;
+  }
+
   @Post('create-wallet')
-  async createWallet(@Param('useId', ParseIntPipe) userId: number) {
+  async createWallet(@Param('userId', ParseIntPipe) userId: number) {
     const res = await this.userService.createWallet();
     return res;
   }
