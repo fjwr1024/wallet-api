@@ -3,7 +3,6 @@
 //////////////////////////////////////////////
 import { KeypairStr } from '@solana-suite/core';
 
-// Walletの公開鍵と秘密鍵を生成
 const createWallet = async () => {
   const account = await KeypairStr.create();
 

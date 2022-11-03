@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, ParseIntPipe, Post, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Post, ValidationPipe } from '@nestjs/common';
 import { GetNftListDto } from './dto/get-nftlist-dto';
 import { TransferHexDto } from './dto/tramsfer-hex-dto';
 import { NftService } from './nft.service';
@@ -13,7 +13,6 @@ export class NftController {
     return response;
   }
 
-  // hexデータの受け渡し
   @Post('transfer-hex')
   async getHex(@Body(new ValidationPipe()) transferHexDto: TransferHexDto) {
     const response = await this.nftService.getHex(transferHexDto);

@@ -29,7 +29,6 @@ export class UserRepository extends Repository<User> {
   async getUserWalletAddress(userId): Promise<any> {
     const res = await AppDataSource.manager.find(User, {
       select: {
-        userId: true,
         walletAddress: true,
       },
       where: {
