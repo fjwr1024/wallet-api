@@ -2,7 +2,6 @@ import { Body, Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common
 
 import { User } from 'src/entities/user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
-import { GetTokenAmountDto } from './dto/get-token-amount.dto';
 import { UserService } from './user.service';
 
 @Controller('users')
@@ -22,21 +21,8 @@ export class UserController {
   }
 
   @Get('user-wallet-address/:userId')
-  async getUserWalletAddress(@Param('userId', ParseIntPipe) userId: number): Promise<User> {
+  async getUserWalletAddress(@Param('useId', ParseIntPipe) userId: number): Promise<User> {
     const res = await this.userService.getUserWalletAddress(userId);
     return res;
-  }
-
-  @Post('create-wallet')
-  async createWallet(@Param('userId', ParseIntPipe) userId: number) {
-    const res = await this.userService.createWallet();
-    return res;
-  }
-
-  // @UseGuards(JwtAuthGuard)
-  @Post('get-token-amount')
-  async getTokenAmount(@Body() getTokenAmountDto: GetTokenAmountDto): Promise<any> {
-    const userTokenAmount = await this.userService.getTokenAmount(getTokenAmountDto);
-    return userTokenAmount;
   }
 }

@@ -3,7 +3,7 @@ import { ConfigService } from '@nestjs/config';
 import { GetNftListDto } from './dto/get-nftlist-dto';
 import { getNftMetadata, getTokenInfoOwned } from './solana/getMetadata';
 import { submitHex } from './solana/submitHex';
-import { filterOwnToken } from './util/filterOwnToken';
+import { filterOwnToken } from '../utils/filterOwnToken';
 
 @Injectable()
 export class NftService {

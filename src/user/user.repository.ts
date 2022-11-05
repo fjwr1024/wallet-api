@@ -14,14 +14,27 @@ export class UserRepository extends Repository<User> {
     user.walletAddress = (await walletAddress).pubkey;
 
     AppDataSource.manager.save(user);
+    console.log('user', user);
     return user;
+  }
+
+  // TODO: 型指定修正
+  async getUserEmail(email): Promise<any> {
+    const res = await AppDataSource.manager.find(User, {
+      select: {
+        email: true,
+      },
+      where: {
+        email,
+      },
+    });
+    return res;
   }
 
   async getUser(userId): Promise<User> {
     const res = AppDataSource.manager.findOneBy(User, {
       userId,
     });
-
     return res;
   }
 

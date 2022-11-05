@@ -12,6 +12,14 @@ info:
   #   url: "会社のURL等"
   #   email: "sample@email.com"
   version: '1.0'
+servers:
+  - url: 'http://localhost:{port}'
+    description: 'Local Development'
+    variables:
+      port:
+        enum: ['8000', '8080']
+        default: '8000'
+
 tags:
   - name: auth
     description: 認証
@@ -35,7 +43,11 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/loginUser'
+              type: 'object'
+              properties:
+                message:
+                  type: string
+                  example: 'success'
       responses:
         '200':
           description: 成功

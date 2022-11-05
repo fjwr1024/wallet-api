@@ -1,5 +1,5 @@
 //////////////////////////////////////////////
-// $ npx ts-node src/scripts/airdrop.ts
+// $ npx ts-node scripts/airdrop.ts
 //////////////////////////////////////////////
 
 import { Airdrop, KeypairStr, SplToken } from '@solana-suite/core';
