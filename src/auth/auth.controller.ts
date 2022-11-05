@@ -19,7 +19,8 @@ export class AuthController {
 
     console.log('token', token);
 
-    return res.cookie('auth-cookie', secretData, { httpOnly: true });
+    const resCookie = res.cookie('auth-cookie', secretData, { httpOnly: true });
+    return resCookie;
   }
 
   @Get('login-check')

@@ -9,11 +9,11 @@ export class UserService {
   constructor(private readonly userRepository: UserRepository) {}
 
   public async signUp(createUserDto: CreateUserDto): Promise<User> {
-    const res = this.registrationValidation(createUserDto);
-    if (res) {
+    const res = await this.registrationValidation(createUserDto);
+
+    if (res === 'Email already exist') {
       throw new ConflictException('This email is already exist');
     }
-
     return await this.userRepository.createUser(createUserDto);
   }
 
@@ -21,6 +21,7 @@ export class UserService {
     const user = await AppDataSource.manager.findOneBy(User, {
       email: createUserDto.email,
     });
+
     if (user != null && user.email) {
       return 'Email already exist';
     }
