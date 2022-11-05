@@ -17,18 +17,6 @@ import { AppDataSource } from '../data-source';
 export class AuthService {
   constructor(private authRepository: AuthRepository, private jwtService: JwtService) {}
 
-  // メールアドレスが既に存在するか確認する関数
-  private async registrationValidation(loginDto: LoginDto): Promise<string> {
-    const user = await AppDataSource.manager.findOneBy(User, {
-      email: loginDto.email,
-    });
-    if (user != null && user.email) {
-      return 'Email already exist';
-    }
-
-    return '';
-  }
-
   // loginしたユーザーが正しいかチェックする関数
   public async validateUserCredentials(loginDto: LoginDto): Promise<CurrentUser> {
     const user = await AppDataSource.manager.findOneBy(User, {
