@@ -27,6 +27,7 @@ export class AuthController {
   async login(@Body() loginDto: LoginDto, @Res({ passthrough: true }) res: Response) {
     const jwt = await this.authService.login(loginDto);
 
+    // 画面からapiを叩く場合はsecureをtrue postmanの場合はfalse
     res.cookie('access_token', jwt.accessToken, {
       httpOnly: true,
       secure: true,
