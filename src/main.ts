@@ -17,10 +17,11 @@ async function bootstrap() {
   app.enableCors({
     credentials: true,
     origin: 'http://localhost:3001',
-    allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization, Access-Control-Allow-Credentials',
+    // allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization, Access-Control-Allow-Credentials',
   });
 
   app.use(cookieParser());
+  // 画面からapiを叩く場合はsecureをtrue postmanの場合はfalse
   app.use(
     csurf({
       cookie: {

@@ -9,7 +9,9 @@ export class UserService {
   constructor(private readonly userRepository: UserRepository) {}
 
   public async getUserInfo(userId: number): Promise<User> {
-    const res = await this.userRepository.getUser(userId);
+    const res = AppDataSource.manager.findOneBy(User, {
+      userId,
+    });
 
     if (!res) {
       throw new InternalServerErrorException('User is not found');
@@ -17,12 +19,33 @@ export class UserService {
     return res;
   }
 
-  public async getUserWalletAddress(userId: number): Promise<User> {
-    const res = await this.userRepository.getUserWalletAddress(userId);
+  // TODO: 戻り値の型修正
+  public async getUserWalletAddress(userId: number): Promise<any> {
+    const res = await AppDataSource.manager.find(User, {
+      select: {
+        walletAddress: true,
+      },
+      where: {
+        userId,
+      },
+    });
 
     if (!res) {
       throw new InternalServerErrorException('User is not found');
     }
+    return res;
+  }
+
+  // TODO: 戻り値の型修正
+  async getUserEmail(email): Promise<any> {
+    const res = await AppDataSource.manager.find(User, {
+      select: {
+        email: true,
+      },
+      where: {
+        email,
+      },
+    });
     return res;
   }
 }
