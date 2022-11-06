@@ -1,13 +1,9 @@
-import { ConflictException, Injectable, InternalServerErrorException } from '@nestjs/common';
-import { UserRepository } from './user.repository';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { User } from 'src/entities/user.entity';
-import { CreateUserDto } from '../auth/dto/create-user.dto';
 import { AppDataSource } from 'src/data-source';
 
 @Injectable()
 export class UserService {
-  constructor(private readonly userRepository: UserRepository) {}
-
   public async getUserInfo(userId: number): Promise<User> {
     const res = AppDataSource.manager.findOneBy(User, {
       userId,
