@@ -6,10 +6,10 @@ export class User {
   @PrimaryGeneratedColumn('increment', { name: 'user_id' })
   userId: number;
 
-  @Column({ name: 'email' })
+  @Column({ name: 'email', unique: true, nullable: false })
   email: string;
 
-  @Column()
+  @Column({ nullable: false })
   @Exclude()
   password: string;
 

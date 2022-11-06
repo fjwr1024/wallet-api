@@ -1,23 +1,10 @@
 import { User } from '../entities/user.entity';
 import { Repository } from 'typeorm';
-import { CreateUserDto } from './dto/create-user.dto';
+import { CreateUserDto } from '../auth/dto/create-user.dto';
 import { AppDataSource } from '../data-source';
 import { createWallet } from './solana/createWallet';
 
 export class UserRepository extends Repository<User> {
-  async createUser(createUserDto: CreateUserDto): Promise<User> {
-    const user = new User();
-    const walletAddress = createWallet();
-
-    user.email = createUserDto.email;
-    user.password = createUserDto.password;
-    user.walletAddress = (await walletAddress).pubkey;
-
-    AppDataSource.manager.save(user);
-    console.log('user', user);
-    return user;
-  }
-
   // TODO: 型指定修正
   async getUserEmail(email): Promise<any> {
     const res = await AppDataSource.manager.find(User, {

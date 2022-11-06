@@ -1,26 +1,55 @@
-import { Body, Controller, Get, Post, Res, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpStatus, Post, Req, Res, UseGuards } from '@nestjs/common';
+import { Request, Response } from 'express';
 import { AuthGuard } from '@nestjs/passport';
-import { Response } from 'express';
 import { AuthService } from './auth.service';
+import { Csrf, Msg } from './interface/auth.interface';
 
+import { CreateUserDto } from './dto/create-user.dto';
 import { LoginDto } from './dto/login.dto';
 
 @Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) {}
 
+  @Get('/csrf')
+  getCsrfToken(@Req() req: Request): Csrf {
+    return { csrfToken: req.csrfToken() };
+  }
+
+  @Post('signup')
+  async signup(@Body() createUserDto: CreateUserDto): Promise<Msg> {
+    console.log(createUserDto);
+    return await this.authService.signUp(createUserDto);
+  }
+
+  @HttpCode(HttpStatus.OK)
   @Post('login')
-  @UseGuards(AuthGuard('local'))
   async login(@Body() loginDto: LoginDto, @Res({ passthrough: true }) res: Response) {
-    const token = await this.authService.login(loginDto);
-    const secretData = {
-      token,
+    const jwt = await this.authService.login(loginDto);
+
+    res.cookie('access_token', jwt.accessToken, {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'none',
+      path: '/',
+    });
+    return {
+      message: 'success',
     };
+  }
 
-    console.log('token', token);
-
-    const resCookie = res.cookie('auth-cookie', secretData, { httpOnly: true });
-    return resCookie;
+  @HttpCode(HttpStatus.OK)
+  @Post('/logout')
+  logout(@Req() req: Request, @Res({ passthrough: true }) res: Response): Msg {
+    res.cookie('access_token', '', {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'none',
+      path: '/',
+    });
+    return {
+      message: 'ok',
+    };
   }
 
   @Get('login-check')

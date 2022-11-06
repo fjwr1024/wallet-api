@@ -3,15 +3,13 @@ import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { JwtStrategy } from './strategies/jwt.strategy';
-import { LocalStrategy } from './strategies/local.strategy';
 import { RefreshStrategy } from './strategies/refresh.strategy';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
-import { AuthRepository } from './auth.repository';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([AuthRepository]),
+    TypeOrmModule.forFeature([AuthService]),
     JwtModule.register({
       secret: 'secretKey',
       signOptions: {
@@ -20,7 +18,7 @@ import { AuthRepository } from './auth.repository';
     }),
     PassportModule,
   ],
-  providers: [AuthService, LocalStrategy, JwtStrategy, RefreshStrategy],
+  providers: [AuthService, JwtStrategy, RefreshStrategy],
   controllers: [AuthController],
   exports: [AuthService],
 })
