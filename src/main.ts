@@ -22,18 +22,19 @@ async function bootstrap() {
 
   app.use(cookieParser());
   // 画面からapiを叩く場合はsecureをtrue postmanの場合はfalse
-  app.use(
-    csurf({
-      cookie: {
-        httpOnly: true,
-        sameSite: 'none',
-        secure: true,
-      },
-      value: (req: Request) => {
-        return req.header('csrf-token');
-      },
-    })
-  );
+  // csrf認証が面倒なので普段はコメントアウト
+  // app.use(
+  //   csurf({
+  //     cookie: {
+  //       httpOnly: true,
+  //       sameSite: 'none',
+  //       secure: false,
+  //     },
+  //     value: (req: Request) => {
+  //       return req.header('csrf-token');
+  //     },
+  //   })
+  // );
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
   app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
 

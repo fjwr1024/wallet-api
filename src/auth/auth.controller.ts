@@ -30,7 +30,7 @@ export class AuthController {
     // 画面からapiを叩く場合はsecureをtrue postmanの場合はfalse
     res.cookie('access_token', jwt.accessToken, {
       httpOnly: true,
-      secure: true,
+      secure: false,
       sameSite: 'none',
       path: '/',
     });
@@ -44,7 +44,7 @@ export class AuthController {
   logout(@Req() req: Request, @Res({ passthrough: true }) res: Response): Msg {
     res.cookie('access_token', '', {
       httpOnly: true,
-      secure: true,
+      secure: false,
       sameSite: 'none',
       path: '/',
     });

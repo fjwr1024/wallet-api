@@ -1,16 +1,20 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import { PassportModule } from '@nestjs/passport';
+import { UpdateUserPasswordDto } from './dto/update-user-password.dto';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { User } from 'src/entities/user.entity';
 import { AppDataSource } from 'src/data-source';
+import * as bcrypt from 'bcrypt';
+import { Any, UpdateResult } from 'typeorm';
 
 @Injectable()
 export class UserService {
   public async getUserInfo(userId: number): Promise<User> {
-    const res = AppDataSource.manager.findOneBy(User, {
+    const res = await AppDataSource.manager.findOneBy(User, {
       userId,
     });
 
     if (!res) {
-      throw new InternalServerErrorException('User is not found');
+      throw new NotFoundException('User is not found');
     }
     return res;
   }
@@ -27,7 +31,7 @@ export class UserService {
     });
 
     if (!res) {
-      throw new InternalServerErrorException('User is not found');
+      throw new NotFoundException('User is not found');
     }
     return res;
   }
@@ -43,5 +47,22 @@ export class UserService {
       },
     });
     return res;
+  }
+
+  async updateUserPassword(userId, password) {
+    const user = await AppDataSource.manager.findOneBy(User, {
+      userId,
+    });
+    if (!user) {
+      throw new NotFoundException('User is not found');
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 12);
+
+    await AppDataSource.manager.update(User, userId, {
+      password: hashedPassword,
+    });
+
+    return 'ok';
   }
 }
