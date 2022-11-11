@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, ParseIntPipe, Patch, Req } from '@nestjs/common';
+import { Body, Controller, Get, Param, ParseIntPipe, Patch } from '@nestjs/common';
 
 import { User } from 'src/entities/user.entity';
 import { UpdateUserPasswordDto } from './dto/update-user-password.dto';

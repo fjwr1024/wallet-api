@@ -1,10 +1,7 @@
-import { PassportModule } from '@nestjs/passport';
-import { UpdateUserPasswordDto } from './dto/update-user-password.dto';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { User } from 'src/entities/user.entity';
 import { AppDataSource } from 'src/data-source';
 import * as bcrypt from 'bcrypt';
-import { Any, UpdateResult } from 'typeorm';
 
 @Injectable()
 export class UserService {
