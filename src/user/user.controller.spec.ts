@@ -3,8 +3,6 @@ import { User } from '../entities/user.entity';
 import { UserController } from './user.controller';
 import { UserService } from './user.service';
 
-jest.useFakeTimers();
-
 describe('UserController', () => {
   let userController: UserController;
   let userService: UserService;
@@ -23,8 +21,8 @@ describe('UserController', () => {
   const UserServiceProvider = {
     provide: UserService,
     useFactory: () => ({
-      getUserInfo: jest.fn((): Promise<User[]> => {
-        return Promise.resolve([mockUser1]);
+      getUserInfo: jest.fn((): Promise<User> => {
+        return Promise.resolve(mockUser1);
       }),
     }),
   };
@@ -35,7 +33,6 @@ describe('UserController', () => {
       controllers: [UserController],
       providers: [UserServiceProvider],
     }).compile();
-
     userController = module.get<UserController>(UserController);
     userService = module.get<UserService>(UserService);
   });
@@ -45,7 +42,7 @@ describe('UserController', () => {
   });
 
   describe('getUserInfo()', () => {
-    it('userControllerのgetUserInfoが呼ばれること', () => {
+    it('userControllerのgetUserInfoが呼ばれること', async () => {
       userController.getUserInfo(1);
       expect(userService.getUserInfo).toHaveBeenCalled();
     });
@@ -54,7 +51,7 @@ describe('UserController', () => {
       const expected: User = mockUser1;
 
       const actual = await userController.getUserInfo(mockUser1.userId);
-      expect(actual[0]).toEqual(expected);
+      expect(actual).toEqual(expected);
     });
   });
 });
