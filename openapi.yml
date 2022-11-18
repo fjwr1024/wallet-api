@@ -31,6 +31,22 @@ tags:
     description: spl-tokenに関するもの
 
 paths:
+  '/auth/csrf':
+    get:
+      tags:
+        - auth
+      summary: CSRFトークン取得API
+      description: CSRFトークンを取得した後でないと他のAPIにアクセス不可能
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: 'object'
+                properties:
+                $ref: '#/components/schemas/csrf'
+
   '/auth/login':
     post:
       tags:
@@ -45,9 +61,7 @@ paths:
             schema:
               type: 'object'
               properties:
-                message:
-                  type: string
-                  example: 'success'
+              $ref: '#/components/schemas/loginUser'
       responses:
         '200':
           description: 成功
@@ -67,6 +81,29 @@ paths:
         - auth
       summary: ログインチェックAPI
       description: ログインに成功した場合は success 失敗した場合401が返却される
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: 'object'
+                properties:
+                  message:
+                    type: string
+                    example: 'success'
+        '401':
+          description: 認証されていないアクセス
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+  '/auth/signup':
+    get:
+      tags:
+        - auth
+      summary: サインアップAPI
+      description: サインアップに成功した場合は success 失敗した場合404や500が返却される
       responses:
         '200':
           description: 成功
@@ -220,3 +257,8 @@ components:
       properties:
         email: { type: string }
         password: { type: string }
+
+    csrf:
+      type: object
+      properties:
+        csrf-token: { type: string }
