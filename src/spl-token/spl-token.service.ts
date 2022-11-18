@@ -22,8 +22,7 @@ export class SplTokenService {
     return splHistory;
   }
 
-  // hex取得
-  async getHex(transferHexDto) {
+  async submitHex(transferHexDto) {
     const ownerSecretKey = this.config.get<string>('OWNER_SECRET_KEY');
     console.log('hex data', transferHexDto.hex);
     const response = submitHex(transferHexDto.hex, ownerSecretKey);

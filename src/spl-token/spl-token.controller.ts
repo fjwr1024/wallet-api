@@ -17,6 +17,7 @@ export class SplTokenController {
     return userTokenAmount;
   }
 
+  // TODO: any修正
   @Post('spl-history')
   async getSplHistory(@Body() getSplHistoryDto: GetSplHistoryDto): Promise<any> {
     const userSplHistory = await this.splTokenService.getSplHistory(getSplHistoryDto);
@@ -25,7 +26,7 @@ export class SplTokenController {
 
   @Post('submit-hex')
   async getHex(@Body(new ValidationPipe()) submitrHexDto: SubmitHexDto) {
-    const response = await this.splTokenService.getHex(submitrHexDto);
+    const response = await this.splTokenService.submitHex(submitrHexDto);
     return response;
   }
 }

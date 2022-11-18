@@ -17,7 +17,7 @@ export class NftService {
   }
 
   // hex取得
-  async getHex(submitHexDto) {
+  async submitHex(submitHexDto) {
     const ownerSecretKey = this.config.get<string>('OWNER_SECRET_KEY');
     console.log('hex data', submitHexDto.hex);
     const response = submitHex(submitHexDto.hex, ownerSecretKey);

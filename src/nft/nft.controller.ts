@@ -15,7 +15,7 @@ export class NftController {
 
   @Post('transfer-hex')
   async getHex(@Body(new ValidationPipe()) submitHexDto: SubmitHexDto) {
-    const response = await this.nftService.getHex(submitHexDto);
+    const response = await this.nftService.submitHex(submitHexDto);
     return response;
   }
 }
