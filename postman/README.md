@@ -1,13 +1,16 @@
-# Postman による API の統合テスト実行手順
+# Postman による API テスト実行手順
 
 ## requirement
 
-[newman](https://www.npmjs.com/package/newman)
+```bash
+npm install -g newman
+new man -v
+```
 
 ## user-api
 
 実行方法
 
-```
+```bash
 newman run ./postman/wallet-api.postman_collection.json
 ```
