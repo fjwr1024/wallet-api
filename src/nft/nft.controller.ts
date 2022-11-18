@@ -1,6 +1,6 @@
 import { Body, Controller, Post, ValidationPipe } from '@nestjs/common';
 import { GetNftListDto } from './dto/get-nftlist-dto';
-import { TransferHexDto } from './dto/tramsfer-hex-dto';
+import { SubmitHexDto } from './dto/submit-hex-dto';
 import { NftService } from './nft.service';
 
 @Controller('nft')
@@ -14,8 +14,8 @@ export class NftController {
   }
 
   @Post('transfer-hex')
-  async getHex(@Body(new ValidationPipe()) transferHexDto: TransferHexDto) {
-    const response = await this.nftService.getHex(transferHexDto);
+  async getHex(@Body(new ValidationPipe()) submitHexDto: SubmitHexDto) {
+    const response = await this.nftService.getHex(submitHexDto);
     return response;
   }
 }

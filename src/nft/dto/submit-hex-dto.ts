@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsString } from 'class-validator';
 
-export class TransferHexDto {
+export class SubmitHexDto {
   @IsNotEmpty()
   @IsString()
   hex: string;

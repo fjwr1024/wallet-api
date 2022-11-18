@@ -7,7 +7,7 @@ import { filterOwnToken } from '../utils/filterOwnToken';
 
 @Injectable()
 export class NftService {
-  configService: ConfigService;
+  config: ConfigService;
   // 指定したウォレットアドレスの所有NFTを取得
   async getNftList(getNftListDto: GetNftListDto) {
     const ownedNftList = await getTokenInfoOwned(getNftListDto.walletAddress);
@@ -17,10 +17,10 @@ export class NftService {
   }
 
   // hex取得
-  async getHex(transferHexDto) {
-    const ownerSecretKey = this.configService.get<string>('OWNER_SECRET_KEY');
-    console.log('hex data', transferHexDto.hex);
-    const response = submitHex(transferHexDto.hex, ownerSecretKey);
+  async getHex(submitHexDto) {
+    const ownerSecretKey = this.config.get<string>('OWNER_SECRET_KEY');
+    console.log('hex data', submitHexDto.hex);
+    const response = submitHex(submitHexDto.hex, ownerSecretKey);
     return response;
   }
 }

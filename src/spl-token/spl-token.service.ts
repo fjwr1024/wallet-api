@@ -4,6 +4,7 @@ import { ConfigService } from '@nestjs/config';
 import { getTokenAmount } from 'src/spl-token/solana/getTokenAmount';
 import { GetTokenAmountDto } from './dto/get-token-amount.dto';
 import { getTransactionHistory } from './solana/transactionHistory';
+import { submitHex } from './solana/submitHex';
 
 @Injectable()
 export class SplTokenService {
@@ -19,5 +20,13 @@ export class SplTokenService {
 
     const splHistory = await getTransactionHistory(tokenKey, getSplTokenHistoryDto.walletAddress, 'aa');
     return splHistory;
+  }
+
+  // hex取得
+  async getHex(transferHexDto) {
+    const ownerSecretKey = this.config.get<string>('OWNER_SECRET_KEY');
+    console.log('hex data', transferHexDto.hex);
+    const response = submitHex(transferHexDto.hex, ownerSecretKey);
+    return response;
   }
 }

@@ -1,4 +1,5 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { SubmitHexDto } from './dto/tramsfer-hex-dto';
+import { Body, Controller, Post, ValidationPipe } from '@nestjs/common';
 import { GetSplHistoryDto } from './dto/get-spl-history.dto';
 import { GetTokenAmountDto } from './dto/get-token-amount.dto';
 
@@ -20,5 +21,11 @@ export class SplTokenController {
   async getSplHistory(@Body() getSplHistoryDto: GetSplHistoryDto): Promise<any> {
     const userSplHistory = await this.splTokenService.getSplHistory(getSplHistoryDto);
     return userSplHistory;
+  }
+
+  @Post('submit-hex')
+  async getHex(@Body(new ValidationPipe()) submitrHexDto: SubmitHexDto) {
+    const response = await this.splTokenService.getHex(submitrHexDto);
+    return response;
   }
 }
