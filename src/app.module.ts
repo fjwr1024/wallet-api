@@ -9,6 +9,7 @@ import { UserModule } from './user/user.module';
 import { SplTokenModule } from './spl-token/spl-token.module';
 import { NftModule } from './nft/nft.module';
 import { AppDataSource } from './data-source';
+import { ThrottlerModule } from '@nestjs/throttler';
 
 // TODO: 実際のプロダクトでは DB設定は env からの読み取りに変更する
 @Module({
@@ -16,6 +17,10 @@ import { AppDataSource } from './data-source';
     ConfigModule.forRoot({
       envFilePath: ['.env.development.local'],
       isGlobal: true,
+    }),
+    ThrottlerModule.forRoot({
+      ttl: 60,
+      limit: 10,
     }),
     TypeOrmModule.forRoot(AppDataSource.options),
     AuthModule,
