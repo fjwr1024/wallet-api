@@ -21,7 +21,7 @@ export class UserController {
   }
 
   @Patch('/update-pass/:userId')
-  updateTaskById(
+  updateUserPassword(
     @Param('userId', ParseIntPipe) userId: number,
     @Body() updateUserPasswordDto: UpdateUserPasswordDto
   ): Promise<string> {

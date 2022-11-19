@@ -27,6 +27,9 @@ describe('UserController', () => {
       getUserWalletAddress: jest.fn((): Promise<string> => {
         return Promise.resolve(mockUser1.walletAddress);
       }),
+      updateUserPassword: jest.fn((): Promise<User> => {
+        return Promise.resolve(mockUser1);
+      }),
     }),
   };
 
@@ -44,7 +47,7 @@ describe('UserController', () => {
     expect(userController).toBeDefined();
   });
 
-  describe('getUserInfo()', () => {
+  describe('getUserInfo', () => {
     it('userControllerのgetUserInfoが呼ばれること', async () => {
       userController.getUserInfo(1);
       expect(userService.getUserInfo).toHaveBeenCalled();
@@ -58,7 +61,7 @@ describe('UserController', () => {
     });
   });
 
-  describe('getUserWalletAddress()', () => {
+  describe('getUserWalletAddress', () => {
     it('userControllerのgetUserWalletAddressが呼ばれること', async () => {
       userController.getUserWalletAddress(1);
       expect(userService.getUserWalletAddress).toHaveBeenCalled();
@@ -69,6 +72,13 @@ describe('UserController', () => {
 
       const actual = await userController.getUserWalletAddress(mockUser1.userId);
       expect(actual).toEqual(expected);
+    });
+  });
+
+  describe('updateUserPassword', () => {
+    it('userControllerのupdateUserPasswordが呼ばれること', async () => {
+      userController.updateUserPassword(1, { password: 'updatepass' });
+      expect(userService.updateUserPassword).toHaveBeenCalled();
     });
   });
 });
