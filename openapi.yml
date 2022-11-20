@@ -92,7 +92,7 @@ paths:
                   message:
                     type: string
                     example: 'success'
-        '401':
+        '404':
           description: 認証されていないアクセス
           content:
             application/json:
@@ -103,7 +103,7 @@ paths:
       tags:
         - auth
       summary: サインアップAPI
-      description: サインアップに成功した場合は success 失敗した場合404や500が返却される
+      description: サインアップに成功した場合は success 失敗した場合409や500が返却される 同時にwallet createも行う
       responses:
         '200':
           description: 成功
@@ -115,12 +115,18 @@ paths:
                   message:
                     type: string
                     example: 'success'
-        '401':
-          description: 認証されていないアクセス
+        '409':
+          description: リソース競合
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Unauthorized'
+                $ref: '#/components/schemas/Conflict'
+        '500':
+          description: サーバーエラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
   '/users/{userId}':
     get:
       tags:
@@ -206,7 +212,7 @@ components:
             リソース競合です。
             POSTしたときに既に値が存在していたときや、PUTしたときに古い値で更新しようとしたときなどにこのエラーを返します。
           type: string
-          example: 404
+          example: 409
         message:
           description: 画面に表示するエラーメッセージ
           type: string
