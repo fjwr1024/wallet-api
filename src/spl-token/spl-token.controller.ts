@@ -4,6 +4,7 @@ import { GetSplHistoryDto } from './dto/get-spl-history.dto';
 import { GetTokenAmountDto } from './dto/get-token-amount.dto';
 
 import { SplTokenService } from './spl-token.service';
+import { SplTokenOwnerInfo } from '@solana-suite/core';
 
 @Controller('spl-token')
 export class SplTokenController {
@@ -11,15 +12,13 @@ export class SplTokenController {
 
   // @UseGuards(JwtAuthGuard)
   @Post('get-token-amount')
-  // TODO: any修正
-  async getTokenAmount(@Body() getTokenAmountDto: GetTokenAmountDto): Promise<any> {
+  async getTokenAmount(@Body() getTokenAmountDto: GetTokenAmountDto): Promise<SplTokenOwnerInfo[]> {
     const userTokenAmount = await this.splTokenService.getTokenAmount(getTokenAmountDto);
     return userTokenAmount;
   }
 
-  // TODO: any修正
   @Post('spl-history')
-  async getSplHistory(@Body() getSplHistoryDto: GetSplHistoryDto): Promise<any> {
+  async getSplHistory(@Body() getSplHistoryDto: GetSplHistoryDto): Promise<void> {
     const userSplHistory = await this.splTokenService.getSplHistory(getSplHistoryDto);
     return userSplHistory;
   }
