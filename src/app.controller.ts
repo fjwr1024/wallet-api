@@ -7,6 +7,7 @@ export class AppController {
 
   @Get('healthcheck')
   healthCheck() {
+    console.log('healthcheck');
     return { message: 'ok' };
   }
 }

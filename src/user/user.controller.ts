@@ -15,7 +15,7 @@ export class UserController {
   }
 
   @Get('user-wallet-address/:userId')
-  async getUserWalletAddress(@Param('userId', ParseIntPipe) userId: number): Promise<User> {
+  async getUserWalletAddress(@Param('userId', ParseIntPipe) userId: number): Promise<User[]> {
     const res = await this.userService.getUserWalletAddress(userId);
     return res;
   }

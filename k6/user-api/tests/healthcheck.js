@@ -13,7 +13,7 @@ export default function () {
     'Content-Type': 'application/json',
   };
 
-  const res = http.post('https://test.k6.io', { headers: headers });
+  const res = http.get('http://localhost:3000/healthcheck', { headers: headers });
   check(res, {
     is_status_200: r => r.status === 200,
   });
