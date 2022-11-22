@@ -10,7 +10,7 @@ import { AppDataSource } from '../data-source';
 import { CreateUserDto } from 'src/auth/dto/create-user.dto';
 import { ConfigService } from '@nestjs/config';
 import { Jwt, Msg } from './interface/auth.interface';
-import { createWallet } from 'src/user/solana/createWallet';
+import { createWallet } from './solana/createWallet';
 
 // bcrypt がdockerだと使用できない https://qiita.com/curious_enginee/items/45f6ff65177b26971bad
 
