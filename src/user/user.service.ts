@@ -16,8 +16,7 @@ export class UserService {
     return res;
   }
 
-  // TODO: 戻り値の型修正
-  public async getUserWalletAddress(userId: number): Promise<any> {
+  public async getUserWalletAddress(userId: number): Promise<User[]> {
     const res = await AppDataSource.manager.find(User, {
       select: {
         walletAddress: true,
@@ -33,8 +32,7 @@ export class UserService {
     return res;
   }
 
-  // TODO: 戻り値の型修正
-  async getUserEmail(email): Promise<any> {
+  async getUserEmail(email): Promise<User[]> {
     const res = await AppDataSource.manager.find(User, {
       select: {
         email: true,
