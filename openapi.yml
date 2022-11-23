@@ -127,7 +127,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InternalServerError'
-  '/users/{userId}':
+  '/users/user-info/{userId}':
     get:
       tags:
         - users
@@ -150,6 +150,70 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Unauthorized'
+        '404':
+          description: 指定のリソースが存在しない
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+  '/users/wallet-address/{userId}':
+    get:
+      tags:
+        - users
+      summary: ウォレットアドレスを取得する
+      description: 指定したユーザーのウォレットアドレスをDBから取得する
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: 'object'
+                properties:
+                  user:
+                    type: string
+                    example: 'success'
+        '401':
+          description: 認証されていないアクセス
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+        '404':
+          description: 指定のリソースが存在しない
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+  '/users/update-pass/{userId}':
+    patch:
+      tags:
+        - users
+      summary: パスワードを更新する
+      description: 指定したユーザーのパスワードを更新する
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: 'object'
+                properties:
+                  user:
+                    type: string
+                    example: 'success'
+        '401':
+          description: 認証されていないアクセス
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+        '404':
+          description: 指定のリソースが存在しない
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
       security:
         - Bearer: []
 
@@ -238,17 +302,14 @@ components:
         user_id:
           description: ユーザーID
           type: number
-          nullable: false
         wallet_address:
           description: ウォレットアドレス
           type: string
-          nullable: false
           minLength: 32
           maxLength: 44
-        passeord:
+        password:
           description: パスワード
           type: string
-          nullable: false
           minLength: 8
           maxLength: 255
         created_at:
@@ -268,3 +329,10 @@ components:
       type: object
       properties:
         csrf-token: { type: string }
+
+    userInfo:
+      type: object
+      properties:
+        userId: { type: number }
+        email: { type: string }
+        wallet_address: { type: string }

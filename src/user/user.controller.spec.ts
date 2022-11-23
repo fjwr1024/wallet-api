@@ -61,16 +61,16 @@ describe('UserController', () => {
     });
   });
 
-  describe('getUserWalletAddress', () => {
-    it('userControllerのgetUserWalletAddressが呼ばれること', async () => {
-      userController.getUserWalletAddress(1);
-      expect(userService.getUserWalletAddress).toHaveBeenCalled();
+  describe('getWalletAddress', () => {
+    it('userControllerのgetWalletAddressが呼ばれること', async () => {
+      userController.getWalletAddress(1);
+      expect(userService.getWalletAddress).toHaveBeenCalled();
     });
 
     it('userInfoが返されること', async () => {
       const expected = mockUser1.walletAddress;
 
-      const actual = await userController.getUserWalletAddress(mockUser1.userId);
+      const actual = await userController.getWalletAddress(mockUser1.userId);
       expect(actual).toEqual(expected);
     });
   });
