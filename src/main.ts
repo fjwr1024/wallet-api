@@ -9,7 +9,6 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 
 async function bootstrap() {
   // サーバーがexpressであることを隠蔽するための処理
-  // const app = await NestFactory.create<NestExpressApplication>(AppModule, { cors: true });
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   app.disable('x-powered-by');
 
@@ -17,7 +16,6 @@ async function bootstrap() {
   app.enableCors({
     credentials: true,
     origin: 'http://localhost:3001',
-    // allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization, Access-Control-Allow-Credentials',
   });
 
   app.use(cookieParser());

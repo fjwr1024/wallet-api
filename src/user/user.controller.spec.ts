@@ -24,7 +24,7 @@ describe('UserController', () => {
       getUserInfo: jest.fn((): Promise<User> => {
         return Promise.resolve(mockUser1);
       }),
-      getUserWalletAddress: jest.fn((): Promise<string> => {
+      getWalletAddress: jest.fn((): Promise<string> => {
         return Promise.resolve(mockUser1.walletAddress);
       }),
       updateUserPassword: jest.fn((): Promise<User> => {

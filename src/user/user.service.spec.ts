@@ -23,7 +23,7 @@ describe('UserServiceTest', () => {
       getUserInfo: jest.fn((): Promise<User> => {
         return Promise.resolve(mockUser1);
       }),
-      getUserWalletAddress: jest.fn((): Promise<string> => {
+      getWalletAddress: jest.fn((): Promise<string> => {
         return Promise.resolve(mockUser1.walletAddress);
       }),
       updateUserPassword: jest.fn((): Promise<User> => {
@@ -67,16 +67,16 @@ describe('UserServiceTest', () => {
     });
   });
 
-  describe('getUserWalletAddress', () => {
-    it('userServiceのgetUserWalletAddressが呼ばれること', async () => {
-      userService.getUserWalletAddress(1);
-      expect(userService.getUserWalletAddress).toHaveBeenCalled();
+  describe('getWalletAddress', () => {
+    it('userServiceのgetWalletAddressが呼ばれること', async () => {
+      userService.getWalletAddress(1);
+      expect(userService.getWalletAddress).toHaveBeenCalled();
     });
 
     it('userWalletAddressが返されること', async () => {
       const expected = mockUser1.walletAddress;
 
-      const actual = await userService.getUserWalletAddress(mockUser1.userId);
+      const actual = await userService.getWalletAddress(mockUser1.userId);
       expect(actual).toEqual(expected);
     });
 
