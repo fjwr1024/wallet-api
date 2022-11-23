@@ -1,4 +1,4 @@
-import { Body, Controller, Post, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, HttpCode, HttpStatus, Post, ValidationPipe } from '@nestjs/common';
 import { GetNftListDto } from './dto/get-nftlist-dto';
 import { SubmitHexDto } from './dto/submit-hex-dto';
 import { NftService } from './nft.service';
