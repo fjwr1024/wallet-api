@@ -17,7 +17,7 @@ export class SplTokenController {
     return userTokenAmount;
   }
 
-  @Post('spl-history')
+  @Post('history')
   async getSplHistory(@Body() getSplHistoryDto: GetSplHistoryDto): Promise<void> {
     const userSplHistory = await this.splTokenService.getSplHistory(getSplHistoryDto);
     return userSplHistory;

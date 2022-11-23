@@ -214,6 +214,90 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotFound'
+  '/spl-token/get-token-amount':
+    post:
+      tags:
+        - spl-token
+      summary: spl-tokenの合計値を取得する
+      description: 'ユーザーのウォレットアドレスをkeyに所持しているspl-tokenの合計値を取得する'
+      requestBody:
+        description: spl-token取得用リクエストボディ
+        required: true
+        content:
+          application/json:
+            schema:
+              type: 'object'
+              properties:
+              $ref: '#/components/schemas/getSplToken'
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: 認証されていないアクセス
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+  '/spl-token/history':
+    post:
+      tags:
+        - spl-token
+      summary: spl-tokenの取引履歴を取得する
+      description: 'ユーザーのウォレットアドレスをkeyに所持しているspl-tokenの取引履歴を取得する'
+      requestBody:
+        description: spl-token取得用リクエストボディ
+        required: true
+        content:
+          application/json:
+            schema:
+              type: 'object'
+              properties:
+              $ref: '#/components/schemas/getSplToken'
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: 認証されていないアクセス
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+  '/spl-token/submit-hex':
+    post:
+      tags:
+        - spl-token
+      summary: hexデータをsubmitする
+      description: '移転したいspl-tokenのhexデータをsubmitする'
+      requestBody:
+        description: spl-token取得用リクエストボディ
+        required: true
+        content:
+          application/json:
+            schema:
+              type: 'object'
+              properties:
+              $ref: '#/components/schemas/getSplToken'
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: 認証されていないアクセス
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
       security:
         - Bearer: []
 
@@ -324,6 +408,11 @@ components:
       properties:
         email: { type: string }
         password: { type: string }
+
+    getSplToken:
+      type: object
+      properties:
+        wallet_address: { type: string }
 
     csrf:
       type: object
