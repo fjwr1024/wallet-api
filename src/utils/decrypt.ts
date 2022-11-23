@@ -1,5 +1,5 @@
 import crypto from 'crypto-js';
-export const decryptSecretKey = (key: string, encryptedText: string) => {
+export const decryptText = (key: string, encryptedText: string) => {
   const decrypted = crypto.AES.decrypt(key, encryptedText);
   console.log('decrypted', decrypted);
 
