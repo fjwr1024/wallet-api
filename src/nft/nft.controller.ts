@@ -7,12 +7,14 @@ import { NftService } from './nft.service';
 export class NftController {
   constructor(private readonly nftService: NftService) {}
 
+  @HttpCode(HttpStatus.OK)
   @Post('get-list')
   async getNftList(@Body(new ValidationPipe()) getNftListDto: GetNftListDto) {
     const response = await this.nftService.getNftList(getNftListDto);
     return response;
   }
 
+  @HttpCode(HttpStatus.OK)
   @Post('submit-hex')
   async getHex(@Body(new ValidationPipe()) submitHexDto: SubmitHexDto) {
     const response = await this.nftService.submitHex(submitHexDto);

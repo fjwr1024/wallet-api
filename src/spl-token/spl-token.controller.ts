@@ -11,18 +11,21 @@ export class SplTokenController {
   constructor(private readonly splTokenService: SplTokenService) {}
 
   // @UseGuards(JwtAuthGuard)
+  @HttpCode(HttpStatus.OK)
   @Post('get-token-amount')
   async getTokenAmount(@Body() getTokenAmountDto: GetTokenAmountDto): Promise<SplTokenOwnerInfo[]> {
     const userTokenAmount = await this.splTokenService.getTokenAmount(getTokenAmountDto);
     return userTokenAmount;
   }
 
+  @HttpCode(HttpStatus.OK)
   @Post('history')
   async getSplHistory(@Body() getSplHistoryDto: GetSplHistoryDto): Promise<void> {
     const userSplHistory = await this.splTokenService.getSplHistory(getSplHistoryDto);
     return userSplHistory;
   }
 
+  @HttpCode(HttpStatus.OK)
   @Post('submit-hex')
   async getHex(@Body(new ValidationPipe()) submitrHexDto: SubmitHexDto) {
     const response = await this.splTokenService.submitHex(submitrHexDto);
