@@ -13,7 +13,7 @@ export class NftController {
     return response;
   }
 
-  @Post('transfer-hex')
+  @Post('submit-hex')
   async getHex(@Body(new ValidationPipe()) submitHexDto: SubmitHexDto) {
     const response = await this.nftService.submitHex(submitHexDto);
     return response;

@@ -75,6 +75,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Unauthorized'
+
   '/auth/login-check':
     get:
       tags:
@@ -98,6 +99,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Unauthorized'
+
   '/auth/signup':
     get:
       tags:
@@ -127,6 +129,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InternalServerError'
+
   '/users/user-info/{userId}':
     get:
       tags:
@@ -156,6 +159,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotFound'
+
   '/users/wallet-address/{userId}':
     get:
       tags:
@@ -185,6 +189,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotFound'
+
   '/users/update-pass/{userId}':
     patch:
       tags:
@@ -214,6 +219,65 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotFound'
+
+  '/nft/get-list':
+    post:
+      tags:
+        - nft
+      summary: nft一覧を取得する
+      description: 'ユーザーのウォレットアドレスをkeyに所持しているnft一覧を取得する'
+      requestBody:
+        description: nft取得用リクエストボディ
+        required: true
+        content:
+          application/json:
+            schema:
+              type: 'object'
+              properties:
+              $ref: '#/components/schemas/getNft'
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: 認証されていないアクセス
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+
+  '/nft/submit-hex':
+    post:
+      tags:
+        - nft
+      summary: hexデータをsubmitする
+      description: '移転したいnftのhexデータをsubmitする'
+      requestBody:
+        description: nft取得用リクエストボディ
+        required: true
+        content:
+          application/json:
+            schema:
+              type: 'object'
+              properties:
+              $ref: '#/components/schemas/getNft'
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: 認証されていないアクセス
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+
   '/spl-token/get-token-amount':
     post:
       tags:
@@ -242,6 +306,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Unauthorized'
+
   '/spl-token/history':
     post:
       tags:
@@ -270,6 +335,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Unauthorized'
+
   '/spl-token/submit-hex':
     post:
       tags:
@@ -298,6 +364,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Unauthorized'
+
       security:
         - Bearer: []
 
@@ -323,6 +390,7 @@ components:
           description: 画面に表示するエラーメッセージ
           type: string
           example: 郵便番号の形式が違います
+
     Unauthorized:
       title: 認証されてないリクエスト
       type: object
@@ -337,6 +405,7 @@ components:
           description: 画面に表示するエラーメッセージ
           type: string
           example: 認証されていないアクセスです。
+
     NotFound:
       title: 指定のリソースが存在しない
       type: object
@@ -351,6 +420,7 @@ components:
           description: 画面に表示するエラーメッセージ
           type: string
           example: 指定のリソースは存在しません。
+
     Conflict:
       title: リソース競合
       type: object
@@ -365,6 +435,7 @@ components:
           description: 画面に表示するエラーメッセージ
           type: string
           example: 郵便番号の形式が違います
+
     InternalServerError:
       title: サーバー内エラー
       type: object
@@ -410,6 +481,11 @@ components:
         password: { type: string }
 
     getSplToken:
+      type: object
+      properties:
+        wallet_address: { type: string }
+
+    getNft:
       type: object
       properties:
         wallet_address: { type: string }
