@@ -144,11 +144,7 @@ paths:
           content:
             application/json:
               schema:
-                type: 'object'
-                properties:
-                  user:
-                    type: string
-                    example: 'success'
+                $ref: '#/components/schemas/userInfo'
         '401':
           description: 認証されていないアクセス
           content:
@@ -176,11 +172,7 @@ paths:
           content:
             application/json:
               schema:
-                type: 'object'
-                properties:
-                  user:
-                    type: string
-                    example: 'success'
+                $ref: '#/components/schemas/userWalletAddress'
         '401':
           description: 認証されていないアクセス
           content:
@@ -258,7 +250,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/getListNft'
         '401':
           description: 認証されていないアクセス
           content:
@@ -458,7 +450,7 @@ components:
         message:
           description: 画面に表示するエラーメッセージ
           type: string
-          example: 郵便番号の形式が違います
+          example: 既に存在するメールアドレスです
 
     InternalServerError:
       title: サーバー内エラー
@@ -501,8 +493,8 @@ components:
     loginUser:
       type: object
       properties:
+        userId: { type: number }
         email: { type: string }
-        password: { type: string }
 
     updatePassword:
       type: object
@@ -530,3 +522,13 @@ components:
         userId: { type: number }
         email: { type: string }
         wallet_address: { type: string }
+
+    userWalletAddress:
+      type: object
+      properties:
+        wallet_address: { type: string }
+
+    getListNft:
+      type: object
+      properties:
+        example: { type: string }
