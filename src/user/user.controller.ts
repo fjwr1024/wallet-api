@@ -20,6 +20,7 @@ export class UserController {
     return res;
   }
 
+  @HttpCode(HttpStatus.OK)
   @Patch('/update-pass/:userId')
   updateUserPassword(
     @Param('userId', ParseIntPipe) userId: number,
