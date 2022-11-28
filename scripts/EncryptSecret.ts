@@ -1,6 +1,7 @@
 import crypto from 'crypto-js';
 
 // secret key を暗号化して保存したい場合に使用
+// 秘密鍵のDB保存は審査が必要なため、基本的には行わない
 const encrypt = async () => {
   const key = 'abcdefgh';
   const secret = '';
