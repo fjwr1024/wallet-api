@@ -11,7 +11,6 @@ import { NftModule } from './nft/nft.module';
 import { AppDataSource } from './data-source';
 import { ThrottlerModule } from '@nestjs/throttler';
 import { WinstonModule } from 'nest-winston';
-import * as winston from 'winston';
 
 // TODO: 実際のプロダクトでは DB設定は env からの読み取りに変更する
 @Module({
