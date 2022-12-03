@@ -7,12 +7,14 @@ import * as csurf from 'csurf';
 
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { LoggingService } from './logging/logging.service';
+import { LoggingInterceptor } from './intercepter/logging.intercepter';
 
 async function bootstrap() {
   // サーバーがexpressであることを隠蔽するための処理
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     logger: new LoggingService(),
   });
+  app.useGlobalInterceptors(new LoggingInterceptor());
   app.disable('x-powered-by');
 
   // corsの許可

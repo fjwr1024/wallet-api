@@ -44,11 +44,9 @@ describe('UserController', () => {
     expect(authController).toBeDefined();
   });
 
-  //   describe('csrf', () => {
-  //     it('csrf tokenが返されること', async () => {
-  //         const expected =
-
-  //       expect(actual).toEqual(expected);
-  //     });
-  //   });
+  describe('signup', () => {
+    it('okが返却されること', async () => {
+      const actual = '{message: ok}';
+    });
+  });
 });

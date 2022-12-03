@@ -2,8 +2,6 @@ import { ConflictException, ForbiddenException, Injectable } from '@nestjs/commo
 import { User } from '../entities/user.entity';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
-import * as randomToken from 'rand-token';
-import * as moment from 'moment';
 
 import { LoginDto } from './dto/login.dto';
 import { AppDataSource } from '../data-source';
@@ -29,8 +27,14 @@ export class AuthService {
       user.password = hashed;
       user.walletAddress = (await walletAddress).pubkey;
 
-      AppDataSource.manager.save(user);
+      const currentUser = await AppDataSource.manager.findOneBy(User, {
+        email: createUserDto.email,
+      });
+
+      if (!currentUser) throw new ForbiddenException('Email or password incorrect');
+
       console.log('user', user);
+      AppDataSource.manager.insert(User, user);
       return { message: 'ok' };
     } catch (error) {
       throw new ConflictException('This email is already exist');
@@ -62,34 +66,3 @@ export class AuthService {
     };
   }
 }
-//   public async getRefreshToken(userId: number): Promise<string> {
-//     const userDataToUpdate = {
-//       refreshToken: randomToken.generate(16),
-//       refreshTokenExp: moment().day(1).format('YYYY/MM/DD'),
-//     };
-
-//     await this.authRepository.update(userId, userDataToUpdate);
-//     return userDataToUpdate.refreshToken;
-//   }
-
-//   public async validRefreshToken(email: string, refreshToken: string): Promise<CurrentUser> {
-//     const currentDate = moment().day(1).format('YYYY/MM/DD');
-//     const user = await this.authRepository.findOne({
-//       where: {
-//         email: email,
-//         refreshToken: refreshToken,
-//         refreshTokenExp: MoreThanOrEqual(currentDate),
-//       },
-//     });
-
-//     if (!user) {
-//       return null;
-//     }
-
-//     const currentUser = new CurrentUser();
-//     currentUser.userId = user.userId;
-//     currentUser.email = user.email;
-
-//     return currentUser;
-//   }
-// }

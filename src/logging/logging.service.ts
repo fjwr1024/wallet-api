@@ -18,7 +18,7 @@ export class LoggingService implements LoggerService {
       transports: [
         // アクセスログの出力先設定
         new winstonDailyRotateFile({
-          level: 'debug', // debugを指定すると、debug以上のログが出力される
+          // level: 'debug', // debugを指定すると、debug以上のログが出力される
           datePattern: 'YYYY-MM-DD',
           filename: 'application-%DATE%.log',
           dirname: 'logs',
