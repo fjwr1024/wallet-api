@@ -19,6 +19,7 @@ export class AuthService {
   public async signUp(createUserDto: CreateUserDto): Promise<Msg> {
     const hashed = await bcrypt.hash(createUserDto.password, 12);
 
+    //TODO: typeorm 内部で errorが吐き出された場合のハンドリングを考える
     try {
       const user = new User();
       const walletAddress = createWallet();
@@ -31,7 +32,7 @@ export class AuthService {
         email: createUserDto.email,
       });
 
-      if (!currentUser) throw new ForbiddenException('Email or password incorrect');
+      if (currentUser) throw new ConflictException('This email is already exist');
 
       console.log('user', user);
       AppDataSource.manager.insert(User, user);
