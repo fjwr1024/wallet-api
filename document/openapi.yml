@@ -492,9 +492,11 @@ components:
 
     loginUser:
       type: object
+      title: login後ユーザーに返す情報
       properties:
         userId: { type: number }
         email: { type: string }
+        wallet_address: { type: string }
 
     updatePassword:
       type: object

@@ -10,7 +10,8 @@ import { SplTokenModule } from './spl-token/spl-token.module';
 import { NftModule } from './nft/nft.module';
 import { AppDataSource } from './data-source';
 import { ThrottlerModule } from '@nestjs/throttler';
-import { WinstonModule } from 'nest-winston';
+import { LoggingService } from './logging/logging.service';
+import { LoggingModule } from './logging/logging.module';
 
 // TODO: 実際のプロダクトでは DB設定は env からの読み取りに変更する
 @Module({
@@ -24,14 +25,14 @@ import { WinstonModule } from 'nest-winston';
       limit: 10,
     }),
     TypeOrmModule.forRoot(AppDataSource.options),
-    WinstonModule.forRoot({}),
     AuthModule,
     UserModule,
     SplTokenModule,
     NftModule,
+    LoggingModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, LoggingService],
 })
 export class AppModule {
   constructor(private dataSource: DataSource) {}

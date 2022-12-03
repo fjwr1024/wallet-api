@@ -6,10 +6,13 @@ import * as cookieParser from 'cookie-parser';
 import * as csurf from 'csurf';
 
 import { NestExpressApplication } from '@nestjs/platform-express';
+import { LoggingService } from './logging/logging.service';
 
 async function bootstrap() {
   // サーバーがexpressであることを隠蔽するための処理
-  const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule, {
+    logger: new LoggingService(),
+  });
   app.disable('x-powered-by');
 
   // corsの許可

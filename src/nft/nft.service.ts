@@ -8,6 +8,7 @@ import { filterOwnToken } from '../utils/filterOwnToken';
 @Injectable()
 export class NftService {
   config: ConfigService;
+
   async getNftList(getNftListDto: GetNftListDto) {
     const ownedNftList = await getTokenInfoOwned(getNftListDto.walletAddress);
     const filteredOwnToken = await filterOwnToken(ownedNftList);

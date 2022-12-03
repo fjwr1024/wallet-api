@@ -1,4 +1,5 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Patch } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Patch, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 
 import { User } from 'src/entities/user.entity';
 import { UpdateUserPasswordDto } from './dto/update-user-password.dto';
@@ -20,6 +21,7 @@ export class UserController {
     return res;
   }
 
+  @UseGuards(AuthGuard('jwt'))
   @HttpCode(HttpStatus.OK)
   @Patch('/update-pass/:userId')
   updateUserPassword(
