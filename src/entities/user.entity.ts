@@ -16,12 +16,6 @@ export class User {
   @Column()
   walletAddress: string;
 
-  @Column({ nullable: true, name: 'refreshtoken' })
-  refreshToken: string;
-
-  @Column({ type: 'date', nullable: true, name: 'refreshtokenexp' })
-  refreshTokenExp: string;
-
   @CreateDateColumn({
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP(6)',
