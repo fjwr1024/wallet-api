@@ -20,6 +20,7 @@ async function bootstrap() {
   // corsの許可
   app.enableCors({
     credentials: true,
+    allowedHeaders: 'Origin, X-Requested-With, X-Total-Count, Content-Type, Accept',
     origin: 'http://localhost:3001',
   });
 

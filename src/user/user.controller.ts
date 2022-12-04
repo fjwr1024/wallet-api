@@ -1,5 +1,17 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Patch, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Param,
+  ParseIntPipe,
+  Patch,
+  Res,
+  UseGuards,
+} from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
+import { Response } from 'express';
 
 import { User } from 'src/entities/user.entity';
 import { UpdateUserPasswordDto } from './dto/update-user-password.dto';
@@ -9,9 +21,13 @@ import { UserService } from './user.service';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Get('')
-  async getUser(): Promise<User[]> {
-    return await this.userService.getUser();
+  // react admin get list用api
+  @Get()
+  async getUser(@Res() res: Response): Promise<Response> {
+    res.set('Access-Control-Expose-Headers', 'X-Total-Count');
+    // X-Total-Countをつけないとcorsエラーが出る
+    res.set('X-Total-Count', '1');
+    return res.send(await this.userService.getUser());
   }
 
   @Get('user-info/:userId')
