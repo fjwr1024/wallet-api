@@ -4,7 +4,7 @@ import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateCol
 @Entity({ name: 'users' })
 export class User {
   @PrimaryGeneratedColumn('increment', { name: 'id' })
-  userId: number;
+  id: number;
 
   @Column({ name: 'email', unique: true, nullable: false })
   email: string;

@@ -10,9 +10,9 @@ export class UserService {
     return res;
   }
 
-  public async getUserInfo(userId: number): Promise<User> {
+  public async getUserInfo(id: number): Promise<User> {
     const res = await AppDataSource.manager.findOneBy(User, {
-      userId,
+      id,
     });
 
     if (!res) {
@@ -21,13 +21,13 @@ export class UserService {
     return res;
   }
 
-  public async getWalletAddress(userId: number): Promise<User[]> {
+  public async getWalletAddress(id: number): Promise<User[]> {
     const res = await AppDataSource.manager.find(User, {
       select: {
         walletAddress: true,
       },
       where: {
-        userId,
+        id,
       },
     });
 
@@ -49,9 +49,9 @@ export class UserService {
     return res;
   }
 
-  async updateUserPassword(userId, password) {
+  async updateUserPassword(id, password) {
     const user = await AppDataSource.manager.findOneBy(User, {
-      userId,
+      id,
     });
     if (!user) {
       throw new NotFoundException('User is not found');
@@ -59,7 +59,7 @@ export class UserService {
 
     const hashedPassword = await bcrypt.hash(password, 12);
 
-    await AppDataSource.manager.update(User, userId, {
+    await AppDataSource.manager.update(User, id, {
       password: hashedPassword,
     });
 

@@ -23,32 +23,32 @@ export class UserController {
 
   // react admin get list用api
   @Get()
-  async getUser(@Res() res: Response): Promise<Response> {
-    res.set('Access-Control-Expose-Headers', 'X-Total-Count');
+  async getUser(@Res() res: Response): Promise<any> {
+    res.append('X-Total-Count', '1');
     // X-Total-Countをつけないとcorsエラーが出る
-    res.set('X-Total-Count', '1');
-    return res.send(await this.userService.getUser());
+    res.send(await this.userService.getUser());
+    // return await this.userService.getUser();
   }
 
-  @Get('user-info/:userId')
-  async getUserInfo(@Param('userId', ParseIntPipe) userId: number): Promise<User> {
-    const res = await this.userService.getUserInfo(userId);
+  @Get('user-info/:id')
+  async getUserInfo(@Param('id', ParseIntPipe) id: number): Promise<User> {
+    const res = await this.userService.getUserInfo(id);
     return res;
   }
 
-  @Get('wallet-address/:userId')
-  async getWalletAddress(@Param('userId', ParseIntPipe) userId: number): Promise<User[]> {
-    const res = await this.userService.getWalletAddress(userId);
+  @Get('wallet-address/:id')
+  async getWalletAddress(@Param('id', ParseIntPipe) id: number): Promise<User[]> {
+    const res = await this.userService.getWalletAddress(id);
     return res;
   }
 
   @UseGuards(AuthGuard('jwt'))
   @HttpCode(HttpStatus.OK)
-  @Patch('/update-pass/:userId')
+  @Patch('/update-pass/:id')
   updateUserPassword(
-    @Param('userId', ParseIntPipe) userId: number,
+    @Param('id', ParseIntPipe) id: number,
     @Body() updateUserPasswordDto: UpdateUserPasswordDto
   ): Promise<string> {
-    return this.userService.updateUserPassword(userId, updateUserPasswordDto.password);
+    return this.userService.updateUserPassword(id, updateUserPasswordDto.password);
   }
 }

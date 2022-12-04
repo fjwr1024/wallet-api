@@ -49,7 +49,7 @@ export class AuthService {
     if (!user) throw new ForbiddenException('Email or password incorrect');
     const isValid = await bcrypt.compare(loginDto.password, user.password);
     if (!isValid) throw new ForbiddenException('Email or password incorrect');
-    return this.generateJwt(user.userId, user.email);
+    return this.generateJwt(user.id, user.email);
   }
 
   async generateJwt(userId: number, email: string): Promise<Jwt> {

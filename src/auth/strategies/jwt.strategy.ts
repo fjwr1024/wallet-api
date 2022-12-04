@@ -26,7 +26,7 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
 
   async validate(payload: { sub: number; email: string }) {
     const user = await AppDataSource.manager.findOneBy(User, {
-      userId: payload.sub,
+      id: payload.sub,
     });
     return user;
   }
