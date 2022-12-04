@@ -45,7 +45,7 @@ describe('UserController', () => {
   });
 
   describe('signup', () => {
-    it('okが返却されること', async () => {
+    it('', async () => {
       const actual = '{message: ok}';
     });
   });

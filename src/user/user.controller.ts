@@ -9,6 +9,11 @@ import { UserService } from './user.service';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
+  @Get('')
+  async getUser(): Promise<User[]> {
+    return await this.userService.getUser();
+  }
+
   @Get('user-info/:userId')
   async getUserInfo(@Param('userId', ParseIntPipe) userId: number): Promise<User> {
     const res = await this.userService.getUserInfo(userId);

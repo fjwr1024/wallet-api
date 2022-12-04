@@ -95,5 +95,23 @@ describe('UserServiceTest', () => {
       userService.updateUserPassword(1, { password: 'updatepass' });
       expect(userService.updateUserPassword).toHaveBeenCalled();
     });
+
+    it('異常系: ユーザーが存在しない', async () => {
+      try {
+        await userService.updateUserPassword(100000, { password: 'updatepass' });
+      } catch (err) {
+        expect(err).toBeInstanceOf(NotFoundException);
+        expect(err.message).toBe('User is not found');
+      }
+    });
+
+    it('パスワードがハッシュ化されてるか', async () => {
+      await userService.updateUserPassword(mockUser1.userId, { password: 'updatepass' });
+
+      expect(mockUser1.password).not.toEqual('updatepass');
+      const [salt, hash] = mockUser1.password.split('.');
+      expect(salt).toBeDefined();
+      expect(hash).toBeDefined();
+    });
   });
 });

@@ -5,6 +5,11 @@ import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UserService {
+  async getUser(): Promise<User[]> {
+    const res = await AppDataSource.manager.find(User);
+    return res;
+  }
+
   public async getUserInfo(userId: number): Promise<User> {
     const res = await AppDataSource.manager.findOneBy(User, {
       userId,
