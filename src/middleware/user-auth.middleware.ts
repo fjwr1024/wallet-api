@@ -7,13 +7,22 @@ import jwt_decode from 'jwt-decode';
 export class CurrentUserMiddleware implements NestMiddleware {
   constructor(private readonly userService: UserService) {}
   async use(req, _: Response, next: () => void): Promise<void> {
+    console.log('middleware');
     const apiKey = req.cookies.access_token;
     const decoded = jwt_decode<{ [name: string]: string }>(apiKey);
+    console.log('decoded', decoded);
     try {
       const user = await this.userService.getUserInfo(decoded.sub);
-      req.currentUser = user;
+      console.log('currentuserid', user.id);
+      console.log('req.params', req.params);
+
+      if (!(Number(decoded.sub) === user.id)) {
+        console.log('user is invalid');
+      }
       next();
     } catch (error) {
+      console.log('error', error);
+
       next();
     }
   }

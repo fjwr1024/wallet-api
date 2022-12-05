@@ -28,7 +28,6 @@ export class UserController {
     res.append('X-Total-Count', '1');
     // X-Total-Countをつけないとcorsエラーが出る
     res.send(await this.userService.getUser());
-    // return await this.userService.getUser();
   }
 
   @Get('user-info/:id')
@@ -47,6 +46,7 @@ export class UserController {
   @HttpCode(HttpStatus.OK)
   @Patch('/update-pass/:id')
   updateUserPassword(
+    @CurrentUser() currentUser,
     @Param('id', ParseIntPipe) id: number,
     @Body() updateUserPasswordDto: UpdateUserPasswordDto
   ): Promise<string> {
