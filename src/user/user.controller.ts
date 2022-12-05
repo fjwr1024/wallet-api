@@ -34,7 +34,6 @@ export class UserController {
   @Get('user-info/:id')
   async getUserInfo(@CurrentUser() currentUser, @Param('id', ParseIntPipe) id: number): Promise<User> {
     const res = await this.userService.getUserInfo(id);
-    console.log(currentUser);
     return res;
   }
 

@@ -9,12 +9,11 @@ export class CurrentUserMiddleware implements NestMiddleware {
   async use(req, _: Response, next: () => void): Promise<void> {
     const apiKey = req.cookies.access_token;
     const decoded = jwt_decode<{ [name: string]: string }>(apiKey);
-    console.log('decoded_jet', decoded);
     try {
-      const user = await this.userService.getCurrentUser(decoded.email);
+      const user = await this.userService.getUserInfo(decoded.sub);
       req.currentUser = user;
       next();
-    } catch {
+    } catch (error) {
       next();
     }
   }

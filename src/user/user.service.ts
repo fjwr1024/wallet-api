@@ -10,7 +10,7 @@ export class UserService {
     return res;
   }
 
-  public async getUserInfo(id: number): Promise<User> {
+  public async getUserInfo(id): Promise<User> {
     const res = await AppDataSource.manager.findOneBy(User, {
       id,
     });
