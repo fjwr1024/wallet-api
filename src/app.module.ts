@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, MiddlewareConsumer } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
@@ -12,6 +12,7 @@ import { AppDataSource } from './data-source';
 import { ThrottlerModule } from '@nestjs/throttler';
 import { LoggingService } from './logging/logging.service';
 import { LoggingModule } from './logging/logging.module';
+import { CurrentUserMiddleware } from './middleware/current-user.middleware';
 
 // TODO: 実際のプロダクトでは DB設定は env からの読み取りに変更する
 @Module({
@@ -36,4 +37,7 @@ import { LoggingModule } from './logging/logging.module';
 })
 export class AppModule {
   constructor(private dataSource: DataSource) {}
+  configure(consumer: MiddlewareConsumer): void {
+    consumer.apply(CurrentUserMiddleware).forRoutes('*');
+  }
 }

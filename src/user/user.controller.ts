@@ -12,6 +12,7 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { Response } from 'express';
+import { CurrentUser } from 'src/decorator/current-user-guard.decorator';
 
 import { User } from 'src/entities/user.entity';
 import { UpdateUserPasswordDto } from './dto/update-user-password.dto';
@@ -31,8 +32,9 @@ export class UserController {
   }
 
   @Get('user-info/:id')
-  async getUserInfo(@Param('id', ParseIntPipe) id: number): Promise<User> {
+  async getUserInfo(@CurrentUser() currentUser, @Param('id', ParseIntPipe) id: number): Promise<User> {
     const res = await this.userService.getUserInfo(id);
+    console.log(currentUser);
     return res;
   }
 
