@@ -20,4 +20,10 @@ export class NftController {
     const response = await this.nftService.submitHex(submitHexDto);
     return response;
   }
+
+  @Post('mint')
+  async createNft(@Body(new ValidationPipe()) mintNftDto: MintNftDto) {
+    const response = await this.nftService.mint(mintNftDto);
+    return response;
+  }
 }

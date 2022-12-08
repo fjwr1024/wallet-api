@@ -470,7 +470,7 @@ components:
       title: ユーザ
       type: object
       properties:
-        user_id:
+        userId:
           description: ユーザーID
           type: number
         wallet_address:
