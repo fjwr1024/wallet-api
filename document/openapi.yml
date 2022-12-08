@@ -243,14 +243,14 @@ paths:
             schema:
               type: 'object'
               properties:
-              $ref: '#/components/schemas/getNftList'
+              $ref: '#/components/schemas/userWalletAddress'
       responses:
         '200':
           description: 成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getListNft'
+                $ref: '#/components/schemas/getNftList'
         '401':
           description: 認証されていないアクセス
           content:
@@ -506,7 +506,11 @@ components:
     getSplToken:
       type: object
       properties:
-        wallet_address: { type: string }
+        owner: { type: string }
+        mint: { type: string }
+        amount: { type: number }
+        tokenAccount: { type: string }
+        mintDecimal: { type: number }
 
     getNftList:
       type: object
@@ -540,8 +544,3 @@ components:
       type: object
       properties:
         wallet_address: { type: string }
-
-    getListNft:
-      type: object
-      properties:
-        example: { type: string }
