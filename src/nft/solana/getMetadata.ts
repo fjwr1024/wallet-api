@@ -2,7 +2,6 @@ import assert from 'assert';
 
 import { Metaplex } from '@solana-suite/nft';
 
-// mintをkeyにuserの所持しているmetadataを取得
 export const getNftMetadata = async mint => {
   const mintArr = mint.map(obj => obj.mint);
 
@@ -23,7 +22,6 @@ export const getNftMetadata = async mint => {
   return response;
 };
 
-// 指定したウォレットアドレスの持っているNFT情報を取得する
 export const displayUserMetadata = async (walletAddress: string) => {
   const metadata = await Metaplex.findByOwner(walletAddress.toPublicKey());
 
@@ -35,11 +33,10 @@ export const displayUserMetadata = async (walletAddress: string) => {
   return metadata.unwrap();
 };
 
-// 自身の所有しているトークン情報を取得
 export const getTokenInfoOwned = async walletAddress => {
   const response = await (await Metaplex.findByOwner(walletAddress.toPublicKey())).unwrap();
 
-  console.log('自身の所有しているトークン情報', response);
+  console.log('owned token info', response);
 
   return response;
 };

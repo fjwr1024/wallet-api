@@ -243,7 +243,7 @@ paths:
             schema:
               type: 'object'
               properties:
-              $ref: '#/components/schemas/getNft'
+              $ref: '#/components/schemas/getNftList'
       responses:
         '200':
           description: 成功
@@ -274,7 +274,7 @@ paths:
             schema:
               type: 'object'
               properties:
-              $ref: '#/components/schemas/getNft'
+              $ref: '#/components/schemas/getNftList'
       responses:
         '200':
           description: 成功
@@ -508,10 +508,21 @@ components:
       properties:
         wallet_address: { type: string }
 
-    getNft:
+    getNftList:
       type: object
       properties:
-        wallet_address: { type: string }
+        mint: { type: string }
+        updateAuthority: { type: string }
+        royalty: { type: number }
+        name: { type: string }
+        symbol: { type: string }
+        url: { type: string }
+        isMutable: { type: boolean }
+        primarySaleHappened: { type: boolean }
+        creators: { type: array }
+        editionNonce: { type: number }
+        collection: { type: object }
+        uses: { type: object }
 
     csrf:
       type: object
