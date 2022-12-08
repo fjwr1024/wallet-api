@@ -1,5 +1,6 @@
 import { Body, Controller, HttpCode, HttpStatus, Post, ValidationPipe } from '@nestjs/common';
 import { GetNftListDto } from './dto/get-nftlist-dto';
+import { MintNftDto } from './dto/mint-nft-dto';
 import { SubmitHexDto } from './dto/submit-hex-dto';
 import { NftService } from './nft.service';
 
@@ -21,6 +22,7 @@ export class NftController {
     return response;
   }
 
+  @HttpCode(HttpStatus.OK)
   @Post('mint')
   async createNft(@Body(new ValidationPipe()) mintNftDto: MintNftDto) {
     const response = await this.nftService.mint(mintNftDto);

@@ -5,6 +5,9 @@ import { getNftMetadata, getTokenInfoOwned } from './solana/getMetadata';
 import { submitHex } from './solana/submitHex';
 import { filterOwnToken } from '../utils/filterOwnToken';
 import { MintNftDto } from './dto/mint-nft-dto';
+import { decodeBase64 } from 'src/utils/decodeBase64';
+import { mintNft, uploadContents } from './solana/mintNft';
+import { KeypairStr } from '@solana-suite/core';
 
 @Injectable()
 export class NftService {
@@ -12,8 +15,7 @@ export class NftService {
 
   async getNftList(getNftListDto: GetNftListDto) {
     const ownedNftList = await getTokenInfoOwned(getNftListDto.walletAddress);
-    const filteredOwnToken = await filterOwnToken(ownedNftList);
-    const response = await getNftMetadata(filteredOwnToken);
+    const response = await getNftMetadata(ownedNftList);
     return response;
   }
 
@@ -24,19 +26,12 @@ export class NftService {
     return response;
   }
 
-  // NFT生成機能
   async mint(mintNftDto: MintNftDto) {
     const imagePath = await decodeBase64(mintNftDto.image);
-
     const url = await uploadContents(mintNftDto.name, mintNftDto.description, imagePath);
-
-    const ownerWalletAddress = this.config.get<string>('OWNER_WALLET_ADDRESS');
-
-    const ownerSecretKey = this.config.get<string>('OWNER_SECRET_KEY');
-
-    const response = await createNft(mintNftDto.name, url, mintNftDto.quantity, ownerWalletAddress, ownerSecretKey);
-
-    // TODO: uploadsにあげられたファイルの削除 やらなくても問題はない
+    const ownerWalletAddress = this.config.get<KeypairStr>('SYSTEM_WALLET_ADDRESS');
+    const ownerSecretKey = this.config.get<KeypairStr>('SYSTEM_WALLET_SECRET');
+    const response = await mintNft(mintNftDto.name, url, mintNftDto.quantity, ownerWalletAddress, ownerSecretKey);
 
     return response;
   }
