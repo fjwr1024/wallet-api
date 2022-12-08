@@ -4,7 +4,7 @@ import { GetSplHistoryDto } from './dto/get-spl-history.dto';
 import { GetTokenAmountDto } from './dto/get-token-amount.dto';
 
 import { SplTokenService } from './spl-token.service';
-import { SplTokenOwnerInfo } from '@solana-suite/core';
+import { SplTokenOwnerInfo, TransferHistory } from '@solana-suite/core';
 
 @Controller('spl-token')
 export class SplTokenController {
@@ -20,7 +20,7 @@ export class SplTokenController {
 
   @HttpCode(HttpStatus.OK)
   @Post('history')
-  async getSplHistory(@Body() getSplHistoryDto: GetSplHistoryDto): Promise<void> {
+  async getSplHistory(@Body() getSplHistoryDto: GetSplHistoryDto): Promise<TransferHistory[]> {
     const userSplHistory = await this.splTokenService.getSplHistory(getSplHistoryDto);
     return userSplHistory;
   }

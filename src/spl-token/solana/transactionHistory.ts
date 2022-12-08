@@ -6,4 +6,5 @@ export const getTransactionHistory = async (mint, owner) => {
     owner.toPublicKey() // search key
   );
   console.log('# token history by publish: ', hist1.unwrap());
+  return hist1.unwrap();
 };
