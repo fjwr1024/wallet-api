@@ -18,7 +18,7 @@ export class SplTokenService {
   async getSplHistory(getSplTokenHistoryDto: GetSplHistoryDto) {
     const tokenKey = this.config.get<string>('TOKEN_KEY');
 
-    const splHistory = await getTransactionHistory(tokenKey, getSplTokenHistoryDto.walletAddress, 'aa');
+    const splHistory = await getTransactionHistory(tokenKey, getSplTokenHistoryDto.walletAddress);
     return splHistory;
   }
 
