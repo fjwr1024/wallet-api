@@ -3,7 +3,6 @@ import { ConfigService } from '@nestjs/config';
 import { GetNftListDto } from './dto/get-nftlist-dto';
 import { getNftMetadata, getTokenInfoOwned } from './solana/getMetadata';
 import { submitHex } from './solana/submitHex';
-import { filterOwnToken } from '../utils/filterOwnToken';
 import { MintNftDto } from './dto/mint-nft-dto';
 import { decodeBase64 } from 'src/utils/decodeBase64';
 import { mintNft, uploadContents } from './solana/mintNft';
@@ -23,6 +22,16 @@ export class NftService {
     const ownerSecretKey = this.config.get<string>('OWNER_SECRET_KEY');
     console.log('hex data', submitHexDto.hex);
     const response = submitHex(submitHexDto.hex, ownerSecretKey);
+    return response;
+  }
+
+  async testMint(file) {
+    const url = await uploadTestContents('name', 'description', file);
+    const ownerWalletAddress = this.configService.get<string>('OWNER_WALLET_ADDRESS');
+    const ownerSecretKey = this.configService.get<string>('OWNER_SECRET_KEY');
+
+    const response = await createNft('name', url, 1, ownerWalletAddress, ownerSecretKey);
+
     return response;
   }
 
