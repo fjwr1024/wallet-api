@@ -41,11 +41,9 @@ export class NftController {
       storage: diskStorage({
         destination: './uploads',
       }),
-      fileFilter: imageFileFilter,
-      limits: { fileSize: 1024 * 1024 * 4 },
     })
   )
-  async testCreateNft(@UploadedFile() file) {
+  async testCreateNft(@UploadedFile() file: Express.Multer.File) {
     console.log(file);
     const response = await this.nftService.testMint(file);
     return response;

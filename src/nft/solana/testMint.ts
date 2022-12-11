@@ -5,6 +5,8 @@ import { StorageNftStorage } from '@solana-suite/nft';
 export const uploadTestContents = async (name, description, file) => {
   const filePath = file.path;
 
+  console.log('filePath', filePath);
+
   const asset = {
     name,
     description,

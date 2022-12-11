@@ -6,7 +6,6 @@ import { submitHex } from './solana/submitHex';
 import { MintNftDto } from './dto/mint-nft-dto';
 import { decodeBase64 } from 'src/utils/decodeBase64';
 import { mintNft, uploadContents } from './solana/mintNft';
-import { KeypairStr } from '@solana-suite/core';
 import { uploadTestContents } from './solana/testMint';
 
 @Injectable()
