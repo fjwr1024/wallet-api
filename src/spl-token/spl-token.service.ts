@@ -5,6 +5,7 @@ import { getTokenAmount } from 'src/spl-token/solana/getTokenAmount';
 import { GetTokenAmountDto } from './dto/get-token-amount.dto';
 import { getTransactionHistory } from './solana/transactionHistory';
 import { submitHex } from './solana/submitHex';
+import { createSplToken } from './solana/createSpl';
 
 @Injectable()
 export class SplTokenService {
@@ -23,9 +24,16 @@ export class SplTokenService {
   }
 
   async submitHex(transferHexDto) {
-    const ownerSecretKey = this.config.get<string>('OWNER_SECRET_KEY');
+    const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
     console.log('hex data', transferHexDto.hex);
     const response = submitHex(transferHexDto.hex, ownerSecretKey);
     return response;
+  }
+
+  async createSpl(createSplDto) {
+    const ownerWalletAddress = this.config.get<string>('SYSTEM_WALLET_ADDRESS');
+    const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
+
+    const res = await createSplToken();
   }
 }

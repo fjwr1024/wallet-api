@@ -5,6 +5,7 @@ import { GetTokenAmountDto } from './dto/get-token-amount.dto';
 
 import { SplTokenService } from './spl-token.service';
 import { SplTokenOwnerInfo, TransferHistory } from '@solana-suite/core';
+import { CreateSplTokenDto } from './dto/create-spl-token';
 
 @Controller('spl-token')
 export class SplTokenController {
@@ -29,6 +30,13 @@ export class SplTokenController {
   @Post('submit-hex')
   async getHex(@Body(new ValidationPipe()) submitrHexDto: SubmitHexDto) {
     const response = await this.splTokenService.submitHex(submitrHexDto);
+    return response;
+  }
+
+  @HttpCode(HttpStatus.OK)
+  @Post('create-spl-token')
+  async createSpl(@Body(new ValidationPipe()) createSplTokenDto: CreateSplTokenDto) {
+    const response = await this.splTokenService.createSpl(createSplTokenDto);
     return response;
   }
 }
