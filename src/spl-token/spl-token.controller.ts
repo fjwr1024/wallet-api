@@ -35,8 +35,8 @@ export class SplTokenController {
 
   @HttpCode(HttpStatus.OK)
   @Post('create-spl-token')
-  async createSpl(@Body(new ValidationPipe()) createSplTokenDto: CreateSplTokenDto) {
-    const response = await this.splTokenService.createSpl(createSplTokenDto);
+  async createSpl(@Body(new ValidationPipe()) createSplDto: CreateSplTokenDto) {
+    const response = await this.splTokenService.createSpl(createSplDto);
     return response;
   }
 }

@@ -36,7 +36,7 @@ export class SplTokenService {
 
     const response = await createSplToken(
       createSplDto.totalAmount,
-      createSplDto.decimal,
+      createSplDto.decimals,
       ownerWalletAddress,
       ownerSecretKey
     );
