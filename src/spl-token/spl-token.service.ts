@@ -34,6 +34,13 @@ export class SplTokenService {
     const ownerWalletAddress = this.config.get<string>('SYSTEM_WALLET_ADDRESS');
     const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
 
-    const res = await createSplToken();
+    const response = await createSplToken(
+      createSplDto.totalAmount,
+      createSplDto.decimal,
+      ownerWalletAddress,
+      ownerSecretKey
+    );
+
+    return response;
   }
 }
