@@ -1,7 +1,6 @@
 import assert from 'assert';
 
-import { Pubkey } from '@solana-suite/core';
-import { Metaplex, StorageNftStorage } from '@solana-suite/nft';
+import { StorageNftStorage } from '@solana-suite/nft';
 
 export const uploadTestContents = async (name, description, file) => {
   const filePath = file.path;

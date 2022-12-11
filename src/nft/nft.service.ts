@@ -7,6 +7,7 @@ import { MintNftDto } from './dto/mint-nft-dto';
 import { decodeBase64 } from 'src/utils/decodeBase64';
 import { mintNft, uploadContents } from './solana/mintNft';
 import { KeypairStr } from '@solana-suite/core';
+import { uploadTestContents } from './solana/testMint';
 
 @Injectable()
 export class NftService {
@@ -27,10 +28,10 @@ export class NftService {
 
   async testMint(file) {
     const url = await uploadTestContents('name', 'description', file);
-    const ownerWalletAddress = this.configService.get<string>('OWNER_WALLET_ADDRESS');
-    const ownerSecretKey = this.configService.get<string>('OWNER_SECRET_KEY');
+    const ownerWalletAddress = this.config.get<string>('SYSTEM_WALLET_ADDRESS');
+    const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
 
-    const response = await createNft('name', url, 1, ownerWalletAddress, ownerSecretKey);
+    const response = await mintNft('name', url, 1, ownerWalletAddress, ownerSecretKey);
 
     return response;
   }

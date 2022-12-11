@@ -10,6 +10,7 @@ import {
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
+import { imageFileFilter } from 'src/utils/file-upload-util';
 import { GetNftListDto } from './dto/get-nftlist-dto';
 import { MintNftDto } from './dto/mint-nft-dto';
 import { SubmitHexDto } from './dto/submit-hex-dto';
@@ -39,6 +40,8 @@ export class NftController {
       storage: diskStorage({
         destination: './uploads',
       }),
+      fileFilter: imageFileFilter,
+      limits: { fileSize: 1024 * 1024 * 4 },
     })
   )
   async testCreateNft(@UploadedFile() file) {
