@@ -34,6 +34,7 @@ export class NftController {
     return response;
   }
 
+  @HttpCode(HttpStatus.OK)
   @Post('test-mint')
   @UseInterceptors(
     FileInterceptor('file', {

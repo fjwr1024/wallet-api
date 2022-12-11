@@ -43,8 +43,8 @@ export const mintNft = async (
   name: string,
   url: string,
   quantity: number,
-  ownerWalletAddress: KeypairStr,
-  ownerSecretKey: KeypairStr
+  ownerWalletAddress: string,
+  ownerSecretKey: string
 ) => {
   for (let i = 0; i < quantity; i++) {
     const inst1 = await Metaplex.mint(
