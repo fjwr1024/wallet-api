@@ -66,4 +66,13 @@ export class AuthService {
       accessToken: token,
     };
   }
+
+  async validateUser(email: string, pass: string): Promise<any> {
+    const user = await AppDataSource.manager.findOneBy(User, { email });
+    if (user && user.password === pass) {
+      const { password, ...result } = user;
+      return result;
+    }
+    return null;
+  }
 }

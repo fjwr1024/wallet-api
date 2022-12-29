@@ -10,7 +10,7 @@ import { uploadTestContents } from './solana/testMint';
 
 @Injectable()
 export class NftService {
-  config: ConfigService;
+  constructor(private readonly config: ConfigService) {}
 
   async getNftList(getNftListDto: GetNftListDto) {
     const ownedNftList = await getTokenInfoOwned(getNftListDto.walletAddress);
@@ -26,11 +26,11 @@ export class NftService {
   }
 
   async testMint(file) {
-    const url = await uploadTestContents('name', 'description', file);
+    // const url = await uploadTestContents('name', 'description', file);
     const ownerWalletAddress = this.config.get<string>('SYSTEM_WALLET_ADDRESS');
     const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
 
-    const response = await mintNft('name', url, 1, ownerWalletAddress, ownerSecretKey);
+    const response = await mintNft('name', file.path, 1, ownerWalletAddress, ownerSecretKey);
 
     return response;
   }
