@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { GetNftListDto } from './dto/get-nftlist-dto';
-import { getNftMetadata, getTokenInfoOwned } from './solana/getMetadata';
-import { submitHex } from './solana/submitHex';
+import { getNftMetadata, getTokenInfoOwned } from '../solana/nft/getMetadata';
+import { submitHex } from '../solana/nft/submitHex';
 import { MintNftDto } from './dto/mint-nft-dto';
 import { decodeBase64 } from 'src/utils/decodeBase64';
-import { mintNft, uploadContents } from './solana/mintNft';
-import { uploadTestContents } from './solana/testMint';
+import { mintNft, uploadContents } from '../solana/nft/mintNft';
+import { uploadTestContents } from '../solana/nft/testMint';
 
 @Injectable()
 export class NftService {

@@ -103,7 +103,7 @@ paths:
         - Bearer: []
 
   '/auth/signup':
-    get:
+    post:
       tags:
         - auth
       summary: サインアップAPI

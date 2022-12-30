@@ -38,6 +38,6 @@ import { CurrentUserMiddleware } from './middleware/user-auth.middleware';
 export class AppModule {
   constructor(private dataSource: DataSource) {}
   configure(consumer: MiddlewareConsumer): void {
-    consumer.apply(CurrentUserMiddleware).forRoutes('test');
+    consumer.apply(CurrentUserMiddleware).forRoutes('*');
   }
 }

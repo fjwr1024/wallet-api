@@ -19,7 +19,7 @@ export class AuthService {
   public async signUp(createUserDto: CreateUserDto): Promise<Msg> {
     const hashed = await bcrypt.hash(createUserDto.password, 12);
 
-    //TODO: typeorm 内部で errorが吐き出された場合のハンドリングを考える
+    //TODO: typeorm 内部で errorが吐き出された場合のエラーハンドリングを考える
     try {
       const user = new User();
       const walletAddress = createWallet();
@@ -49,6 +49,7 @@ export class AuthService {
     if (!user) throw new ForbiddenException('Email or password incorrect');
     const isValid = await bcrypt.compare(loginDto.password, user.password);
     if (!isValid) throw new ForbiddenException('Email or password incorrect');
+    console.log('user', user);
     return this.generateJwt(user.id, user.email);
   }
 
