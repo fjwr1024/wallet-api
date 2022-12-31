@@ -10,7 +10,7 @@
     "build": "nest build",
     "typeorm": "npx typeorm-ts-node-commonjs",
     "migration:create": "npx typeorm migration:create src/migration",
-    "migration:generate": "npx typeorm-ts-node-commonjs migration:generate src/migration/${npm_config_name} -d src/data-source.ts",
+    "migration:generate": "npx typeorm-ts-node-commonjs migration:generate src/migration/updateTable -d src/data-source.ts",
     "migration:run": "npx typeorm-ts-node-commonjs migration:run -d src/data-source.ts",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",

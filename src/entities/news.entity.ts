@@ -8,7 +8,7 @@ export class News {
   @Column({ name: 'title', unique: false, nullable: false })
   title: string;
 
-  @Column({ name: 'title', unique: false, nullable: false })
+  @Column({ name: 'body', unique: false, nullable: false })
   body: string;
 
   @CreateDateColumn({

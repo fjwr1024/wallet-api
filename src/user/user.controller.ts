@@ -15,6 +15,7 @@ import { Response } from 'express';
 import { CurrentUser } from 'src/decorator/current-user-guard.decorator';
 
 import { User } from 'src/entities/user.entity';
+import { RolesGuard } from 'src/guards/roles.guard';
 import { UpdateUserPasswordDto } from './dto/update-user-password.dto';
 import { UserService } from './user.service';
 
@@ -23,6 +24,7 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   // react admin get list用api
+  @UseGuards(RolesGuard)
   @Get()
   async getUser(@Res() res: Response): Promise<any> {
     res.append('X-Total-Count', '1');
