@@ -13,6 +13,7 @@ import { ThrottlerModule } from '@nestjs/throttler';
 import { LoggingService } from './logging/logging.service';
 import { LoggingModule } from './logging/logging.module';
 import { CurrentUserMiddleware } from './middleware/user-auth.middleware';
+import { NewsModule } from './news/news.module';
 
 // TODO: 実際のプロダクトでは DB設定は env からの読み取りに変更する
 @Module({
@@ -31,6 +32,7 @@ import { CurrentUserMiddleware } from './middleware/user-auth.middleware';
     SplTokenModule,
     NftModule,
     LoggingModule,
+    NewsModule,
   ],
   controllers: [AppController],
   providers: [AppService, LoggingService],
