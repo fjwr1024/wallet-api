@@ -61,6 +61,7 @@ export class NewsController {
     return this.newsService.updateNews(id, updateNewsDto);
   }
 
+  // 不要なAPIかもしれない
   @HttpCode(HttpStatus.OK)
   //   @Roles(UserStatus.Admin)
   //   @UseGuards(RolesGuard)
