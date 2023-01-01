@@ -20,8 +20,10 @@ export class NewsService {
     return res;
   }
 
-  async postNews(): Promise<object> {
+  async postNews(postNewsDto): Promise<object> {
     const news = new News();
+    news.title = postNewsDto.title;
+    news.body = postNewsDto.body;
 
     AppDataSource.manager.insert(News, news);
     return { message: 'ok' };

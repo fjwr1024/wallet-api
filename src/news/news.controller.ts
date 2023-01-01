@@ -1,5 +1,6 @@
-import { Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
 import { News } from 'src/entities/news.entity';
+import { PostNewsDto } from './dto/post-news.dto';
 import { NewsService } from './news.service';
 
 @Controller('news')
@@ -19,8 +20,9 @@ export class NewsController {
   }
 
   @Post()
-  async postNews(@Param('id', ParseIntPipe) id: number): Promise<object> {
-    const res = await this.newsService.getNewsInfo(id);
+  async postNews(@Body() postNewsDto: PostNewsDto): Promise<object> {
+    const res = await this.newsService.postNews(postNewsDto);
+    console.log('res', res);
     return { message: 'ok' };
   }
 }
