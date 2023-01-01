@@ -1,3 +1,4 @@
+import { UpdateNewsDto } from './dto/update-news.dto';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { AppDataSource } from 'src/data-source';
 import { News } from 'src/entities/news.entity';
@@ -27,5 +28,21 @@ export class NewsService {
 
     AppDataSource.manager.insert(News, news);
     return { message: 'ok' };
+  }
+
+  async updateNews(id, updateNewsDto) {
+    const user = await AppDataSource.manager.findOneBy(News, {
+      id,
+    });
+    if (!user) {
+      throw new NotFoundException('News is not found');
+    }
+
+    await AppDataSource.manager.update(News, id, {
+      title: updateNewsDto.title,
+      body: updateNewsDto.body,
+    });
+
+    return 'ok';
   }
 }
