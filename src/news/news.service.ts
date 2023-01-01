@@ -52,22 +52,7 @@ export class NewsService {
     await AppDataSource.manager.update(News, id, {
       title: updateNewsDto.title,
       body: updateNewsDto.body,
-    });
-
-    return 'ok';
-  }
-
-  async updatePublished(id, updatePublishedDto): Promise<string> {
-    const news = await AppDataSource.manager.findOneBy(News, {
-      id,
-    });
-
-    if (!news) {
-      throw new NotFoundException('News is not found');
-    }
-
-    await AppDataSource.manager.update(News, id, {
-      isPublished: updatePublishedDto.isPublished,
+      isPublished: updateNewsDto.isPublished,
     });
 
     return 'ok';

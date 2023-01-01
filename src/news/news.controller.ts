@@ -18,7 +18,6 @@ import { RolesGuard } from 'src/guards/roles.guard';
 import { PostNewsDto } from './dto/post-news.dto';
 import { UpdateNewsDto } from './dto/update-news.dto';
 import { NewsService } from './news.service';
-import { UpdatePublishedDto } from './dto/update-published.dto';
 
 @Controller('news')
 export class NewsController {
@@ -54,23 +53,11 @@ export class NewsController {
   }
 
   @HttpCode(HttpStatus.OK)
-  @Roles(UserStatus.Admin)
-  @UseGuards(RolesGuard)
+  //   @Roles(UserStatus.Admin)
+  //   @UseGuards(RolesGuard)
   @Patch('/update/:id')
   updateNews(@Param('id', ParseIntPipe) id: number, @Body() updateNewsDto: UpdateNewsDto): Promise<string> {
     return this.newsService.updateNews(id, updateNewsDto);
-  }
-
-  // 不要なAPIかもしれない
-  @HttpCode(HttpStatus.OK)
-  //   @Roles(UserStatus.Admin)
-  //   @UseGuards(RolesGuard)
-  @Patch('/update-published/:id')
-  updatePublished(
-    @Param('id', ParseIntPipe) id: number,
-    @Body() updatePublishedDto: UpdatePublishedDto
-  ): Promise<string> {
-    return this.newsService.updatePublished(id, updatePublishedDto);
   }
 
   @HttpCode(HttpStatus.OK)
