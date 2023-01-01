@@ -21,19 +21,20 @@ export class NewsService {
     return res;
   }
 
-  async postNews(postNewsDto): Promise<object> {
+  async postNews(postNewsDto): Promise<string> {
     const news = new News();
     news.title = postNewsDto.title;
     news.body = postNewsDto.body;
 
     AppDataSource.manager.insert(News, news);
-    return { message: 'ok' };
+    return 'ok';
   }
 
-  async updateNews(id, updateNewsDto) {
+  async updateNews(id, updateNewsDto): Promise<string> {
     const user = await AppDataSource.manager.findOneBy(News, {
       id,
     });
+
     if (!user) {
       throw new NotFoundException('News is not found');
     }

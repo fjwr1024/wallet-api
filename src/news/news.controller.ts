@@ -1,6 +1,7 @@
 import { Body, Controller, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Patch, Post } from '@nestjs/common';
 import { News } from 'src/entities/news.entity';
 import { PostNewsDto } from './dto/post-news.dto';
+import { UpdateNewsDto } from './dto/update-news.dto';
 import { NewsService } from './news.service';
 
 @Controller('news')
@@ -30,6 +31,6 @@ export class NewsController {
   @HttpCode(HttpStatus.OK)
   @Patch('/update-news/:id')
   updateUserPassword(@Param('id', ParseIntPipe) id: number, @Body() updateNewsDto: UpdateNewsDto): Promise<string> {
-    return this.userService.updateUserPassword(id, updateUserPasswordDto.password);
+    return this.newsService.updateNews(id, updateNewsDto);
   }
 }
