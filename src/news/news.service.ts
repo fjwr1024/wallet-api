@@ -48,11 +48,11 @@ export class NewsService {
   }
 
   async deleteNews(id): Promise<string> {
-    const user = await AppDataSource.manager.delete(News, {
+    const news = await AppDataSource.manager.delete(News, {
       id,
     });
 
-    if (!user) {
+    if (!news) {
       throw new NotFoundException('News is not found');
     }
 

@@ -1,5 +1,5 @@
 import { Exclude } from 'class-transformer';
-import { Role } from '../auth/role.enum';
+import { UserStatus } from '../auth/user-status.enum';
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity({ name: 'users' })
@@ -18,7 +18,7 @@ export class User {
   walletAddress: string;
 
   @Column()
-  role: Role;
+  role: UserStatus;
 
   @CreateDateColumn({
     type: 'timestamp',

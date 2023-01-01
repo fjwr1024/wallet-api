@@ -1,5 +1,19 @@
-import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Patch, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Param,
+  ParseIntPipe,
+  Patch,
+  Post,
+  UseGuards,
+} from '@nestjs/common';
+import { UserStatus } from 'src/auth/user-status.enum';
 import { News } from 'src/entities/news.entity';
+import { RolesGuard } from 'src/guards/roles.guard';
 import { PostNewsDto } from './dto/post-news.dto';
 import { UpdateNewsDto } from './dto/update-news.dto';
 import { NewsService } from './news.service';
@@ -35,6 +49,8 @@ export class NewsController {
   }
 
   @HttpCode(HttpStatus.OK)
+  @Role(UserStatus.Admin)
+  @UseGuards(RolesGuard)
   @Delete('/delete-news/:id')
   deleteNews(@Param('id', ParseIntPipe) id: number): Promise<string> {
     return this.newsService.deleteNews(id);
