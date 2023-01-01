@@ -31,11 +31,11 @@ export class NewsService {
   }
 
   async updateNews(id, updateNewsDto): Promise<string> {
-    const user = await AppDataSource.manager.findOneBy(News, {
+    const news = await AppDataSource.manager.findOneBy(News, {
       id,
     });
 
-    if (!user) {
+    if (!news) {
       throw new NotFoundException('News is not found');
     }
 
@@ -43,6 +43,18 @@ export class NewsService {
       title: updateNewsDto.title,
       body: updateNewsDto.body,
     });
+
+    return 'ok';
+  }
+
+  async deleteNews(id): Promise<string> {
+    const user = await AppDataSource.manager.delete(News, {
+      id,
+    });
+
+    if (!user) {
+      throw new NotFoundException('News is not found');
+    }
 
     return 'ok';
   }

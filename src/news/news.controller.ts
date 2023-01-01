@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Patch, Post } from '@nestjs/common';
 import { News } from 'src/entities/news.entity';
 import { PostNewsDto } from './dto/post-news.dto';
 import { UpdateNewsDto } from './dto/update-news.dto';
@@ -22,15 +22,21 @@ export class NewsController {
 
   @HttpCode(HttpStatus.OK)
   @Post()
-  async postNews(@Body() postNewsDto: PostNewsDto): Promise<object> {
+  async postNews(@Body() postNewsDto: PostNewsDto): Promise<string> {
     const res = await this.newsService.postNews(postNewsDto);
     console.log('res', res);
-    return { message: 'ok' };
+    return 'ok';
   }
 
   @HttpCode(HttpStatus.OK)
   @Patch('/update-news/:id')
-  updateUserPassword(@Param('id', ParseIntPipe) id: number, @Body() updateNewsDto: UpdateNewsDto): Promise<string> {
+  updateNews(@Param('id', ParseIntPipe) id: number, @Body() updateNewsDto: UpdateNewsDto): Promise<string> {
     return this.newsService.updateNews(id, updateNewsDto);
+  }
+
+  @HttpCode(HttpStatus.OK)
+  @Delete('/delete-news/:id')
+  deleteNews(@Param('id', ParseIntPipe) id: number): Promise<string> {
+    return this.newsService.deleteNews(id);
   }
 }
