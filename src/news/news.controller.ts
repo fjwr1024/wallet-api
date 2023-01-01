@@ -43,8 +43,8 @@ export class NewsController {
   }
 
   @HttpCode(HttpStatus.OK)
-  //   @Roles(UserStatus.Admin)
-  //   @UseGuards(RolesGuard)
+  @Roles(UserStatus.Admin)
+  @UseGuards(RolesGuard)
   @Post()
   async postNews(@Body() postNewsDto: PostNewsDto): Promise<string> {
     const res = await this.newsService.postNews(postNewsDto);
@@ -53,8 +53,8 @@ export class NewsController {
   }
 
   @HttpCode(HttpStatus.OK)
-  //   @Roles(UserStatus.Admin)
-  //   @UseGuards(RolesGuard)
+  @Roles(UserStatus.Admin)
+  @UseGuards(RolesGuard)
   @Patch('/update/:id')
   updateNews(@Param('id', ParseIntPipe) id: number, @Body() updateNewsDto: UpdateNewsDto): Promise<string> {
     return this.newsService.updateNews(id, updateNewsDto);
