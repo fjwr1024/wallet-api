@@ -9,14 +9,21 @@ export class NewsService {
     return res;
   }
 
-  public async getNewsInfo(id): Promise<News> {
+  async getNewsInfo(id: number): Promise<News> {
     const res = await AppDataSource.manager.findOneBy(News, {
       id,
     });
 
     if (!res) {
-      throw new NotFoundException('This id News is not found');
+      throw new NotFoundException('This News ID is not found');
     }
     return res;
+  }
+
+  async postNews(): Promise<object> {
+    const news = new News();
+
+    AppDataSource.manager.insert(News, news);
+    return { message: 'ok' };
   }
 }

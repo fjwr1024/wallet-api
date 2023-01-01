@@ -1,4 +1,4 @@
-import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
+import { Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
 import { News } from 'src/entities/news.entity';
 import { NewsService } from './news.service';
 
@@ -16,5 +16,11 @@ export class NewsController {
   async getNewsInfo(@Param('id', ParseIntPipe) id: number): Promise<News> {
     const res = await this.newsService.getNewsInfo(id);
     return res;
+  }
+
+  @Post()
+  async postNews(@Param('id', ParseIntPipe) id: number): Promise<object> {
+    const res = await this.newsService.getNewsInfo(id);
+    return { message: 'ok' };
   }
 }
