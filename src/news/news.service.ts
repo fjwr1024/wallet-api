@@ -5,9 +5,19 @@ import { News } from 'src/entities/news.entity';
 
 @Injectable()
 export class NewsService {
-  async getNews(): Promise<News[]> {
+  async getAllNews(): Promise<News[]> {
     const res = await AppDataSource.manager.find(News);
     return res;
+  }
+
+  async getPublishedNews(): Promise<News[]> {
+    const res = await AppDataSource.manager.find(News);
+    console.log('res', res);
+    const isPublishedNews = res.filter(item => {
+      if (item.isPublished === true) return true;
+    });
+
+    return isPublishedNews;
   }
 
   async getNewsInfo(id: number): Promise<News> {
@@ -42,6 +52,22 @@ export class NewsService {
     await AppDataSource.manager.update(News, id, {
       title: updateNewsDto.title,
       body: updateNewsDto.body,
+    });
+
+    return 'ok';
+  }
+
+  async updatePublished(id, updatePublishedDto): Promise<string> {
+    const news = await AppDataSource.manager.findOneBy(News, {
+      id,
+    });
+
+    if (!news) {
+      throw new NotFoundException('News is not found');
+    }
+
+    await AppDataSource.manager.update(News, id, {
+      isPublished: updatePublishedDto.isPublished,
     });
 
     return 'ok';

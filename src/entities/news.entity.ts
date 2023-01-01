@@ -11,6 +11,9 @@ export class News {
   @Column({ name: 'body', unique: false, nullable: false })
   body: string;
 
+  @Column({ name: 'isPublished', default: true })
+  isPublished: boolean;
+
   @CreateDateColumn({
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP(6)',
