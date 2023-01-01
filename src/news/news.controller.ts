@@ -13,6 +13,7 @@ import {
 } from '@nestjs/common';
 import { UserStatus } from 'src/auth/user-status.enum';
 import { News } from 'src/entities/news.entity';
+import { Roles } from 'src/decorator/role.decorator';
 import { RolesGuard } from 'src/guards/roles.guard';
 import { PostNewsDto } from './dto/post-news.dto';
 import { UpdateNewsDto } from './dto/update-news.dto';
@@ -35,6 +36,8 @@ export class NewsController {
   }
 
   @HttpCode(HttpStatus.OK)
+  @Roles(UserStatus.Admin)
+  @UseGuards(RolesGuard)
   @Post()
   async postNews(@Body() postNewsDto: PostNewsDto): Promise<string> {
     const res = await this.newsService.postNews(postNewsDto);
@@ -43,15 +46,17 @@ export class NewsController {
   }
 
   @HttpCode(HttpStatus.OK)
-  @Patch('/update-news/:id')
+  @Roles(UserStatus.Admin)
+  @UseGuards(RolesGuard)
+  @Patch('/update/:id')
   updateNews(@Param('id', ParseIntPipe) id: number, @Body() updateNewsDto: UpdateNewsDto): Promise<string> {
     return this.newsService.updateNews(id, updateNewsDto);
   }
 
   @HttpCode(HttpStatus.OK)
-  @Role(UserStatus.Admin)
+  @Roles(UserStatus.Admin)
   @UseGuards(RolesGuard)
-  @Delete('/delete-news/:id')
+  @Delete('/delete/:id')
   deleteNews(@Param('id', ParseIntPipe) id: number): Promise<string> {
     return this.newsService.deleteNews(id);
   }
