@@ -1406,10 +1406,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@solana-suite/core@0.4.5":
-  version "0.4.5"
-  resolved "https://registry.yarnpkg.com/@solana-suite/core/-/core-0.4.5.tgz#69ec6b81f7a223b19d59689f1a28bf5a31c45829"
-  integrity sha512-/O21gmjuB3tuSF1aZrcwvBuj2/m/rO8LWFJ5Y6jAd7TVPbv1lDlmNF4vlaRJse7Ct0k76r0LdWNzBR1AU+RaPw==
+"@solana-suite/core@0.4.6":
+  version "0.4.6"
+  resolved "https://registry.yarnpkg.com/@solana-suite/core/-/core-0.4.6.tgz#52b1eb216345c947972a39a97931aff5fb55d37d"
+  integrity sha512-2kiZZj3/itwRuuhQ8nvMp+NiotGCycnHA2MoqZuo/0mDaydSs2MCuW35l++WGPjpGjvnf6AVPUDN37hYvA5oXg==
   dependencies:
     "@solana-suite/shared" latest
     "@solana/spl-token" "^0.2.0"
@@ -1424,10 +1424,10 @@
     "@solana/spl-token" "^0.2.0"
     "@solana/web3.js" "^1.62.1"
 
-"@solana-suite/nft@0.4.5":
-  version "0.4.5"
-  resolved "https://registry.yarnpkg.com/@solana-suite/nft/-/nft-0.4.5.tgz#a59acbf1c534d322b141b65e68a23892ededfe5c"
-  integrity sha512-O1QpwD6XHwesBcyeIB1WCTms22XRV+0h6D0Rk7pY5kTd1HwWN1NZengYDS/TEuoLYPNi/0nChEqdcBHeEn/ODw==
+"@solana-suite/nft@0.4.6":
+  version "0.4.6"
+  resolved "https://registry.yarnpkg.com/@solana-suite/nft/-/nft-0.4.6.tgz#91cc2fd6ca0707dc529c34c34d37b365bd04ac59"
+  integrity sha512-vagCjphTIJjGUb47roH1pV1Ul3GOItyvaf+l97oGIsMwwWwW5nkZ/GJAKEM2RLdf8kxA1qWbgpzpKKjszMPuiQ==
   dependencies:
     "@metaplex-foundation/js" "0.15.0"
     "@solana-suite/core" latest
@@ -1437,10 +1437,10 @@
     nft.storage "^3.3.0"
     node-fetch "^3.0.0"
 
-"@solana-suite/shared@0.4.5":
-  version "0.4.5"
-  resolved "https://registry.yarnpkg.com/@solana-suite/shared/-/shared-0.4.5.tgz#f1ade1a6c46e7d93ba49ce4a26e30a412ba2e3d6"
-  integrity sha512-DOVh9eZNReHGjOJ6ecbTFxHjhvcdqYsN1zanJJXxrJI9q+KjKuL0/aux8dTDTzNSdiouCYi+C/KbQm63/PfPfg==
+"@solana-suite/shared@0.4.6":
+  version "0.4.6"
+  resolved "https://registry.yarnpkg.com/@solana-suite/shared/-/shared-0.4.6.tgz#6113ea4ee3135c3f8ce5a66eb9ec83d37e17e30f"
+  integrity sha512-Z+6frDz33lARkTCianbyzpFJ3sE5fVpLx/C82kbkvTRvXMLR+MYZcEDeTNTSAbeWUHjt/qUBeH9V6acTdvekmQ==
   dependencies:
     commander "9.3.0"
 
