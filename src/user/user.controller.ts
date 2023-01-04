@@ -20,7 +20,7 @@ import { RolesGuard } from 'src/guards/roles.guard';
 import { GetSolNativeDto } from './dto/get-sol-native.dto';
 import { UpdateUserPasswordDto } from './dto/update-user-password.dto';
 import { UserService } from './user.service';
-import { getSolNative } from './../solana/SOL/get-solnative';
+import { SolNativeOwnerInfo } from '@solana-suite/core';
 
 @Controller('users')
 export class UserController {
@@ -47,10 +47,9 @@ export class UserController {
     return res;
   }
 
-  // TODO: any修正
   @HttpCode(HttpStatus.OK)
   @Post('get-sol')
-  async getWalletSolNative(@Body() getSolNativeDto: GetSolNativeDto): Promise<any> {
+  async getWalletSolNative(@Body() getSolNativeDto: GetSolNativeDto): Promise<SolNativeOwnerInfo> {
     const res = await this.userService.getWalletSolNative(getSolNativeDto);
     return res;
   }
