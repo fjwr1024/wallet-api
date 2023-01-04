@@ -1,12 +1,15 @@
 import { SolNative } from '@solana-suite/core';
 
-export const getSolNative = async walletAddress => {
-  const ex1 = await SolNative.findByOwner(walletAddress.toPublicKey());
-  ex1.isOk && console.log('# ex1: ', ex1.value);
+// TODO: return type fix
+export const getSolNative: any = async (walletAddress: string) => {
+  const sol = await SolNative.findByOwner(walletAddress.toPublicKey());
+  sol.isOk && console.log('# ex1: ', sol.value);
 
-  if (ex1.isOk) {
-    console.log('# ex1: ', ex1.value);
-  } else if (ex1.isErr) {
-    console.log('# ex1 error: ', ex1.error);
+  if (sol.isOk) {
+    console.log('# ex1: ', sol.value);
+  } else if (sol.isErr) {
+    console.log('# ex1 error: ', sol.error);
   }
+
+  return sol;
 };
