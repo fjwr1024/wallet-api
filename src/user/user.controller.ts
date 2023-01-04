@@ -58,7 +58,6 @@ export class UserController {
   @HttpCode(HttpStatus.OK)
   @Patch('/update-pass/:id')
   updateUserPassword(
-    @CurrentUser() currentUser,
     @Param('id', ParseIntPipe) id: number,
     @Body() updateUserPasswordDto: UpdateUserPasswordDto
   ): Promise<string> {
