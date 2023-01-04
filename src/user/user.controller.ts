@@ -7,6 +7,7 @@ import {
   Param,
   ParseIntPipe,
   Patch,
+  Post,
   Res,
   UseGuards,
 } from '@nestjs/common';
@@ -40,6 +41,13 @@ export class UserController {
 
   @Get('wallet-address/:id')
   async getWalletAddress(@Param('id', ParseIntPipe) id: number): Promise<User[]> {
+    const res = await this.userService.getWalletAddress(id);
+    return res;
+  }
+
+  // TODO: any修正
+  @Post('get-solnative/:id')
+  async getSolNative(@Param('id', ParseIntPipe) id: number): Promise<any> {
     const res = await this.userService.getWalletAddress(id);
     return res;
   }
