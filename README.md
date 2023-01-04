@@ -37,8 +37,10 @@ docker compose up
 
 ### yarn
 
+```bash
 docker-compose exec walletapi-api-server-1 sh
 yarn install \*\*\*
+```
 
 ### MySQL にログイン
 

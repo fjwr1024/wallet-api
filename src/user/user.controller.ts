@@ -7,6 +7,7 @@ import {
   Param,
   ParseIntPipe,
   Patch,
+  Post,
   Res,
   UseGuards,
 } from '@nestjs/common';
@@ -15,14 +16,18 @@ import { Response } from 'express';
 import { CurrentUser } from 'src/decorator/current-user-guard.decorator';
 
 import { User } from 'src/entities/user.entity';
+import { RolesGuard } from 'src/guards/roles.guard';
+import { GetSolNativeDto } from './dto/get-sol-native.dto';
 import { UpdateUserPasswordDto } from './dto/update-user-password.dto';
 import { UserService } from './user.service';
+import { SolNativeOwnerInfo } from '@solana-suite/core';
 
 @Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
   // react admin get list用api
+  @UseGuards(RolesGuard)
   @Get()
   async getUser(@Res() res: Response): Promise<any> {
     res.append('X-Total-Count', '1');
@@ -42,14 +47,21 @@ export class UserController {
     return res;
   }
 
+  @HttpCode(HttpStatus.OK)
+  @Post('get-sol')
+  async getWalletSolNative(@Body() getSolNativeDto: GetSolNativeDto): Promise<SolNativeOwnerInfo> {
+    const res = await this.userService.getWalletSolNative(getSolNativeDto);
+    return res;
+  }
+
   @UseGuards(AuthGuard('jwt'))
   @HttpCode(HttpStatus.OK)
   @Patch('/update-pass/:id')
   updateUserPassword(
-    @CurrentUser() currentUser,
     @Param('id', ParseIntPipe) id: number,
     @Body() updateUserPasswordDto: UpdateUserPasswordDto
   ): Promise<string> {
-    return this.userService.updateUserPassword(id, updateUserPasswordDto.password);
+    const res = this.userService.updateUserPassword(id, updateUserPasswordDto.password);
+    return res;
   }
 }

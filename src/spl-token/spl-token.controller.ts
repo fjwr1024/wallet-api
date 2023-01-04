@@ -11,7 +11,6 @@ import { CreateSplTokenDto } from './dto/create-spl-token';
 export class SplTokenController {
   constructor(private readonly splTokenService: SplTokenService) {}
 
-  // @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
   @Post('get-token-amount')
   async getTokenAmount(@Body() getTokenAmountDto: GetTokenAmountDto): Promise<SplTokenOwnerInfo[]> {

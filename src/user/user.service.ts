@@ -1,7 +1,9 @@
+import { getSolNative } from './../solana/SOL/get-solnative';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { User } from '../entities/user.entity';
 import { AppDataSource } from '../data-source';
 import * as bcrypt from 'bcrypt';
+import { SolNativeOwnerInfo } from '@solana-suite/core';
 
 @Injectable()
 export class UserService {
@@ -10,7 +12,7 @@ export class UserService {
     return res;
   }
 
-  public async getUserInfo(id): Promise<User> {
+  async getUserInfo(id): Promise<User> {
     const res = await AppDataSource.manager.findOneBy(User, {
       id,
     });
@@ -21,7 +23,7 @@ export class UserService {
     return res;
   }
 
-  public async getCurrentUser(email: string): Promise<User> {
+  async getCurrentUser(email: string): Promise<User> {
     const res = await AppDataSource.manager.findOneBy(User, {
       email,
     });
@@ -32,7 +34,7 @@ export class UserService {
     return res;
   }
 
-  public async getWalletAddress(id: number): Promise<User[]> {
+  async getWalletAddress(id: number): Promise<User[]> {
     const res = await AppDataSource.manager.find(User, {
       select: {
         walletAddress: true,
@@ -75,5 +77,11 @@ export class UserService {
     });
 
     return 'ok';
+  }
+
+  async getWalletSolNative(getSolNativeDto): Promise<SolNativeOwnerInfo> {
+    const res = getSolNative(getSolNativeDto.walletAddress);
+    console.log('sol res', res);
+    return res;
   }
 }

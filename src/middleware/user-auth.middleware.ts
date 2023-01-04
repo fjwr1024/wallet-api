@@ -6,12 +6,12 @@ import jwt_decode from 'jwt-decode';
 @Injectable()
 export class CurrentUserMiddleware implements NestMiddleware {
   constructor(private readonly userService: UserService) {}
-  async use(req, _: Response, next: () => void): Promise<void> {
+  async use(req, _: Response, next: () => void): Promise<void | number> {
     console.log('middleware');
-    const apiKey = req.cookies.access_token;
-    const decoded = jwt_decode<{ [name: string]: string }>(apiKey);
-    console.log('decoded', decoded);
     try {
+      const apiKey = req.cookies.access_token;
+      const decoded = jwt_decode<{ [name: string]: string }>(apiKey);
+      console.log('decoded', decoded);
       const user = await this.userService.getUserInfo(decoded.sub);
       console.log('currentuserid', user.id);
       console.log('req.params', req.params);
@@ -21,7 +21,7 @@ export class CurrentUserMiddleware implements NestMiddleware {
       }
       next();
     } catch (error) {
-      console.log('error', error);
+      console.log('Middleware error', error);
 
       next();
     }
