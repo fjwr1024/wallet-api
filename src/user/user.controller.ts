@@ -17,8 +17,10 @@ import { CurrentUser } from 'src/decorator/current-user-guard.decorator';
 
 import { User } from 'src/entities/user.entity';
 import { RolesGuard } from 'src/guards/roles.guard';
+import { GetSolNativeDto } from './dto/get-sol-native.dto';
 import { UpdateUserPasswordDto } from './dto/update-user-password.dto';
 import { UserService } from './user.service';
+import { getSolNative } from './../solana/SOL/get-solnative';
 
 @Controller('users')
 export class UserController {
@@ -46,9 +48,9 @@ export class UserController {
   }
 
   // TODO: any修正
-  @Post('get-solnative/:id')
-  async getSolNative(@Param('id', ParseIntPipe) id: number): Promise<any> {
-    const res = await this.userService.getWalletAddress(id);
+  @Post('get-sol')
+  async getWalletSolNative(@Body() getSolNativeDto: GetSolNativeDto): Promise<any> {
+    const res = await this.userService.getWalletSolNative(getSolNativeDto);
     return res;
   }
 

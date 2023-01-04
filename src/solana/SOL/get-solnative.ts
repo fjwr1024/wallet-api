@@ -11,5 +11,5 @@ export const getSolNative: any = async (walletAddress: string) => {
     console.log('# ex1 error: ', sol.error);
   }
 
-  return sol;
+  return sol.unwrap();
 };

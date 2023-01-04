@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsString } from 'class-validator';
 
-export class GetSolNative {
+export class GetSolNativeDto {
   @IsString()
   @IsNotEmpty()
   walletAddress: string;
