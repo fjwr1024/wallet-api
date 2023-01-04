@@ -48,6 +48,7 @@ export class UserController {
   }
 
   // TODO: any修正
+  @HttpCode(HttpStatus.OK)
   @Post('get-sol')
   async getWalletSolNative(@Body() getSolNativeDto: GetSolNativeDto): Promise<any> {
     const res = await this.userService.getWalletSolNative(getSolNativeDto);

@@ -1,7 +1,6 @@
 import { SolNative } from '@solana-suite/core';
 
-// TODO: return type fix
-export const getSolNative: any = async (walletAddress: string) => {
+export const getSolNative = async (walletAddress: string) => {
   const sol = await SolNative.findByOwner(walletAddress.toPublicKey());
   sol.isOk && console.log('# ex1: ', sol.value);
 
