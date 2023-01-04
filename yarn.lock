@@ -1262,13 +1262,13 @@
     tslib "2.4.1"
     uuid "9.0.0"
 
-"@nestjs/jwt@^9.0.0":
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/@nestjs/jwt/-/jwt-9.0.0.tgz#73e01338d2853a55033528b540cfd92c7996bae9"
-  integrity sha512-ZsXGY/wMYKzEhymw2+dxiwrHTRKIKrGszx6r2EjQqNLypdXMQu0QrujwZJ8k3+XQV4snmuJwwNakQoA2ILfq8w==
+"@nestjs/jwt@^10.0.0":
+  version "10.0.1"
+  resolved "https://registry.yarnpkg.com/@nestjs/jwt/-/jwt-10.0.1.tgz#9c268a2923f6f2237c69c1e6556290acdb049145"
+  integrity sha512-LwXBKVYHnFeX6GH/Wt0WDjsWCmNDC6tEdLlwNMAvJgYp+TkiCpEmQLkgRpifdUE29mvYSbjSnVs2kW2ob935NA==
   dependencies:
-    "@types/jsonwebtoken" "8.5.8"
-    jsonwebtoken "8.5.1"
+    "@types/jsonwebtoken" "8.5.9"
+    jsonwebtoken "9.0.0"
 
 "@nestjs/passport@^9.0.0":
   version "9.0.0"
@@ -1406,10 +1406,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@solana-suite/core@0.4.5":
-  version "0.4.5"
-  resolved "https://registry.yarnpkg.com/@solana-suite/core/-/core-0.4.5.tgz#69ec6b81f7a223b19d59689f1a28bf5a31c45829"
-  integrity sha512-/O21gmjuB3tuSF1aZrcwvBuj2/m/rO8LWFJ5Y6jAd7TVPbv1lDlmNF4vlaRJse7Ct0k76r0LdWNzBR1AU+RaPw==
+"@solana-suite/core@0.4.6":
+  version "0.4.6"
+  resolved "https://registry.yarnpkg.com/@solana-suite/core/-/core-0.4.6.tgz#52b1eb216345c947972a39a97931aff5fb55d37d"
+  integrity sha512-2kiZZj3/itwRuuhQ8nvMp+NiotGCycnHA2MoqZuo/0mDaydSs2MCuW35l++WGPjpGjvnf6AVPUDN37hYvA5oXg==
   dependencies:
     "@solana-suite/shared" latest
     "@solana/spl-token" "^0.2.0"
@@ -1424,10 +1424,10 @@
     "@solana/spl-token" "^0.2.0"
     "@solana/web3.js" "^1.62.1"
 
-"@solana-suite/nft@0.4.5":
-  version "0.4.5"
-  resolved "https://registry.yarnpkg.com/@solana-suite/nft/-/nft-0.4.5.tgz#a59acbf1c534d322b141b65e68a23892ededfe5c"
-  integrity sha512-O1QpwD6XHwesBcyeIB1WCTms22XRV+0h6D0Rk7pY5kTd1HwWN1NZengYDS/TEuoLYPNi/0nChEqdcBHeEn/ODw==
+"@solana-suite/nft@0.4.6":
+  version "0.4.6"
+  resolved "https://registry.yarnpkg.com/@solana-suite/nft/-/nft-0.4.6.tgz#91cc2fd6ca0707dc529c34c34d37b365bd04ac59"
+  integrity sha512-vagCjphTIJjGUb47roH1pV1Ul3GOItyvaf+l97oGIsMwwWwW5nkZ/GJAKEM2RLdf8kxA1qWbgpzpKKjszMPuiQ==
   dependencies:
     "@metaplex-foundation/js" "0.15.0"
     "@solana-suite/core" latest
@@ -1437,10 +1437,10 @@
     nft.storage "^3.3.0"
     node-fetch "^3.0.0"
 
-"@solana-suite/shared@0.4.5":
-  version "0.4.5"
-  resolved "https://registry.yarnpkg.com/@solana-suite/shared/-/shared-0.4.5.tgz#f1ade1a6c46e7d93ba49ce4a26e30a412ba2e3d6"
-  integrity sha512-DOVh9eZNReHGjOJ6ecbTFxHjhvcdqYsN1zanJJXxrJI9q+KjKuL0/aux8dTDTzNSdiouCYi+C/KbQm63/PfPfg==
+"@solana-suite/shared@0.4.6":
+  version "0.4.6"
+  resolved "https://registry.yarnpkg.com/@solana-suite/shared/-/shared-0.4.6.tgz#6113ea4ee3135c3f8ce5a66eb9ec83d37e17e30f"
+  integrity sha512-Z+6frDz33lARkTCianbyzpFJ3sE5fVpLx/C82kbkvTRvXMLR+MYZcEDeTNTSAbeWUHjt/qUBeH9V6acTdvekmQ==
   dependencies:
     commander "9.3.0"
 
@@ -1706,17 +1706,10 @@
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
   integrity sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==
 
-"@types/jsonwebtoken@*":
+"@types/jsonwebtoken@*", "@types/jsonwebtoken@8.5.9":
   version "8.5.9"
   resolved "https://registry.yarnpkg.com/@types/jsonwebtoken/-/jsonwebtoken-8.5.9.tgz#2c064ecb0b3128d837d2764aa0b117b0ff6e4586"
   integrity sha512-272FMnFGzAVMGtu9tkr29hRL6bZj4Zs1KZNeHLnKqAvp06tAIcarTMwOh8/8bz4FmKRcMxZhZNeUAQsNLoiPhg==
-  dependencies:
-    "@types/node" "*"
-
-"@types/jsonwebtoken@8.5.8":
-  version "8.5.8"
-  resolved "https://registry.yarnpkg.com/@types/jsonwebtoken/-/jsonwebtoken-8.5.8.tgz#01b39711eb844777b7af1d1f2b4cf22fda1c0c44"
-  integrity sha512-zm6xBQpFDIDM6o9r6HSgDeIcLy82TKWctCXEPbJJcXb5AKmi5BNNdLXneixK4lplX3PqIVcwLBCGE/kAGnlD4A==
   dependencies:
     "@types/node" "*"
 
@@ -5389,7 +5382,17 @@ jsonparse@^1.2.0:
   resolved "https://registry.yarnpkg.com/jsonparse/-/jsonparse-1.3.1.tgz#3f4dae4a91fac315f71062f8521cc239f1366280"
   integrity sha512-POQXvpdL69+CluYsillJ7SUhKvytYjW9vG/GKpnf+xP8UWgYEM/RaMzHHofbALDiKbbP1W8UEYmgGl39WkPZsg==
 
-jsonwebtoken@8.5.1, jsonwebtoken@^8.2.0:
+jsonwebtoken@9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/jsonwebtoken/-/jsonwebtoken-9.0.0.tgz#d0faf9ba1cc3a56255fe49c0961a67e520c1926d"
+  integrity sha512-tuGfYXxkQGDPnLJ7SibiQgVgeDgfbPq2k2ICcbgqW8WxWLBAxKQM/ZCu/IT8SOSwmaYl4dpTFCW5xZv7YbbWUw==
+  dependencies:
+    jws "^3.2.2"
+    lodash "^4.17.21"
+    ms "^2.1.1"
+    semver "^7.3.8"
+
+jsonwebtoken@^8.2.0:
   version "8.5.1"
   resolved "https://registry.yarnpkg.com/jsonwebtoken/-/jsonwebtoken-8.5.1.tgz#00e71e0b8df54c2121a1f26137df2280673bcc0d"
   integrity sha512-XjwVfRS6jTMsqYs0EsuJ4LGxXV14zQybNd4L2r0UvbVnSF9Af8x7p5MzbJ90Ioz/9TI41/hTCvznF/loiSzn8w==
@@ -7443,10 +7446,10 @@ typeorm-extension@^2.2.11:
     reflect-metadata "^0.1.13"
     yargs "^17.6.2"
 
-typeorm@^0.3.9:
-  version "0.3.10"
-  resolved "https://registry.yarnpkg.com/typeorm/-/typeorm-0.3.10.tgz#aa2857fd4b078c912ca693b7eee01b6535704458"
-  integrity sha512-VMKiM84EpJQ+Mz9xDIPqnfplWhyUy1d8ccaKdMY9obifxJOTFnv8GYVyPsGwG8Lk7Nb8MlttHyHWENGAhBA3WA==
+typeorm@^0.3.11:
+  version "0.3.11"
+  resolved "https://registry.yarnpkg.com/typeorm/-/typeorm-0.3.11.tgz#09b6ab0b0574bf33c1faf7344bab6c363cf28921"
+  integrity sha512-pzdOyWbVuz/z8Ww6gqvBW4nylsM0KLdUCDExr2gR20/x1khGSVxQkjNV/3YqliG90jrWzrknYbYscpk8yxFJVg==
   dependencies:
     "@sqltools/formatter" "^1.2.2"
     app-root-path "^3.0.0"

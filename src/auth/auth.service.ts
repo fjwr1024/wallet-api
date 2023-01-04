@@ -8,7 +8,7 @@ import { AppDataSource } from '../data-source';
 import { CreateUserDto } from 'src/auth/dto/create-user.dto';
 import { ConfigService } from '@nestjs/config';
 import { Jwt, Msg } from './interface/auth.interface';
-import { createWallet } from './solana/createWallet';
+import { createWallet } from '../solana/wallet/createWallet';
 
 // bcrypt がdockerだと使用できない https://qiita.com/curious_enginee/items/45f6ff65177b26971bad
 
@@ -19,7 +19,7 @@ export class AuthService {
   public async signUp(createUserDto: CreateUserDto): Promise<Msg> {
     const hashed = await bcrypt.hash(createUserDto.password, 12);
 
-    //TODO: typeorm 内部で errorが吐き出された場合のハンドリングを考える
+    //TODO: typeorm 内部で errorが吐き出された場合のエラーハンドリングを考える
     try {
       const user = new User();
       const walletAddress = createWallet();
@@ -49,6 +49,7 @@ export class AuthService {
     if (!user) throw new ForbiddenException('Email or password incorrect');
     const isValid = await bcrypt.compare(loginDto.password, user.password);
     if (!isValid) throw new ForbiddenException('Email or password incorrect');
+    console.log('user', user);
     return this.generateJwt(user.id, user.email);
   }
 
@@ -65,5 +66,14 @@ export class AuthService {
     return {
       accessToken: token,
     };
+  }
+
+  async validateUser(email: string, pass: string): Promise<any> {
+    const user = await AppDataSource.manager.findOneBy(User, { email });
+    if (user && user.password === pass) {
+      const { password, ...result } = user;
+      return result;
+    }
+    return null;
   }
 }

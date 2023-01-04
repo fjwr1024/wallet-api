@@ -1,7 +1,7 @@
 import assert from 'assert';
 
 import { Pubkey } from '@solana-suite/core';
-import { KeypairStr } from '@solana-suite/core';
+import { Node } from '@solana-suite/shared';
 import { Metaplex, StorageNftStorage } from '@solana-suite/nft';
 
 export const uploadContents = async (name, description, image) => {
@@ -47,6 +47,7 @@ export const mintNft = async (
   ownerSecretKey: string
 ) => {
   for (let i = 0; i < quantity; i++) {
+    console.log('ownerSecret', ownerSecretKey);
     const inst1 = await Metaplex.mint(
       {
         filePath: url,
@@ -57,15 +58,15 @@ export const mintNft = async (
         isMutable: true,
         external_url: 'https://github.com/atonoy/solana-suite',
       },
-      ownerWalletAddress.toKeypair(),
+      ownerSecretKey.toKeypair(),
       ownerSecretKey.toKeypair()
     );
 
     console.log('inst1', inst1);
 
     (await inst1.submit()).match(
-      value => console.log('# metadata: ', value),
-      error => assert.fail(error)
+      async value => await Node.confirmedSig(value, 'finalized'),
+      error => console.log(error)
     );
 
     const mint = inst1.unwrap().data as Pubkey;

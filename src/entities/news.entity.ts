@@ -1,24 +1,18 @@
-import { Exclude } from 'class-transformer';
-import { UserStatus } from '../auth/user-status.enum';
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
-@Entity({ name: 'users' })
-export class User {
+@Entity({ name: 'news' })
+export class News {
   @PrimaryGeneratedColumn('increment', { name: 'id' })
   id: number;
 
-  @Column({ name: 'email', unique: true, nullable: false })
-  email: string;
+  @Column({ name: 'title', unique: false, nullable: false })
+  title: string;
 
-  @Column({ nullable: false })
-  @Exclude()
-  password: string;
+  @Column({ name: 'body', unique: false, nullable: false })
+  body: string;
 
-  @Column()
-  walletAddress: string;
-
-  @Column()
-  role: UserStatus;
+  @Column({ name: 'isPublished', default: true })
+  isPublished: boolean;
 
   @CreateDateColumn({
     type: 'timestamp',
