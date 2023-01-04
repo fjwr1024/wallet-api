@@ -3,6 +3,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { User } from '../entities/user.entity';
 import { AppDataSource } from '../data-source';
 import * as bcrypt from 'bcrypt';
+import { SolNativeOwnerInfo } from '@solana-suite/core';
 
 @Injectable()
 export class UserService {
@@ -78,8 +79,7 @@ export class UserService {
     return 'ok';
   }
 
-  // TODO: any type fix
-  async getWalletSolNative(getSolNativeDto): Promise<any> {
+  async getWalletSolNative(getSolNativeDto): Promise<SolNativeOwnerInfo> {
     const res = getSolNative(getSolNativeDto.walletAddress);
     console.log('sol res', res);
     return res;

@@ -62,6 +62,7 @@ export class UserController {
     @Param('id', ParseIntPipe) id: number,
     @Body() updateUserPasswordDto: UpdateUserPasswordDto
   ): Promise<string> {
-    return this.userService.updateUserPassword(id, updateUserPasswordDto.password);
+    const res = this.userService.updateUserPassword(id, updateUserPasswordDto.password);
+    return res;
   }
 }
