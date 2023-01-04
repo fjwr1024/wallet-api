@@ -1,4 +1,4 @@
-FROM node:16.13.1
+FROM node:16.19
 
 RUN npm i -g @nestjs/cli
 
