@@ -9,9 +9,9 @@ DB のユーザー名やパスワードなどは各自環境変数に切り分�
 ## 開発環境
 
 - Docker Compose
-  - Node.js 16.13.1
+  - Node.js 16.18.0
   - MySQL 8.0.26
-  - typeorm 0.3.6 (<https://github.com/typeorm/typeorm/releases>)
+  - typeorm 0.3.9 (<https://github.com/typeorm/typeorm/releases>)
 
 ### 起動
 
@@ -37,8 +37,10 @@ docker compose up
 
 ### yarn
 
+```bash
 docker-compose exec walletapi-api-server-1 sh
 yarn install \*\*\*
+```
 
 ### MySQL にログイン
 

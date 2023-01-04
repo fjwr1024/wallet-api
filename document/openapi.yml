@@ -1,0 +1,555 @@
+openapi: '3.0.2'
+info:
+  title: WalletAPI Sample
+  description: |
+    # WalletAPI
+    - auth
+    - users
+    - nft
+  # termsOfService: 'https://example.com/'
+  # contact:
+  #   name: "Support"
+  #   url: "会社のURL等"
+  #   email: "sample@email.com"
+  version: '1.0'
+servers:
+  - url: 'http://localhost:{port}'
+    description: 'Local Development'
+    variables:
+      port:
+        enum: ['8000', '8080']
+        default: '8000'
+
+tags:
+  - name: auth
+    description: 認証
+  - name: users
+    description: ユーザーに関するもの
+  - name: nft
+    description: nftに関するもの
+  - name: spl-token
+    description: spl-tokenに関するもの
+
+paths:
+  '/auth/csrf':
+    get:
+      tags:
+        - auth
+      summary: CSRFトークン取得API
+      description: CSRFトークンを取得した後でないと他のAPIにアクセス不可能
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: 'object'
+                properties:
+                $ref: '#/components/schemas/csrf'
+
+  '/auth/login':
+    post:
+      tags:
+        - auth
+      summary: ログイン
+      description: 'メールアドレスとパスワードをキーにログイン'
+      requestBody:
+        description: ログイン用リクエストボディ
+        required: true
+        content:
+          application/json:
+            schema:
+              type: 'object'
+              properties:
+              $ref: '#/components/schemas/loginUser'
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: 認証されていないアクセス
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+
+  '/auth/login-check':
+    get:
+      tags:
+        - auth
+      summary: ログインチェックAPI
+      description: ログインに成功した場合は success 失敗した場合401が返却される
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: 'object'
+                properties:
+                  message:
+                    type: string
+                    example: 'success'
+        '404':
+          description: 認証されていないアクセス
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+      security:
+        - Bearer: []
+
+  '/auth/signup':
+    post:
+      tags:
+        - auth
+      summary: サインアップAPI
+      description: サインアップに成功した場合は success 失敗した場合409や500が返却される 同時にwallet createも行う
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: 'object'
+                properties:
+                  message:
+                    type: string
+                    example: 'success'
+        '409':
+          description: リソース競合
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conflict'
+        '500':
+          description: サーバーエラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+
+  '/users/user-info/{userId}':
+    get:
+      tags:
+        - users
+      summary: ユーザー情報を取得する
+      description: 指定したユーザーの情報をDBから取得する
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/userInfo'
+        '401':
+          description: 認証されていないアクセス
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+        '404':
+          description: 指定のリソースが存在しない
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+      security:
+        - Bearer: []
+
+  '/users/wallet-address/{userId}':
+    get:
+      tags:
+        - users
+      summary: ウォレットアドレスを取得する
+      description: 指定したユーザーのウォレットアドレスをDBから取得する
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/userWalletAddress'
+        '401':
+          description: 認証されていないアクセス
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+        '404':
+          description: 指定のリソースが存在しない
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+      security:
+        - Bearer: []
+
+  '/users/update-pass/{userId}':
+    patch:
+      tags:
+        - users
+      summary: パスワードを更新する
+      description: 指定したユーザーのパスワードを更新する
+      requestBody:
+        description: パスワード更新用リクエストボディ
+        required: true
+        content:
+          application/json:
+            schema:
+              type: 'object'
+              properties:
+              $ref: '#/components/schemas/updatePassword'
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: 'object'
+                properties:
+                  user:
+                    type: string
+                    example: 'success'
+        '401':
+          description: 認証されていないアクセス
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+        '404':
+          description: 指定のリソースが存在しない
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+      security:
+        - Bearer: []
+
+  '/nft/get-list':
+    post:
+      tags:
+        - nft
+      summary: nft一覧を取得する
+      description: 'ユーザーのウォレットアドレスをkeyに所持しているnft一覧を取得する'
+      requestBody:
+        description: nft取得用リクエストボディ
+        required: true
+        content:
+          application/json:
+            schema:
+              type: 'object'
+              properties:
+              $ref: '#/components/schemas/userWalletAddress'
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNftList'
+        '401':
+          description: 認証されていないアクセス
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+      security:
+        - Bearer: []
+
+  '/nft/submit-hex':
+    post:
+      tags:
+        - nft
+      summary: hexデータをsubmitする
+      description: '移転したいnftのhexデータをsubmitする'
+      requestBody:
+        description: nft取得用リクエストボディ
+        required: true
+        content:
+          application/json:
+            schema:
+              type: 'object'
+              properties:
+              $ref: '#/components/schemas/getNftList'
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: 認証されていないアクセス
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+      security:
+        - Bearer: []
+
+  '/spl-token/get-token-amount':
+    post:
+      tags:
+        - spl-token
+      summary: spl-tokenの合計値を取得する
+      description: 'ユーザーのウォレットアドレスをkeyに所持しているspl-tokenの合計値を取得する'
+      requestBody:
+        description: spl-token取得用リクエストボディ
+        required: true
+        content:
+          application/json:
+            schema:
+              type: 'object'
+              properties:
+              $ref: '#/components/schemas/userWalletAddress'
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: 認証されていないアクセス
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+      security:
+        - Bearer: []
+
+  '/spl-token/history':
+    post:
+      tags:
+        - spl-token
+      summary: spl-tokenの取引履歴を取得する
+      description: 'ユーザーのウォレットアドレスをkeyに所持しているspl-tokenの取引履歴を取得する'
+      requestBody:
+        description: spl-token取得用リクエストボディ
+        required: true
+        content:
+          application/json:
+            schema:
+              type: 'object'
+              properties:
+              $ref: '#/components/schemas/getSplHisotry'
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: 認証されていないアクセス
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+      security:
+        - Bearer: []
+
+  '/spl-token/submit-hex':
+    post:
+      tags:
+        - spl-token
+      summary: hexデータをsubmitする
+      description: '移転したいspl-tokenのhexデータをsubmitする'
+      requestBody:
+        description: spl-token取得用リクエストボディ
+        required: true
+        content:
+          application/json:
+            schema:
+              type: 'object'
+              properties:
+              $ref: '#/components/schemas/getSplToken'
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: 認証されていないアクセス
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+      security:
+        - Bearer: []
+
+components:
+  securitySchemes:
+    Bearer:
+      type: http
+      scheme: bearer
+      description: Credentials or access token for API
+
+  schemas:
+    BadRequest:
+      title: 不正なリクエスト
+      type: object
+      properties:
+        code:
+          description: |-
+            不正なリクエストです。
+            Validationによるエラーなど、クライアントからのリクエストに誤りがあるときにこのエラーを返します。
+          type: string
+          example: 400
+        message:
+          description: 画面に表示するエラーメッセージ
+          type: string
+          example: 郵便番号の形式が違います
+
+    Unauthorized:
+      title: 認証されてないリクエスト
+      type: object
+      properties:
+        code:
+          description: |-
+            認証の失敗です。
+            ログインするとき、入力した内容に誤りがあるとこのエラーを返します。
+          type: string
+          example: 401
+        message:
+          description: 画面に表示するエラーメッセージ
+          type: string
+          example: 認証されていないアクセスです。
+
+    NotFound:
+      title: 指定のリソースが存在しない
+      type: object
+      properties:
+        code:
+          description: |-
+            リソースが見つかりません。
+            指定された条件のデータが存在しないときにこのエラーを返します。
+          type: string
+          example: 404
+        message:
+          description: 画面に表示するエラーメッセージ
+          type: string
+          example: 指定のリソースは存在しません。
+
+    Conflict:
+      title: リソース競合
+      type: object
+      properties:
+        code:
+          description: |-
+            リソース競合です。
+            POSTしたときに既に値が存在していたときや、PUTしたときに古い値で更新しようとしたときなどにこのエラーを返します。
+          type: string
+          example: 409
+        message:
+          description: 画面に表示するエラーメッセージ
+          type: string
+          example: 既に存在するメールアドレスです
+
+    InternalServerError:
+      title: サーバー内エラー
+      type: object
+      properties:
+        code:
+          description: |-
+            サーバー内部でエラーが発生した場合にこのエラーを返します
+          type: string
+          example: 500
+        message:
+          description: 画面に表示するエラーメッセージ
+          type: string
+          example: システムエラーが発生しました。時間を置いてもう一度お試しください。
+
+    User:
+      title: ユーザ
+      type: object
+      properties:
+        userId:
+          description: ユーザーID
+          type: number
+        wallet_address:
+          description: ウォレットアドレス
+          type: string
+          minLength: 32
+          maxLength: 44
+        password:
+          description: パスワード
+          type: string
+          minLength: 8
+          maxLength: 255
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    loginUser:
+      type: object
+      title: login後ユーザーに返す情報
+      properties:
+        userId: { type: number }
+        email: { type: string }
+        wallet_address: { type: string }
+
+    updatePassword:
+      type: object
+      properties:
+        password: { type: string }
+
+    getSplToken:
+      type: object
+      properties:
+        owner: { type: string }
+        mint: { type: string }
+        amount: { type: number }
+        tokenAccount: { type: string }
+        mintDecimal: { type: number }
+
+    getSplHisotry:
+      type: object
+      properties:
+        info: { type: object }
+        type: { type: string }
+        date: { type: string }
+        sig: { type: string }
+        innerInstruction: { type: boolean }
+
+    getNftList:
+      type: object
+      properties:
+        mint: { type: string }
+        updateAuthority: { type: string }
+        royalty: { type: number }
+        name: { type: string }
+        symbol: { type: string }
+        url: { type: string }
+        isMutable: { type: boolean }
+        primarySaleHappened: { type: boolean }
+        creators: { type: array }
+        editionNonce: { type: number }
+        collection: { type: object }
+        uses: { type: object }
+
+    csrf:
+      type: object
+      properties:
+        csrf-token: { type: string }
+
+    userInfo:
+      type: object
+      properties:
+        userId: { type: number }
+        email: { type: string }
+        wallet_address: { type: string }
+
+    userWalletAddress:
+      type: object
+      properties:
+        wallet_address: { type: string }

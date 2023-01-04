@@ -1,26 +1,47 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { GetNftListDto } from './dto/get-nftlist-dto';
-import { getNftMetadata, getTokenInfoOwned } from './solana/getMetadata';
-import { submitHex } from './solana/submitHex';
-import { filterOwnToken } from './util/filterOwnToken';
+import { getNftMetadata, getTokenInfoOwned } from '../solana/nft/getMetadata';
+import { submitHex } from '../solana/nft/submitHex';
+import { MintNftDto } from './dto/mint-nft-dto';
+import { decodeBase64 } from 'src/utils/decodeBase64';
+import { mintNft, uploadContents } from '../solana/nft/mintNft';
+import { uploadTestContents } from '../solana/nft/testMint';
 
 @Injectable()
 export class NftService {
-  configService: ConfigService;
-  // 指定したウォレットアドレスの所有NFTを取得
+  constructor(private readonly config: ConfigService) {}
+
   async getNftList(getNftListDto: GetNftListDto) {
     const ownedNftList = await getTokenInfoOwned(getNftListDto.walletAddress);
-    const filteredOwnToken = await filterOwnToken(ownedNftList);
-    const response = await getNftMetadata(filteredOwnToken);
+    const response = await getNftMetadata(ownedNftList);
     return response;
   }
 
-  // hex取得
-  async getHex(transferHexDto) {
-    const ownerSecretKey = this.configService.get<string>('OWNER_SECRET_KEY');
-    console.log('hex data', transferHexDto.hex);
-    const response = submitHex(transferHexDto.hex, ownerSecretKey);
+  async submitHex(submitHexDto) {
+    const ownerSecretKey = this.config.get<string>('OWNER_SECRET_KEY');
+    console.log('hex data', submitHexDto.hex);
+    const response = submitHex(submitHexDto.hex, ownerSecretKey);
+    return response;
+  }
+
+  async testMint(file) {
+    // const url = await uploadTestContents('name', 'description', file);
+    const ownerWalletAddress = this.config.get<string>('SYSTEM_WALLET_ADDRESS');
+    const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
+
+    const response = await mintNft('name', file.path, 1, ownerWalletAddress, ownerSecretKey);
+
+    return response;
+  }
+
+  async mint(mintNftDto: MintNftDto) {
+    const imagePath = await decodeBase64(mintNftDto.image);
+    const url = await uploadContents(mintNftDto.name, mintNftDto.description, imagePath);
+    const ownerWalletAddress = this.config.get<string>('SYSTEM_WALLET_ADDRESS');
+    const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
+    const response = await mintNft(mintNftDto.name, url, mintNftDto.quantity, ownerWalletAddress, ownerSecretKey);
+
     return response;
   }
 }

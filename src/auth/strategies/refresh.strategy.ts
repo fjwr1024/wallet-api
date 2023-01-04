@@ -8,7 +8,7 @@ import { AuthService } from '../auth.service';
 export class RefreshStrategy extends PassportStrategy(Strategy, 'refresh') {
   constructor(private authService: AuthService) {
     super({
-      ignoreExpiration: true,
+      ignoreExpiration: false,
       passReqToCallback: true,
       secretOrKey: 'My random secret key never let others',
       jwtFromRequest: ExtractJwt.fromExtractors([
@@ -23,22 +23,19 @@ export class RefreshStrategy extends PassportStrategy(Strategy, 'refresh') {
     });
   }
 
-  async validate(req: Request, payload: any) {
-    if (!payload) {
-      throw new BadRequestException('invalid jwt token');
-    }
-    const data = req?.cookies['auth-cookie'];
-    if (!data?.refreshToken) {
-      throw new BadRequestException('invalid refresh token');
-    }
-    const user = await this.authService.validRefreshToken(
-      payload.email,
-      data.refreshToken
-    );
-    if (!user) {
-      throw new BadRequestException('token expired');
-    }
+  // async validate(req: Request, payload: any) {
+  //   if (!payload) {
+  //     throw new BadRequestException('invalid jwt token');
+  //   }
+  //   const data = req?.cookies['auth-cookie'];
+  //   if (!data?.refreshToken) {
+  //     throw new BadRequestException('invalid refresh token');
+  //   }
+  //   const user = await this.authService.validRefreshToken(payload.email, data.refreshToken);
+  //   if (!user) {
+  //     throw new BadRequestException('token expired');
+  //   }
 
-    return user;
-  }
+  //   return user;
+  // }
 }

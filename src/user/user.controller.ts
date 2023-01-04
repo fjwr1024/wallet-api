@@ -1,42 +1,67 @@
-import { Body, Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Param,
+  ParseIntPipe,
+  Patch,
+  Post,
+  Res,
+  UseGuards,
+} from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
+import { Response } from 'express';
+import { CurrentUser } from 'src/decorator/current-user-guard.decorator';
 
 import { User } from 'src/entities/user.entity';
-import { CreateUserDto } from './dto/create-user.dto';
-import { GetTokenAmountDto } from './dto/get-token-amount.dto';
+import { RolesGuard } from 'src/guards/roles.guard';
+import { GetSolNativeDto } from './dto/get-sol-native.dto';
+import { UpdateUserPasswordDto } from './dto/update-user-password.dto';
 import { UserService } from './user.service';
+import { SolNativeOwnerInfo } from '@solana-suite/core';
 
 @Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Post('signup')
-  async signup(@Body() createUserDto: CreateUserDto): Promise<User> {
-    console.log(createUserDto);
-    return await this.userService.signUp(createUserDto);
+  // react admin get list用api
+  @UseGuards(RolesGuard)
+  @Get()
+  async getUser(@Res() res: Response): Promise<any> {
+    res.append('X-Total-Count', '1');
+    // X-Total-Countをつけないとcorsエラーが出る
+    res.send(await this.userService.getUser());
   }
 
-  @Get('user-info/:userId')
-  async getUserInfo(@Param('userId', ParseIntPipe) userId: number): Promise<User> {
-    const res = await this.userService.getUserInfo(userId);
+  @Get('user-info/:id')
+  async getUserInfo(@CurrentUser() currentUser, @Param('id', ParseIntPipe) id: number): Promise<User> {
+    const res = await this.userService.getUserInfo(id);
     return res;
   }
 
-  @Get('user-wallet-address/:userId')
-  async getUserWalletAddress(@Param('userId', ParseIntPipe) userId: number): Promise<User> {
-    const res = await this.userService.getUserWalletAddress(userId);
+  @Get('wallet-address/:id')
+  async getWalletAddress(@Param('id', ParseIntPipe) id: number): Promise<User[]> {
+    const res = await this.userService.getWalletAddress(id);
     return res;
   }
 
-  @Post('create-wallet')
-  async createWallet(@Param('userId', ParseIntPipe) userId: number) {
-    const res = await this.userService.createWallet();
+  @HttpCode(HttpStatus.OK)
+  @Post('get-sol')
+  async getWalletSolNative(@Body() getSolNativeDto: GetSolNativeDto): Promise<SolNativeOwnerInfo> {
+    const res = await this.userService.getWalletSolNative(getSolNativeDto);
     return res;
   }
 
-  // @UseGuards(JwtAuthGuard)
-  @Post('get-token-amount')
-  async getTokenAmount(@Body() getTokenAmountDto: GetTokenAmountDto): Promise<any> {
-    const userTokenAmount = await this.userService.getTokenAmount(getTokenAmountDto);
-    return userTokenAmount;
+  @UseGuards(AuthGuard('jwt'))
+  @HttpCode(HttpStatus.OK)
+  @Patch('/update-pass/:id')
+  updateUserPassword(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() updateUserPasswordDto: UpdateUserPasswordDto
+  ): Promise<string> {
+    const res = this.userService.updateUserPassword(id, updateUserPasswordDto.password);
+    return res;
   }
 }

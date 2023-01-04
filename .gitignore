@@ -40,3 +40,6 @@ docker/db/data
 # env
 .env
 .env.development.local
+
+# image file
+/uploads/*

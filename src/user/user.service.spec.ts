@@ -1,51 +1,117 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { UserService } from './user.service';
-import { UserRepository } from './user.repository';
 import { NotFoundException } from '@nestjs/common';
-import { UserController } from './user.controller';
-import { Repository } from 'typeorm';
+import { Test, TestingModule } from '@nestjs/testing';
+import { User } from '../entities/user.entity';
+import { UserService } from './user.service';
 
-const mockUser1 = {
-  id: 1,
-  email: 'aaa@email.com',
-  password: 'password',
-  wallet_address: 'walletAddresswalletAddresswalletAddress',
-};
-
-describe('UserService', () => {
+describe('UserServiceTest', () => {
   let userService: UserService;
-  let userRepository: UserRepository;
 
+  const mockUser1 = {
+    userId: 1,
+    email: 'test1',
+    password: '1234',
+    walletAddress: 'walletaddresswalletaddresswalletaddress',
+    refreshToken: 'tokentoken',
+    refreshTokenExp: 'tokentoken',
+    createdAt: new Date(2022 - 11 - 11, 22, 0o2, 59, 678895),
+    updatedAt: new Date(2022 - 11 - 11, 22, 0o2, 59, 678895),
+  };
+
+  const UserServiceProvider = {
+    provide: UserService,
+    useFactory: () => ({
+      getUserInfo: jest.fn((): Promise<User> => {
+        return Promise.resolve(mockUser1);
+      }),
+      getWalletAddress: jest.fn((): Promise<string> => {
+        return Promise.resolve(mockUser1.walletAddress);
+      }),
+      updateUserPassword: jest.fn((): Promise<User> => {
+        return Promise.resolve(mockUser1);
+      }),
+    }),
+  };
+
+  // 各テストケース実行前に必要なインスタンスを生成
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [UserService, UserRepository],
+      providers: [UserServiceProvider],
     }).compile();
-
     userService = module.get<UserService>(UserService);
-    userRepository = module.get<UserRepository>(UserRepository);
+  });
+
+  it('userServiceインスタンスが定義されてること', async () => {
+    expect(userService).toBeDefined();
   });
 
   describe('getUserInfo', () => {
-    it('正常系', async () => {
-      const expected = {
-        userId: mockUser1.id,
-        email: mockUser1.email,
-        password: mockUser1.password,
-        wallet_address: mockUser1.wallet_address,
-      };
+    it('userService の getUserInfo テスト', async () => {
+      userService.getUserInfo(1);
+      expect(userService.getUserInfo).toHaveBeenCalled();
+    });
 
-      // userRepository.getUser(1);
-      const result = await userService.getUserInfo(1);
-      expect(result).toEqual(expected);
+    it('正常系: ユーザー情報を返却', async () => {
+      const expected: User = mockUser1;
+
+      const actual = await userService.getUserInfo(mockUser1.userId);
+      expect(actual).toEqual(expected);
     });
 
     it('異常系: ユーザーが存在しない', async () => {
-      userRepository.getUser(null);
-      await expect(userService.getUserInfo(100)).rejects.toThrow(NotFoundException);
+      try {
+        await userService.getUserInfo(100000000);
+      } catch (err) {
+        expect(err).toBeInstanceOf(NotFoundException);
+        expect(err.message).toBe('User is not found');
+      }
     });
   });
 
-  it('should be defined', () => {
-    expect(userService).toBeDefined();
+  describe('getWalletAddress', () => {
+    it('userServiceのgetWalletAddressが呼ばれること', async () => {
+      userService.getWalletAddress(1);
+      expect(userService.getWalletAddress).toHaveBeenCalled();
+    });
+
+    it('userWalletAddressが返されること', async () => {
+      const expected = mockUser1.walletAddress;
+
+      const actual = await userService.getWalletAddress(mockUser1.userId);
+      expect(actual).toEqual(expected);
+    });
+
+    it('異常系: ユーザーが存在しない', async () => {
+      try {
+        await userService.getUserInfo(100000000);
+      } catch (err) {
+        expect(err).toBeInstanceOf(NotFoundException);
+        expect(err.message).toBe('User is not found');
+      }
+    });
+  });
+
+  describe('updateUserPassword', () => {
+    it('正常系 : ', async () => {
+      userService.updateUserPassword(1, { password: 'updatepass' });
+      expect(userService.updateUserPassword).toHaveBeenCalled();
+    });
+
+    it('異常系: ユーザーが存在しない', async () => {
+      try {
+        await userService.updateUserPassword(100000, { password: 'updatepass' });
+      } catch (err) {
+        expect(err).toBeInstanceOf(NotFoundException);
+        expect(err.message).toBe('User is not found');
+      }
+    });
+
+    it('パスワードがハッシュ化されてるか', async () => {
+      await userService.updateUserPassword(mockUser1.userId, { password: 'updatepass' });
+
+      expect(mockUser1.password).not.toEqual('updatepass');
+      const [salt, hash] = mockUser1.password.split('.');
+      expect(salt).toBeDefined();
+      expect(hash).toBeDefined();
+    });
   });
 });
