@@ -387,20 +387,11 @@ paths:
         - Bearer: []
 
   '/news':
-    post:
+    get:
       tags:
-        - spl-token
-      summary: hexデータをsubmitする
-      description: '移転したいspl-tokenのhexデータをsubmitする'
-      requestBody:
-        description: spl-token取得用リクエストボディ
-        required: true
-        content:
-          application/json:
-            schema:
-              type: 'object'
-              properties:
-              $ref: '#/components/schemas/getSplToken'
+        - news
+      summary: お知らせ一覧を取得する
+      description: 'お知らせデータを全件取得する'
       responses:
         '200':
           description: 成功
@@ -504,8 +495,8 @@ components:
       type: object
       properties:
         userId:
-          description: ユーザーID
-          type: number
+          description: ユーザーID uuidを用いる
+          type: string
         wallet_address:
           description: ウォレットアドレス
           type: string
