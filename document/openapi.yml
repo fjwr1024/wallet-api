@@ -538,7 +538,7 @@ components:
           description: お知らせ内容
           type: string
           maxLength: 10000
-        isPublished:
+        is_published:
           description: 公開・非公開ステータス
           type: boolean
           default: false
