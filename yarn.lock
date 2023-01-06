@@ -1406,10 +1406,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@solana-suite/core@0.4.6":
-  version "0.4.6"
-  resolved "https://registry.yarnpkg.com/@solana-suite/core/-/core-0.4.6.tgz#52b1eb216345c947972a39a97931aff5fb55d37d"
-  integrity sha512-2kiZZj3/itwRuuhQ8nvMp+NiotGCycnHA2MoqZuo/0mDaydSs2MCuW35l++WGPjpGjvnf6AVPUDN37hYvA5oXg==
+"@solana-suite/core@0.4.8":
+  version "0.4.8"
+  resolved "https://registry.yarnpkg.com/@solana-suite/core/-/core-0.4.8.tgz#a7a5dd9d7be2163c1b0f409741fdc1e6f9c709aa"
+  integrity sha512-d7Yj9H4gQzJQu8K2UnPx8zuapRQBp3gVVBL9udfIR9XvW/RX8kcOwBwDut3JNKco5G4othqWfv6UKOLz72+34w==
   dependencies:
     "@solana-suite/shared" latest
     "@solana/spl-token" "^0.2.0"
@@ -1424,10 +1424,10 @@
     "@solana/spl-token" "^0.2.0"
     "@solana/web3.js" "^1.62.1"
 
-"@solana-suite/nft@0.4.6":
-  version "0.4.6"
-  resolved "https://registry.yarnpkg.com/@solana-suite/nft/-/nft-0.4.6.tgz#91cc2fd6ca0707dc529c34c34d37b365bd04ac59"
-  integrity sha512-vagCjphTIJjGUb47roH1pV1Ul3GOItyvaf+l97oGIsMwwWwW5nkZ/GJAKEM2RLdf8kxA1qWbgpzpKKjszMPuiQ==
+"@solana-suite/nft@0.4.8":
+  version "0.4.8"
+  resolved "https://registry.yarnpkg.com/@solana-suite/nft/-/nft-0.4.8.tgz#497a5769025c6c02608f8cf642237e63527a977c"
+  integrity sha512-BF8jRIWBSyn7uIfPBaiB3fnzs92g5SUTCGJ6PmsbpSsDWM/Xmy/mZVY4i539SzJ+VT2Av9sDNjsoWhGkI2hMmA==
   dependencies:
     "@metaplex-foundation/js" "0.15.0"
     "@solana-suite/core" latest
@@ -1437,10 +1437,10 @@
     nft.storage "^3.3.0"
     node-fetch "^3.0.0"
 
-"@solana-suite/shared@0.4.6":
-  version "0.4.6"
-  resolved "https://registry.yarnpkg.com/@solana-suite/shared/-/shared-0.4.6.tgz#6113ea4ee3135c3f8ce5a66eb9ec83d37e17e30f"
-  integrity sha512-Z+6frDz33lARkTCianbyzpFJ3sE5fVpLx/C82kbkvTRvXMLR+MYZcEDeTNTSAbeWUHjt/qUBeH9V6acTdvekmQ==
+"@solana-suite/shared@0.4.8":
+  version "0.4.8"
+  resolved "https://registry.yarnpkg.com/@solana-suite/shared/-/shared-0.4.8.tgz#c26fd9f074567e703d96d7056c327e07acbff1ce"
+  integrity sha512-mBZ7HVNpgBMZvDsEjYnKVd+z4HqA4eCyNnvpO+f6fXI2oCaosliACvMhhC2j1Q42Q0NmWYYual7xlbP0umS6zw==
   dependencies:
     commander "9.3.0"
 
@@ -7453,7 +7453,7 @@ typeorm-extension@^2.2.11:
     reflect-metadata "^0.1.13"
     yargs "^17.6.2"
 
-typeorm@^0.3.11:
+typeorm@^0.3.9:
   version "0.3.11"
   resolved "https://registry.yarnpkg.com/typeorm/-/typeorm-0.3.11.tgz#09b6ab0b0574bf33c1faf7344bab6c363cf28921"
   integrity sha512-pzdOyWbVuz/z8Ww6gqvBW4nylsM0KLdUCDExr2gR20/x1khGSVxQkjNV/3YqliG90jrWzrknYbYscpk8yxFJVg==
