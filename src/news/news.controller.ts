@@ -29,7 +29,6 @@ export class NewsController {
     return res;
   }
 
-  // 公開中ステータスのもののみ取得
   @Get('published')
   async getPublishedNews(): Promise<News[]> {
     const res = await this.newsService.getPublishedNews();
@@ -45,7 +44,7 @@ export class NewsController {
   @HttpCode(HttpStatus.OK)
   @Roles(UserStatus.Admin)
   @UseGuards(RolesGuard)
-  @Post()
+  @Post('post')
   async postNews(@Body() postNewsDto: PostNewsDto): Promise<string> {
     const res = await this.newsService.postNews(postNewsDto);
     console.log('res', res);

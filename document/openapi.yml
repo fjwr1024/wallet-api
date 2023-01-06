@@ -398,7 +398,82 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/News'
+        '401':
+          description: 認証されていないアクセス
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+      security:
+        - Bearer: []
+
+  '/news/published':
+    get:
+      tags:
+        - news
+      summary: お知らせ一覧を取得する
+      description: '公開中のお知らせデータを全件取得する'
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/News'
+        '401':
+          description: 認証されていないアクセス
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+      security:
+        - Bearer: []
+
+  '/news/{id}':
+    get:
+      tags:
+        - news
+      summary: IDを指定してお知らせを取得する
+      description: '指定したIDのお知らせのみを取得する'
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/News'
+        '401':
+          description: 認証されていないアクセス
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+      security:
+        - Bearer: []
+
+  '/news/post':
+    post:
+      tags:
+        - news
+      summary: お知らせを投稿する
+      description: '管理者が新規お知らせを投稿する'
+      requestBody:
+        description: お知らせ投稿リクエストボディ
+        required: true
+        content:
+          application/json:
+            schema:
+              type: 'object'
+              properties:
+              $ref: '#/components/schemas/poetNews'
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/okResponse'
         '401':
           description: 認証されていないアクセス
           content:
@@ -603,3 +678,15 @@ components:
       type: object
       properties:
         wallet_address: { type: string }
+
+    poetNews:
+      type: object
+      properties:
+        title: { type: string }
+        body: { type: string }
+        isPublished: { type: boolean }
+
+    okResponse:
+      type: object
+      properties:
+        message: { type: string }
