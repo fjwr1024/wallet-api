@@ -11,19 +11,19 @@ export class News {
   @Column({ name: 'body', unique: false, nullable: false })
   body: string;
 
-  @Column({ name: 'isPublished', default: true })
+  @Column({ name: 'is_published', default: true })
   isPublished: boolean;
 
   @CreateDateColumn({
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP(6)',
   })
-  createdAt!: Date;
+  created_at!: Date;
 
   @UpdateDateColumn({
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP(6)',
     onUpdate: 'CURRENT_TIMESTAMP(6)',
   })
-  updatedAt!: Date;
+  updated_at!: Date;
 }
