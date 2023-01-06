@@ -29,6 +29,8 @@ tags:
     description: nftに関するもの
   - name: spl-token
     description: spl-tokenに関するもの
+  - name: news
+    description: お知らせに関するもの
 
 paths:
   '/auth/csrf':
@@ -384,6 +386,37 @@ paths:
       security:
         - Bearer: []
 
+  '/news':
+    post:
+      tags:
+        - spl-token
+      summary: hexデータをsubmitする
+      description: '移転したいspl-tokenのhexデータをsubmitする'
+      requestBody:
+        description: spl-token取得用リクエストボディ
+        required: true
+        content:
+          application/json:
+            schema:
+              type: 'object'
+              properties:
+              $ref: '#/components/schemas/getSplToken'
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: 認証されていないアクセス
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+      security:
+        - Bearer: []
+
 components:
   securitySchemes:
     Bearer:
@@ -483,6 +516,32 @@ components:
           type: string
           minLength: 8
           maxLength: 255
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    News:
+      title: お知らせ
+      type: object
+      properties:
+        id:
+          description: お知らせID
+          type: number
+        title:
+          description: お知らせタイトル
+          type: string
+          maxLength: 100
+        body:
+          description: お知らせ内容
+          type: string
+          maxLength: 10000
+        isPublished:
+          description: 公開・非公開ステータス
+          type: boolean
+          default: false
         created_at:
           type: string
           format: date-time
