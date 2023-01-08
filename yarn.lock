@@ -3498,6 +3498,13 @@ duplexer@~0.1.1:
   resolved "https://registry.yarnpkg.com/duplexer/-/duplexer-0.1.2.tgz#3abe43aef3835f8ae077d136ddce0f276b0400e6"
   integrity sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==
 
+ebec@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/ebec/-/ebec-0.1.0.tgz#26da8ee79480142f3298ae7e68aa28d547d7a005"
+  integrity sha512-QP7lg0ZqM266C//l53J2ywUPSi+rsZx8/uNxkBMUPL+GpGyeEy0V5opqc1fKS6fcV/vLNnCBe2z2kNxDCQMVqg==
+  dependencies:
+    smob "^0.0.6"
+
 ecdsa-sig-formatter@1.0.11:
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/ecdsa-sig-formatter/-/ecdsa-sig-formatter-1.0.11.tgz#ae0f0fa2d85045ef14a817daa3ce9acd0489e5bf"
@@ -5504,11 +5511,12 @@ locate-path@^6.0.0:
   dependencies:
     p-locate "^5.0.0"
 
-locter@^0.3.2:
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/locter/-/locter-0.3.2.tgz#6cb60e0ab6a7904e3c941d3eedd535566efe4c4d"
-  integrity sha512-+mHgnARlKkuIXGLw0o52c0PLzhG/gTcWzsMtkfZ80zri6TYlYd/jomMz48WWTn3lFBnieUvIanZ9nXbsI04ICQ==
+locter@^0.6.1:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/locter/-/locter-0.6.2.tgz#5e6bb447dde6ad851b1a90f4078fd0e1e2cd5c92"
+  integrity sha512-W8B/3PWzyKuCRWM6TOO8V/uoifeWJ88kCyOaZzcBRwaA/j4UBg1mApbDmsFf+hBExasO2kZwyeh5T65yoXC2BQ==
   dependencies:
+    ebec "^0.1.0"
     glob "^8.0.3"
 
 lodash.clonedeep@^4.5.0:
@@ -5753,10 +5761,17 @@ minimatch@^3.0.4, minimatch@^3.0.5, minimatch@^3.1.1, minimatch@^3.1.2:
   dependencies:
     brace-expansion "^1.1.7"
 
-minimatch@^5.0.1, minimatch@^5.1.0:
+minimatch@^5.0.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-5.1.1.tgz#6c9dffcf9927ff2a31e74b5af11adf8b9604b022"
   integrity sha512-362NP+zlprccbEt/SkxKfRMHnNY85V74mVnpUpNyr3F35covl09Kec7/sEFLt3RA4oXmewtoaanoIf67SE5Y5g==
+  dependencies:
+    brace-expansion "^2.0.1"
+
+minimatch@^5.1.2:
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-5.1.2.tgz#0939d7d6f0898acbd1508abe534d1929368a8fff"
+  integrity sha512-bNH9mmM9qsJ2X4r2Nat1B//1dJVcn3+iBLa3IgqJ7EbGaDNepL9QSHOxN4ng33s52VMMhhIfgCYDk3C4ZmlDAg==
   dependencies:
     brace-expansion "^2.0.1"
 
@@ -6487,12 +6502,12 @@ range-parser@~1.2.1:
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
   integrity sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==
 
-rapiq@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/rapiq/-/rapiq-0.5.0.tgz#7d2983477034a1a716e02f7e38a437b654cfd074"
-  integrity sha512-eklnAf4rKY3bAcUhTSmHOehrnD5Bm6YWIuItmG6YUrUpBDskQ3lhNFCTkbwfEQrJTnSjZdhiwB2wq9IVEF2/WA==
+rapiq@^0.6.2:
+  version "0.6.3"
+  resolved "https://registry.yarnpkg.com/rapiq/-/rapiq-0.6.3.tgz#cc3eecd88ce8bd4e455e570f41ba27578862b77d"
+  integrity sha512-8TsSZu4Bhc0QsPh6yCMr5pw3z0SIY1p202bibi23AnnwqNxRiRm7a9sGVQygyaL1ysrVNbr3j3AqkowXMR7Taw==
   dependencies:
-    minimatch "^5.1.0"
+    minimatch "^5.1.2"
     smob "^0.0.6"
 
 raw-body@2.5.1:
@@ -7442,14 +7457,14 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==
 
-typeorm-extension@^2.2.11:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/typeorm-extension/-/typeorm-extension-2.3.0.tgz#e1ba440358ccf50fb628e99595e9eb22b240eb52"
-  integrity sha512-GP15eguY7qTqjikGpkzsUvotdv4ttz0JNc4p4ExCillxka5GRU38nC4FMYkbzCQrTEoDwwPiLX5KZYt3CbRkEQ==
+typeorm-extension@^2.4.0:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/typeorm-extension/-/typeorm-extension-2.4.1.tgz#7fd1c002971cfde984aca822e5809df2c75b7e0f"
+  integrity sha512-dabV2fgy2xzL1p/2dS174F49JsUv2kRbZS3GZO89z3TmdeMUX5OX6Aa7l8ZJfQXhH8AaKuQ2HGbShu58FhZn0w==
   dependencies:
     "@faker-js/faker" "^7.6.0"
-    locter "^0.3.2"
-    rapiq "^0.5.0"
+    locter "^0.6.1"
+    rapiq "^0.6.2"
     reflect-metadata "^0.1.13"
     yargs "^17.6.2"
 
