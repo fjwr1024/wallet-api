@@ -34,7 +34,7 @@ export class UserService {
     return res;
   }
 
-  async getWalletAddress(id: number): Promise<User[]> {
+  async getWalletAddress(id: string): Promise<User[]> {
     const res = await AppDataSource.manager.find(User, {
       select: {
         walletAddress: true,

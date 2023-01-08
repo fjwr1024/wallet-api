@@ -16,7 +16,7 @@ export class CurrentUserMiddleware implements NestMiddleware {
       console.log('currentuserid', user.id);
       console.log('req.params', req.params);
 
-      if (!(Number(decoded.sub) === user.id)) {
+      if (!(String(decoded.sub) === user.id)) {
         console.log('user is invalid');
       }
       next();

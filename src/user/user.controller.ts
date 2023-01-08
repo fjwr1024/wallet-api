@@ -42,7 +42,7 @@ export class UserController {
   }
 
   @Get('wallet-address/:id')
-  async getWalletAddress(@Param('id', ParseIntPipe) id: number): Promise<User[]> {
+  async getWalletAddress(@Param('id', ParseIntPipe) id: string): Promise<User[]> {
     const res = await this.userService.getWalletAddress(id);
     return res;
   }

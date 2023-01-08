@@ -53,7 +53,7 @@ export class AuthService {
     return this.generateJwt(user.id, user.email);
   }
 
-  async generateJwt(userId: number, email: string): Promise<Jwt> {
+  async generateJwt(userId: string, email: string): Promise<Jwt> {
     const payload = {
       sub: userId,
       email,
