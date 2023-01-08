@@ -1,16 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { GetNftListDto } from './dto/get-nftlist-dto';
-import { getNftMetadata, getTokenInfoOwned } from './solana/getMetadata';
-import { submitHex } from './solana/submitHex';
+import { getNftMetadata, getTokenInfoOwned } from '../solana/nft/getMetadata';
+import { submitHex } from '../solana/nft/submitHex';
 import { MintNftDto } from './dto/mint-nft-dto';
 import { decodeBase64 } from 'src/utils/decodeBase64';
-import { mintNft, uploadContents } from './solana/mintNft';
-import { uploadTestContents } from './solana/testMint';
+import { mintNft, uploadContents } from '../solana/nft/mintNft';
+import { uploadTestContents } from '../solana/nft/testMint';
 
 @Injectable()
 export class NftService {
-  config: ConfigService;
+  constructor(private readonly config: ConfigService) {}
 
   async getNftList(getNftListDto: GetNftListDto) {
     const ownedNftList = await getTokenInfoOwned(getNftListDto.walletAddress);
@@ -26,11 +26,11 @@ export class NftService {
   }
 
   async testMint(file) {
-    const url = await uploadTestContents('name', 'description', file);
+    // const url = await uploadTestContents('name', 'description', file);
     const ownerWalletAddress = this.config.get<string>('SYSTEM_WALLET_ADDRESS');
     const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
 
-    const response = await mintNft('name', url, 1, ownerWalletAddress, ownerSecretKey);
+    const response = await mintNft('name', file.path, 1, ownerWalletAddress, ownerSecretKey);
 
     return response;
   }

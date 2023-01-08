@@ -1,10 +1,11 @@
 import { Exclude } from 'class-transformer';
+import { UserStatus } from '../auth/user-status.enum';
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity({ name: 'users' })
 export class User {
-  @PrimaryGeneratedColumn('increment', { name: 'id' })
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @Column({ name: 'email', unique: true, nullable: false })
   email: string;
@@ -13,19 +14,22 @@ export class User {
   @Exclude()
   password: string;
 
-  @Column()
+  @Column({ name: 'wallet_address' })
   walletAddress: string;
+
+  @Column()
+  role: UserStatus;
 
   @CreateDateColumn({
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP(6)',
   })
-  createdAt!: Date;
+  created_at!: Date;
 
   @UpdateDateColumn({
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP(6)',
     onUpdate: 'CURRENT_TIMESTAMP(6)',
   })
-  updatedAt!: Date;
+  updated_at!: Date;
 }

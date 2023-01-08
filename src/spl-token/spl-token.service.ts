@@ -1,11 +1,11 @@
 import { GetSplHistoryDto } from './dto/get-spl-history.dto';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { getTokenAmount } from 'src/spl-token/solana/getTokenAmount';
+import { getTokenAmount } from '../solana/spl-token/getTokenAmount';
 import { GetTokenAmountDto } from './dto/get-token-amount.dto';
-import { getTransactionHistory } from './solana/transactionHistory';
-import { submitHex } from './solana/submitHex';
-import { createSplToken } from './solana/createSpl';
+import { getTransactionHistory } from '../solana/spl-token/transactionHistory';
+import { submitHex } from '../solana/spl-token/submitHex';
+import { createSplToken } from '../solana/spl-token/createSpl';
 
 @Injectable()
 export class SplTokenService {

@@ -37,8 +37,10 @@ docker compose up
 
 ### yarn
 
+```bash
 docker-compose exec walletapi-api-server-1 sh
 yarn install \*\*\*
+```
 
 ### MySQL にログイン
 
@@ -59,6 +61,12 @@ docker exec wallet-db mysqldump -u root -ppass example > dump.sql
 docker exec -it walletapi-api-server-1 yarn create:migration user-table
 # コンテナの中で実行する場合
 $(npm bin)/ts-node -r tsconfig-paths/register $(npm bin)/typeorm migration:create -n user-table
+```
+
+```bash
+# ローカルで実行する場合
+yarn migariton:generate
+yarn migration:run
 ```
 
 ### マイグレーションの実行
