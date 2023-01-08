@@ -63,6 +63,12 @@ docker exec -it walletapi-api-server-1 yarn create:migration user-table
 $(npm bin)/ts-node -r tsconfig-paths/register $(npm bin)/typeorm migration:create -n user-table
 ```
 
+```bash
+# ローカルで実行する場合
+yarn migariton:generate
+yarn migration:run
+```
+
 ### マイグレーションの実行
 
 ```sh
