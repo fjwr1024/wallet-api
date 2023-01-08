@@ -483,6 +483,79 @@ paths:
       security:
         - Bearer: []
 
+  '/news/update/{id}':
+    patch:
+      tags:
+        - news
+      summary: お知らせを更新する
+      description: 指定したIDのお知らせを更新する
+      requestBody:
+        description: お知らせ更新用リクエストボディ
+        required: true
+        content:
+          application/json:
+            schema:
+              type: 'object'
+              properties:
+              $ref: '#/components/schemas/updateNews'
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: 'object'
+                properties:
+                  user:
+                    type: string
+                    example: 'success'
+        '401':
+          description: 認証されていないアクセス
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+        '404':
+          description: 指定のリソースが存在しない
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+      security:
+        - Bearer: []
+
+  '/news/delete/{id}':
+    delete:
+      tags:
+        - news
+      summary: お知らせを削除する
+      description: 指定したIDのお知らせを削除する
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: 'object'
+                properties:
+                  user:
+                    type: string
+                    example: 'success'
+        '401':
+          description: 認証されていないアクセス
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+        '404':
+          description: 指定のリソースが存在しない
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+      security:
+        - Bearer: []
+
 components:
   securitySchemes:
     Bearer:
@@ -680,6 +753,13 @@ components:
         wallet_address: { type: string }
 
     poetNews:
+      type: object
+      properties:
+        title: { type: string }
+        body: { type: string }
+        isPublished: { type: boolean }
+
+    updateNews:
       type: object
       properties:
         title: { type: string }
