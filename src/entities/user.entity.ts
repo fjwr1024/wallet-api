@@ -17,7 +17,11 @@ export class User {
   @Column({ name: 'wallet_address' })
   walletAddress: string;
 
-  @Column()
+  @Column({
+    type: 'enum',
+    enum: UserStatus,
+    default: UserStatus.User,
+  })
   role: UserStatus;
 
   @CreateDateColumn({
