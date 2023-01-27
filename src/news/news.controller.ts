@@ -23,6 +23,7 @@ import { NewsService } from './news.service';
 export class NewsController {
   constructor(private readonly newsService: NewsService) {}
 
+  @Roles(UserStatus.Admin)
   @Get()
   async getAllNews(): Promise<News[]> {
     const res = await this.newsService.getAllNews();
