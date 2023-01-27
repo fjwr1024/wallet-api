@@ -2,7 +2,8 @@ import assert from 'assert';
 
 import { Pubkey } from '@solana-suite/core';
 import { Node } from '@solana-suite/shared';
-import { Metaplex, StorageNftStorage } from '@solana-suite/nft';
+import { Metaplex } from '@solana-suite/nft';
+import { NftStorage } from '@solana-suite/storage';
 
 export const uploadContents = async (name, description, image) => {
   const asset = {
@@ -11,7 +12,7 @@ export const uploadContents = async (name, description, image) => {
     image,
   };
 
-  const url = await StorageNftStorage.uploadMetadata(asset);
+  const url = await NftStorage.uploadMetadata(asset);
 
   if (url.isErr) {
     assert(url.error);
@@ -29,7 +30,7 @@ export const uploadTestContents = async (name, description, file) => {
     image: filePath,
   };
 
-  const url = await StorageNftStorage.uploadMetadata(asset);
+  const url = await NftStorage.uploadMetadata(asset);
   const urlStr = url.unwrap();
 
   if (url.isErr) {

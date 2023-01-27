@@ -6,7 +6,7 @@ export const createSplToken = async (totalAmount, decimals, ownerWalletAddress, 
 
   const inst1 = await SplToken.mint(
     ownerWalletAddress.toPublicKey(),
-    [ownerSecretKey.toKeypair()],
+    ownerSecretKey.toKeypair(),
     totalAmount,
     decimals
   );

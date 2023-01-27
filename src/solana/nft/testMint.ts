@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import { StorageNftStorage } from '@solana-suite/nft';
+import { NftStorage } from '@solana-suite/storage';
 
 export const uploadTestContents = async (name, description, file) => {
   const filePath = file.path;
@@ -14,7 +14,7 @@ export const uploadTestContents = async (name, description, file) => {
   };
 
   // metadata and image upload
-  const url = await StorageNftStorage.uploadMetadata(asset);
+  const url = await NftStorage.uploadMetadata(asset);
   const urlStr = url.unwrap();
 
   if (url.isErr) {
