@@ -30,7 +30,8 @@ export class UserController {
 
   // react admin get list用api
   @Roles(UserStatus.User)
-  @UseGuards(AuthGuard('jwt'), RolesGuard)
+  @UseGuards(RolesGuard)
+  @UseGuards(AuthGuard('jwt'))
   @Get()
   async getUser(@Res() res: Response): Promise<any> {
     res.append('X-Total-Count', '1');
