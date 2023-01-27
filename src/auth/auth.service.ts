@@ -9,6 +9,7 @@ import { CreateUserDto } from 'src/auth/dto/create-user.dto';
 import { ConfigService } from '@nestjs/config';
 import { Jwt, Msg } from './interface/auth.interface';
 import { createWallet } from '../solana/wallet/createWallet';
+import { UserStatus } from './user-status.enum';
 
 // bcrypt がdockerだと使用できない https://qiita.com/curious_enginee/items/45f6ff65177b26971bad
 
@@ -50,13 +51,14 @@ export class AuthService {
     const isValid = await bcrypt.compare(loginDto.password, user.password);
     if (!isValid) throw new ForbiddenException('Email or password incorrect');
     console.log('user', user);
-    return this.generateJwt(user.id, user.email);
+    return this.generateJwt(user.id, user.email, user.role);
   }
 
-  async generateJwt(userId: string, email: string): Promise<Jwt> {
+  async generateJwt(userId: string, email: string, role): Promise<Jwt> {
     const payload = {
       sub: userId,
       email,
+      role,
     };
     const secret = this.config.get('JWT_SECRET');
     const token = await this.jwtService.signAsync(payload, {
