@@ -1,3 +1,4 @@
+import { UserStatus } from 'src/auth/user-status.enum';
 import {
   Body,
   Controller,
@@ -21,13 +22,15 @@ import { GetSolNativeDto } from './dto/get-sol-native.dto';
 import { UpdateUserPasswordDto } from './dto/update-user-password.dto';
 import { UserService } from './user.service';
 import { SolNativeOwnerInfo } from '@solana-suite/core';
+import { Roles } from 'src/decorator/role.decorator';
 
 @Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
   // react admin get list用api
-  @UseGuards(RolesGuard)
+  @Roles(UserStatus.User)
+  // @UseGuards(AuthGuard('jwt'))
   @Get()
   async getUser(@Res() res: Response): Promise<any> {
     res.append('X-Total-Count', '1');
