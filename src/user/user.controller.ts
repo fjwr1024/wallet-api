@@ -29,7 +29,8 @@ import { Roles } from 'src/decorator/role.decorator';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Roles(UserStatus.Admin)
+  // TODO: any型修正
+  @Roles(UserStatus.User)
   @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Get()
   async getUser(@Res() res: Response): Promise<any> {
