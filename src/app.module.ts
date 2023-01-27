@@ -14,8 +14,6 @@ import { LoggingService } from './logging/logging.service';
 import { LoggingModule } from './logging/logging.module';
 import { CurrentUserMiddleware } from './middleware/user-auth.middleware';
 import { NewsModule } from './news/news.module';
-import { APP_GUARD } from '@nestjs/core';
-import { RolesGuard } from './guards/roles.guard';
 
 // TODO: 実際のプロダクトでは DB設定は env からの読み取りに変更する
 @Module({
@@ -37,14 +35,7 @@ import { RolesGuard } from './guards/roles.guard';
     NewsModule,
   ],
   controllers: [AppController],
-  providers: [
-    AppService,
-    LoggingService,
-    // {
-    //   provide: APP_GUARD,
-    //   useClass: RolesGuard,
-    // },
-  ],
+  providers: [AppService, LoggingService],
 })
 export class AppModule {
   constructor(private dataSource: DataSource) {}
