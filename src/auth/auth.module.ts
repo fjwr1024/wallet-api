@@ -12,7 +12,7 @@ import { RolesGuard } from 'src/guards/roles.guard';
   imports: [
     TypeOrmModule.forFeature([AuthService]),
     JwtModule.register({
-      secret: 'secretKey',
+      secret: process.env.JWT_SECRET,
       signOptions: {
         expiresIn: 3600,
       },

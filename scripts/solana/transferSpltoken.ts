@@ -1,4 +1,5 @@
 import { SplToken, Pubkey, KeypairStr } from '@solana-suite/core';
+import { StorageType } from '@solana-suite/shared-metaplex';
 import 'dotenv/config';
 
 const transferSplToken = async () => {
@@ -6,7 +7,15 @@ const transferSplToken = async () => {
 
   const totalAmount = 100000;
   const decimals = 1;
-  const inst1 = await SplToken.mint(owner.toPublicKey(), [owner.toKeypair()], totalAmount, decimals);
+  const tokenMetadata = {
+    name: 'solana-suite-token',
+    symbol: 'SST',
+    royalty: 50,
+    filePath: '../../uploads/0aea4dae92de4cc1b3d7ead95e1b1f52',
+    storageType: 'nftStorage' as StorageType,
+    isMutable: false,
+  };
+  const inst1 = await SplToken.mint(owner.toPublicKey(), owner.toKeypair(), totalAmount, decimals, tokenMetadata);
 
   const mint = inst1.unwrap().data as Pubkey;
 
