@@ -28,14 +28,12 @@ import { Roles } from 'src/decorator/role.decorator';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  // react admin get list用api
-  @Roles(UserStatus.User)
-  @UseGuards(RolesGuard)
-  @UseGuards(AuthGuard('jwt'))
+  @Roles(UserStatus.Admin)
+  @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Get()
   async getUser(@Res() res: Response): Promise<any> {
     res.append('X-Total-Count', '1');
-    // X-Total-Countをつけないとcorsエラーが出る
+    // X-Total-Countをつけないと react admin の仕様上corsエラーが出る
     res.send(await this.userService.getUser());
   }
 
