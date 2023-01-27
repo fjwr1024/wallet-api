@@ -43,7 +43,7 @@ export const mintNft = async (
   name: string,
   url: string,
   quantity: number,
-  ownerWalletAddress: string,
+  description: string,
   ownerSecretKey: string
 ) => {
   for (let i = 0; i < quantity; i++) {
@@ -53,6 +53,7 @@ export const mintNft = async (
         filePath: url,
         name,
         symbol: 'NFT',
+        description,
         royalty: 0,
         storageType: 'nftStorage',
         isMutable: true,

@@ -10,10 +10,5 @@ export class MintNftDto {
   description: string;
 
   @IsNotEmpty()
-  @IsNumber()
   quantity: number;
-
-  @IsNotEmpty()
-  @IsString()
-  image: string;
 }

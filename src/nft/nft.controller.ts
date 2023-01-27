@@ -51,8 +51,15 @@ export class NftController {
 
   @HttpCode(HttpStatus.OK)
   @Post('mint')
-  async createNft(@Body(new ValidationPipe()) mintNftDto: MintNftDto) {
-    const response = await this.nftService.mint(mintNftDto);
+  @UseInterceptors(
+    FileInterceptor('file', {
+      storage: diskStorage({
+        destination: './uploads',
+      }),
+    })
+  )
+  async createNft(@Body(new ValidationPipe()) mintNftDto: MintNftDto, @UploadedFile() file: Express.Multer.File) {
+    const response = await this.nftService.mint(mintNftDto, file);
     return response;
   }
 }

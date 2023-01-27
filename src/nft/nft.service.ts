@@ -35,12 +35,10 @@ export class NftService {
     return response;
   }
 
-  async mint(mintNftDto: MintNftDto) {
-    const imagePath = await decodeBase64(mintNftDto.image);
-    const url = await uploadContents(mintNftDto.name, mintNftDto.description, imagePath);
+  async mint(mintNftDto: MintNftDto, file) {
     const ownerWalletAddress = this.config.get<string>('SYSTEM_WALLET_ADDRESS');
     const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
-    const response = await mintNft(mintNftDto.name, url, mintNftDto.quantity, ownerWalletAddress, ownerSecretKey);
+    const response = await mintNft(mintNftDto.name, file.path, mintNftDto.quantity, ownerWalletAddress, ownerSecretKey);
 
     return response;
   }
