@@ -7,6 +7,7 @@ import {
   HttpStatus,
   Param,
   ParseIntPipe,
+  ParseUUIDPipe,
   Patch,
   Post,
   Res,
@@ -38,13 +39,13 @@ export class UserController {
   }
 
   @Get('user-info/:id')
-  async getUserInfo(@CurrentUser() currentUser, @Param('id', ParseIntPipe) id: number): Promise<User> {
+  async getUserInfo(@CurrentUser() currentUser, @Param('id', ParseUUIDPipe) id: string): Promise<User> {
     const res = await this.userService.getUserInfo(id);
     return res;
   }
 
   @Get('wallet-address/:id')
-  async getWalletAddress(@Param('id', ParseIntPipe) id: string): Promise<User[]> {
+  async getWalletAddress(@Param('id', ParseUUIDPipe) id: string): Promise<User[]> {
     const res = await this.userService.getWalletAddress(id);
     return res;
   }
@@ -60,7 +61,7 @@ export class UserController {
   @HttpCode(HttpStatus.OK)
   @Patch('/update-pass/:id')
   updateUserPassword(
-    @Param('id', ParseIntPipe) id: number,
+    @Param('id', ParseUUIDPipe) id: number,
     @Body() updateUserPasswordDto: UpdateUserPasswordDto
   ): Promise<string> {
     const res = this.userService.updateUserPassword(id, updateUserPasswordDto.password);
