@@ -32,6 +32,7 @@ export class SplTokenController {
     return response;
   }
 
+  // TODO: SPL token metadata で画像が必要か不明なので要確認
   @HttpCode(HttpStatus.OK)
   @Post('create-spl-token')
   async createSpl(@Body(new ValidationPipe()) createSplDto: CreateSplTokenDto) {
