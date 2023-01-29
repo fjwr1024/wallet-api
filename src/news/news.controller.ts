@@ -42,7 +42,6 @@ export class NewsController {
     return res;
   }
 
-  @HttpCode(HttpStatus.OK)
   @Roles(UserStatus.Admin)
   @UseGuards(RolesGuard)
   @Post('post')
@@ -52,7 +51,6 @@ export class NewsController {
     return 'ok';
   }
 
-  @HttpCode(HttpStatus.OK)
   @Roles(UserStatus.Admin)
   @UseGuards(RolesGuard)
   @Patch('/update/:id')
@@ -60,7 +58,6 @@ export class NewsController {
     return this.newsService.updateNews(id, updateNewsDto);
   }
 
-  @HttpCode(HttpStatus.OK)
   @Roles(UserStatus.Admin)
   @UseGuards(RolesGuard)
   @Delete('/delete/:id')

@@ -58,7 +58,6 @@ export class UserController {
   }
 
   @UseGuards(AuthGuard('jwt'))
-  @HttpCode(HttpStatus.OK)
   @Patch('/update-pass/:id')
   updateUserPassword(
     @Param('id', ParseUUIDPipe) id: number,
