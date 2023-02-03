@@ -1,5 +1,14 @@
 import { SubmitHexDto } from './dto/tramsfer-hex-dto';
-import { Body, Controller, HttpCode, HttpStatus, Post, UseInterceptors, ValidationPipe } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  HttpCode,
+  HttpStatus,
+  Post,
+  UploadedFile,
+  UseInterceptors,
+  ValidationPipe,
+} from '@nestjs/common';
 import { GetSplHistoryDto } from './dto/get-spl-history.dto';
 import { GetTokenAmountDto } from './dto/get-token-amount.dto';
 
@@ -42,7 +51,10 @@ export class SplTokenController {
       }),
     })
   )
-  async createSpl(@Body(new ValidationPipe()) createSplDto: CreateSplTokenDto, file) {
+  async createSpl(
+    @Body(new ValidationPipe()) createSplDto: CreateSplTokenDto,
+    @UploadedFile() file: Express.Multer.File
+  ) {
     const response = await this.splTokenService.createSpl(createSplDto, file);
     return response;
   }

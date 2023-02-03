@@ -39,7 +39,7 @@ export class SplTokenService {
       createSplDto.decimals,
       ownerWalletAddress,
       ownerSecretKey,
-      file
+      file.path
     );
 
     return response;

@@ -10,7 +10,6 @@ import {
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
-import { imageFileFilter } from 'src/utils/file-upload-util';
 import { GetNftListDto } from './dto/get-nftlist-dto';
 import { MintNftDto } from './dto/mint-nft-dto';
 import { SubmitHexDto } from './dto/submit-hex-dto';
@@ -43,7 +42,6 @@ export class NftController {
     })
   )
   async testCreateNft(@UploadedFile() file: Express.Multer.File) {
-    console.log(file);
     const response = await this.nftService.testMint(file);
     return response;
   }
