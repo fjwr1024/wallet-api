@@ -1,11 +1,13 @@
 import { SubmitHexDto } from './dto/tramsfer-hex-dto';
-import { Body, Controller, HttpCode, HttpStatus, Post, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, HttpCode, HttpStatus, Post, UseInterceptors, ValidationPipe } from '@nestjs/common';
 import { GetSplHistoryDto } from './dto/get-spl-history.dto';
 import { GetTokenAmountDto } from './dto/get-token-amount.dto';
 
 import { SplTokenService } from './spl-token.service';
 import { SplTokenOwnerInfo, TransferHistory } from '@solana-suite/core';
 import { CreateSplTokenDto } from './dto/create-spl-token';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { diskStorage } from 'multer';
 
 @Controller('spl-token')
 export class SplTokenController {
@@ -32,10 +34,16 @@ export class SplTokenController {
     return response;
   }
 
-  // TODO: SPL token metadata で画像が必要か不明なので要確認
   @Post('create-spl-token')
-  async createSpl(@Body(new ValidationPipe()) createSplDto: CreateSplTokenDto) {
-    const response = await this.splTokenService.createSpl(createSplDto);
+  @UseInterceptors(
+    FileInterceptor('file', {
+      storage: diskStorage({
+        destination: './uploads',
+      }),
+    })
+  )
+  async createSpl(@Body(new ValidationPipe()) createSplDto: CreateSplTokenDto, file) {
+    const response = await this.splTokenService.createSpl(createSplDto, file);
     return response;
   }
 }

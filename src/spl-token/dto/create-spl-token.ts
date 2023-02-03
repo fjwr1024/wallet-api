@@ -1,11 +1,11 @@
 import { IsNotEmpty, IsNumber } from 'class-validator';
 
 export class CreateSplTokenDto {
-  @IsNumber()
+  // @IsNumber()
   @IsNotEmpty()
   totalAmount: number;
 
-  @IsNumber()
+  // @IsNumber()
   @IsNotEmpty()
   decimals: number;
 }

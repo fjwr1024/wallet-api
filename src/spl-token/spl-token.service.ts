@@ -30,7 +30,7 @@ export class SplTokenService {
     return response;
   }
 
-  async createSpl(createSplDto) {
+  async createSpl(createSplDto, file) {
     const ownerWalletAddress = this.config.get<string>('SYSTEM_WALLET_ADDRESS');
     const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
 
@@ -38,7 +38,8 @@ export class SplTokenService {
       createSplDto.totalAmount,
       createSplDto.decimals,
       ownerWalletAddress,
-      ownerSecretKey
+      ownerSecretKey,
+      file
     );
 
     return response;

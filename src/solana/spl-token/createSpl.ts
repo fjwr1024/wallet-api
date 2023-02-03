@@ -1,7 +1,7 @@
 import { SplToken, Pubkey } from '@solana-suite/core';
 import { StorageType } from '@solana-suite/shared-metaplex';
 
-export const createSplToken = async (totalAmount, decimals, ownerWalletAddress, ownerSecretKey) => {
+export const createSplToken = async (totalAmount, decimals, ownerWalletAddress, ownerSecretKey, file) => {
   console.log(totalAmount);
   console.log(decimals);
 
@@ -9,7 +9,7 @@ export const createSplToken = async (totalAmount, decimals, ownerWalletAddress, 
     name: 'solana-suite-token',
     symbol: 'SST',
     royalty: 50,
-    filePath: '../../uploads/0aea4dae92de4cc1b3d7ead95e1b1f52',
+    filePath: file,
     storageType: 'nftStorage' as StorageType,
     isMutable: false,
   };
