@@ -1,19 +1,5 @@
-import { ownInfo } from './../utils/getOwnInfo';
 import { UserStatus } from 'src/auth/user-status.enum';
-import {
-  Body,
-  Controller,
-  Get,
-  HttpCode,
-  HttpStatus,
-  Param,
-  ParseUUIDPipe,
-  Patch,
-  Post,
-  Req,
-  Res,
-  UseGuards,
-} from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpStatus, Patch, Post, Req, Res, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { Response } from 'express';
 
@@ -24,7 +10,7 @@ import { UpdateUserPasswordDto } from './dto/update-user-password.dto';
 import { UserService } from './user.service';
 import { SolNativeOwnerInfo } from '@solana-suite/core';
 import { Roles } from 'src/decorator/role.decorator';
-import jwt_decode from 'jwt-decode';
+import { ownInfoByJwt } from './../utils/getOwnInfo';
 
 @Controller('users')
 export class UserController {
@@ -42,14 +28,14 @@ export class UserController {
 
   @Get('user-info/me')
   async getUserInfo(@Req() request): Promise<User> {
-    const ownData = ownInfo(request);
+    const ownData = ownInfoByJwt(request);
     const res = await this.userService.getUserInfo(ownData.sub);
     return res;
   }
 
   @Get('wallet-address/me')
   async getWalletAddress(@Req() request): Promise<User[]> {
-    const ownData = ownInfo(request);
+    const ownData = ownInfoByJwt(request);
     const res = await this.userService.getWalletAddress(ownData.sub);
     return res;
   }
@@ -64,7 +50,7 @@ export class UserController {
   @UseGuards(AuthGuard('jwt'))
   @Patch('/update-pass/me')
   updateUserPassword(@Req() request, @Body() updateUserPasswordDto: UpdateUserPasswordDto): Promise<string> {
-    const ownData = ownInfo(request);
+    const ownData = ownInfoByJwt(request);
     const res = this.userService.updateUserPassword(ownData.sub, updateUserPasswordDto.password);
     return res;
   }
