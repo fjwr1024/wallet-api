@@ -5,6 +5,7 @@ import { getNftMetadata, getTokenInfoOwned } from '../solana/nft/getMetadata';
 import { submitHex } from '../solana/nft/submitHex';
 import { MintNftDto } from './dto/mint-nft-dto';
 import { mintNft } from '../solana/nft/mintNft';
+import { deleteUploadFile } from 'src/utils/deleteUploadFile';
 
 @Injectable()
 export class NftService {
@@ -27,8 +28,8 @@ export class NftService {
     // const url = await uploadTestContents('name', 'description', file);
     const ownerWalletAddress = this.config.get<string>('SYSTEM_WALLET_ADDRESS');
     const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
-
     const response = await mintNft('name', file.path, 1, ownerWalletAddress, ownerSecretKey);
+    deleteUploadFile(file.path);
 
     return response;
   }
@@ -37,6 +38,7 @@ export class NftService {
     const ownerWalletAddress = this.config.get<string>('SYSTEM_WALLET_ADDRESS');
     const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
     const response = await mintNft(mintNftDto.name, file.path, mintNftDto.quantity, ownerWalletAddress, ownerSecretKey);
+    deleteUploadFile(file.path);
 
     return response;
   }
