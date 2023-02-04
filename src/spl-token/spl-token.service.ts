@@ -1,3 +1,4 @@
+import { deleteUploadFile } from 'src/utils/deleteUploadFile';
 import { GetSplHistoryDto } from './dto/get-spl-history.dto';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
@@ -41,6 +42,8 @@ export class SplTokenService {
       ownerSecretKey,
       file.path
     );
+
+    deleteUploadFile(file.path);
 
     return response;
   }
