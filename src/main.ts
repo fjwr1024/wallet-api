@@ -11,7 +11,7 @@ import { LoggingService } from './logging/logging.service';
 import { LoggingInterceptor } from './intercepter/logging.intercepter';
 
 async function bootstrap() {
-  // サーバーがexpressであることを隠蔽するための処理
+  // サーバーがexpressであることを隠蔽
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     logger: new LoggingService(),
   });

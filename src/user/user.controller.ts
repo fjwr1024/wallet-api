@@ -33,7 +33,8 @@ export class UserController {
     // res.append('X-Total-Count', '1');
     // X-Total-Countをつけないと react admin の仕様上corsエラーが出る
     // res.send(await this.userService.getUser());
-    return await this.userService.getUser();
+    const res = await this.userService.getUser();
+    return res;
   }
 
   @Get('user-info/me')
