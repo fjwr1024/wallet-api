@@ -7,11 +7,24 @@ import { SolNativeOwnerInfo } from '@solana-suite/core';
 
 @Injectable()
 export class UserService {
-  async getUser(skip, take): Promise<User[]> {
-    const res = await AppDataSource.manager.find(User, {
+  async getUser(skip, take, page): Promise<any> {
+    const res = await AppDataSource.manager.findAndCount(User, {
+      order: { id: 'ASC' },
       skip,
       take,
     });
+
+    const [result, total] = res;
+    const lastPage = Math.ceil(total / take);
+    console.log('lastPage', lastPage);
+
+    const nextPage = page + 1 > lastPage ? null : page + 1;
+    console.log('nextPage', nextPage);
+
+    const prevPage = page - 1 < 1 ? null : page - 1;
+    console.log('prevPage', prevPage);
+
+    console.log('res', res);
     return res;
   }
 

@@ -31,7 +31,7 @@ export class UserController {
   @Get()
   async getUser(@Query('take') take: number, @Query('page') page: number): Promise<User[]> {
     const skip = (page - 1) * take;
-    const res = await this.userService.getUser(skip, take);
+    const res = await this.userService.getUser(skip || 0, take || 10, page || 1);
     return res;
   }
 
