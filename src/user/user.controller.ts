@@ -40,15 +40,12 @@ export class UserController {
     res.send(await this.userService.getUser());
   }
 
-  @Get('user-info/:id')
-  async getUserInfo(@CurrentUser() currentUser, @Param('id', ParseUUIDPipe) id: string, @Req() request): Promise<User> {
-    console.log('cookie: ', request.cookies.access_token);
+  @Get('user-info/me')
+  async getUserInfo(@Req() request): Promise<User> {
     const apiKey = request.cookies.access_token;
     const decoded = jwt_decode<{ [name: string]: string }>(apiKey);
-    console.log('decoded', decoded);
     const user = await this.userService.getUserInfo(decoded.sub);
-    console.log('usercontroller ', user);
-    const res = await this.userService.getUserInfo(id);
+    const res = await this.userService.getUserInfo(user.id);
     return res;
   }
 
