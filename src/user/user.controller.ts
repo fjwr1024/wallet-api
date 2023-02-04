@@ -47,9 +47,10 @@ export class UserController {
     return res;
   }
 
-  @Get('wallet-address/:id')
-  async getWalletAddress(@Param('id', ParseUUIDPipe) id: string): Promise<User[]> {
-    const res = await this.userService.getWalletAddress(id);
+  @Get('wallet-address/me')
+  async getWalletAddress(@Req() request): Promise<User[]> {
+    const ownData = ownInfo(request);
+    const res = await this.userService.getWalletAddress(ownData.sub);
     return res;
   }
 
@@ -61,12 +62,10 @@ export class UserController {
   }
 
   @UseGuards(AuthGuard('jwt'))
-  @Patch('/update-pass/:id')
-  updateUserPassword(
-    @Param('id', ParseUUIDPipe) id: number,
-    @Body() updateUserPasswordDto: UpdateUserPasswordDto
-  ): Promise<string> {
-    const res = this.userService.updateUserPassword(id, updateUserPasswordDto.password);
+  @Patch('/update-pass/me')
+  updateUserPassword(@Req() request, @Body() updateUserPasswordDto: UpdateUserPasswordDto): Promise<string> {
+    const ownData = ownInfo(request);
+    const res = this.userService.updateUserPassword(ownData.sub, updateUserPasswordDto.password);
     return res;
   }
 }
