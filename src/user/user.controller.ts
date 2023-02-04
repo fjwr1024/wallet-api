@@ -1,3 +1,4 @@
+import { ownInfo } from './../utils/getOwnInfo';
 import { UserStatus } from 'src/auth/user-status.enum';
 import {
   Body,
@@ -41,9 +42,8 @@ export class UserController {
 
   @Get('user-info/me')
   async getUserInfo(@Req() request): Promise<User> {
-    const apiKey = request.cookies.access_token;
-    const decoded = jwt_decode<{ [name: string]: string }>(apiKey);
-    const res = await this.userService.getUserInfo(decoded.sub);
+    const ownData = ownInfo(request);
+    const res = await this.userService.getUserInfo(ownData.sub);
     return res;
   }
 
