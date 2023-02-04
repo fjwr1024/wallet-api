@@ -15,7 +15,6 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { Response } from 'express';
-import { CurrentUser } from 'src/decorator/current-user-guard.decorator';
 
 import { User } from 'src/entities/user.entity';
 import { RolesGuard } from 'src/guards/roles.guard';
