@@ -14,6 +14,7 @@ export class CurrentUserMiddleware implements NestMiddleware {
       console.log('decoded', decoded);
       const user = await this.userService.getUserInfo(decoded.sub);
       console.log('currentuserid', user.id);
+      console.log('currentuser', user);
       console.log('req.params', req.params);
 
       if (!(String(decoded.sub) === user.id)) {

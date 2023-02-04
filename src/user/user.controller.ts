@@ -9,6 +9,7 @@ import {
   ParseUUIDPipe,
   Patch,
   Post,
+  Req,
   Res,
   UseGuards,
 } from '@nestjs/common';
@@ -23,6 +24,7 @@ import { UpdateUserPasswordDto } from './dto/update-user-password.dto';
 import { UserService } from './user.service';
 import { SolNativeOwnerInfo } from '@solana-suite/core';
 import { Roles } from 'src/decorator/role.decorator';
+import jwt_decode from 'jwt-decode';
 
 @Controller('users')
 export class UserController {
@@ -39,7 +41,13 @@ export class UserController {
   }
 
   @Get('user-info/:id')
-  async getUserInfo(@CurrentUser() currentUser, @Param('id', ParseUUIDPipe) id: string): Promise<User> {
+  async getUserInfo(@CurrentUser() currentUser, @Param('id', ParseUUIDPipe) id: string, @Req() request): Promise<User> {
+    console.log('cookie: ', request.cookies.access_token);
+    const apiKey = request.cookies.access_token;
+    const decoded = jwt_decode<{ [name: string]: string }>(apiKey);
+    console.log('decoded', decoded);
+    const user = await this.userService.getUserInfo(decoded.sub);
+    console.log('usercontroller ', user);
     const res = await this.userService.getUserInfo(id);
     return res;
   }
