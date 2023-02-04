@@ -7,8 +7,11 @@ import { SolNativeOwnerInfo } from '@solana-suite/core';
 
 @Injectable()
 export class UserService {
-  async getUser(): Promise<User[]> {
-    const res = await AppDataSource.manager.find(User);
+  async getUser(skip, take): Promise<User[]> {
+    const res = await AppDataSource.manager.find(User, {
+      skip,
+      take,
+    });
     return res;
   }
 

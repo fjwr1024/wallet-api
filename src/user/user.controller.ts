@@ -1,5 +1,5 @@
 import { UserStatus } from 'src/auth/user-status.enum';
-import { Body, Controller, Get, HttpCode, HttpStatus, Patch, Post, Req, Res, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpStatus, Patch, Post, Query, Req, Res, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { Response } from 'express';
 
@@ -29,8 +29,8 @@ export class UserController {
   // @Roles(UserStatus.Admin)
   // @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Get()
-  async getUser(): Promise<User[]> {
-    const res = await this.userService.getUser();
+  async getUser(@Query('skip') skip: number, @Query('take') take: number): Promise<User[]> {
+    const res = await this.userService.getUser(skip, take);
     return res;
   }
 
