@@ -44,8 +44,7 @@ export class UserController {
   async getUserInfo(@Req() request): Promise<User> {
     const apiKey = request.cookies.access_token;
     const decoded = jwt_decode<{ [name: string]: string }>(apiKey);
-    const user = await this.userService.getUserInfo(decoded.sub);
-    const res = await this.userService.getUserInfo(user.id);
+    const res = await this.userService.getUserInfo(decoded.sub);
     return res;
   }
 
