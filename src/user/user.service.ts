@@ -14,11 +14,11 @@ export class UserService {
       take,
     });
 
+    const _page = Number(page);
+
     const [result, total] = res;
     const lastPage = Math.ceil(total / take);
-    console.log('lastPage', lastPage);
-
-    const nextPage = page + 1 < lastPage ? null : page + 1;
+    const nextPage = _page + 1 > lastPage ? null : _page + 1;
     console.log('nextPage', nextPage);
 
     const prevPage = page - 1 < 1 ? null : page - 1;
