@@ -23,6 +23,7 @@ import { UpdateUserPasswordDto } from './dto/update-user-password.dto';
 import { UserService } from './user.service';
 import { SolNativeOwnerInfo } from '@solana-suite/core';
 import { Roles } from 'src/decorator/role.decorator';
+import { deleteUploadFile } from 'src/utils/deleteUploadFile';
 
 @Controller('users')
 export class UserController {
@@ -35,12 +36,15 @@ export class UserController {
   async getUser(@Res() res: Response): Promise<any> {
     res.append('X-Total-Count', '1');
     // X-Total-Countをつけないと react admin の仕様上corsエラーが出る
+    deleteUploadFile('test');
     res.send(await this.userService.getUser());
   }
 
   @Get('user-info/:id')
   async getUserInfo(@CurrentUser() currentUser, @Param('id', ParseUUIDPipe) id: string): Promise<User> {
     const res = await this.userService.getUserInfo(id);
+    deleteUploadFile('test');
+
     return res;
   }
 
