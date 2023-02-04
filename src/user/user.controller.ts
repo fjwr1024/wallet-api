@@ -26,13 +26,10 @@ export type us = {
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Roles(UserStatus.Admin)
-  @UseGuards(AuthGuard('jwt'), RolesGuard)
+  // @Roles(UserStatus.Admin)
+  // @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Get()
   async getUser(): Promise<User[]> {
-    // res.append('X-Total-Count', '1');
-    // X-Total-Countをつけないと react admin の仕様上corsエラーが出る
-    // res.send(await this.userService.getUser());
     const res = await this.userService.getUser();
     return res;
   }
