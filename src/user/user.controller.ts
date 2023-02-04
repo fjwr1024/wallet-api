@@ -12,18 +12,28 @@ import { SolNativeOwnerInfo } from '@solana-suite/core';
 import { Roles } from 'src/decorator/role.decorator';
 import { ownInfoByJwt } from './../utils/getOwnInfo';
 
+export type us = {
+  id: string;
+  email: string;
+  password: string;
+  walletAddress: string;
+  role: string;
+  created_at: Date;
+  updated_at: Date;
+};
+
 @Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  // TODO: any型修正
-  @Roles(UserStatus.User)
+  @Roles(UserStatus.Admin)
   @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Get()
-  async getUser(@Res() res: Response): Promise<any> {
-    res.append('X-Total-Count', '1');
+  async getUser(): Promise<User[]> {
+    // res.append('X-Total-Count', '1');
     // X-Total-Countをつけないと react admin の仕様上corsエラーが出る
-    res.send(await this.userService.getUser());
+    // res.send(await this.userService.getUser());
+    return await this.userService.getUser();
   }
 
   @Get('user-info/me')
