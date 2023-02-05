@@ -2,10 +2,13 @@ import { News } from './entities/news.entity';
 import 'reflect-metadata';
 import { DataSource } from 'typeorm';
 import { User } from './entities/user.entity';
+import dotenv from 'dotenv';
+
+const env = dotenv.config();
 
 export const AppDataSource = new DataSource({
   type: 'mysql',
-  host: 'localhost',
+  host: process.env.DB_HOST || 'localhost',
   port: 3306,
   username: 'admin',
   password: 'password',
