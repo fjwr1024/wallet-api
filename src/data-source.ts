@@ -2,11 +2,10 @@ import { News } from './entities/news.entity';
 import 'reflect-metadata';
 import { DataSource } from 'typeorm';
 import { User } from './entities/user.entity';
-import dotenv from 'dotenv';
-import { ConfigModule, ConfigService } from '@nestjs/config';
 
 const env = process.env;
 
+// TODO: 環境ごとにenvの切り分け
 export const AppDataSource = new DataSource({
   type: 'mysql',
   host: env.DB_HOST || 'localhost',
