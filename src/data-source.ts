@@ -3,16 +3,17 @@ import 'reflect-metadata';
 import { DataSource } from 'typeorm';
 import { User } from './entities/user.entity';
 import dotenv from 'dotenv';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
-const env = dotenv.config();
+const env = process.env;
 
 export const AppDataSource = new DataSource({
   type: 'mysql',
-  host: process.env.DB_HOST || 'localhost',
-  port: 3306,
-  username: 'admin',
-  password: 'password',
-  database: 'wallet_db',
+  host: env.DB_HOST || 'localhost',
+  port: parseInt(env.DB_PORT) || 3306,
+  username: env.DB_USER || 'admin',
+  password: env.DB_PASS || 'password',
+  database: env.DB_NAME || 'wallet_db',
   synchronize: false,
   logging: false,
   entities: [User, News],
