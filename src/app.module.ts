@@ -14,6 +14,9 @@ import { LoggingService } from './logging/logging.service';
 import { LoggingModule } from './logging/logging.module';
 import { CurrentUserMiddleware } from './middleware/user-auth.middleware';
 import { NewsModule } from './news/news.module';
+import { OrdersController } from './orders/orders.controller';
+import { OrdersService } from './orders/orders.service';
+import { OrdersModule } from './orders/orders.module';
 
 // TODO: 実際のプロダクトでは DB設定は env からの読み取りに変更する
 @Module({
@@ -33,9 +36,10 @@ import { NewsModule } from './news/news.module';
     NftModule,
     LoggingModule,
     NewsModule,
+    OrdersModule,
   ],
-  controllers: [AppController],
-  providers: [AppService, LoggingService],
+  controllers: [AppController, OrdersController],
+  providers: [AppService, LoggingService, OrdersService],
 })
 export class AppModule {
   constructor(private dataSource: DataSource) {}
