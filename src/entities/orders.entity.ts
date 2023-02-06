@@ -1,4 +1,12 @@
-import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import { User } from './user.entity';
 
 @Entity({ name: 'orders' })
@@ -8,6 +16,9 @@ export class Orders {
 
   @Column({ name: 'amount', unique: false, nullable: false })
   amount: number;
+
+  @Column({ name: 'user_id' })
+  userId?: string;
 
   @CreateDateColumn({
     type: 'timestamp',
@@ -22,8 +33,7 @@ export class Orders {
   })
   updated_at!: Date;
 
-  @ManyToOne(() => User, user => user.orders, {
-    cascade: true,
-  })
+  @ManyToOne(() => User, user => user.orders)
+  @JoinColumn({ name: 'user_id' })
   user: User;
 }
