@@ -1,7 +1,5 @@
-import { UserStatus } from 'src/auth/user-status.enum';
 import { Body, Controller, Get, HttpCode, HttpStatus, Patch, Post, Query, Req, Res, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { Response } from 'express';
 
 import { User } from 'src/entities/user.entity';
 import { RolesGuard } from 'src/guards/roles.guard';
@@ -10,17 +8,8 @@ import { UpdateUserPasswordDto } from './dto/update-user-password.dto';
 import { UserService } from './user.service';
 import { SolNativeOwnerInfo } from '@solana-suite/core';
 import { Roles } from 'src/decorator/role.decorator';
+import { UserStatus } from 'src/auth/user-status.enum';
 import { ownInfoByJwt } from './../utils/getOwnInfo';
-
-export type us = {
-  id: string;
-  email: string;
-  password: string;
-  walletAddress: string;
-  role: string;
-  created_at: Date;
-  updated_at: Date;
-};
 
 @Controller('users')
 export class UserController {
