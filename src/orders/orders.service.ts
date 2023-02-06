@@ -28,11 +28,10 @@ export class OrdersService {
       throw new NotFoundException('User is not found');
     }
 
-    if (user.stripeCustomerId != null) {
-      return user.stripeCustomerId;
+    if (user.stripeCustomerId == null) {
+      const customer = await this.stripe.customers.create();
+      await AppDataSource.manager.update(User, { id }, { stripeCustomerId: customer.id });
     }
-    const customer = await this.stripe.customers.create();
-    await AppDataSource.manager.update(User, { id }, { stripeCustomerId: customer.id });
 
     //TODO: sourceを画面から受け取り変数に変更
     const charge = await this.stripe.charges.create({
