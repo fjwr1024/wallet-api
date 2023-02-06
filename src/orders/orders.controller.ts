@@ -8,7 +8,6 @@ export class OrdersController {
 
   @Post()
   async testOrder(@Body() ordersDto: OrdersDto): Promise<string> {
-    console.log('ordersDto', ordersDto);
     const res = await this.ordersService.order(ordersDto);
     return res;
   }
