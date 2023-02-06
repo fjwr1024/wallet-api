@@ -5,6 +5,7 @@ export class OrdersDto {
   @IsNotEmpty()
   userId: string;
 
+  // TODO: max 値をプロダクトごとに決定
   @IsNumber()
   @IsNotEmpty()
   amount: number;

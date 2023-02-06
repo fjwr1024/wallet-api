@@ -70,7 +70,7 @@ export class AuthService {
     };
   }
 
-  async validateUser(email: string, pass: string): Promise<any> {
+  async validateUser(email: string, pass: string): Promise<User | null> {
     const user = await AppDataSource.manager.findOneBy(User, { email });
     if (user && user.password === pass) {
       const { ...result } = user;
