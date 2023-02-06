@@ -25,6 +25,9 @@ export class User {
   })
   role: UserStatus;
 
+  @Column({ name: 'stripe_customer_id', unique: true, nullable: true })
+  stripeCustomerId: string;
+
   @CreateDateColumn({
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP(6)',
