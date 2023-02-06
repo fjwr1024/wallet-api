@@ -6,9 +6,6 @@ export class Orders {
   @PrimaryGeneratedColumn('increment', { name: 'id' })
   id: number;
 
-  @Column({ name: 'user_id', unique: false, nullable: false })
-  userId: number;
-
   @Column({ name: 'amount', unique: false, nullable: false })
   amount: number;
 
