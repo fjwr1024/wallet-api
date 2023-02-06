@@ -1,6 +1,7 @@
 import { Exclude } from 'class-transformer';
 import { UserStatus } from '../auth/user-status.enum';
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Orders } from './orders.entity';
 
 @Entity({ name: 'users' })
 export class User {
@@ -36,4 +37,7 @@ export class User {
     onUpdate: 'CURRENT_TIMESTAMP(6)',
   })
   updated_at!: Date;
+
+  @OneToMany(() => Orders, order => order.user)
+  orders: Orders[];
 }

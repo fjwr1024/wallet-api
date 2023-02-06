@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { User } from './user.entity';
 
 @Entity({ name: 'orders' })
 export class Orders {
@@ -23,4 +24,7 @@ export class Orders {
     onUpdate: 'CURRENT_TIMESTAMP(6)',
   })
   updated_at!: Date;
+
+  @ManyToOne(() => User, user => user.orders)
+  user: User;
 }
