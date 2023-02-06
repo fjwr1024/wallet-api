@@ -20,6 +20,9 @@ export class Orders {
   @Column({ name: 'user_id' })
   userId?: string;
 
+  @Column({ name: 'charge_id' })
+  chargeId?: string;
+
   @CreateDateColumn({
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP(6)',

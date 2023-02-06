@@ -28,6 +28,7 @@ export class OrdersService {
       throw new NotFoundException('User is not found');
     }
 
+    //TODO: sourceを画面から受け取り変数に変更
     const charge = await this.stripe.charges.create({
       amount: ordersDto.amount,
       currency: 'usd',
@@ -40,6 +41,7 @@ export class OrdersService {
     const orders = new Orders();
     orders.userId = ordersDto.userId;
     orders.amount = ordersDto.amount;
+    orders.chargeId = charge.id;
 
     AppDataSource.manager.save(Orders, orders);
     return 'ok';
