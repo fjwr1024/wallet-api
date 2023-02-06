@@ -9,7 +9,7 @@ export class OrdersService {
     console.log('ordersDto', ordersDto);
 
     const orders = new Orders();
-    orders.user.id = ordersDto.userId;
+    orders.userId = ordersDto.userId;
     orders.amount = ordersDto.amount;
 
     AppDataSource.manager.save(Orders, orders);
