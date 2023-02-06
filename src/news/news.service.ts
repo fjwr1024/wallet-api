@@ -1,4 +1,3 @@
-import { UpdateNewsDto } from './dto/update-news.dto';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { AppDataSource } from 'src/data-source';
 import { News } from 'src/entities/news.entity';
