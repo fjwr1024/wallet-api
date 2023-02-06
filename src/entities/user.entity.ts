@@ -38,6 +38,8 @@ export class User {
   })
   updated_at!: Date;
 
-  @OneToMany(() => Orders, order => order.user)
+  @OneToMany(() => Orders, order => order.user, {
+    cascade: true,
+  })
   orders: Orders[];
 }

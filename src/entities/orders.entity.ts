@@ -22,6 +22,8 @@ export class Orders {
   })
   updated_at!: Date;
 
-  @ManyToOne(() => User, user => user.orders)
+  @ManyToOne(() => User, user => user.orders, {
+    cascade: true,
+  })
   user: User;
 }
