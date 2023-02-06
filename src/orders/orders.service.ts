@@ -20,13 +20,19 @@ export class OrdersService {
   async order(ordersDto: OrdersDto): Promise<string> {
     const id = ordersDto.userId;
 
-    const res = await AppDataSource.manager.findOneBy(User, {
+    const user = await AppDataSource.manager.findOneBy(User, {
       id,
     });
 
-    if (!res) {
+    if (!user) {
       throw new NotFoundException('User is not found');
     }
+
+    if (user.stripeCustomerId != null) {
+      return user.stripeCustomerId;
+    }
+    const customer = await this.stripe.customers.create();
+    await AppDataSource.manager.update(User, { id }, { stripeCustomerId: customer.id });
 
     //TODO: sourceを画面から受け取り変数に変更
     const charge = await this.stripe.charges.create({
