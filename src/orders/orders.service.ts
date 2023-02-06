@@ -7,7 +7,7 @@ import { OrdersDto } from './dto/orders.dto';
 export class OrdersService {
   async order(ordersDto: OrdersDto): Promise<string> {
     const orders = new Orders();
-    orders.user = ordersDto.userId;
+    orders.user.id = ordersDto.userId;
     orders.amount = ordersDto.amount;
 
     AppDataSource.manager.save(Orders, orders);
