@@ -3,6 +3,7 @@ import { DataSource } from 'typeorm';
 import { User } from './entities/user.entity';
 import { News } from './entities/news.entity';
 import { Orders } from './entities/orders.entity';
+import { Products } from './entities/product.entity';
 
 const env = process.env;
 
@@ -16,7 +17,7 @@ export const AppDataSource = new DataSource({
   database: env.DB_NAME || 'wallet_db',
   synchronize: false,
   logging: false,
-  entities: [User, News, Orders],
+  entities: [User, News, Orders, Products],
   migrations: ['src/migration/*.ts'],
 });
 
