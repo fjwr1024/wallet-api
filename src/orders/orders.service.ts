@@ -32,6 +32,7 @@ export class OrdersService {
       amount: ordersDto.amount,
       currency: 'usd',
       description: `Order ${new Date()} by ${ordersDto.userId}`,
+      source: 'tok_visa',
     });
 
     console.log('charge', charge);
