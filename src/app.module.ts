@@ -43,7 +43,7 @@ import { OrdersModule } from './orders/orders.module';
 })
 export class AppModule {
   constructor(private dataSource: DataSource) {}
-  configure(consumer: MiddlewareConsumer): void {
-    consumer.apply(CurrentUserMiddleware).forRoutes('*');
-  }
+  // configure(consumer: MiddlewareConsumer): void {
+  //   consumer.apply(CurrentUserMiddleware).forRoutes('*');
+  // }
 }

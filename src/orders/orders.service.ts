@@ -6,6 +6,8 @@ import { OrdersDto } from './dto/orders.dto';
 @Injectable()
 export class OrdersService {
   async order(ordersDto: OrdersDto): Promise<string> {
+    console.log('ordersDto', ordersDto);
+
     const orders = new Orders();
     orders.user.id = ordersDto.userId;
     orders.amount = ordersDto.amount;
