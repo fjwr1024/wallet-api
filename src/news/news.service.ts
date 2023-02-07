@@ -1,4 +1,3 @@
-import { getNewsById } from './../utils/newsUtil';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { AppDataSource } from 'src/data-source';
 import { News } from 'src/entities/news.entity';

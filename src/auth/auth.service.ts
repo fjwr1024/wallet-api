@@ -54,7 +54,7 @@ export class AuthService {
     return this.generateJwt(user.id, user.email, user.role);
   }
 
-  async generateJwt(userId: string, email: string, role): Promise<Jwt> {
+  async generateJwt(userId: string, email: string, role: UserStatus): Promise<Jwt> {
     const payload = {
       sub: userId,
       email,
