@@ -56,23 +56,42 @@ export class OrdersService {
 
   async orderTicket(orderTicketDto: OrderTicketDto): Promise<string> {
     const id = orderTicketDto.userId;
-
-    const user = await AppDataSource.manager.findOneBy(User, {
+    const resUser = await AppDataSource.manager.findOneBy(User, {
       id,
     });
 
-    if (!user) {
+    if (!resUser) {
       throw new NotFoundException('User is not found');
     }
 
+    const currentTickets = resUser.tickets;
+    console.log('currentTiclet', currentTickets);
+
     const productName = orderTicketDto.name;
 
-    const order = await AppDataSource.manager.findOneBy(Products, {
+    const resOrder = await AppDataSource.manager.findOneBy(Products, {
       name: productName,
     });
 
-    if (!order) {
+    if (!resOrder) {
       throw new NotFoundException('Order Plan is not found');
+    }
+
+    console.log('res order', resOrder);
+
+    const user = new User();
+    // TODO: update condition
+    if (currentTickets === null || currentTickets === 0) {
+      user.tickets = resOrder.ticketAmount;
+
+      await AppDataSource.manager.update(User, id, {
+        tickets: user.tickets,
+      });
+    } else {
+      user.tickets = resOrder.ticketAmount + resUser.tickets;
+      await AppDataSource.manager.update(User, id, {
+        tickets: user.tickets,
+      });
     }
 
     return 'ok';
