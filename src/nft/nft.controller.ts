@@ -54,8 +54,24 @@ export class NftController {
       }),
     })
   )
-  async createNft(@Body(new ValidationPipe()) mintNftDto: MintNftDto, @UploadedFile() file: Express.Multer.File) {
+  async createNftByAdmin(
+    @Body(new ValidationPipe()) mintNftDto: MintNftDto,
+    @UploadedFile() file: Express.Multer.File
+  ) {
     const response = await this.nftService.mint(mintNftDto, file);
+    return response;
+  }
+
+  @Post('user-mint')
+  @UseInterceptors(
+    FileInterceptor('file', {
+      storage: diskStorage({
+        destination: './uploads',
+      }),
+    })
+  )
+  async createNftByUser(@Body(new ValidationPipe()) mintNftDto: MintNftDto, @UploadedFile() file: Express.Multer.File) {
+    const response = await this.nftService.mintByUser(mintNftDto, file);
     return response;
   }
 }
