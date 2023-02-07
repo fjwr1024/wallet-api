@@ -9,7 +9,7 @@ import { UserService } from './user.service';
 import { SolNativeOwnerInfo } from '@solana-suite/core';
 import { Roles } from 'src/decorator/role.decorator';
 import { UserStatus } from 'src/auth/user-status.enum';
-import { ownInfoByJwt } from './../utils/getOwnInfo';
+import { ownInfoByJwt } from '../utils/getOwnInfoByJwt';
 
 @Controller('users')
 export class UserController {

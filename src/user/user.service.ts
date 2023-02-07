@@ -39,17 +39,6 @@ export class UserService {
     return res;
   }
 
-  async getCurrentUser(email: string): Promise<User> {
-    const res = await AppDataSource.manager.findOneBy(User, {
-      email,
-    });
-
-    if (!res) {
-      throw new NotFoundException('User is not found');
-    }
-    return res;
-  }
-
   async getWalletAddress(id: string): Promise<User[]> {
     const res = await AppDataSource.manager.find(User, {
       select: {
