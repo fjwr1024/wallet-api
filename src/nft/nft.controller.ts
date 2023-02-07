@@ -46,7 +46,7 @@ export class NftController {
     return response;
   }
 
-  @Post('mint')
+  @Post('admin-mint')
   @UseInterceptors(
     FileInterceptor('file', {
       storage: diskStorage({
