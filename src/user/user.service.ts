@@ -55,18 +55,6 @@ export class UserService {
     return res;
   }
 
-  async getUserEmail(email): Promise<User[]> {
-    const res = await AppDataSource.manager.find(User, {
-      select: {
-        email: true,
-      },
-      where: {
-        email,
-      },
-    });
-    return res;
-  }
-
   async updateUserPassword(id, password) {
     const user = await AppDataSource.manager.findOneBy(User, {
       id,
