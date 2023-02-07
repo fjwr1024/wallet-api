@@ -83,6 +83,28 @@ export class OrdersService {
       tickets: updateTickets,
     });
 
+    if (resUser.stripeCustomerId == null) {
+      const customer = await this.stripe.customers.create();
+      await AppDataSource.manager.update(User, { id }, { stripeCustomerId: customer.id });
+    }
+
+    //TODO: sourceを画面から受け取り変数に変更
+    const charge = await this.stripe.charges.create({
+      amount: resProduct.ticketAmount,
+      currency: 'usd',
+      description: `Order ${new Date()} by ${orderTicketDto.userId}`,
+      source: 'tok_visa',
+    });
+
+    console.log('charge', charge);
+
+    const orders = new Orders();
+    orders.userId = orderTicketDto.userId;
+    orders.amount = resProduct.ticketAmount;
+    orders.chargeId = charge.id;
+
+    AppDataSource.manager.save(Orders, orders);
+
     return 'ok';
   }
 }
