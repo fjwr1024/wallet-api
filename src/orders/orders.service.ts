@@ -77,11 +77,8 @@ export class OrdersService {
 
     let updateTickets;
 
-    if (!currentTickets || currentTickets === 0) {
-      updateTickets = resOrder.ticketAmount;
-    } else {
-      updateTickets = resOrder.ticketAmount + resUser.tickets;
-    }
+    updateTickets = currentTickets === 0 ? resOrder.ticketAmount : resOrder.ticketAmount + resUser.tickets;
+
     await AppDataSource.manager.update(User, id, {
       tickets: updateTickets,
     });
