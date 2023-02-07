@@ -79,18 +79,18 @@ export class OrdersService {
 
     console.log('res order', resOrder);
 
-    const user = new User();
-    // TODO: update condition
-    if (currentTickets === null || currentTickets === 0) {
-      user.tickets = resOrder.ticketAmount;
+    let updateTickets;
+
+    if (!currentTickets || currentTickets === 0) {
+      updateTickets = resOrder.ticketAmount;
 
       await AppDataSource.manager.update(User, id, {
-        tickets: user.tickets,
+        tickets: updateTickets,
       });
     } else {
-      user.tickets = resOrder.ticketAmount + resUser.tickets;
+      updateTickets = resOrder.ticketAmount + resUser.tickets;
       await AppDataSource.manager.update(User, id, {
-        tickets: user.tickets,
+        tickets: updateTickets,
       });
     }
 
