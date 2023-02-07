@@ -14,6 +14,9 @@ export class Products {
   @Column({ name: 'description', unique: false, nullable: false })
   description: string;
 
+  @Column({ name: 'ticket_amount', unique: false, nullable: true })
+  ticketAmount: number;
+
   @CreateDateColumn({
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP(6)',
