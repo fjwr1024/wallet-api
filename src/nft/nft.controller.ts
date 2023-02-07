@@ -11,7 +11,8 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { GetNftListDto } from './dto/get-nftlist-dto';
-import { MintNftDto } from './dto/mint-nft-dto';
+import { MintAdminNftDto } from './dto/mint-admin-nft-dto';
+import { MintUserNftDto } from './dto/mint-user-nft-dto';
 import { SubmitHexDto } from './dto/submit-hex-dto';
 import { NftService } from './nft.service';
 
@@ -55,7 +56,7 @@ export class NftController {
     })
   )
   async createNftByAdmin(
-    @Body(new ValidationPipe()) mintNftDto: MintNftDto,
+    @Body(new ValidationPipe()) mintNftDto: MintAdminNftDto,
     @UploadedFile() file: Express.Multer.File
   ) {
     const response = await this.nftService.mint(mintNftDto, file);
@@ -70,8 +71,11 @@ export class NftController {
       }),
     })
   )
-  async createNftByUser(@Body(new ValidationPipe()) mintNftDto: MintNftDto, @UploadedFile() file: Express.Multer.File) {
-    const response = await this.nftService.mintByUser(mintNftDto, file);
+  async createNftByUser(
+    @Body(new ValidationPipe()) mintUserNftDto: MintUserNftDto,
+    @UploadedFile() file: Express.Multer.File
+  ) {
+    const response = await this.nftService.mintByUser(mintUserNftDto, file);
     return response;
   }
 }

@@ -16,34 +16,34 @@ export class NftService {
 
   async getNftList(getNftListDto: GetNftListDto) {
     const ownedNftList = await getTokenInfoOwned(getNftListDto.walletAddress);
-    const response = await getNftMetadata(ownedNftList);
-    return response;
+    const res = await getNftMetadata(ownedNftList);
+    return res;
   }
 
   async submitHex(submitHexDto) {
     const ownerSecretKey = this.config.get<string>('OWNER_SECRET_KEY');
     console.log('hex data', submitHexDto.hex);
-    const response = submitHex(submitHexDto.hex, ownerSecretKey);
-    return response;
+    const res = submitHex(submitHexDto.hex, ownerSecretKey);
+    return res;
   }
 
   async testMint(file) {
     // const url = await uploadTestContents('name', 'description', file);
     const ownerWalletAddress = this.config.get<string>('SYSTEM_WALLET_ADDRESS');
     const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
-    const response = await mintNft('name', file.path, 1, ownerWalletAddress, ownerSecretKey);
+    const res = await mintNft('name', file.path, 1, ownerWalletAddress, ownerSecretKey);
     deleteUploadFile(file.path);
 
-    return response;
+    return res;
   }
 
   async mint(mintNftDto: MintAdminNftDto, file) {
     const ownerWalletAddress = this.config.get<string>('SYSTEM_WALLET_ADDRESS');
     const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
-    const response = await mintNft(mintNftDto.name, file.path, mintNftDto.quantity, ownerWalletAddress, ownerSecretKey);
+    const res = await mintNft(mintNftDto.name, file.path, mintNftDto.quantity, ownerWalletAddress, ownerSecretKey);
     deleteUploadFile(file.path);
 
-    return response;
+    return res;
   }
 
   // ユーザーIDを取得してチケットを一枚消費
@@ -72,7 +72,7 @@ export class NftService {
       tickets: userTicket - 1,
     });
 
-    const response = await mintNft(
+    const res = await mintNft(
       mintUserNftDto.name,
       file.path,
       mintUserNftDto.quantity,
@@ -81,6 +81,6 @@ export class NftService {
     );
     deleteUploadFile(file.path);
 
-    return response;
+    return res;
   }
 }
