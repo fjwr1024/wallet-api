@@ -65,8 +65,6 @@ export class OrdersService {
     }
 
     const currentTickets = resUser.tickets;
-    console.log('currentTiclet', currentTickets);
-
     const productName = orderTicketDto.name;
 
     const resOrder = await AppDataSource.manager.findOneBy(Products, {
@@ -77,22 +75,16 @@ export class OrdersService {
       throw new NotFoundException('Order Plan is not found');
     }
 
-    console.log('res order', resOrder);
-
     let updateTickets;
 
     if (!currentTickets || currentTickets === 0) {
       updateTickets = resOrder.ticketAmount;
-
-      await AppDataSource.manager.update(User, id, {
-        tickets: updateTickets,
-      });
     } else {
       updateTickets = resOrder.ticketAmount + resUser.tickets;
-      await AppDataSource.manager.update(User, id, {
-        tickets: updateTickets,
-      });
     }
+    await AppDataSource.manager.update(User, id, {
+      tickets: updateTickets,
+    });
 
     return 'ok';
   }

@@ -18,7 +18,7 @@ export class User {
   @Column({ name: 'wallet_address' })
   walletAddress: string;
 
-  @Column({ name: 'tickets', unique: false, nullable: true })
+  @Column({ name: 'tickets', unique: false, nullable: true, default: 0 })
   tickets: number;
 
   @Column({
