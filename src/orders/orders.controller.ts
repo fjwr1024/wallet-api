@@ -1,4 +1,5 @@
 import { Body, Controller, Post } from '@nestjs/common';
+import { OrderTicketDto } from './dto/order-ticket.dto';
 import { OrdersDto } from './dto/orders.dto';
 import { OrdersService } from './orders.service';
 
@@ -12,9 +13,9 @@ export class OrdersController {
     return res;
   }
 
-  @Post()
-  async orderTicket(@Body() ordersDto: OrdersDto): Promise<string> {
-    const res = await this.ordersService.order(ordersDto);
+  @Post('/ticket')
+  async orderTicket(@Body() orderTicketDto: OrderTicketDto): Promise<string> {
+    const res = await this.ordersService.orderTicket(orderTicketDto);
     return res;
   }
 }

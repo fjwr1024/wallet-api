@@ -3,7 +3,9 @@ import { ConfigService } from '@nestjs/config';
 import { AppDataSource } from 'src/data-source';
 import { Orders } from 'src/entities/orders.entity';
 import { User } from 'src/entities/user.entity';
+import { Products } from './../entities/product.entity';
 import Stripe from 'stripe';
+import { OrderTicketDto } from './dto/order-ticket.dto';
 import { OrdersDto } from './dto/orders.dto';
 
 @Injectable()
@@ -49,6 +51,30 @@ export class OrdersService {
     orders.chargeId = charge.id;
 
     AppDataSource.manager.save(Orders, orders);
+    return 'ok';
+  }
+
+  async orderTicket(orderTicketDto: OrderTicketDto): Promise<string> {
+    const id = orderTicketDto.userId;
+
+    const user = await AppDataSource.manager.findOneBy(User, {
+      id,
+    });
+
+    if (!user) {
+      throw new NotFoundException('User is not found');
+    }
+
+    const productName = orderTicketDto.name;
+
+    const order = await AppDataSource.manager.findOneBy(Products, {
+      name: productName,
+    });
+
+    if (!order) {
+      throw new NotFoundException('Order Plan is not found');
+    }
+
     return 'ok';
   }
 }
