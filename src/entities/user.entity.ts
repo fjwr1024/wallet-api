@@ -18,6 +18,9 @@ export class User {
   @Column({ name: 'wallet_address' })
   walletAddress: string;
 
+  @Column({ name: 'tickets', unique: false, nullable: true })
+  tickets: number;
+
   @Column({
     type: 'enum',
     enum: UserStatus,
