@@ -6,7 +6,7 @@ export class Products {
   id: number;
 
   @Column({ name: 'name' })
-  name: number;
+  name: string;
 
   @Column({ name: 'price', unique: false, nullable: false })
   price: number;
