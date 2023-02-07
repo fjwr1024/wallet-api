@@ -11,4 +11,10 @@ export class OrdersController {
     const res = await this.ordersService.order(ordersDto);
     return res;
   }
+
+  @Post()
+  async orderTicket(@Body() ordersDto: OrdersDto): Promise<string> {
+    const res = await this.ordersService.order(ordersDto);
+    return res;
+  }
 }
