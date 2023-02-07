@@ -1,3 +1,4 @@
+import { getNewsById } from './../utils/newsUtil';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { AppDataSource } from 'src/data-source';
 import { News } from 'src/entities/news.entity';
@@ -27,6 +28,7 @@ export class NewsService {
     if (!res) {
       throw new NotFoundException('This News ID is not found');
     }
+
     return res;
   }
 
