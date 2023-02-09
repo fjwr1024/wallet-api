@@ -46,9 +46,6 @@ export class NftService {
     return res;
   }
 
-  // ユーザーIDを取得してチケットを一枚消費
-  // 建て替えはfee payer が行う
-  // 誰がいつmintしたかくらいは保存したい？
   async mintByUser(mintUserNftDto: MintUserNftDto, file) {
     const ownerWalletAddress = this.config.get<string>('SYSTEM_WALLET_ADDRESS');
     const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
