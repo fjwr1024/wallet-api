@@ -23,7 +23,7 @@ async function bootstrap() {
     credentials: true,
     allowedHeaders: 'Origin, X-Requested-With, X-Total-Count, Content-Type, Accept',
     exposedHeaders: 'Content-Range, X-Total-Count',
-    origin: 'http://localhost:3000',
+    origin: 'http://localhost:3001',
   });
 
   app.use(cookieParser());
@@ -45,6 +45,6 @@ async function bootstrap() {
   app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
   app.use(helmet());
 
-  await app.listen(process.env.PORT || 4000);
+  await app.listen(process.env.PORT || 3000);
 }
 bootstrap();
