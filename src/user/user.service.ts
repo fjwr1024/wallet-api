@@ -7,7 +7,7 @@ import { SolNativeOwnerInfo } from '@solana-suite/core';
 
 @Injectable()
 export class UserService {
-  async getUser(skip: number, take: number, page: number): Promise<any> {
+  async getQueryUser(skip: number, take: number, page: number): Promise<any> {
     const res = await AppDataSource.manager.findAndCount(User, {
       order: { id: 'ASC' },
       skip,
@@ -25,6 +25,15 @@ export class UserService {
     console.log('prevPage', prevPage);
 
     console.log('res', res);
+    return res;
+  }
+
+  async getAllUser(): Promise<any> {
+    const res = await AppDataSource.manager.findAndCount(User);
+
+    if (!res) {
+      throw new NotFoundException('User is not found');
+    }
     return res;
   }
 

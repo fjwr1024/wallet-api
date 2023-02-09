@@ -19,8 +19,9 @@ export class UserController {
   // @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Get()
   async getUser(@Query('take') take: number, @Query('page') page: number): Promise<User[]> {
-    const skip = (page - 1) * take;
-    const res = await this.userService.getUser(skip || 0, take || 10, page || 1);
+    // const skip = (page - 1) * take;
+    // const res = await this.userService.getQueryUser(skip || 0, take || 10, page || 1);
+    const res = await this.userService.getAllUser();
     return res;
   }
 
