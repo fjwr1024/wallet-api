@@ -18,10 +18,15 @@ export class UserController {
   // @Roles(UserStatus.Admin)
   // @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Get()
-  async getUser(@Query('take') take: number, @Query('page') page: number): Promise<User[]> {
-    // const skip = (page - 1) * take;
-    // const res = await this.userService.getQueryUser(skip || 0, take || 10, page || 1);
+  async getAllUser(): Promise<User[]> {
     const res = await this.userService.getAllUser();
+    return res;
+  }
+
+  @Get('/search-query')
+  async getQueryUser(@Query('take') take: number, @Query('page') page: number): Promise<User[]> {
+    const skip = (page - 1) * take;
+    const res = await this.userService.getQueryUser(skip || 0, take || 10, page || 1);
     return res;
   }
 
