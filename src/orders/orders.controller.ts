@@ -15,8 +15,8 @@ export class OrdersController {
   }
 
   @Get('/payment-intent')
-  async createPaymentIntent(): Promise<Stripe.Response<Stripe.PaymentIntent>> {
-    const res = await this.ordersService.createPaymentIntent();
+  async getPaymentIntent(): Promise<any> {
+    const res = await this.ordersService.getPaymentIntent();
     return res;
   }
 

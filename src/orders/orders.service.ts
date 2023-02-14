@@ -7,6 +7,7 @@ import { Products } from './../entities/product.entity';
 import Stripe from 'stripe';
 import { OrderTicketDto } from './dto/order-ticket.dto';
 import { OrdersDto } from './dto/orders.dto';
+import { getUserById } from 'src/utils/usersUtil';
 
 @Injectable()
 export class OrdersService {
@@ -22,13 +23,7 @@ export class OrdersService {
   async testOrder(ordersDto: OrdersDto): Promise<string> {
     const id = ordersDto.userId;
 
-    const user = await AppDataSource.manager.findOneBy(User, {
-      id,
-    });
-
-    if (!user) {
-      throw new NotFoundException('User is not found');
-    }
+    const user = await getUserById(id);
 
     if (!user.stripeCustomerId) {
       const customer = await this.stripe.customers.create();
@@ -52,12 +47,14 @@ export class OrdersService {
     return 'ok';
   }
 
-  async createPaymentIntent(): Promise<Stripe.Response<Stripe.PaymentIntent>> {
+  async getPaymentIntent(): Promise<any> {
     const paymentIntent = await this.stripe.paymentIntents.create({
-      amount: 200,
+      amount: 100,
       currency: 'jpy',
+      payment_method_types: ['card'],
     });
-    return paymentIntent;
+    const clientSecret = paymentIntent.client_secret;
+    return { paymentIntent, clientSecret };
   }
 
   async orderTicket(orderTicketDto: OrderTicketDto): Promise<string> {
