@@ -11,5 +11,5 @@ export const getNewsById = async (id: number): Promise<News> => {
     throw new NotFoundException('News is not found');
   }
 
-  return news;
+  return news || undefined;
 };
