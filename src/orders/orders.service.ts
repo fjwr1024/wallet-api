@@ -95,14 +95,11 @@ export class OrdersService {
       await AppDataSource.manager.update(User, { id }, { stripeCustomerId: customer.id });
     }
 
-    console.log('ticket amount', resProduct.ticketAmount);
-
     //TODO: sourceを画面から受け取り変数に変更
-    const charge = await this.stripe.charges.create({
+    const charge = await this.stripe.paymentIntents.create({
       amount: resProduct.price,
       currency: 'usd',
       description: `Order ${new Date()} by ${orderTicketDto.userId}`,
-      source: 'tok_visa',
     });
 
     console.log('charge', charge);
