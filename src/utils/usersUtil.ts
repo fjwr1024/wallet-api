@@ -11,7 +11,7 @@ export const getUserById = async (id: string): Promise<User> => {
     throw new NotFoundException('User is not found');
   }
 
-  return user;
+  return user || undefined;
 };
 
 export const getUserByEmail = async (email: string): Promise<User> => {
