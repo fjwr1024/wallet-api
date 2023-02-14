@@ -9,7 +9,7 @@ export class OrdersController {
 
   @Post()
   async testOrder(@Body() ordersDto: OrdersDto): Promise<string> {
-    const res = await this.ordersService.order(ordersDto);
+    const res = await this.ordersService.testOrder(ordersDto);
     return res;
   }
 

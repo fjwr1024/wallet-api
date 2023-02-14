@@ -19,7 +19,7 @@ export class OrdersService {
     });
   }
 
-  async order(ordersDto: OrdersDto): Promise<string> {
+  async testOrder(ordersDto: OrdersDto): Promise<string> {
     const id = ordersDto.userId;
 
     const user = await AppDataSource.manager.findOneBy(User, {
@@ -30,17 +30,16 @@ export class OrdersService {
       throw new NotFoundException('User is not found');
     }
 
-    if (user.stripeCustomerId == null) {
+    if (!user.stripeCustomerId) {
       const customer = await this.stripe.customers.create();
       await AppDataSource.manager.update(User, { id }, { stripeCustomerId: customer.id });
     }
 
     //TODO: sourceを画面から受け取り変数に変更
-    const charge = await this.stripe.charges.create({
+    const charge = await this.stripe.paymentIntents.create({
       amount: ordersDto.amount,
       currency: 'usd',
       description: `Order ${new Date()} by ${ordersDto.userId}`,
-      source: 'tok_visa',
     });
 
     console.log('charge', charge);
@@ -96,9 +95,11 @@ export class OrdersService {
       await AppDataSource.manager.update(User, { id }, { stripeCustomerId: customer.id });
     }
 
+    console.log('ticket amount', resProduct.ticketAmount);
+
     //TODO: sourceを画面から受け取り変数に変更
     const charge = await this.stripe.charges.create({
-      amount: resProduct.ticketAmount,
+      amount: resProduct.price,
       currency: 'usd',
       description: `Order ${new Date()} by ${orderTicketDto.userId}`,
       source: 'tok_visa',
