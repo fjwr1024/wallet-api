@@ -35,7 +35,6 @@ export class OrdersService {
       await AppDataSource.manager.update(User, { id }, { stripeCustomerId: customer.id });
     }
 
-    //TODO: sourceを画面から受け取り変数に変更
     const charge = await this.stripe.paymentIntents.create({
       amount: ordersDto.amount,
       currency: 'usd',
@@ -53,7 +52,7 @@ export class OrdersService {
     return 'ok';
   }
 
-  async createPaymentIntent(): Promise<any> {
+  async createPaymentIntent(): Promise<Stripe.Response<Stripe.PaymentIntent>> {
     const paymentIntent = await this.stripe.paymentIntents.create({
       amount: 200,
       currency: 'jpy',
@@ -95,7 +94,6 @@ export class OrdersService {
       await AppDataSource.manager.update(User, { id }, { stripeCustomerId: customer.id });
     }
 
-    //TODO: sourceを画面から受け取り変数に変更
     const charge = await this.stripe.paymentIntents.create({
       amount: resProduct.price,
       currency: 'usd',

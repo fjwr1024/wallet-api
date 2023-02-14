@@ -1,4 +1,5 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
+import Stripe from 'stripe';
 import { OrderTicketDto } from './dto/order-ticket.dto';
 import { OrdersDto } from './dto/orders.dto';
 import { OrdersService } from './orders.service';
@@ -14,7 +15,7 @@ export class OrdersController {
   }
 
   @Get('/payment-intent')
-  async createPaymentIntent(): Promise<string> {
+  async createPaymentIntent(): Promise<Stripe.Response<Stripe.PaymentIntent>> {
     const res = await this.ordersService.createPaymentIntent();
     return res;
   }
