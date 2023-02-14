@@ -54,6 +54,14 @@ export class OrdersService {
     return 'ok';
   }
 
+  async createPaymentIntent(): Promise<any> {
+    const paymentIntent = await this.stripe.paymentIntents.create({
+      amount: 200,
+      currency: 'jpy',
+    });
+    return paymentIntent;
+  }
+
   async orderTicket(orderTicketDto: OrderTicketDto): Promise<string> {
     const id = orderTicketDto.userId;
     const resUser = await AppDataSource.manager.findOneBy(User, {
