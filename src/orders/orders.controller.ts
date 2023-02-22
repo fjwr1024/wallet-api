@@ -1,5 +1,4 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import Stripe from 'stripe';
 import { OrderTicketDto } from './dto/order-ticket.dto';
 import { OrdersDto } from './dto/orders.dto';
 import { OrdersService } from './orders.service';

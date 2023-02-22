@@ -49,7 +49,7 @@ export class OrdersService {
 
   async getPaymentIntent(): Promise<any> {
     const paymentIntent = await this.stripe.paymentIntents.create({
-      amount: 100,
+      amount: 200,
       currency: 'jpy',
       payment_method_types: ['card'],
     });
@@ -57,7 +57,7 @@ export class OrdersService {
     return { paymentIntent, clientSecret };
   }
 
-  async orderTicket(orderTicketDto: OrderTicketDto): Promise<string> {
+  async orderTicket(orderTicketDto: OrderTicketDto): Promise<any> {
     const id = orderTicketDto.userId;
     const resUser = await AppDataSource.manager.findOneBy(User, {
       id,
@@ -93,7 +93,7 @@ export class OrdersService {
 
     const charge = await this.stripe.paymentIntents.create({
       amount: resProduct.price,
-      currency: 'usd',
+      currency: 'jpy',
       description: `Order ${new Date()} by ${orderTicketDto.userId}`,
     });
 
@@ -106,6 +106,8 @@ export class OrdersService {
 
     AppDataSource.manager.save(Orders, orders);
 
-    return 'ok';
+    const clientSecret = charge.client_secret;
+
+    return { charge, clientSecret };
   }
 }
