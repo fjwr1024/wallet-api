@@ -32,7 +32,7 @@ export class OrdersService {
 
     const charge = await this.stripe.paymentIntents.create({
       amount: ordersDto.amount,
-      currency: 'usd',
+      currency: 'jpy',
       description: `Order ${new Date()} by ${ordersDto.userId}`,
     });
 
