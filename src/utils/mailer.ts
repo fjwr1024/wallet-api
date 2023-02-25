@@ -1,9 +1,9 @@
-import MailService from './sendGrid';
+import sgMail from './sendGrid';
 
 const FROM_ADDRESS = process.env.SENDGRID_EMAIL_FROM as string;
 
 export const sendMail = async (to: string, subject: string, text: string, html?: string): Promise<void> => {
-  await MailService.send({
+  await sgMail.send({
     to,
     from: FROM_ADDRESS,
     subject,
@@ -13,7 +13,7 @@ export const sendMail = async (to: string, subject: string, text: string, html?:
 };
 
 export const sendMailMultiple = async (to: string[], subject: string, text: string, html?: string): Promise<void> => {
-  await MailService.sendMultiple({
+  await sgMail.sendMultiple({
     to,
     from: FROM_ADDRESS,
     subject,
