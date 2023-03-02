@@ -1,4 +1,4 @@
-import { deleteUploadFile } from 'src/utils/deleteUploadFile';
+import { deleteUploadFile } from 'src/utils/file-util/deleteUploadFile';
 import { GetSplHistoryDto } from './dto/get-spl-history.dto';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';

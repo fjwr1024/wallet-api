@@ -5,7 +5,7 @@ import { getNftMetadata, getTokenInfoOwned } from '../solana/nft/getMetadata';
 import { submitHex } from '../solana/nft/submitHex';
 import { MintAdminNftDto } from './dto/mint-admin-nft-dto';
 import { mintNft } from '../solana/nft/mintNft';
-import { deleteUploadFile } from 'src/utils/deleteUploadFile';
+import { deleteUploadFile } from 'src/utils/file-util/deleteUploadFile';
 import { MintUserNftDto } from './dto/mint-user-nft-dto';
 import { AppDataSource } from 'src/data-source';
 import { User } from 'src/entities/user.entity';

@@ -10,7 +10,7 @@ import { ConfigService } from '@nestjs/config';
 import { Jwt, Msg } from './interface/auth.interface';
 import { createWallet } from '../solana/wallet/createWallet';
 import { UserStatus } from './user-status.enum';
-import { sendMail } from 'src/utils/mailer';
+import { sendMail } from 'src/utils/mail/mailer';
 
 // bcrypt がdockerだと使用できない https://qiita.com/curious_enginee/items/45f6ff65177b26971bad
 
@@ -36,9 +36,10 @@ export class AuthService {
 
       if (currentUser) throw new ConflictException('This email is already exist');
 
-      const EMAIL_To = process.env.SENDGRID_EMAIL_TO as string;
+      // TODO: 本来は sign up dto から取得する
+      const EMAIL_TO = process.env.SENDGRID_EMAIL_TO as string;
 
-      sendMail(EMAIL_To, 'test', 'test');
+      sendMail(EMAIL_TO, 'test', 'test');
 
       console.log('user', user);
       AppDataSource.manager.insert(User, user);
