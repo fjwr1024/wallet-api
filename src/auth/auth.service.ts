@@ -36,9 +36,9 @@ export class AuthService {
 
       if (currentUser) throw new ConflictException('This email is already exist');
 
-      const emailTo = process.env.SENDGRID_EMAIL_TO_TEST as string;
+      const EMAIL_To = process.env.SENDGRID_EMAIL_TO as string;
 
-      sendMail(emailTo, 'test', 'test');
+      sendMail(EMAIL_To, 'test', 'test');
 
       console.log('user', user);
       AppDataSource.manager.insert(User, user);
