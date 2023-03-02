@@ -40,7 +40,7 @@ export class AuthController {
 
   @HttpCode(HttpStatus.OK)
   @Post('/logout')
-  logout(@Req() req: Request, @Res({ passthrough: true }) res: Response): Msg {
+  logout(@Res({ passthrough: true }) res: Response): Msg {
     res.cookie('access_token', '', {
       httpOnly: true,
       secure: false,
