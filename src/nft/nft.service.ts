@@ -31,7 +31,7 @@ export class NftService {
     // const url = await uploadTestContents('name', 'description', file);
     const ownerWalletAddress = this.config.get<string>('SYSTEM_WALLET_ADDRESS');
     const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
-    const res = await mintNft('name', file.path, 1, ownerWalletAddress, ownerSecretKey);
+    const res = await mintNft('name', file.path, 1, 'description', ownerWalletAddress, ownerSecretKey);
     deleteUploadFile(file.path);
 
     return res;
@@ -40,7 +40,14 @@ export class NftService {
   async mint(mintNftDto: MintAdminNftDto, file) {
     const ownerWalletAddress = this.config.get<string>('SYSTEM_WALLET_ADDRESS');
     const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
-    const res = await mintNft(mintNftDto.name, file.path, mintNftDto.quantity, ownerWalletAddress, ownerSecretKey);
+    const res = await mintNft(
+      mintNftDto.name,
+      file.path,
+      mintNftDto.quantity,
+      mintNftDto.description,
+      ownerWalletAddress,
+      ownerSecretKey
+    );
     deleteUploadFile(file.path);
 
     return res;
@@ -73,6 +80,7 @@ export class NftService {
       mintUserNftDto.name,
       file.path,
       mintUserNftDto.quantity,
+      mintUserNftDto.description,
       ownerWalletAddress,
       ownerSecretKey
     );

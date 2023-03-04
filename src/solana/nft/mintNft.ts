@@ -45,24 +45,21 @@ export const mintNft = async (
   url: string,
   quantity: number,
   description: string,
+  ownerWalletAddress: Pubkey,
   ownerSecretKey: string
 ) => {
   for (let i = 0; i < quantity; i++) {
     console.log('ownerSecret', ownerSecretKey);
-    const inst1 = await Metaplex.mint(
-      {
-        filePath: url,
-        name,
-        symbol: 'NFT',
-        description,
-        royalty: 0,
-        storageType: 'nftStorage',
-        isMutable: true,
-        external_url: 'https://github.com/atonoy/solana-suite',
-      },
-      ownerSecretKey,
-      ownerSecretKey
-    );
+    const inst1 = await Metaplex.mint(ownerWalletAddress, ownerSecretKey, {
+      filePath: url,
+      name,
+      symbol: 'NFT',
+      description,
+      royalty: 0,
+      storageType: 'nftStorage',
+      isMutable: true,
+      external_url: 'https://github.com/atonoy/solana-suite',
+    });
 
     console.log('inst1', inst1);
 
