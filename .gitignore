@@ -43,3 +43,6 @@ docker/db/data
 
 # image file
 /uploads/*
+
+# migration files
+src/migration/*
