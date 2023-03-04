@@ -1,8 +1,8 @@
 #!/bin/bash
 set -eux
 
-# yarn migration:generate
-# yarn migration:run
+yarn migration:generate
+yarn migration:run
 
 SCRIPT_DIR=$(
     cd $(dirname $0)
@@ -12,7 +12,7 @@ SCRIPT_DIR=$(
 DIR_PATH="$SCRIPT_DIR/../src/migration/"
 
 # directry exists confirm
-if [ -d "$dir_path" ]; then
+if [ -d "$DIR_PATH" ]; then
     rm -r $DIR_PATH/*
     echo "Directory contents have been deleted successfully."
 else
