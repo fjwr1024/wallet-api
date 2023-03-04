@@ -1,10 +1,10 @@
 //////////////////////////////////////////////
 // $ npx ts-node scripts/SystemWalletInitialize.ts
 //////////////////////////////////////////////
-import { KeypairStr } from '@solana-suite/core';
+import { KeypairAccount } from '@solana-suite/shared';
 
 const createWallet = async () => {
-  const account = await KeypairStr.create();
+  const account = await KeypairAccount.create();
 
   console.log('# pubkey: ', account.pubkey);
   console.log('# secret: ', account.secret);

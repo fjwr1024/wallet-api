@@ -1,9 +1,10 @@
-import { SplToken, Pubkey, KeypairStr } from '@solana-suite/core';
+import { SplToken } from '@solana-suite/core';
+import { KeypairAccount, Pubkey } from '@solana-suite/shared';
 import { StorageType } from '@solana-suite/shared-metaplex';
 import 'dotenv/config';
 
 const transferSplToken = async () => {
-  const owner = new KeypairStr(process.env.SYSTEM_WALLET_ADDRESS || '', process.env.SYSTEM_WALLET_SECRET || '');
+  const owner = KeypairAccount.create();
 
   const totalAmount = 100000;
   const decimals = 1;
