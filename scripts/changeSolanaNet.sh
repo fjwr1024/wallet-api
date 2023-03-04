@@ -1,7 +1,10 @@
 #!/bin/bash
 set -eux
 
-SCRIPT_DIR=$(cd $(dirname $0); pwd)
+SCRIPT_DIR=$(
+  cd $(dirname $0)
+  pwd
+)
 SOLANA_DIR="$SCRIPT_DIR/../node_modules/@solana-suite/shared"
 cd $SOLANA_DIR
 
@@ -18,9 +21,4 @@ else
 fi
 
 # command
-./solana-suite-config.js -c prd
-if [ "$PROJECT_ID" = "wallet-api" ]; then
-  ./solana-suite-config.js nftstorage ${NFT_STORAGE_PRD_KEY}
-fi
-
-# build dummy file
+./solana-suite-config.js -c ${SOLANA_CLUSTER}

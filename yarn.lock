@@ -1421,7 +1421,16 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@solana-suite/core@0.5.4", "@solana-suite/core@latest":
+"@solana-suite/core@0.5.7":
+  version "0.5.7"
+  resolved "https://registry.yarnpkg.com/@solana-suite/core/-/core-0.5.7.tgz#24146b93b91e48070e5a057f86cc1d5980564b7d"
+  integrity sha512-N28b1Q7CXYqTWVyPjAbyC0eBMWY08UXc5E2MopDua2mZ2MTK7EiZ4wdSRO1EL7Ws/qfpQ8253fKPiBR8jlH6SQ==
+  dependencies:
+    "@solana-suite/shared" latest
+    "@solana-suite/shared-metaplex" latest
+    "@solana-suite/storage" latest
+
+"@solana-suite/core@latest":
   version "0.5.4"
   resolved "https://registry.yarnpkg.com/@solana-suite/core/-/core-0.5.4.tgz#303e4c375580e9e0a20026b9a453fc5bbc56424e"
   integrity sha512-9rVO/KTA+67Oc95jRufWFVLI33fhnq3l/eF9W8oQ3MvUBrQbmqgSR7z2X8wfWGItO3bAfl18yoY5e2meVijJvw==
@@ -1429,10 +1438,10 @@
     "@solana-suite/shared-metaplex" latest
     "@solana-suite/storage" latest
 
-"@solana-suite/nft@0.5.4":
-  version "0.5.4"
-  resolved "https://registry.yarnpkg.com/@solana-suite/nft/-/nft-0.5.4.tgz#aa14176bcd40c3f5399f7f0419a830c19d5f720e"
-  integrity sha512-cBDVx+VJDo22O7G765Sqf4GudOrAjuAt25loaIElWY5vsyHtmAwF5F5Fn3ZUIYBOCvRFYYNgoyRzkq06ek7m2w==
+"@solana-suite/nft@0.5.7":
+  version "0.5.7"
+  resolved "https://registry.yarnpkg.com/@solana-suite/nft/-/nft-0.5.7.tgz#b510c8b1a8ea884d9a8848c2cb4c9b6491a10b4f"
+  integrity sha512-ujlEDWeRtZs4vWbzVyZt1nYbz5kcJ8t27ZzaQ16fKFN1IOdbw8wFS1a+p0qX6lcNKjNi8FCFthGiCUXh3/EreA==
   dependencies:
     "@solana-suite/core" latest
     "@solana-suite/shared-metaplex" latest
@@ -1446,14 +1455,33 @@
     "@metaplex-foundation/js" "0.18.0"
     "@solana-suite/shared" latest
 
-"@solana-suite/shared@0.5.4", "@solana-suite/shared@latest":
+"@solana-suite/shared@0.5.7":
+  version "0.5.7"
+  resolved "https://registry.yarnpkg.com/@solana-suite/shared/-/shared-0.5.7.tgz#266afe421a90b4a4ddb0f3a3b17d14bd8bf62246"
+  integrity sha512-rJl1F7Hxf8LwqnUL6wi1JJdHK08CT392uGUUJrITiDCenaxq/PGI8eI2EfW+JIQu4GjQxywU5Oc7ptriJ2+SdQ==
+  dependencies:
+    "@solana/web3.js" "^1.73.2"
+    commander "9.3.0"
+
+"@solana-suite/shared@latest":
   version "0.5.4"
   resolved "https://registry.yarnpkg.com/@solana-suite/shared/-/shared-0.5.4.tgz#b7bfc69463b48bc34e5268c704173b95a04983de"
   integrity sha512-/VuIK72bpCVmunJH9TCSUuqYm2auzEpxlRZB6PBr9p8tI3KwNIByWwTqzhxHMjMIfWT2748hbLMabyKMPjhN/Q==
   dependencies:
     commander "9.3.0"
 
-"@solana-suite/storage@0.5.4", "@solana-suite/storage@latest":
+"@solana-suite/storage@0.5.7":
+  version "0.5.7"
+  resolved "https://registry.yarnpkg.com/@solana-suite/storage/-/storage-0.5.7.tgz#33c4bf1a471349e0a78698a3b3594fba90bb4b90"
+  integrity sha512-B0WGCaPBubG7KXX/9SzsYkMQeUWaVt/e/qFBMO3zplErPSktd0qSVkT2AMbBre3lhGUL7kqw0X3xf5fB4kgbUg==
+  dependencies:
+    "@solana-suite/shared-metaplex" latest
+    cross-fetch "^3.1.4"
+    form-data "^3.0.1"
+    nft.storage "^3.3.0"
+    node-fetch "^3.0.0"
+
+"@solana-suite/storage@latest":
   version "0.5.4"
   resolved "https://registry.yarnpkg.com/@solana-suite/storage/-/storage-0.5.4.tgz#1190aa3de7c14e90cd81bb8127c248692cbc12b6"
   integrity sha512-q2BOnuRKzWzOXNmdYViScASOenHADuu7g/hOp3M5jfibixvuR3pyQ7wvN/X/pCCRJpT91d9yxi1qQ9opdERI+Q==
@@ -1517,6 +1545,28 @@
     jayson "^3.4.4"
     node-fetch "2"
     rpc-websockets "^7.5.0"
+    superstruct "^0.14.2"
+
+"@solana/web3.js@^1.73.2":
+  version "1.73.3"
+  resolved "https://registry.yarnpkg.com/@solana/web3.js/-/web3.js-1.73.3.tgz#60e6bd68f6f364d4be360b1e0a03a0a68468a029"
+  integrity sha512-vHRMo589XEIpoujpE2sZZ1aMZvfA1ImKfNxobzEFyMb+H5j6mRRUXfdgWD0qJ0sm11e5BcBC7HPeRXJB+7f3Lg==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    "@noble/ed25519" "^1.7.0"
+    "@noble/hashes" "^1.1.2"
+    "@noble/secp256k1" "^1.6.3"
+    "@solana/buffer-layout" "^4.0.0"
+    agentkeepalive "^4.2.1"
+    bigint-buffer "^1.1.5"
+    bn.js "^5.0.0"
+    borsh "^0.7.0"
+    bs58 "^4.0.1"
+    buffer "6.0.1"
+    fast-stable-stringify "^1.0.0"
+    jayson "^3.4.4"
+    node-fetch "^2.6.7"
+    rpc-websockets "^7.5.1"
     superstruct "^0.14.2"
 
 "@sqltools/formatter@^1.2.5":
@@ -6728,6 +6778,19 @@ rpc-websockets@^7.5.0:
   version "7.5.0"
   resolved "https://registry.yarnpkg.com/rpc-websockets/-/rpc-websockets-7.5.0.tgz#bbeb87572e66703ff151e50af1658f98098e2748"
   integrity sha512-9tIRi1uZGy7YmDjErf1Ax3wtqdSSLIlnmL5OtOzgd5eqPKbsPpwDP5whUDO2LQay3Xp0CcHlcNSGzacNRluBaQ==
+  dependencies:
+    "@babel/runtime" "^7.17.2"
+    eventemitter3 "^4.0.7"
+    uuid "^8.3.2"
+    ws "^8.5.0"
+  optionalDependencies:
+    bufferutil "^4.0.1"
+    utf-8-validate "^5.0.2"
+
+rpc-websockets@^7.5.1:
+  version "7.5.1"
+  resolved "https://registry.yarnpkg.com/rpc-websockets/-/rpc-websockets-7.5.1.tgz#e0a05d525a97e7efc31a0617f093a13a2e10c401"
+  integrity sha512-kGFkeTsmd37pHPMaHIgN1LVKXMi0JD782v4Ds9ZKtLlwdTKjn+CxM9A9/gLT2LaOuEcEFGL98h1QWQtlOIdW0w==
   dependencies:
     "@babel/runtime" "^7.17.2"
     eventemitter3 "^4.0.7"
