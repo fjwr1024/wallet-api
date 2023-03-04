@@ -11,9 +11,9 @@ const airdrop = async () => {
 
   console.log('#owner', owner);
 
-  await Airdrop.request(owner.toPublicKey());
+  await Airdrop.request(owner);
 
-  console.log('# owner balance: ', await SplToken.findByOwner(owner.toPublicKey()));
+  console.log('# owner balance: ', await SplToken.findByOwner(owner));
 };
 
 airdrop();

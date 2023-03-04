@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import { Pubkey } from '@solana-suite/core';
+import { Pubkey } from '@solana-suite/shared';
 import { Node } from '@solana-suite/shared';
 import { Metaplex } from '@solana-suite/nft';
 import { NftStorage } from '@solana-suite/storage';
@@ -60,8 +60,8 @@ export const mintNft = async (
         isMutable: true,
         external_url: 'https://github.com/atonoy/solana-suite',
       },
-      ownerSecretKey.toKeypair(),
-      ownerSecretKey.toKeypair()
+      ownerSecretKey,
+      ownerSecretKey
     );
 
     console.log('inst1', inst1);

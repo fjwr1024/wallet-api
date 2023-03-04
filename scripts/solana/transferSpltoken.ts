@@ -15,7 +15,7 @@ const transferSplToken = async () => {
     storageType: 'nftStorage' as StorageType,
     isMutable: false,
   };
-  const inst1 = await SplToken.mint(owner.toPublicKey(), owner.toKeypair(), totalAmount, decimals, tokenMetadata);
+  const inst1 = await SplToken.mint(owner, owner, totalAmount, decimals, tokenMetadata);
 
   const mint = inst1.unwrap().data as Pubkey;
 

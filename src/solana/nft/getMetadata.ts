@@ -8,7 +8,7 @@ export const getNftMetadata = async mint => {
   const response = [];
 
   for (let i = 0; i < mintArr.length; i++) {
-    const metadata = await Metaplex.findByOwner(mintArr[i].toPublicKey());
+    const metadata = await Metaplex.findByOwner(mintArr[i]);
 
     metadata.match(
       value => console.log('# metadata: ', value),
@@ -23,7 +23,7 @@ export const getNftMetadata = async mint => {
 };
 
 export const displayUserMetadata = async (walletAddress: string) => {
-  const metadata = await Metaplex.findByOwner(walletAddress.toPublicKey());
+  const metadata = await Metaplex.findByOwner(walletAddress);
 
   metadata.match(
     value => console.log('# metadata: ', value),
@@ -34,7 +34,7 @@ export const displayUserMetadata = async (walletAddress: string) => {
 };
 
 export const getTokenInfoOwned = async walletAddress => {
-  const response = await (await Metaplex.findByOwner(walletAddress.toPublicKey())).unwrap();
+  const response = await (await Metaplex.findByOwner(walletAddress)).unwrap();
 
   console.log('owned token info', response);
 

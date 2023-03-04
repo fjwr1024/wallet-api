@@ -1,4 +1,5 @@
-import { SplToken, Pubkey } from '@solana-suite/core';
+import { SplToken } from '@solana-suite/core';
+import { Pubkey } from '@solana-suite/shared';
 import { StorageType } from '@solana-suite/shared-metaplex';
 
 export const createSplToken = async (totalAmount, decimals, ownerWalletAddress, ownerSecretKey, file) => {
@@ -14,13 +15,7 @@ export const createSplToken = async (totalAmount, decimals, ownerWalletAddress, 
     isMutable: false,
   };
 
-  const inst1 = await SplToken.mint(
-    ownerWalletAddress.toPublicKey(),
-    ownerSecretKey.toKeypair(),
-    totalAmount,
-    decimals,
-    tokenMetadata
-  );
+  const inst1 = await SplToken.mint(ownerWalletAddress, ownerSecretKey, totalAmount, decimals, tokenMetadata);
 
   const mint = inst1.unwrap().data as Pubkey;
 
