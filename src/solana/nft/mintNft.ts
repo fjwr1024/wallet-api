@@ -68,6 +68,7 @@ export const mintNft = async (
       error => console.log(error)
     );
 
+    // mint の pubkey が NFT のaddress
     const mint = inst1.unwrap().data as Pubkey;
     console.log('mint', mint);
   }

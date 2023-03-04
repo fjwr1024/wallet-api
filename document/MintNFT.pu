@@ -1,0 +1,30 @@
+@startuml NFT mintフロー
+
+actor "ウォレットアプリケーション" as app 
+participant "SDK in Server" as ssdk #aqua
+participant WalletAPI as api #Yellow
+
+note over app
+サインアップボタン押下
+end note
+
+app -> api : [call] NFT Mint API呼び出し
+
+note right app
+[request]
+・name
+・description
+・quantity
+end note
+
+api -> ssdk : mint関数呼び出し
+return NFT Address
+
+api -> app : responseを返却
+
+note right api
+[response]
+・NFT Address
+end note
+
+@enduml
