@@ -6,6 +6,7 @@ import { Csrf, Msg } from './interface/auth.interface';
 
 import { CreateUserDto } from './dto/create-user.dto';
 import { LoginDto } from './dto/login.dto';
+import { VerifyMailDto } from './dto/verify-mail.dto';
 
 @Controller('auth')
 export class AuthController {

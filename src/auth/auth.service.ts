@@ -15,7 +15,6 @@ import { sendMail } from 'src/utils/mail/mailer';
 import { createRandomCode } from './../utils/rand';
 
 // bcrypt がdockerだと使用できない https://qiita.com/curious_enginee/items/45f6ff65177b26971bad
-
 @Injectable()
 export class AuthService {
   constructor(private jwtService: JwtService, private readonly config: ConfigService) {}
@@ -37,6 +36,7 @@ export class AuthService {
       });
       if (currentUser) throw new ConflictException('This email is already exist');
 
+      // Email の 6桁コード認証メール送信 不必要かもしれない
       const authCode = createRandomCode();
       const authEmail = new AuthEmail();
       const limitTime = new Date();

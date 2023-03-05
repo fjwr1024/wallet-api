@@ -2,7 +2,7 @@ import { HttpStatus, UnauthorizedException } from '@nestjs/common';
 import { AppDataSource } from 'src/data-source';
 import { AuthEmail } from 'src/entities/auth-email.entity';
 
-export const confirmSmsCode = async ({ id, authCode }): Promise<number> => {
+export const confirmAuthCode = async ({ id, authCode }): Promise<number> => {
   const getAuthCodeId = await AppDataSource.manager.findOneBy(AuthEmail, {
     id,
   });
