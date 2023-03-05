@@ -37,6 +37,9 @@ export class User {
   @Column({ name: 'stripe_customer_id', unique: true, nullable: true })
   stripeCustomerId: string;
 
+  @Column({ name: 'block_flag', default: false })
+  blockFlag: boolean;
+
   @CreateDateColumn({
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP(6)',
