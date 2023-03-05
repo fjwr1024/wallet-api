@@ -1,5 +1,6 @@
-import { ConflictException, ForbiddenException, Injectable } from '@nestjs/common';
+import { ConflictException, ForbiddenException, Injectable, InternalServerErrorException } from '@nestjs/common';
 import { User } from '../entities/user.entity';
+import { AuthEmail } from './../entities/auth-email.entity';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 
@@ -11,6 +12,7 @@ import { Jwt, Msg } from './interface/auth.interface';
 import { createWallet } from '../solana/wallet/createWallet';
 import { UserStatus } from './user-status.enum';
 import { sendMail } from 'src/utils/mail/mailer';
+import { createRandomCode } from './../utils/rand';
 
 // bcrypt がdockerだと使用できない https://qiita.com/curious_enginee/items/45f6ff65177b26971bad
 
@@ -33,19 +35,32 @@ export class AuthService {
       const currentUser = await AppDataSource.manager.findOneBy(User, {
         email: createUserDto.email,
       });
-
       if (currentUser) throw new ConflictException('This email is already exist');
+
+      const authCode = createRandomCode();
+      const authEmail = new AuthEmail();
+      const limitTime = new Date();
+
+      // auth code の有効期限を60分後までに設定
+      limitTime.setMinutes(limitTime.getMinutes() + 60);
+
+      authEmail.email = createUserDto.email;
+      authEmail.sentCode = authCode;
+      authEmail.limitTime = limitTime;
+
+      AppDataSource.manager.insert(AuthEmail, authEmail);
 
       // TODO: 本来は sign up dto から取得する
       const EMAIL_TO = process.env.SENDGRID_EMAIL_TO as string;
 
-      sendMail(EMAIL_TO, 'test', 'test');
+      // メールを送りたい時のみコメント解除
+      // sendMail(EMAIL_TO, 'test', 'test');
 
       console.log('user', user);
       AppDataSource.manager.insert(User, user);
       return { message: 'ok' };
     } catch (error) {
-      throw new ConflictException('This email is already exist');
+      throw new InternalServerErrorException('Sign up Error');
     }
   }
 
