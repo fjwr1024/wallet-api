@@ -1,3 +1,4 @@
+import { getUserByEmail } from './../utils/usersUtil';
 import { ConflictException, ForbiddenException, Injectable, InternalServerErrorException } from '@nestjs/common';
 import { User } from '../entities/user.entity';
 import { AuthEmail } from './../entities/auth-email.entity';
@@ -7,6 +8,7 @@ import { JwtService } from '@nestjs/jwt';
 import { LoginDto } from './dto/login.dto';
 import { AppDataSource } from '../data-source';
 import { CreateUserDto } from 'src/auth/dto/create-user.dto';
+import { BlockLoginDto } from './dto/block-login.dto';
 import { ConfigService } from '@nestjs/config';
 import { Jwt, Msg } from './interface/auth.interface';
 import { createWallet } from '../solana/wallet/createWallet';
@@ -98,5 +100,20 @@ export class AuthService {
       return result;
     }
     return null;
+  }
+
+  async blockLogin(blockLoginDto: BlockLoginDto): Promise<string> {
+    const blockUser = await getUserByEmail(blockLoginDto.email);
+    console.log('blockUser', blockUser);
+    console.log('blockUser', blockUser.email);
+    await AppDataSource.manager.update(
+      User,
+      { email: blockUser.email },
+      {
+        blockFlag: true,
+      }
+    );
+
+    return 'ok';
   }
 }

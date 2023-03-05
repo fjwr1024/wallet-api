@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Post, Req, Res, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpStatus, Patch, Post, Req, Res, UseGuards } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from './auth.service';
@@ -6,7 +6,7 @@ import { Csrf, Msg } from './interface/auth.interface';
 
 import { CreateUserDto } from './dto/create-user.dto';
 import { LoginDto } from './dto/login.dto';
-import { VerifyMailDto } from './dto/verify-mail.dto';
+import { BlockLoginDto } from './dto/block-login.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -51,6 +51,11 @@ export class AuthController {
     return {
       message: 'ok',
     };
+  }
+
+  @Patch('/block-user')
+  async blockLogin(@Body() blockLoginDto: BlockLoginDto): Promise<string> {
+    return await this.authService.blockLogin(blockLoginDto);
   }
 
   @Get('login-check')
