@@ -1,4 +1,4 @@
-import { getUserByEmail } from './../utils/usersUtil';
+import { getUserByEmail, getUserById } from './../utils/usersUtil';
 import { ConflictException, ForbiddenException, Injectable, InternalServerErrorException } from '@nestjs/common';
 import { User } from '../entities/user.entity';
 import { AuthEmail } from './../entities/auth-email.entity';
@@ -15,6 +15,7 @@ import { createWallet } from '../solana/wallet/createWallet';
 import { UserStatus } from './user-status.enum';
 import { sendMail } from 'src/utils/mail/mailer';
 import { createRandomCode } from './../utils/rand';
+import { CancelBlockDto } from './dto/cancel-block.dto';
 
 // bcrypt がdockerだと使用できない https://qiita.com/curious_enginee/items/45f6ff65177b26971bad
 @Injectable()
@@ -104,13 +105,26 @@ export class AuthService {
 
   async blockLogin(blockLoginDto: BlockLoginDto): Promise<string> {
     const blockUser = await getUserByEmail(blockLoginDto.email);
-    console.log('blockUser', blockUser);
-    console.log('blockUser', blockUser.email);
     await AppDataSource.manager.update(
       User,
       { email: blockUser.email },
       {
         blockFlag: true,
+      }
+    );
+
+    return 'ok';
+  }
+
+  async cancelBlock(cancelBlockDto: CancelBlockDto): Promise<string> {
+    const cancelUser = await getUserById(cancelBlockDto.id);
+    await AppDataSource.manager.update(
+      User,
+      {
+        id: cancelUser.id,
+      },
+      {
+        blockFlag: false,
       }
     );
 

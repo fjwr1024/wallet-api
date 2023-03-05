@@ -7,6 +7,10 @@ import { Csrf, Msg } from './interface/auth.interface';
 import { CreateUserDto } from './dto/create-user.dto';
 import { LoginDto } from './dto/login.dto';
 import { BlockLoginDto } from './dto/block-login.dto';
+import { CancelBlockDto } from './dto/cancel-block.dto';
+import { UserStatus } from './user-status.enum';
+import { RolesGuard } from 'src/guards/roles.guard';
+import { Roles } from 'src/decorator/role.decorator';
 
 @Controller('auth')
 export class AuthController {
@@ -56,6 +60,13 @@ export class AuthController {
   @Patch('/block-user')
   async blockLogin(@Body() blockLoginDto: BlockLoginDto): Promise<string> {
     return await this.authService.blockLogin(blockLoginDto);
+  }
+
+  @Roles(UserStatus.Admin)
+  @UseGuards(RolesGuard)
+  @Patch('/cancel-block')
+  async cancelBlock(@Body() cancelBlockDto: CancelBlockDto): Promise<string> {
+    return await this.authService.cancelBlock(cancelBlockDto);
   }
 
   @Get('login-check')
