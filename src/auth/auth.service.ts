@@ -112,7 +112,6 @@ export class AuthService {
         blockFlag: true,
       }
     );
-
     return 'ok';
   }
 
@@ -127,7 +126,6 @@ export class AuthService {
         blockFlag: false,
       }
     );
-
     return 'ok';
   }
 }
