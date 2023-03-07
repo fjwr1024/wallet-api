@@ -58,9 +58,9 @@ export class AuthService {
       const EMAIL_TO = process.env.SENDGRID_EMAIL_TO as string;
 
       // メールを送りたい時のみコメント解除
-      const mailTitle = AUTH_MAIL_TITLE;
-      const mailBody = AUTH_MAIL_BODY(authCode);
-      sendMail(EMAIL_TO, mailTitle, mailBody);
+      // const mailTitle = AUTH_MAIL_TITLE;
+      // const mailBody = AUTH_MAIL_BODY(authCode);
+      // sendMail(EMAIL_TO, mailTitle, mailBody);
 
       console.log('user', user);
       AppDataSource.manager.insert(User, user);
