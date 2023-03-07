@@ -2,7 +2,7 @@ export const AUTH_MAIL_TITLE = `
     [WalletAPI]Check your verification code
 `;
 
-export const AUTH_MAIL_BODY = (authCode: string) => {
+export const AUTH_MAIL_BODY = (authCode: number) => {
   const body = `
   Your Authorization code is ${authCode}. 
   Please enter the verification code to complete your membership registration.

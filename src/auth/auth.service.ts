@@ -1,3 +1,4 @@
+import { AUTH_MAIL_BODY, AUTH_MAIL_TITLE } from './../utils/mail/mail-content';
 import { getUserByEmail, getUserById } from './../utils/usersUtil';
 import { ConflictException, ForbiddenException, Injectable, InternalServerErrorException } from '@nestjs/common';
 import { User } from '../entities/user.entity';
@@ -57,7 +58,9 @@ export class AuthService {
       const EMAIL_TO = process.env.SENDGRID_EMAIL_TO as string;
 
       // メールを送りたい時のみコメント解除
-      // sendMail(EMAIL_TO, 'test', 'test');
+      const mailTitle = AUTH_MAIL_TITLE;
+      const mailBody = AUTH_MAIL_BODY(authCode);
+      sendMail(EMAIL_TO, mailTitle, mailBody);
 
       console.log('user', user);
       AppDataSource.manager.insert(User, user);
