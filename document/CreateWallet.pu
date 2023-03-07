@@ -9,16 +9,27 @@ note over app
 サインアップボタン押下
 end note
 
-app -> api : [call] 会員情報更新API呼び出し
-return userID
+app -> api : [call] サインアップ API 呼び出し
+note right app
+[request]
+・email
+・password
+end note
+
+api -> api : authCode を生成
+
+api -> db : authCode 保存
+
+api -> app : authCode 返却
+
+app -> api : [call] verify auth code API 呼び出し
+
+api -> db : authCode チェック
 
 app -> app : 通信用公開鍵の生成
 
-app -> api : [call] 会員登録API呼び出し(ウォレット生成用)
-
 note right app
 [request]
-・userID
 ・email
 ・password
 ・通信用公開鍵
