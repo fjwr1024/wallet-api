@@ -1,10 +1,8 @@
 import { Exclude } from 'class-transformer';
-import { UserStatus } from '../auth/user-status.enum';
-import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
-import { Orders } from './orders.entity';
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
-@Entity({ name: 'users' })
-export class User {
+@Entity({ name: 'user_tmp' })
+export class UserTmp {
   @PrimaryGeneratedColumn('increment', { name: 'id' })
   id: number;
 
