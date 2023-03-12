@@ -1475,10 +1475,10 @@
   dependencies:
     commander "9.3.0"
 
-"@solana-suite/storage@0.5.7":
-  version "0.5.7"
-  resolved "https://registry.yarnpkg.com/@solana-suite/storage/-/storage-0.5.7.tgz#33c4bf1a471349e0a78698a3b3594fba90bb4b90"
-  integrity sha512-B0WGCaPBubG7KXX/9SzsYkMQeUWaVt/e/qFBMO3zplErPSktd0qSVkT2AMbBre3lhGUL7kqw0X3xf5fB4kgbUg==
+"@solana-suite/storage@0.5.8":
+  version "0.5.8"
+  resolved "https://registry.yarnpkg.com/@solana-suite/storage/-/storage-0.5.8.tgz#b0d1a58ec7ddb445f523dbc1f10ecb243bf2fcd5"
+  integrity sha512-Kl9Qe2fDlY1DxTLY75Vpqs8gOcZYBkdFssy+i7hNHLP2SULjjOcWMdka6LMRqoocvvP2fVEtY6YJ+tdPHnQ4QA==
   dependencies:
     "@solana-suite/shared-metaplex" latest
     cross-fetch "^3.1.4"
