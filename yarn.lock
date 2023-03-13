@@ -1455,10 +1455,10 @@
     "@solana-suite/shared-metaplex" latest
     "@solana-suite/storage" latest
 
-"@solana-suite/nft@0.5.7":
-  version "0.5.7"
-  resolved "https://registry.yarnpkg.com/@solana-suite/nft/-/nft-0.5.7.tgz#b510c8b1a8ea884d9a8848c2cb4c9b6491a10b4f"
-  integrity sha512-ujlEDWeRtZs4vWbzVyZt1nYbz5kcJ8t27ZzaQ16fKFN1IOdbw8wFS1a+p0qX6lcNKjNi8FCFthGiCUXh3/EreA==
+"@solana-suite/nft@0.5.8":
+  version "0.5.8"
+  resolved "https://registry.yarnpkg.com/@solana-suite/nft/-/nft-0.5.8.tgz#d3b7a2ff595c59e9f3ad276841360f340f2b7eb0"
+  integrity sha512-+pv0HrqKZnHE9Fp6w/dtINOpq36btWqXzkAFTm+4XKHOZGAnBAIFrhzHjiZyo3NQ1/Mg5aSaPnIgVbKhphQsgQ==
   dependencies:
     "@solana-suite/core" latest
     "@solana-suite/shared-metaplex" latest
