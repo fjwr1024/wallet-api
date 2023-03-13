@@ -11,7 +11,11 @@ export class AuthEmail {
   @Column({ name: 'sent_code', unique: false, nullable: false })
   sentCode: number;
 
-  @Column({ name: 'sent_at', default: true })
+  @CreateDateColumn({
+    name: 'sent_at',
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP(6)',
+  })
   sentAt: boolean;
 
   @Column({ name: 'limit_time', type: 'timestamp', nullable: true })
