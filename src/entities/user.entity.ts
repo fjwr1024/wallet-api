@@ -15,7 +15,7 @@ export class User {
   @Exclude()
   password: string;
 
-  @Column({ name: 'wallet_address' })
+  @Column({ name: 'wallet_address', nullable: true })
   walletAddress: string;
 
   @Column({ name: 'age', nullable: true })

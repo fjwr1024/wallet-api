@@ -1,3 +1,4 @@
+import { Orders } from './../entities/orders.entity';
 import { AUTH_MAIL_BODY, AUTH_MAIL_TITLE } from './../utils/mail/mail-content';
 import { getUserByEmail, getUserById } from './../utils/usersUtil';
 import { ConflictException, ForbiddenException, Injectable, InternalServerErrorException } from '@nestjs/common';
@@ -28,21 +29,18 @@ export class AuthService {
   public async signUp(createUserDto: CreateUserDto): Promise<Msg> {
     const hashed = await bcrypt.hash(createUserDto.password, 12);
 
-    //TODO: typeorm 内部で errorが吐き出された場合のエラーハンドリングを考える
     try {
-      const user = new User();
+      const tmpUser = new UserTmp();
       const walletAddress = createWallet();
 
-      user.email = createUserDto.email;
-      user.password = hashed;
-      user.walletAddress = (await walletAddress).pubkey;
+      tmpUser.email = createUserDto.email;
+      tmpUser.password = hashed;
 
       const currentUser = await AppDataSource.manager.findOneBy(User, {
         email: createUserDto.email,
       });
       if (currentUser) throw new ConflictException('This email is already exist');
 
-      // Email の 6桁コード認証メール送信 不必要かもしれない
       const authCode = createRandomCode();
       const authEmail = new AuthEmail();
       const limitTime = new Date();
@@ -64,8 +62,8 @@ export class AuthService {
       // const mailBody = AUTH_MAIL_BODY(authCode);
       // sendMail(EMAIL_TO, mailTitle, mailBody);
 
-      console.log('user', user);
-      AppDataSource.manager.insert(User, user);
+      console.log('user', tmpUser);
+      AppDataSource.manager.insert(UserTmp, tmpUser);
       return { message: 'ok' };
     } catch (error) {
       throw new InternalServerErrorException('Sign up Error');
@@ -73,13 +71,19 @@ export class AuthService {
   }
 
   async verifyAuthCode(verifyAuthCodeDto: VerifyAuthCodeDto) {
-    const currentUser = await AppDataSource.manager.findOneBy(AuthEmail, {
-      email: verifyAuthCodeDto.email,
+    const currentUser = await AppDataSource.manager.findOne(AuthEmail, {
+      where: { email: verifyAuthCodeDto.email },
+      order: { id: 'DESC' },
     });
     console.log('currentUser', currentUser);
 
     if (verifyAuthCodeDto.authCode === currentUser.sentCode) {
       console.log('authcode verified');
+      const user = new User();
+      const walletAddress = createWallet();
+
+      user.email = currentUser.email;
+      user.walletAddress = (await walletAddress).pubkey;
     }
 
     return 'ok';
