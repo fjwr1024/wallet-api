@@ -17,6 +17,8 @@ import { UserStatus } from './user-status.enum';
 import { sendMail } from 'src/utils/mail/mailer';
 import { createRandomCode } from '../utils/crypt/rand';
 import { CancelBlockDto } from './dto/cancel-block.dto';
+import { VerifyAuthCodeDto } from './dto/verify-code.dto';
+import { UserTmp } from 'src/entities/user-tmp.entity';
 
 // bcrypt がdockerだと使用できない https://qiita.com/curious_enginee/items/45f6ff65177b26971bad
 @Injectable()
@@ -68,6 +70,19 @@ export class AuthService {
     } catch (error) {
       throw new InternalServerErrorException('Sign up Error');
     }
+  }
+
+  async verifyAuthCode(verifyAuthCodeDto: VerifyAuthCodeDto) {
+    const currentUser = await AppDataSource.manager.findOneBy(AuthEmail, {
+      email: verifyAuthCodeDto.email,
+    });
+    console.log('currentUser', currentUser);
+
+    if (verifyAuthCodeDto.authCode === currentUser.sentCode) {
+      console.log('authcode verified');
+    }
+
+    return 'ok';
   }
 
   async login(loginDto: LoginDto): Promise<Jwt> {
