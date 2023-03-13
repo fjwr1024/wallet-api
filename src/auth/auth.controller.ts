@@ -11,12 +11,13 @@ import { CancelBlockDto } from './dto/cancel-block.dto';
 import { UserStatus } from './user-status.enum';
 import { RolesGuard } from 'src/guards/roles.guard';
 import { Roles } from 'src/decorator/role.decorator';
+import { VerifyAuthCodeDto } from './dto/verify-code.dto';
 
 @Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) {}
 
-  @Get('/csrf')
+  @Get('csrf')
   getCsrfToken(@Req() req: Request): Csrf {
     return { csrfToken: req.csrfToken() };
   }
@@ -24,6 +25,11 @@ export class AuthController {
   @Post('signup')
   async signup(@Body() createUserDto: CreateUserDto): Promise<Msg> {
     return await this.authService.signUp(createUserDto);
+  }
+
+  @Post('verify-code')
+  async verifyCode(@Body() verifyAuthCodeDto: VerifyAuthCodeDto): Promise<any> {
+    return await this.authService.verifyAuthCode(verifyAuthCodeDto);
   }
 
   @HttpCode(HttpStatus.OK)
@@ -44,7 +50,7 @@ export class AuthController {
   }
 
   @HttpCode(HttpStatus.OK)
-  @Post('/logout')
+  @Post('logout')
   logout(@Res({ passthrough: true }) res: Response): Msg {
     res.cookie('access_token', '', {
       httpOnly: true,
@@ -57,14 +63,14 @@ export class AuthController {
     };
   }
 
-  @Patch('/block-user')
+  @Patch('block-user')
   async blockLogin(@Body() blockLoginDto: BlockLoginDto): Promise<string> {
     return await this.authService.blockLogin(blockLoginDto);
   }
 
   @Roles(UserStatus.Admin)
   @UseGuards(RolesGuard)
-  @Patch('/cancel-block')
+  @Patch('cancel-block')
   async cancelBlock(@Body() cancelBlockDto: CancelBlockDto): Promise<string> {
     return await this.authService.cancelBlock(cancelBlockDto);
   }
