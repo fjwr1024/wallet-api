@@ -1,10 +1,11 @@
 import { Exclude } from 'class-transformer';
 import { UserStatus } from '../auth/user-status.enum';
-import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Orders } from './orders.entity';
+import { BaseDate } from './date-column.entity';
 
 @Entity({ name: 'users' })
-export class User {
+export class User extends BaseDate {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -39,19 +40,6 @@ export class User {
 
   @Column({ name: 'block_flag', default: false })
   blockFlag: boolean;
-
-  @CreateDateColumn({
-    type: 'timestamp',
-    default: () => 'CURRENT_TIMESTAMP(6)',
-  })
-  created_at!: Date;
-
-  @UpdateDateColumn({
-    type: 'timestamp',
-    default: () => 'CURRENT_TIMESTAMP(6)',
-    onUpdate: 'CURRENT_TIMESTAMP(6)',
-  })
-  updated_at!: Date;
 
   @OneToMany(() => Orders, order => order.user, {
     cascade: true,

@@ -1,30 +1,16 @@
 import { Exclude } from 'class-transformer';
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseDate } from './date-column.entity';
 
 @Entity({ name: 'user_tmp' })
-export class UserTmp {
+export class UserTmp extends BaseDate {
   @PrimaryGeneratedColumn('increment', { name: 'id' })
   id: number;
 
-  @Column({ name: 'email', unique: true, nullable: false })
+  @Column({ name: 'email', unique: false, nullable: false })
   email: string;
 
   @Column({ nullable: false })
   @Exclude()
   password: string;
-
-  @CreateDateColumn({
-    name: 'created_at',
-    type: 'timestamp',
-    default: () => 'CURRENT_TIMESTAMP(6)',
-  })
-  createdAt!: Date;
-
-  @UpdateDateColumn({
-    name: 'updated_at',
-    type: 'timestamp',
-    default: () => 'CURRENT_TIMESTAMP(6)',
-    onUpdate: 'CURRENT_TIMESTAMP(6)',
-  })
-  updatedAt!: Date;
 }

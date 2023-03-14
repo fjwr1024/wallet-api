@@ -1,16 +1,9 @@
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  JoinColumn,
-  ManyToOne,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseDate } from './date-column.entity';
 import { User } from './user.entity';
 
 @Entity({ name: 'orders' })
-export class Orders {
+export class Orders extends BaseDate {
   @PrimaryGeneratedColumn('increment', { name: 'id' })
   id: number;
 
@@ -22,19 +15,6 @@ export class Orders {
 
   @Column({ name: 'charge_id' })
   chargeId?: string;
-
-  @CreateDateColumn({
-    type: 'timestamp',
-    default: () => 'CURRENT_TIMESTAMP(6)',
-  })
-  created_at!: Date;
-
-  @UpdateDateColumn({
-    type: 'timestamp',
-    default: () => 'CURRENT_TIMESTAMP(6)',
-    onUpdate: 'CURRENT_TIMESTAMP(6)',
-  })
-  updated_at!: Date;
 
   @ManyToOne(() => User, user => user.orders)
   @JoinColumn({ name: 'user_id' })

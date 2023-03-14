@@ -1,7 +1,8 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseDate } from './date-column.entity';
 
 @Entity({ name: 'auth_email' })
-export class AuthEmail {
+export class AuthEmail extends BaseDate {
   @PrimaryGeneratedColumn('increment', { name: 'id' })
   id: number;
 
@@ -20,19 +21,4 @@ export class AuthEmail {
 
   @Column({ name: 'limit_time', type: 'timestamp', nullable: true })
   limitTime: Date;
-
-  @CreateDateColumn({
-    name: 'created_at',
-    type: 'timestamp',
-    default: () => 'CURRENT_TIMESTAMP(6)',
-  })
-  createdAt!: Date;
-
-  @UpdateDateColumn({
-    name: 'updated_at',
-    type: 'timestamp',
-    default: () => 'CURRENT_TIMESTAMP(6)',
-    onUpdate: 'CURRENT_TIMESTAMP(6)',
-  })
-  updatedAt!: Date;
 }

@@ -88,7 +88,7 @@ export class AuthService {
       });
 
       if (!tmpUser) {
-        throw new NotFoundException('User is not found');
+        throw new NotFoundException('TmpUser is not found');
       }
 
       user.email = tmpUser.email;
@@ -98,8 +98,11 @@ export class AuthService {
       console.log('user', user);
 
       AppDataSource.manager.insert(User, user);
+      AppDataSource.manager.delete(UserTmp, {
+        email: verifyUser.email,
+      });
     } else {
-      throw new InternalServerErrorException('ウォレット生成時エラー');
+      throw new InternalServerErrorException('認証コードが違います。再度メールを送信してください');
     }
 
     return 'ok';
