@@ -90,6 +90,10 @@ export class AuthService {
       if (!tmpUser) {
         throw new NotFoundException('TmpUser is not found');
       }
+      const now = new Date();
+      if (!(now < verifyUser.limitTime)) {
+        throw new InternalServerErrorException('時間切れです。再度会員登録画面からサインアップをしてください');
+      }
 
       user.email = tmpUser.email;
       user.password = tmpUser.password;

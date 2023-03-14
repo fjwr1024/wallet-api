@@ -22,7 +22,7 @@ services:
     hostname: wallet-db
     restart: always
     ports:
-      - '3306:3306'
+      - '3307:3307'
     volumes:
       - ./docker/db/data:/var/lib/mysql
       - ./docker/db/my.cnf:/etc/mysql/conf.d
