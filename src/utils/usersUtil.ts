@@ -15,12 +15,12 @@ export const getUserById = async (id: string): Promise<User> => {
 };
 
 export const getUserByEmail = async (email: string): Promise<User> => {
-  const res = await AppDataSource.manager.findOneBy(User, {
+  const user = await AppDataSource.manager.findOneBy(User, {
     email,
   });
 
-  if (!res) {
+  if (!user) {
     throw new NotFoundException('User is not found');
   }
-  return res;
+  return user || undefined;
 };

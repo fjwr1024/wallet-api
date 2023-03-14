@@ -1,7 +1,13 @@
 import { Orders } from './../entities/orders.entity';
 import { AUTH_MAIL_BODY, AUTH_MAIL_TITLE } from './../utils/mail/mail-content';
 import { getUserByEmail, getUserById } from './../utils/usersUtil';
-import { ConflictException, ForbiddenException, Injectable, InternalServerErrorException } from '@nestjs/common';
+import {
+  ConflictException,
+  ForbiddenException,
+  Injectable,
+  InternalServerErrorException,
+  NotFoundException,
+} from '@nestjs/common';
 import { User } from '../entities/user.entity';
 import { AuthEmail } from './../entities/auth-email.entity';
 import * as bcrypt from 'bcrypt';
@@ -31,15 +37,9 @@ export class AuthService {
 
     try {
       const tmpUser = new UserTmp();
-      const walletAddress = createWallet();
 
       tmpUser.email = createUserDto.email;
       tmpUser.password = hashed;
-
-      const currentUser = await AppDataSource.manager.findOneBy(User, {
-        email: createUserDto.email,
-      });
-      if (currentUser) throw new ConflictException('This email is already exist');
 
       const authCode = createRandomCode();
       const authEmail = new AuthEmail();
@@ -63,6 +63,7 @@ export class AuthService {
       // sendMail(EMAIL_TO, mailTitle, mailBody);
 
       console.log('user', tmpUser);
+      console.log('authcode', authCode);
       AppDataSource.manager.insert(UserTmp, tmpUser);
       return { message: 'ok' };
     } catch (error) {
@@ -71,19 +72,34 @@ export class AuthService {
   }
 
   async verifyAuthCode(verifyAuthCodeDto: VerifyAuthCodeDto) {
-    const currentUser = await AppDataSource.manager.findOne(AuthEmail, {
+    const verifyUser = await AppDataSource.manager.findOne(AuthEmail, {
       where: { email: verifyAuthCodeDto.email },
       order: { id: 'DESC' },
     });
-    console.log('currentUser', currentUser);
+    console.log('verifyUser', verifyUser);
 
-    if (verifyAuthCodeDto.authCode === currentUser.sentCode) {
+    if (verifyAuthCodeDto.authCode === verifyUser.sentCode) {
       console.log('authcode verified');
       const user = new User();
       const walletAddress = createWallet();
 
-      user.email = currentUser.email;
+      const tmpUser = await AppDataSource.manager.findOneBy(UserTmp, {
+        email: verifyUser.email,
+      });
+
+      if (!tmpUser) {
+        throw new NotFoundException('User is not found');
+      }
+
+      user.email = tmpUser.email;
+      user.password = tmpUser.password;
       user.walletAddress = (await walletAddress).pubkey;
+
+      console.log('user', user);
+
+      AppDataSource.manager.insert(User, user);
+    } else {
+      throw new InternalServerErrorException('ウォレット生成時エラー');
     }
 
     return 'ok';
@@ -108,7 +124,7 @@ export class AuthService {
     };
     const secret = this.config.get('JWT_SECRET');
     const accessToken = await this.jwtService.signAsync(payload, {
-      expiresIn: '15m',
+      expiresIn: '60m',
       secret,
     });
     return {
