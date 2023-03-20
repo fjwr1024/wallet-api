@@ -92,7 +92,7 @@ export class AuthService {
       }
       const now = new Date();
       if (!(now < verifyUser.limitTime)) {
-        throw new InternalServerErrorException('時間切れです。再度会員登録画面からサインアップをしてください');
+        throw new InternalServerErrorException('Time out.Please Retry Singup.');
       }
 
       user.email = tmpUser.email;
