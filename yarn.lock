@@ -1439,16 +1439,7 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@solana-suite/core@0.5.8":
-  version "0.5.8"
-  resolved "https://registry.yarnpkg.com/@solana-suite/core/-/core-0.5.8.tgz#2eb59f45d7cd0ed59b363b2f00f27a099a69831d"
-  integrity sha512-hk55Yavog9x7FCaUfXRj+OWg4zS6u+cHgMsFrBrHHJBfWJD4mcPKULFwpWmp7Ttc3qB+8xypZ5R3blfTvqSpiQ==
-  dependencies:
-    "@solana-suite/shared" latest
-    "@solana-suite/shared-metaplex" latest
-    "@solana-suite/storage" latest
-
-"@solana-suite/core@latest":
+"@solana-suite/core@0.5.9", "@solana-suite/core@latest":
   version "0.5.9"
   resolved "https://registry.yarnpkg.com/@solana-suite/core/-/core-0.5.9.tgz#81b97c6bb5a6a8ec2ebd51f0e3413bc3d102cfca"
   integrity sha512-Pv4naLvNfsvDJbXbS0nfMzWvJ6twmsCQDQIHl//ap8EvURVf5c6fKe8kkAqw63JrY0QP5BrpLNaD2DxvMeAD4Q==
@@ -1457,10 +1448,10 @@
     "@solana-suite/shared-metaplex" latest
     "@solana-suite/storage" latest
 
-"@solana-suite/nft@0.5.8":
-  version "0.5.8"
-  resolved "https://registry.yarnpkg.com/@solana-suite/nft/-/nft-0.5.8.tgz#d3b7a2ff595c59e9f3ad276841360f340f2b7eb0"
-  integrity sha512-+pv0HrqKZnHE9Fp6w/dtINOpq36btWqXzkAFTm+4XKHOZGAnBAIFrhzHjiZyo3NQ1/Mg5aSaPnIgVbKhphQsgQ==
+"@solana-suite/nft@0.5.9":
+  version "0.5.9"
+  resolved "https://registry.yarnpkg.com/@solana-suite/nft/-/nft-0.5.9.tgz#e03541fe7f3b801a5d8478c27f5dbf739c922712"
+  integrity sha512-n/PLXdGQN/Q01HzF3luNhR4oD5/hlJzRZ79FcbOxb5AYhp8C736GsUojl2yug9e7ijZ/be8HDxoUtRFQZAA8Vg==
   dependencies:
     "@solana-suite/core" latest
     "@solana-suite/shared-metaplex" latest
@@ -1482,18 +1473,7 @@
     "@solana/web3.js" "^1.73.2"
     commander "9.3.0"
 
-"@solana-suite/storage@0.5.8":
-  version "0.5.8"
-  resolved "https://registry.yarnpkg.com/@solana-suite/storage/-/storage-0.5.8.tgz#b0d1a58ec7ddb445f523dbc1f10ecb243bf2fcd5"
-  integrity sha512-Kl9Qe2fDlY1DxTLY75Vpqs8gOcZYBkdFssy+i7hNHLP2SULjjOcWMdka6LMRqoocvvP2fVEtY6YJ+tdPHnQ4QA==
-  dependencies:
-    "@solana-suite/shared-metaplex" latest
-    cross-fetch "^3.1.4"
-    form-data "^3.0.1"
-    nft.storage "^3.3.0"
-    node-fetch "^3.0.0"
-
-"@solana-suite/storage@latest":
+"@solana-suite/storage@0.5.9", "@solana-suite/storage@latest":
   version "0.5.9"
   resolved "https://registry.yarnpkg.com/@solana-suite/storage/-/storage-0.5.9.tgz#72ea100dad86af102bb42950babbebd8a453900b"
   integrity sha512-Ikd1tOfEkoIW4pTORb+8izn2EFF4s8GTjK3Mr+Yz2Feq4TKJjRKDceWAn4V6Py3CU3YKjyiRi5fK01V1MRrs4g==

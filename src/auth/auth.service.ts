@@ -106,7 +106,7 @@ export class AuthService {
         email: verifyUser.email,
       });
     } else {
-      throw new InternalServerErrorException('認証コードが違います。再度メールを送信してください');
+      throw new InternalServerErrorException('Wrong authorization code. Please send your email again by sign up form');
     }
 
     return 'ok';
