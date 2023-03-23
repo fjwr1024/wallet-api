@@ -1439,16 +1439,7 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@solana-suite/core@0.5.8":
-  version "0.5.8"
-  resolved "https://registry.yarnpkg.com/@solana-suite/core/-/core-0.5.8.tgz#2eb59f45d7cd0ed59b363b2f00f27a099a69831d"
-  integrity sha512-hk55Yavog9x7FCaUfXRj+OWg4zS6u+cHgMsFrBrHHJBfWJD4mcPKULFwpWmp7Ttc3qB+8xypZ5R3blfTvqSpiQ==
-  dependencies:
-    "@solana-suite/shared" latest
-    "@solana-suite/shared-metaplex" latest
-    "@solana-suite/storage" latest
-
-"@solana-suite/core@latest":
+"@solana-suite/core@0.5.9", "@solana-suite/core@latest":
   version "0.5.9"
   resolved "https://registry.yarnpkg.com/@solana-suite/core/-/core-0.5.9.tgz#81b97c6bb5a6a8ec2ebd51f0e3413bc3d102cfca"
   integrity sha512-Pv4naLvNfsvDJbXbS0nfMzWvJ6twmsCQDQIHl//ap8EvURVf5c6fKe8kkAqw63JrY0QP5BrpLNaD2DxvMeAD4Q==
