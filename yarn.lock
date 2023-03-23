@@ -1465,15 +1465,7 @@
     "@metaplex-foundation/js" "0.18.0"
     "@solana-suite/shared" latest
 
-"@solana-suite/shared@0.5.8":
-  version "0.5.8"
-  resolved "https://registry.yarnpkg.com/@solana-suite/shared/-/shared-0.5.8.tgz#a3bf94b4a25f89657b51810cc4b689a61d7d58c8"
-  integrity sha512-+GcGXhZjOvpfAL2JYvxRjUha4MUNin5EP5t17ELlC/3Axs2yo5xP04yZz7/uGzjA0TMMEjeBqNgocY16AmgKwQ==
-  dependencies:
-    "@solana/web3.js" "^1.73.2"
-    commander "9.3.0"
-
-"@solana-suite/shared@latest":
+"@solana-suite/shared@0.5.9", "@solana-suite/shared@latest":
   version "0.5.9"
   resolved "https://registry.yarnpkg.com/@solana-suite/shared/-/shared-0.5.9.tgz#1afb6a836a0f411df73820d9bd059df188ded926"
   integrity sha512-a85ndq1h+zneJ1e/gnU55K71xIgqDBhOiK5TTkTsLIgGoQmZxnJlanNo7ZS5W07WEMyn5tusE3C/soH4yjSOPQ==
