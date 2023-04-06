@@ -1,3 +1,5 @@
+import { Metadata } from './entities/metadata.entity';
+import { Nft } from './entities/nft.entity';
 import 'reflect-metadata';
 import { DataSource } from 'typeorm';
 import { User } from './entities/user.entity';
@@ -19,7 +21,7 @@ export const AppDataSource = new DataSource({
   database: env.DB_NAME || 'wallet_db',
   synchronize: false,
   logging: false,
-  entities: [User, News, Orders, Products, AuthEmail, UserTmp],
+  entities: [User, News, Orders, Products, AuthEmail, UserTmp, Nft, Metadata],
   migrations: ['src/migration/*.ts'],
 });
 
