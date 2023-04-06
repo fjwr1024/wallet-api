@@ -8,6 +8,8 @@ import { Orders } from './entities/orders.entity';
 import { Products } from './entities/product.entity';
 import { AuthEmail } from './entities/auth-email.entity';
 import { UserTmp } from './entities/user-tmp.entity';
+import { Follow } from './entities/follow.entity';
+import { Post } from './entities/post.entity';
 
 const env = process.env;
 
@@ -21,7 +23,7 @@ export const AppDataSource = new DataSource({
   database: env.DB_NAME || 'wallet_db',
   synchronize: false,
   logging: false,
-  entities: [User, News, Orders, Products, AuthEmail, UserTmp, Nft, Metadata],
+  entities: [User, News, Orders, Products, AuthEmail, UserTmp, Nft, Metadata, Post, Follow],
   migrations: ['src/migration/*.ts'],
 });
 

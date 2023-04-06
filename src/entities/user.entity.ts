@@ -2,7 +2,9 @@ import { Exclude } from 'class-transformer';
 import { UserStatus } from '../auth/user-status.enum';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Orders } from './orders.entity';
+import { Post } from './post.entity';
 import { BaseDate } from './date-column.entity';
+import { Follow } from './follow.entity';
 
 @Entity({ name: 'users' })
 export class User extends BaseDate {
@@ -45,4 +47,15 @@ export class User extends BaseDate {
     cascade: true,
   })
   orders: Orders[];
+
+  @OneToMany(() => Post, post => post.user, {
+    cascade: true,
+  })
+  posts: Post[];
+
+  @OneToMany(() => Follow, follow => follow.follower)
+  followings: Follow[];
+
+  @OneToMany(() => Follow, follow => follow.followed)
+  followers: Follow[];
 }
