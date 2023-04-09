@@ -1473,7 +1473,19 @@
     "@solana/web3.js" "^1.73.2"
     commander "9.3.0"
 
-"@solana-suite/storage@0.5.9", "@solana-suite/storage@latest":
+"@solana-suite/storage@0.5.10":
+  version "0.5.10"
+  resolved "https://registry.yarnpkg.com/@solana-suite/storage/-/storage-0.5.10.tgz#ce5b2cbc60e16d67608018bc7614e2fa62ea5949"
+  integrity sha512-DYF1ry/8ftRnmCm03GLBuTrjHD+J/hk6N6lLdlLCb7u0C5P3nAO9Gj7KSF3wbffiJsAHeS7GvmiSWd7Bhp4Dkg==
+  dependencies:
+    "@metaplex-foundation/js" "0.18.0"
+    "@solana-suite/shared-metaplex" latest
+    cross-fetch "^3.1.4"
+    form-data "^3.0.1"
+    nft.storage "^3.3.0"
+    node-fetch "^3.0.0"
+
+"@solana-suite/storage@latest":
   version "0.5.9"
   resolved "https://registry.yarnpkg.com/@solana-suite/storage/-/storage-0.5.9.tgz#72ea100dad86af102bb42950babbebd8a453900b"
   integrity sha512-Ikd1tOfEkoIW4pTORb+8izn2EFF4s8GTjK3Mr+Yz2Feq4TKJjRKDceWAn4V6Py3CU3YKjyiRi5fK01V1MRrs4g==
