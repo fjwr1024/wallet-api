@@ -1173,9 +1173,9 @@
     node-fetch "^2.6.7"
 
 "@metaplex-foundation/mpl-auction-house@^2.3.0":
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/@metaplex-foundation/mpl-auction-house/-/mpl-auction-house-2.5.0.tgz#23c0848b39e8955f33c21b6958ae67d8d759b0fe"
-  integrity sha512-n6yOHnzxJlNKn3gmvW/f1lX8pMCrFf/8TjQ5WiBsvXQkOceTVNb1MFJUVDfDlcmHyNxUDekPLO6eIbBZWWGvKg==
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/@metaplex-foundation/mpl-auction-house/-/mpl-auction-house-2.5.1.tgz#ea0e21e594b0db5e73f88688eb2e7c9b748b378b"
+  integrity sha512-O+IAdYVaoOvgACB8pm+1lF5BNEjl0COkqny2Ho8KQZwka6aC/vHbZ239yRwAMtJhf5992BPFdT4oifjyE0O+Mw==
   dependencies:
     "@metaplex-foundation/beet" "^0.6.1"
     "@metaplex-foundation/beet-solana" "^0.3.1"
@@ -1217,7 +1217,7 @@
     "@solana/spl-token" "^0.3.6"
     "@solana/web3.js" "^1.66.2"
 
-"@metaplex-foundation/mpl-token-metadata@^2.7.0":
+"@metaplex-foundation/mpl-token-metadata@^2.7.0", "@metaplex-foundation/mpl-token-metadata@^2.9.1":
   version "2.9.1"
   resolved "https://registry.yarnpkg.com/@metaplex-foundation/mpl-token-metadata/-/mpl-token-metadata-2.9.1.tgz#79b548b60ac4065b438b78e28b0139751f16b186"
   integrity sha512-QmeWBG7y2Uu9FyD1JiclPmJtkYA1sd/Vh9US9H9zTGNWnyogM60hqZ9yVcibvkO+aSsWd0ZJIsMXZlewXIx0IQ==
@@ -1439,45 +1439,46 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@solana-suite/core@0.5.9", "@solana-suite/core@latest":
-  version "0.5.9"
-  resolved "https://registry.yarnpkg.com/@solana-suite/core/-/core-0.5.9.tgz#81b97c6bb5a6a8ec2ebd51f0e3413bc3d102cfca"
-  integrity sha512-Pv4naLvNfsvDJbXbS0nfMzWvJ6twmsCQDQIHl//ap8EvURVf5c6fKe8kkAqw63JrY0QP5BrpLNaD2DxvMeAD4Q==
+"@solana-suite/core@0.5.10", "@solana-suite/core@latest":
+  version "0.5.10"
+  resolved "https://registry.yarnpkg.com/@solana-suite/core/-/core-0.5.10.tgz#3ddbd6f347d7f333f88690445628060bff0201c7"
+  integrity sha512-znxI86ogAs9a2udrYc9tyOe3GYQM9EcsIrv8lUTpqlVmARuU1F4WnTFBiglyUZ9vqsubzwfddxVkjLD+B7jXKQ==
   dependencies:
     "@solana-suite/shared" latest
     "@solana-suite/shared-metaplex" latest
     "@solana-suite/storage" latest
 
-"@solana-suite/nft@0.5.9":
-  version "0.5.9"
-  resolved "https://registry.yarnpkg.com/@solana-suite/nft/-/nft-0.5.9.tgz#e03541fe7f3b801a5d8478c27f5dbf739c922712"
-  integrity sha512-n/PLXdGQN/Q01HzF3luNhR4oD5/hlJzRZ79FcbOxb5AYhp8C736GsUojl2yug9e7ijZ/be8HDxoUtRFQZAA8Vg==
+"@solana-suite/nft@0.5.10":
+  version "0.5.10"
+  resolved "https://registry.yarnpkg.com/@solana-suite/nft/-/nft-0.5.10.tgz#0ef54378d9ac443faa1f957abad85641f7af5956"
+  integrity sha512-YdIaoAD40ytUO2W6p349Uai5oQmFVd28lFSWVSgOimnJhTODo4mUB0LglUGAfYwnsZC+Fv7E208kK2is3yol1A==
   dependencies:
     "@solana-suite/core" latest
     "@solana-suite/shared-metaplex" latest
     "@solana-suite/storage" latest
 
 "@solana-suite/shared-metaplex@latest":
-  version "0.5.9"
-  resolved "https://registry.yarnpkg.com/@solana-suite/shared-metaplex/-/shared-metaplex-0.5.9.tgz#32a7e78bf0580d6445ee590b109a15ed9eb48da5"
-  integrity sha512-KbL6emVxMWjGwRxyjcTOj25E0vSf01azT6v+M3FNXFTDIqUXWVoxNjHKJJJIT3vQi7dc6wFgL+gkYpPGfNEkyw==
+  version "0.5.10"
+  resolved "https://registry.yarnpkg.com/@solana-suite/shared-metaplex/-/shared-metaplex-0.5.10.tgz#27e061a201b5192bedc3e5d36b0a930021a4d592"
+  integrity sha512-3Zit2EfUY7ts8imKxim3uAL4HSZWr9ugkhRrsU0/l7Lk+B4JNQw9eVhZ+oKgWo6MXW8EFJRb5UqWypJm6mNghQ==
   dependencies:
-    "@metaplex-foundation/js" "0.18.0"
+    "@metaplex-foundation/mpl-token-metadata" "^2.9.1"
     "@solana-suite/shared" latest
 
-"@solana-suite/shared@0.5.9", "@solana-suite/shared@latest":
-  version "0.5.9"
-  resolved "https://registry.yarnpkg.com/@solana-suite/shared/-/shared-0.5.9.tgz#1afb6a836a0f411df73820d9bd059df188ded926"
-  integrity sha512-a85ndq1h+zneJ1e/gnU55K71xIgqDBhOiK5TTkTsLIgGoQmZxnJlanNo7ZS5W07WEMyn5tusE3C/soH4yjSOPQ==
+"@solana-suite/shared@0.5.10", "@solana-suite/shared@latest":
+  version "0.5.10"
+  resolved "https://registry.yarnpkg.com/@solana-suite/shared/-/shared-0.5.10.tgz#3a4f6ec0e83cc9c21d10c5765c11f5db132b34d5"
+  integrity sha512-/leV6B3XFn3q6tIU5uOVca/MA8B2Su8jOjpRRcR0V/KplvZ7x73L/W6R18IPSgKzlBl/brKKwS8W7+o/T/oO6Q==
   dependencies:
     "@solana/web3.js" "^1.73.2"
     commander "9.3.0"
 
-"@solana-suite/storage@0.5.9", "@solana-suite/storage@latest":
-  version "0.5.9"
-  resolved "https://registry.yarnpkg.com/@solana-suite/storage/-/storage-0.5.9.tgz#72ea100dad86af102bb42950babbebd8a453900b"
-  integrity sha512-Ikd1tOfEkoIW4pTORb+8izn2EFF4s8GTjK3Mr+Yz2Feq4TKJjRKDceWAn4V6Py3CU3YKjyiRi5fK01V1MRrs4g==
+"@solana-suite/storage@0.5.10", "@solana-suite/storage@latest":
+  version "0.5.10"
+  resolved "https://registry.yarnpkg.com/@solana-suite/storage/-/storage-0.5.10.tgz#ce5b2cbc60e16d67608018bc7614e2fa62ea5949"
+  integrity sha512-DYF1ry/8ftRnmCm03GLBuTrjHD+J/hk6N6lLdlLCb7u0C5P3nAO9Gj7KSF3wbffiJsAHeS7GvmiSWd7Bhp4Dkg==
   dependencies:
+    "@metaplex-foundation/js" "0.18.0"
     "@solana-suite/shared-metaplex" latest
     cross-fetch "^3.1.4"
     form-data "^3.0.1"
@@ -1529,9 +1530,9 @@
     "@wallet-standard/features" "^1.0.3"
 
 "@solana/web3.js@^1.32.0", "@solana/web3.js@^1.36.0", "@solana/web3.js@^1.56.2", "@solana/web3.js@^1.63.1", "@solana/web3.js@^1.66.2", "@solana/web3.js@^1.73.2":
-  version "1.74.0"
-  resolved "https://registry.yarnpkg.com/@solana/web3.js/-/web3.js-1.74.0.tgz#dbcbeabb830dd7cbbcf5e31404ca79c9785cbf2d"
-  integrity sha512-RKZyPqizPCxmpMGfpu4fuplNZEWCrhRBjjVstv5QnAJvgln1jgOfgui+rjl1ExnqDnWKg9uaZ5jtGROH/cwabg==
+  version "1.75.0"
+  resolved "https://registry.yarnpkg.com/@solana/web3.js/-/web3.js-1.75.0.tgz#824c6f78865007bca758ca18f268d6f7363b42e5"
+  integrity sha512-rHQgdo1EWfb+nPUpHe4O7i8qJPELHKNR5PAZRK+a7XxiykqOfbaAlPt5boDWAGPnYbSv0ziWZv5mq9DlFaQCxg==
   dependencies:
     "@babel/runtime" "^7.12.5"
     "@noble/ed25519" "^1.7.0"
@@ -1543,7 +1544,7 @@
     bn.js "^5.0.0"
     borsh "^0.7.0"
     bs58 "^4.0.1"
-    buffer "6.0.1"
+    buffer "6.0.3"
     fast-stable-stringify "^1.0.0"
     jayson "^3.4.4"
     node-fetch "^2.6.7"
@@ -1771,6 +1772,11 @@
   version "11.11.6"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-11.11.6.tgz#df929d1bb2eee5afdda598a41930fe50b43eaa6a"
   integrity sha512-Exw4yUWMBXM3X+8oqzJNRqZSwUAaS4+7NdvHqQuFi/d+synz++xmX3QIf+BFqneW8N31R8Ky+sikfZUXq07ggQ==
+
+"@types/node@>=8.1.0", "@types/node@^18.15.10":
+  version "18.15.10"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.15.10.tgz#4ee2171c3306a185d1208dad5f44dae3dee4cfe3"
+  integrity sha512-9avDaQJczATcXgfmMAW3MIWArOO7A+m90vuCFLr8AotWf8igO/mRoYukrk2cqZVtv38tHs33retzHEilM7FpeQ==
 
 "@types/node@^12.12.54":
   version "12.20.55"
@@ -2496,9 +2502,9 @@ arweave-stream-tx@^1.1.0:
     exponential-backoff "^3.1.0"
 
 arweave@^1.10.13, arweave@^1.11.4:
-  version "1.13.3"
-  resolved "https://registry.yarnpkg.com/arweave/-/arweave-1.13.3.tgz#00f0b486e0c9c82901ea861dbeb7cfbfe199cdef"
-  integrity sha512-Zj+mKMU6/gl3nIqGU4c8J8LdYt11qfA8CBy5NZ25X2dFrd40m3GufxmnmwS1V0Gm97i3+mwO+ARDEm0o4REEoQ==
+  version "1.13.5"
+  resolved "https://registry.yarnpkg.com/arweave/-/arweave-1.13.5.tgz#0bd28aae9d0e9fc66df45217661b08f57658c090"
+  integrity sha512-bxXoxmQF1OVXw2QFjD9m29Oo+lwUSvb2mzli494BRFGCfSSTBpE5Fp9f65HmmGEUURCL4xS17J6wBjLm1efrig==
   dependencies:
     arconnect "^0.4.2"
     asn1.js "^5.4.1"
@@ -2916,10 +2922,10 @@ buffer-xor@^1.0.3:
   resolved "https://registry.yarnpkg.com/buffer-xor/-/buffer-xor-1.0.3.tgz#26e61ed1422fb70dd42e6e36729ed51d855fe8d9"
   integrity sha512-571s0T7nZWK6vB67HI5dyUF7wXiNcfaPPPTl6zYCNApANjIvYJTg7hlud/+cJpdAhS7dVzqMLmfhfHR3rAcOjQ==
 
-buffer@6.0.1:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/buffer/-/buffer-6.0.1.tgz#3cbea8c1463e5a0779e30b66d4c88c6ffa182ac2"
-  integrity sha512-rVAXBwEcEoYtxnHSO5iWyhzV/O1WMtkUYWlfdLS7FjU4PnSJJHEfHXi/uHPI5EwltmOA794gN3bm3/pzuctWjQ==
+buffer@6.0.3, buffer@^6.0.2, buffer@^6.0.3, buffer@~6.0.3:
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/buffer/-/buffer-6.0.3.tgz#2ace578459cc8fbe2a70aaa8f52ee63b6a74c6c6"
+  integrity sha512-FTiCpNxtwiZZHEZbcbTIcZjERVICn9yq/pDFkTl95/AxzD1naBctN7YO68riM/gLSDY7sdrMby8hofADYuuqOA==
   dependencies:
     base64-js "^1.3.1"
     ieee754 "^1.2.1"
@@ -2931,14 +2937,6 @@ buffer@^5.5.0:
   dependencies:
     base64-js "^1.3.1"
     ieee754 "^1.1.13"
-
-buffer@^6.0.2, buffer@^6.0.3, buffer@~6.0.3:
-  version "6.0.3"
-  resolved "https://registry.yarnpkg.com/buffer/-/buffer-6.0.3.tgz#2ace578459cc8fbe2a70aaa8f52ee63b6a74c6c6"
-  integrity sha512-FTiCpNxtwiZZHEZbcbTIcZjERVICn9yq/pDFkTl95/AxzD1naBctN7YO68riM/gLSDY7sdrMby8hofADYuuqOA==
-  dependencies:
-    base64-js "^1.3.1"
-    ieee754 "^1.2.1"
 
 bufferutil@^4.0.1:
   version "4.0.7"
@@ -3116,9 +3114,9 @@ cli-highlight@^2.1.11:
     yargs "^16.0.0"
 
 cli-spinners@^2.5.0:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/cli-spinners/-/cli-spinners-2.7.0.tgz#f815fd30b5f9eaac02db604c7a231ed7cb2f797a"
-  integrity sha512-qu3pN8Y3qHNgE2AFweciB1IfMnmZ/fsNTEE+NOFjmGB2F/7rLhnhzppvpCnN4FovtP26k8lHyy9ptEbNwWFLzw==
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/cli-spinners/-/cli-spinners-2.8.0.tgz#e97a3e2bd00e6d85aa0c13d7f9e3ce236f7787fc"
+  integrity sha512-/eG5sJcvEIwxcdYM86k5tPwn0MUzkX5YY3eImTGpJOZgVe4SdTMY14vQpcxgBzJ0wXwAYrS8E+c3uHeK4JNyzQ==
 
 cli-table3@0.6.3:
   version "0.6.3"
@@ -4486,6 +4484,16 @@ glob@^9.2.0:
   dependencies:
     fs.realpath "^1.0.0"
     minimatch "^7.4.1"
+    minipass "^4.2.4"
+    path-scurry "^1.6.1"
+
+glob@^9.3.2:
+  version "9.3.5"
+  resolved "https://registry.yarnpkg.com/glob/-/glob-9.3.5.tgz#ca2ed8ca452781a3009685607fdf025a899dfe21"
+  integrity sha512-e1LleDykUz2Iu+MTYdkSsuWX8lvAjAcs0Xef0lNIu0S2wOAzuTxCJtcd9S3cijlwYF18EsU3rzb8jPVobxDh9Q==
+  dependencies:
+    fs.realpath "^1.0.0"
+    minimatch "^8.0.2"
     minipass "^4.2.4"
     path-scurry "^1.6.1"
 
@@ -5916,6 +5924,13 @@ minimatch@^7.4.1:
   version "7.4.3"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-7.4.3.tgz#012cbf110a65134bb354ae9773b55256cdb045a2"
   integrity sha512-5UB4yYusDtkRPbRiy1cqZ1IpGNcJCGlEMG17RKzPddpyiPKoCdwohbED8g4QXT0ewCt8LTkQXuljsUfQ3FKM4A==
+  dependencies:
+    brace-expansion "^2.0.1"
+
+minimatch@^8.0.2:
+  version "8.0.4"
+  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-8.0.4.tgz#847c1b25c014d4e9a7f68aaf63dedd668a626229"
+  integrity sha512-W0Wvr9HyFXZRGIDgCicunpQ299OKXs9RgZfaukz4qAW/pJhcpUfupc9c+OObPOFueNy8VSrZgEmDtk6Kh4WzDA==
   dependencies:
     brace-expansion "^2.0.1"
 

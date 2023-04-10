@@ -21,7 +21,7 @@ async function bootstrap() {
   // corsの許可
   app.enableCors({
     credentials: true,
-    allowedHeaders: 'Origin, X-Requested-With, X-Total-Count, Content-Type, Accept',
+    allowedHeaders: 'Origin, X-Requested-With, X-Total-Count, Content-Type, Accept, X-XSRF-TOKEN',
     exposedHeaders: 'Content-Range, X-Total-Count',
     origin: 'http://localhost:3001',
   });
@@ -34,7 +34,7 @@ async function bootstrap() {
   //     cookie: {
   //       httpOnly: true,
   //       sameSite: 'none',
-  //       secure: false,
+  //       secure: true,
   //     },
   //     value: (req: Request) => {
   //       return req.header('csrf-token');

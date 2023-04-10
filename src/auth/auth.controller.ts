@@ -19,11 +19,12 @@ export class AuthController {
 
   @Get('csrf')
   getCsrfToken(@Req() req: Request): Csrf {
+    console.log('csrfToken', req.csrfToken());
     return { csrfToken: req.csrfToken() };
   }
 
   @Post('signup')
-  async signup(@Body() createUserDto: CreateUserDto): Promise<Msg> {
+  async signup(@Body() createUserDto: CreateUserDto): Promise<any> {
     return await this.authService.signUp(createUserDto);
   }
 
@@ -40,7 +41,7 @@ export class AuthController {
     // 画面からapiを叩く場合はsecureをtrue postmanの場合はfalse
     res.cookie('access_token', jwt.accessToken, {
       httpOnly: true,
-      secure: false,
+      secure: true,
       sameSite: 'none',
       path: '/',
     });
