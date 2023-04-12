@@ -1,4 +1,4 @@
-import { Orders } from './../entities/orders.entity';
+import { Orders } from '../entities/orders.entity';
 import { AUTH_MAIL_BODY, AUTH_MAIL_TITLE } from './../utils/mail/mail-content';
 import { getUserByEmail, getUserById } from './../utils/usersUtil';
 import {
@@ -9,7 +9,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { User } from '../entities/user.entity';
-import { AuthEmail } from './../entities/auth-email.entity';
+import { AuthEmail } from '../entities/auth-email.entity';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 

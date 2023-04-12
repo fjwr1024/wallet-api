@@ -3,7 +3,7 @@ import { ConfigService } from '@nestjs/config';
 import { AppDataSource } from 'src/data-source';
 import { Orders } from 'src/entities/orders.entity';
 import { User } from 'src/entities/user.entity';
-import { Products } from './../entities/product.entity';
+import { Products } from '../entities/product.entity';
 import Stripe from 'stripe';
 import { OrderTicketDto } from './dto/order-ticket.dto';
 import { OrdersDto } from './dto/orders.dto';
