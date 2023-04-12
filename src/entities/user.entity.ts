@@ -5,6 +5,7 @@ import { Orders } from './orders.entity';
 import { Post } from './post.entity';
 import { BaseDate } from './date-column.entity';
 import { Follow } from './follow.entity';
+import { AddressBook } from './address-book.entity';
 
 @Entity({ name: 'users' })
 export class User extends BaseDate {
@@ -58,4 +59,7 @@ export class User extends BaseDate {
 
   @OneToMany(() => Follow, follow => follow.followed)
   followers: Follow[];
+
+  @OneToMany(() => AddressBook, addressBook => addressBook.user)
+  addressBookEntries: AddressBook[];
 }
