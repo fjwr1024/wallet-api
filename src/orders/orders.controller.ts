@@ -18,10 +18,4 @@ export class OrdersController {
     const res = await this.ordersService.getPaymentIntent();
     return res;
   }
-
-  @Post('/ticket')
-  async orderTicket(@Body() orderTicketDto: OrderTicketDto): Promise<string> {
-    const res = await this.ordersService.orderTicket(orderTicketDto);
-    return res;
-  }
 }
