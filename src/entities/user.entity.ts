@@ -20,15 +20,6 @@ export class User extends BaseDate {
   @Column({ name: 'wallet_address', nullable: true })
   walletAddress: string;
 
-  @Column({ name: 'age', nullable: true })
-  age: number;
-
-  @Column({ name: 'profile_text', nullable: true })
-  profileText: string;
-
-  @Column({ name: 'tickets', unique: false, nullable: true, default: 0 })
-  tickets: number;
-
   @Column({
     type: 'enum',
     enum: UserStatus,
