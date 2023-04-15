@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 import { User } from './user.entity';
 import { BaseDate } from './date-column.entity';
 
-@Entity()
+@Entity({ name: 'address_book' })
 export class AddressBook extends BaseDate {
   @PrimaryGeneratedColumn()
   id: number;
@@ -13,6 +13,6 @@ export class AddressBook extends BaseDate {
   @Column()
   addressName: string;
 
-  @ManyToOne(() => User, user => user.addressBookEntries)
+  @ManyToOne(() => User, user => user.addressBook)
   user: User;
 }

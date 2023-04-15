@@ -58,4 +58,11 @@ export class UserController {
     const res = this.userService.updateUserPassword(ownData.sub, updateUserPasswordDto.password);
     return res;
   }
+
+  @Get('addressbook/me')
+  async getUserAdresss(@Req() request): Promise<any> {
+    const ownData = ownInfoByJwt(request);
+    const res = await this.userService.getUserAddress(ownData.sub);
+    return res;
+  }
 }

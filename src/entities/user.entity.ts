@@ -39,5 +39,5 @@ export class User extends BaseDate {
   orders: Orders[];
 
   @OneToMany(() => AddressBook, addressBook => addressBook.user)
-  addressBookEntries: AddressBook[];
+  addressBook: AddressBook[];
 }

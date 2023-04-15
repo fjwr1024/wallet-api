@@ -52,40 +52,4 @@ export class NftService {
 
     return res;
   }
-
-  async mintByUser(mintUserNftDto: MintUserNftDto, file) {
-    const ownerWalletAddress = this.config.get<string>('SYSTEM_WALLET_ADDRESS');
-    const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
-    const feePayerSecretKey = this.config.get<string>('FEE_PAYER');
-
-    const id = mintUserNftDto.userId;
-    const resUser = await AppDataSource.manager.findOneBy(User, {
-      id,
-    });
-
-    if (!resUser) {
-      throw new NotFoundException('User is not found');
-    }
-
-    const userTicket = resUser.tickets;
-    if (userTicket == 0) {
-      throw new InternalServerErrorException('You do not have ticket');
-    }
-
-    await AppDataSource.manager.update(User, id, {
-      tickets: userTicket - 1,
-    });
-
-    const res = await mintNft(
-      mintUserNftDto.name,
-      file.path,
-      mintUserNftDto.quantity,
-      mintUserNftDto.description,
-      ownerWalletAddress,
-      ownerSecretKey
-    );
-    deleteUploadFile(file.path);
-
-    return res;
-  }
 }

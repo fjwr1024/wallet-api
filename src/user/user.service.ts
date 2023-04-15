@@ -4,6 +4,7 @@ import { User } from '../entities/user.entity';
 import { AppDataSource } from '../data-source';
 import * as bcrypt from 'bcrypt';
 import { SolNativeOwnerInfo } from '@solana-suite/core';
+import { AddressBook } from 'src/entities/address-book.entity';
 
 @Injectable()
 export class UserService {
@@ -84,6 +85,20 @@ export class UserService {
   async getWalletSolNative(getSolNativeDto): Promise<SolNativeOwnerInfo> {
     const res = getSolNative(getSolNativeDto.walletAddress);
     console.log('sol res', res);
+    return res;
+  }
+
+  async getUserAddress(id: string): Promise<any> {
+    const res = await AppDataSource.manager.findOne(User, {
+      where: {
+        id,
+      },
+      relations: ['addressBook'],
+    });
+
+    if (!res) {
+      throw new NotFoundException('User is not found');
+    }
     return res;
   }
 }
