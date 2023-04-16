@@ -7,7 +7,272 @@
 	},
 	"item": [
 		{
-			"name": "localhost:3000/healthcheck",
+			"name": "Test",
+			"item": [
+				{
+					"name": "正常系",
+					"item": [
+						{
+							"name": "SignUpTest",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful sign up returns status code 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"",
+											"pm.test(\"Successful sign up returns correct message\", function () {",
+											"    const jsonData = pm.response.json();",
+											"    pm.expect(jsonData.message).to.eql(\"ok\");",
+											"});",
+											"",
+											"pm.test(\"Invalid email returns appropriate status code\", function () {",
+											"    pm.response.to.have.status(400); ",
+											"});",
+											"",
+											"pm.test(\"Invalid email returns correct error message\", function () {",
+											"    const jsonData = pm.response.json();",
+											"    pm.expect(jsonData.message).to.eql([\"email must be an email\"]); ",
+											"});",
+											"",
+											"pm.test(\"Invalid password returns appropriate status code\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"pm.test(\"Invalid password returns correct error message\", function () {",
+											"    const jsonData = pm.response.json();",
+											"    pm.expect(jsonData.message).to.eql([\"password must be longer than or equal to 8 characters\"]);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "csrf-token",
+										"value": "vtXQE3cx-UWlbJqSGp04f4aVmxJBmXlPz4S4",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"sample4@email.com\",\n    \"password\": \"a\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/auth/signup",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Health Check",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Response time is less than 200ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);",
+											"});",
+											"pm.sendRequest(\"http://localhost:3000/healthcheck\", function (err, response) {",
+											"    console.log(response.json());",
+											"});",
+											"pm.test(\"Response data check\", function () {",
+											"    expectedResult = pm.iterationData.get(\"result\");",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData).to.eql(expectedResult);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/healthcheck",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"healthcheck"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "異常系",
+					"item": [
+						{
+							"name": "SignUp",
+							"item": [
+								{
+									"name": "EmailValidationError",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Invalid email returns appropriate status code\", function () {",
+													"    pm.response.to.have.status(400); ",
+													"});",
+													"",
+													"pm.test(\"Invalid email returns correct error message\", function () {",
+													"    const jsonData = pm.response.json();",
+													"    pm.expect(jsonData.message).to.eql([\"email must be an email\"]); ",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "csrf-token",
+												"value": "vtXQE3cx-UWlbJqSGp04f4aVmxJBmXlPz4S4",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"sample\",\n    \"password\": \"password\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:3000/auth/signup",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"auth",
+												"signup"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "PasswordValidationError",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Invalid password returns appropriate status code\", function () {",
+													"    pm.response.to.have.status(400);",
+													"});",
+													"",
+													"pm.test(\"Invalid password returns correct error message\", function () {",
+													"    const jsonData = pm.response.json();",
+													"    pm.expect(jsonData.message).to.eql([\"password must be longer than or equal to 8 characters\"]);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "csrf-token",
+												"value": "vtXQE3cx-UWlbJqSGp04f4aVmxJBmXlPz4S4",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"sample4@email.com\",\n    \"password\": \"a\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:3000/auth/signup",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"auth",
+												"signup"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Health Check",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"pm.sendRequest(\"http://localhost:3000/healthcheck\", function (err, response) {",
+							"    console.log(response.json());",
+							"});",
+							"pm.test(\"Response data check\", function () {",
+							"    expectedResult = pm.iterationData.get(\"result\");",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql(expectedResult);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -25,12 +290,71 @@
 			"response": []
 		},
 		{
-			"name": "localhost:3000/users/user-info/1",
+			"name": "Get User All Info Include Query",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/users/user-info/1",
+					"raw": "http://localhost:3000/users?take=3&page=4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					],
+					"query": [
+						{
+							"key": "_order",
+							"value": "ASC",
+							"disabled": true
+						},
+						{
+							"key": "take",
+							"value": "3"
+						},
+						{
+							"key": "page",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User All Info No Query",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/users?page=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Address",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/users/user-info/me",
 					"host": [
 						"localhost"
 					],
@@ -38,20 +362,110 @@
 					"path": [
 						"users",
 						"user-info",
-						"1"
+						"me"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "localhost:3000/users/signup",
+			"name": "Get User Id Info Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/users/user-info/me",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"user-info",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get CSRF Token",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/auth/csrf",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"csrf"
+					],
+					"query": [
+						{
+							"key": "csrf-token",
+							"value": "9ontlifz-WsQmHbBCtRXG55uAhBZqDtv_4Pc",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SignUp",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful sign up returns status code 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Successful sign up returns correct message\", function () {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.message).to.eql(\"ok\");",
+							"});",
+							"",
+							"pm.test(\"Invalid email returns appropriate status code\", function () {",
+							"    pm.response.to.have.status(400); ",
+							"});",
+							"",
+							"pm.test(\"Invalid email returns correct error message\", function () {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.message).to.eql([\"email must be an email\"]); ",
+							"});",
+							"",
+							"pm.test(\"Invalid password returns appropriate status code\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Invalid password returns correct error message\", function () {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.message).to.eql([\"password must be longer than or equal to 8 characters\"]);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "csrf-token",
+						"value": "vtXQE3cx-UWlbJqSGp04f4aVmxJBmXlPz4S4",
+						"type": "text",
+						"disabled": true
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"email\": \"sample@email.com\",\n    \"password\": \"password\"\n}",
+					"raw": "{\n    \"email\": \"sample4@email.com\",\n    \"password\": \"a\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -59,13 +473,13 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/users/signup",
+					"raw": "localhost:3000/auth/signup",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"users",
+						"auth",
 						"signup"
 					]
 				}
@@ -73,7 +487,112 @@
 			"response": []
 		},
 		{
-			"name": "localhost:3000/users/user-wallet-address/1",
+			"name": "Verify Code",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "csrf-token",
+						"value": "vtXQE3cx-UWlbJqSGp04f4aVmxJBmXlPz4S4",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"sample4@email.com\",\n    \"authCode\" : 502214\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/auth/verify-code",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"verify-code"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BlockUser",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "csrf-token",
+						"value": "vtXQE3cx-UWlbJqSGp04f4aVmxJBmXlPz4S4",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"sample21@email.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/auth/block-user",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"block-user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BlockCancel",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "csrf-token",
+						"value": "vtXQE3cx-UWlbJqSGp04f4aVmxJBmXlPz4S4",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"4ef1c50f-47da-4544-8636-c59f72fe69f7\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/auth/cancel-block",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"cancel-block"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Wallet Address",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -93,7 +612,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:3000/users/update-pass/22",
+			"name": "Update User Password",
 			"request": {
 				"method": "PATCH",
 				"header": [],
@@ -107,7 +626,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/users/update-pass/22",
+					"raw": "localhost:3000/users/update-pass/me",
 					"host": [
 						"localhost"
 					],
@@ -115,7 +634,443 @@
 					"path": [
 						"users",
 						"update-pass",
-						"22"
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User SOL",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"walletAddress\": \"4KSN3YFXHeZh5uJUmPaw7KVVszjLMLtvzzyysXSvAygW\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/users/get-sol",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"get-sol"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "csrf-token",
+						"value": "vtXQE3cx-UWlbJqSGp04f4aVmxJBmXlPz4S4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"sample@email.com\",\n    \"password\": \"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"login"
+					],
+					"query": [
+						{
+							"key": "csrf-token",
+							"value": "kdokxb0K-zSLCIV2DE5nSd6mVU8vBA5jYNcs",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get NFT List",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"walletAddress\": \"4KSN3YFXHeZh5uJUmPaw7KVVszjLMLtvzzyysXSvAygW\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/nft/get-list",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"nft",
+						"get-list"
+					],
+					"query": [
+						{
+							"key": "walletAddress",
+							"value": "FtJ5RdwkrsLWgawAeLrPwdxgr6c4rqrbvFb6jPsxYgMF",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mint NFT",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/fujiwara/画像/test-image.png"
+						},
+						{
+							"key": "name",
+							"value": "testaaa",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "description",
+							"type": "text"
+						},
+						{
+							"key": "quantity",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/nft/admin-mint",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"nft",
+						"admin-mint"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test Mint NFT",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/fujiwara/画像/samplemv.mp4"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/nft/test-mint",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"nft",
+						"test-mint"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get SPL Token Amount",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"walletAddress\": \"4KSN3YFXHeZh5uJUmPaw7KVVszjLMLtvzzyysXSvAygW\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mint SPL Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "totalAmount",
+							"value": "100",
+							"type": "text"
+						},
+						{
+							"key": "decimals",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/fujiwara/画像/test-image.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/spl-token/create-spl-token",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"spl-token",
+						"create-spl-token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get ALL News",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/news/published",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"news",
+						"published"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post News",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"title4\",\n    \"body\": \"body4\",\n    \"isPublished\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/news/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"news",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get News Id Info",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/news/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"news",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patch News",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\" : \"title7\",\n    \"body\" : \"body7\",\n    \"isPublished\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/news/update/7",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"news",
+						"update",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test Order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": \"2a1b7882-152d-4c1f-9b4f-29714f90fc73\",\n    \"amount\": 100\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/orders",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ticket Order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": \"2a1b7882-152d-4c1f-9b4f-29714f90fc73\",\n    \"name\": \"medium plan\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/orders/ticket",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"orders",
+						"ticket"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Payment Intent",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": \"2a1b7882-152d-4c1f-9b4f-29714f90fc73\",\n    \"name\": \"medium plan\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/orders/payment-intent",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"orders",
+						"payment-intent"
 					]
 				}
 			},
