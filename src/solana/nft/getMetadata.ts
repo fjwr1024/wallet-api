@@ -2,41 +2,34 @@ import assert from 'assert';
 
 import { Metaplex } from '@solana-suite/nft';
 
-export const getNftMetadata = async mint => {
-  const mintArr = mint.map(obj => obj.mint);
-
-  const response = [];
-
-  for (let i = 0; i < mintArr.length; i++) {
-    const metadata = await Metaplex.findByOwner(mintArr[i]);
-
-    metadata.match(
-      value => console.log('# metadata: ', value),
-      error => assert(error)
-    );
-    const merged: object = Object.assign({}, metadata.unwrap(), mint[i]);
-
-    response.push(merged);
-  }
-  console.log('arr', response);
-  return response;
-};
-
-export const displayUserMetadata = async (walletAddress: string) => {
-  const metadata = await Metaplex.findByOwner(walletAddress);
-
-  metadata.match(
-    value => console.log('# metadata: ', value),
-    error => assert(error)
-  );
-
-  return metadata.unwrap();
-};
-
 export const getTokenInfoOwned = async walletAddress => {
-  const response = await (await Metaplex.findByOwner(walletAddress)).unwrap();
+  const response = await Metaplex.findByOwner(
+    walletAddress,
+    value => console.log('# metadata: ', value),
+    error => assert.fail(error)
+  );
 
   console.log('owned token info', response);
 
   return response;
 };
+
+// import assert from 'assert';
+// import { Metaplex } from '@solana-suite/nft';
+
+// export const getTokenInfoOwned = async walletAddress => {
+//   return new Promise((resolve, reject) => {
+//     Metaplex.findByOwner(
+//       walletAddress,
+//       value => {
+//         console.log('# metadata: ', value);
+//         resolve(value); // valueをPromiseとして返します。
+//       },
+//       error => {
+//         console.error('Error:', error);
+//         // assert.fail(error);
+//         reject(error); // エラーをPromiseとして返します。
+//       }
+//     );
+//   });
+// };

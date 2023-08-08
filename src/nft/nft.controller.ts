@@ -15,6 +15,7 @@ import { MintAdminNftDto } from './dto/mint-admin-nft-dto';
 import { MintUserNftDto } from './dto/mint-user-nft-dto';
 import { SubmitHexDto } from './dto/submit-hex-dto';
 import { NftService } from './nft.service';
+import { MintAttributeDto } from './dto/mint-attribute-nft-dto';
 
 @Controller('nft')
 export class NftController {
@@ -60,6 +61,23 @@ export class NftController {
     @UploadedFile() file: Express.Multer.File
   ) {
     const response = await this.nftService.mint(mintNftDto, file);
+    return response;
+  }
+
+  @Post('attribute-mint')
+  @UseInterceptors(
+    FileInterceptor('file', {
+      storage: diskStorage({
+        destination: './uploads',
+      }),
+    })
+  )
+  async mintNftAttribute(
+    @Body(new ValidationPipe()) attributeMintDto: MintAttributeDto,
+    @UploadedFile() file: Express.Multer.File
+  ) {
+    console.log('file', file);
+    const response = await this.nftService.attributeMint(attributeMintDto, file);
     return response;
   }
 }

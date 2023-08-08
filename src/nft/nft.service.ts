@@ -1,7 +1,7 @@
 import { Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { GetNftListDto } from './dto/get-nftlist-dto';
-import { getNftMetadata, getTokenInfoOwned } from '../solana/nft/getMetadata';
+import { getTokenInfoOwned } from '../solana/nft/getMetadata';
 import { submitHex } from '../solana/nft/submitHex';
 import { MintAdminNftDto } from './dto/mint-admin-nft-dto';
 import { mintNft } from '../solana/nft/mintNft';
@@ -9,6 +9,8 @@ import { deleteUploadFile } from 'src/utils/file-util/deleteUploadFile';
 import { MintUserNftDto } from './dto/mint-user-nft-dto';
 import { AppDataSource } from 'src/data-source';
 import { User } from 'src/entities/user.entity';
+import { MintAttributeDto } from './dto/mint-attribute-nft-dto';
+import { attributeMint } from 'src/solana/nft/attributeMint';
 
 @Injectable()
 export class NftService {
@@ -16,7 +18,7 @@ export class NftService {
 
   async getNftList(getNftListDto: GetNftListDto) {
     const ownedNftList = await getTokenInfoOwned(getNftListDto.walletAddress);
-    const res = await getNftMetadata(ownedNftList);
+    const res = await getTokenInfoOwned(ownedNftList);
     return res;
   }
 
@@ -47,6 +49,33 @@ export class NftService {
       mintNftDto.description,
       ownerWalletAddress,
       ownerSecretKey
+    );
+    deleteUploadFile(file.path);
+
+    return res;
+  }
+
+  async attributeMint(attributeMintDto: MintAttributeDto, file) {
+    const ownerWalletAddress = this.config.get<string>('SYSTEM_WALLET_ADDRESS');
+    const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
+    const attributes = [
+      {
+        trait_type: 'hair',
+        value: 'brown',
+      },
+      {
+        trait_type: 'eye',
+        value: 'blue',
+      },
+    ];
+
+    const res = await attributeMint(
+      file.path,
+      attributeMintDto.name,
+      attributeMintDto.description,
+      ownerWalletAddress,
+      ownerSecretKey,
+      attributes
     );
     deleteUploadFile(file.path);
 
