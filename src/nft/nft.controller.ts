@@ -17,6 +17,7 @@ import { MintUserNftDto } from './dto/mint-user-nft-dto';
 import { SubmitHexDto } from './dto/submit-hex-dto';
 import { NftService } from './nft.service';
 import { MintAttributeDto } from './dto/mint-attribute-nft-dto';
+import { TransferNftDto } from './dto/transfer-nft-dto';
 
 @Controller('nft')
 export class NftController {
@@ -83,11 +84,8 @@ export class NftController {
   }
 
   @Post('transfer-nft')
-  async transferNft(@Body(new ValidationPipe()) getNftListDto: GetNftListDto) {
-    const response = await this.nftService.transferNft(
-      'FjxVcnqwLzX6u4Hk5CvAMnKgLgy3ikfLyuYQ6zWMb5Zu',
-      getNftListDto.walletAddress
-    );
+  async transferNft(@Body(new ValidationPipe()) transferNftDto: TransferNftDto) {
+    const response = await this.nftService.transferNft(transferNftDto.mintId, transferNftDto.walletAddress);
     return response;
   }
 }
