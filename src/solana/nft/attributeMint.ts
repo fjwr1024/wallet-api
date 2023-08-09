@@ -2,13 +2,20 @@ import { Metaplex } from '@solana-suite/nft';
 import { KeypairAccount, Pubkey } from '@solana-suite/shared';
 import assert from 'assert';
 
+type Attribute = {
+  trait_type: string;
+  value: string;
+};
+
+type Attributes = Attribute[];
+
 export const attributeMint = async (
   file: ArrayBuffer,
   name: string,
   description: string,
   walletAddress: string,
   ownerSecretKey: string,
-  attributes: any
+  attributes: Attributes
 ) => {
   const inst = await Metaplex.mint(walletAddress, ownerSecretKey, {
     filePath: file,
