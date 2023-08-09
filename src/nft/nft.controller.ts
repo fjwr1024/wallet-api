@@ -1,3 +1,4 @@
+import { transferNft } from './../solana/nft/transferNft';
 import {
   Body,
   Controller,
@@ -78,6 +79,15 @@ export class NftController {
   ) {
     console.log('file', file);
     const response = await this.nftService.attributeMint(attributeMintDto, file);
+    return response;
+  }
+
+  @Post('transfer-nft')
+  async transferNft(@Body(new ValidationPipe()) getNftListDto: GetNftListDto) {
+    const response = await this.nftService.transferNft(
+      'FjxVcnqwLzX6u4Hk5CvAMnKgLgy3ikfLyuYQ6zWMb5Zu',
+      getNftListDto.walletAddress
+    );
     return response;
   }
 }

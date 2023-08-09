@@ -11,14 +11,15 @@ import { AppDataSource } from 'src/data-source';
 import { User } from 'src/entities/user.entity';
 import { MintAttributeDto } from './dto/mint-attribute-nft-dto';
 import { attributeMint } from 'src/solana/nft/attributeMint';
+import { transferNft } from 'src/solana/nft/transferNft';
 
 @Injectable()
 export class NftService {
   constructor(private readonly config: ConfigService) {}
 
   async getNftList(getNftListDto: GetNftListDto) {
-    const ownedNftList = await getTokenInfoOwned(getNftListDto.walletAddress);
-    const res = await getTokenInfoOwned(ownedNftList);
+    const res = await getTokenInfoOwned(getNftListDto.walletAddress);
+    console.log('res', res);
     return res;
   }
 
@@ -79,6 +80,13 @@ export class NftService {
     );
     deleteUploadFile(file.path);
 
+    return res;
+  }
+
+  async transferNft(mint, receiptWalletAddress) {
+    const ownerWalletAddress = this.config.get<string>('SYSTEM_WALLET_ADDRESS');
+    const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
+    const res = await transferNft(mint, ownerWalletAddress, receiptWalletAddress, ownerSecretKey);
     return res;
   }
 }
