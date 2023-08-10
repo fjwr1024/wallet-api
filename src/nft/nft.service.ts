@@ -1,7 +1,7 @@
-import { Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { GetNftListDto } from './dto/get-nftlist-dto';
-import { getTokenInfoOwned } from '../solana/nft/getMetadata';
+import { getOwnedTokenInfo } from '../solana/nft/getMetadata';
 import { submitHex } from '../solana/nft/submitHex';
 import { MintAdminNftDto } from './dto/mint-admin-nft-dto';
 import { mintNft } from '../solana/nft/mintNft';
@@ -12,13 +12,14 @@ import { User } from 'src/entities/user.entity';
 import { MintAttributeDto } from './dto/mint-attribute-nft-dto';
 import { attributeMint } from 'src/solana/nft/attributeMint';
 import { transferNft } from 'src/solana/nft/transferNft';
+import { Metaplex } from '@solana-suite/nft';
 
 @Injectable()
 export class NftService {
   constructor(private readonly config: ConfigService) {}
 
   async getNftList(getNftListDto: GetNftListDto) {
-    const res = await getTokenInfoOwned(getNftListDto.walletAddress);
+    const res = await getOwnedTokenInfo(getNftListDto.walletAddress);
     console.log('res', res);
     return res;
   }

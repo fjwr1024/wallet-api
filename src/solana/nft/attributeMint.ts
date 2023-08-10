@@ -22,6 +22,7 @@ export const attributeMint = async (
     storageType: 'nftStorage',
     name,
     symbol: 'NFT',
+    description,
     royalty: 0,
     attributes,
     isMutable: true,
