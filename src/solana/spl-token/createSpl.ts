@@ -17,6 +17,8 @@ export const createSplToken = async (totalAmount, decimals, ownerWalletAddress, 
 
   const inst1 = await SplToken.mint(ownerWalletAddress, ownerSecretKey, totalAmount, decimals, tokenMetadata);
 
+  console.log('# inst1: ', inst1);
+
   const mint = inst1.unwrap().data as Pubkey;
 
   console.log('# mint: ', mint);

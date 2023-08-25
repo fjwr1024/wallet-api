@@ -53,9 +53,13 @@ export class SplTokenService {
   async createComment(createMemoDto: CreateMemoDto) {
     const ownerWalletAddress = this.config.get<string>('SYSTEM_WALLET_ADDRESS');
     const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
-    const spltoken = 'a';
+    const spltoken = 'EG3gZKj4KwLYUZuYDBd223dRxy7nFB6zDNsR5EcUFxnj';
+
+    console.log('createMemoDto', createMemoDto);
 
     const response = await createMemo(spltoken, createMemoDto.comment, ownerWalletAddress, ownerSecretKey);
+
+    console.log('response', response);
 
     return 'ok';
   }
