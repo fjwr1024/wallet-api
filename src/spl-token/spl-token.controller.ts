@@ -13,9 +13,10 @@ import { GetSplHistoryDto } from './dto/get-spl-history.dto';
 import { GetTokenAmountDto } from './dto/get-token-amount.dto';
 
 import { SplTokenService } from './spl-token.service';
-import { CreateSplTokenDto } from './dto/create-spl-token';
+import { CreateSplTokenDto } from './dto/create-spl-token.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
+import { CreateMemoDto } from './dto/create-memo.dto';
 
 @Controller('spl-token')
 export class SplTokenController {
@@ -55,6 +56,13 @@ export class SplTokenController {
     @UploadedFile() file: Express.Multer.File
   ) {
     const response = await this.splTokenService.createSpl(createSplDto, file);
+    return response;
+  }
+
+  @HttpCode(HttpStatus.OK)
+  @Post('comment')
+  async commentSplToken(@Body(new ValidationPipe()) createMemoDto: CreateMemoDto) {
+    const response = await this.splTokenService.createComment(createMemoDto);
     return response;
   }
 }
