@@ -46,3 +46,6 @@ docker/db/data
 
 # migration files
 src/migration/*
+
+# spl-token
+/src/solana/spl-token/spl.json
