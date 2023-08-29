@@ -1,8 +1,9 @@
 import { Memo } from '@solana-suite/core';
 import { Node } from '@solana-suite/shared';
+import assert from 'assert';
 
 export const createMemo = async (splToken, comment, walletAddress, secretKey) => {
-  console.log('splToken', comment);
+  console.log('comment', comment);
   const memo = await Memo.create(comment, walletAddress, secretKey);
 
   console.log('memo', memo);

@@ -48,4 +48,4 @@ docker/db/data
 src/migration/*
 
 # spl-token
-/src/solana/spl-token/spl.json
+/src/solana/spl-token/spl.ts

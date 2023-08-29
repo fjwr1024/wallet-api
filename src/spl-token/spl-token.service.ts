@@ -9,7 +9,7 @@ import { submitHex } from '../solana/spl-token/submitHex';
 import { createSplToken } from '../solana/spl-token/createSpl';
 import { CreateMemoDto } from './dto/create-memo.dto';
 import { createMemo } from 'src/solana/spl-token/createMemo';
-import * as jsonData from '../solana/spl-token/spl.json';
+import { spltoken } from '../solana/spl-token/spl';
 
 @Injectable()
 export class SplTokenService {
@@ -48,15 +48,19 @@ export class SplTokenService {
 
     deleteUploadFile(file.path);
 
+    const res = await createMemo(spltoken, 'comment', ownerWalletAddress, ownerSecretKey);
+
+    console.log('res', res);
+
     return response;
   }
 
   async createComment(createMemoDto: CreateMemoDto) {
     const ownerWalletAddress = this.config.get<string>('SYSTEM_WALLET_ADDRESS');
     const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
-    const spltoken = 'EG3gZKj4KwLYUZuYDBd223dRxy7nFB6zDNsR5EcUFxnj';
+    // const spltoken = '5QZsKY9dHxUXzYJUrgPJgueKkS6GpEy9LbcgH4SV1GSb';
 
-    const response = await createMemo(jsonData, createMemoDto.comment, ownerWalletAddress, ownerSecretKey);
+    const response = await createMemo(spltoken, createMemoDto.comment, ownerWalletAddress, ownerSecretKey);
 
     console.log('response', response);
 
