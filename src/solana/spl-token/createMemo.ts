@@ -4,6 +4,7 @@ import assert from 'assert';
 
 export const createMemo = async (splToken, comment, walletAddress, secretKey) => {
   console.log('comment', comment);
+  console.log('secretKey', secretKey);
   const memo = await Memo.create(comment, walletAddress, secretKey);
 
   console.log('memo', memo);
