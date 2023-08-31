@@ -3,9 +3,6 @@ import { Pubkey } from '@solana-suite/shared';
 import { StorageType } from '@solana-suite/shared-metaplex';
 
 export const createSplToken = async (totalAmount, decimals, ownerWalletAddress, ownerSecretKey, file) => {
-  console.log(totalAmount);
-  console.log(decimals);
-
   const tokenMetadata = {
     name: 'solana-suite-token',
     symbol: 'SST',
