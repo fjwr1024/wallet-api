@@ -9,6 +9,8 @@ const createWallet = async () => {
 
   await Airdrop.request(account.pubkey);
 
+  console.log('# address: ', account);
+
   console.log('# pubkey: ', account.pubkey);
   console.log('# secret: ', account.secret);
 
