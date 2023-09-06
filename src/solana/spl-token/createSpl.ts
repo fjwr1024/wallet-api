@@ -12,7 +12,13 @@ export const createSplToken = async (totalAmount, decimals, ownerWalletAddress, 
     isMutable: false,
   };
 
-  const inst1 = await SplToken.mint(ownerWalletAddress, ownerSecretKey, totalAmount, decimals, tokenMetadata);
+  const inst1 = await SplToken.mint(
+    'GRbH56mgbK5hVG3DWrPNB2Dp3HPycxiJkJ2QKS5C6hwx',
+    '5Rm8sbq4xanmNXsvJGaprV5JEJFuDg6eKaadrfiAJDDzJh3asUU1XSw7nxQrez2z63JRTKAn7PaJKYHzPHHhELYJ',
+    totalAmount,
+    decimals,
+    tokenMetadata
+  );
 
   console.log('# inst1: ', inst1);
 
