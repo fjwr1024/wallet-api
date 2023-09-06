@@ -2,7 +2,6 @@
 // $ npx ts-node scripts/solana/faucet.ts
 //////////////////////////////////////////////
 import { Airdrop } from '@solana-suite/core';
-import { KeypairAccount } from '@solana-suite/shared';
 
 const addSol = async (walletAddress: string): Promise<string> => {
   try {
@@ -15,6 +14,7 @@ const addSol = async (walletAddress: string): Promise<string> => {
 };
 
 (async () => {
+  // wallet addressは各自変更
   const result = await addSol('mckjwe77c8SX6pEAmCQS7y321PwbmBnZfiNVXaPUTXY');
   console.log(result);
 })();
