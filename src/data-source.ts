@@ -14,7 +14,7 @@ const env = process.env;
 // TODO: 環境ごとにenvの切り分け
 export const AppDataSource = new DataSource({
   type: 'mysql',
-  host: env.DB_HOST || 'localhost',
+  host: env.DB_HOST || '127.0.0.1',
   port: parseInt(env.DB_PORT) || 3306,
   username: env.DB_USER || 'admin',
   password: env.DB_PASS || 'password',

@@ -14,7 +14,7 @@ export class OrdersService {
 
   constructor(private readonly config: ConfigService) {
     this.stripe = new Stripe(this.config.get('STRIPE_SECRET_KEY'), {
-      apiVersion: '2022-11-15',
+      apiVersion: '2023-08-16',
       typescript: true,
     });
   }
