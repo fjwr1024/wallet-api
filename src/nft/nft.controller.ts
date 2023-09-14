@@ -80,6 +80,7 @@ export class NftController {
   ) {
     console.log('file', file);
     const response = await this.nftService.attributeMint(attributeMintDto, file);
+    // const response = await this.nftService.getImageFromS3();
     return response;
   }
 

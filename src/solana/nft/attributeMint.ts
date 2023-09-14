@@ -17,6 +17,8 @@ export const attributeMint = async (
   ownerSecretKey: string,
   attributes: Attributes
 ) => {
+  console.log('ファイル', file);
+
   const inst = await Metaplex.mint(walletAddress, ownerSecretKey, {
     filePath: file,
     storageType: 'nftStorage',
@@ -35,6 +37,6 @@ export const attributeMint = async (
       console.log('# mint:', mint);
       console.log('# sig:', ok);
     },
-    (ng: Error) => assert.fail(ng.message)
+    (ng: Error) => console.error(ng.message)
   );
 };

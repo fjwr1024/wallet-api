@@ -25,10 +25,10 @@ import { OrdersModule } from './orders/orders.module';
       envFilePath: ['.env.development.local'],
       isGlobal: true,
     }),
-    ThrottlerModule.forRoot({
-      ttl: 60,
-      limit: 10,
-    }),
+    // ThrottlerModule.forRoot({
+    //   ttl: 60,
+    //   limit: 10,
+    // }),
     TypeOrmModule.forRoot(AppDataSource.options),
     AuthModule,
     UserModule,

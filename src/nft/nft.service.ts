@@ -71,6 +71,8 @@ export class NftService {
       },
     ];
 
+    console.log('file', file);
+
     const res = await attributeMint(
       file.path,
       attributeMintDto.name,
