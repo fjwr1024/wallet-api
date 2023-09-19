@@ -6297,7 +6297,7 @@ locate-path@^6.0.0:
   dependencies:
     p-locate "^5.0.0"
 
-locter@^1.2.1:
+locter@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/locter/-/locter-1.2.2.tgz#a52e870236cd9383c1e0e3012f33a4c3f2a6f9d8"
   integrity sha512-9C/TDHlFdZUlVtBXUmpXhHaO4V9uGYqWKIHag+2ToPQ22j3VEqg7tz8ZI1iWkHmBUGXS4wKXavzWATwFjxhirw==
@@ -8618,14 +8618,14 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==
 
-typeorm-extension@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/typeorm-extension/-/typeorm-extension-3.0.1.tgz#95e76f6520a0e1c672ba2517726156cd1664046b"
-  integrity sha512-N+98JBeeEFZlxBCGB2YRtDZmKs200I3+a+Zu2oX8OHyUdsPWzpiS+jOruRTGjt7gVA0rF3gQO2vO1GFL8aQOvw==
+typeorm-extension@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/typeorm-extension/-/typeorm-extension-3.0.2.tgz#34e7256bc24e070b204442ff497a5d28e38341e5"
+  integrity sha512-hV67zcFuJo1o3mslgbPTwCQMeMKAsV4ZcdPZiXDrbY+km6rdsbhIycn1iRfSfbb69aHeKPcbc/tpdJLXsdhBqg==
   dependencies:
     "@faker-js/faker" "^8.0.2"
     consola "^3.2.3"
-    locter "^1.2.1"
+    locter "^1.2.2"
     pascal-case "^3.1.2"
     rapiq "^0.9.0"
     reflect-metadata "^0.1.13"
