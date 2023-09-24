@@ -1621,10 +1621,10 @@
     "@solana-suite/shared-metaplex" latest
     "@solana-suite/storage" latest
 
-"@solana-suite/nft@0.6.5":
-  version "0.6.5"
-  resolved "https://registry.yarnpkg.com/@solana-suite/nft/-/nft-0.6.5.tgz#7c63b2eb8d282ff03d0149d0efe7355b463f3aaf"
-  integrity sha512-cRqskPyn+iPEh2jHIOCrQFYXg+hmoEuzUCXRyox+48H1vm23ffPJAmsFh6hJQrSWmc9uGYlesnm9bFsDD8KG7Q==
+"@solana-suite/nft@0.6.6":
+  version "0.6.6"
+  resolved "https://registry.yarnpkg.com/@solana-suite/nft/-/nft-0.6.6.tgz#8740943902b7d0b7467643005ce67392655f4751"
+  integrity sha512-Dgwlx1qfuU31Yae09pcRiNmHkna25PBXsT33LO6s36ExkvnyHoDakVoQxnOeSCKYoinOOTKGU3A57Mj/y89S0g==
   dependencies:
     "@metaplex-foundation/js" "0.19.1"
     "@solana-suite/core" latest
