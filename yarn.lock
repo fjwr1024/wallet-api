@@ -1612,7 +1612,16 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@solana-suite/core@0.6.5", "@solana-suite/core@latest":
+"@solana-suite/core@0.6.6":
+  version "0.6.6"
+  resolved "https://registry.yarnpkg.com/@solana-suite/core/-/core-0.6.6.tgz#0ff71e51fef940b8aae0274d659ed805d154abec"
+  integrity sha512-zsi3MLQtj/Wfk2kqj4vSYJQz6YPETPxHmmT/at3aVR8MF2RG0VQoqnC4dys2s8asaqmJlKWxZwmVzH7o1k6wnQ==
+  dependencies:
+    "@solana-suite/shared" latest
+    "@solana-suite/shared-metaplex" latest
+    "@solana-suite/storage" latest
+
+"@solana-suite/core@latest":
   version "0.6.5"
   resolved "https://registry.yarnpkg.com/@solana-suite/core/-/core-0.6.5.tgz#9e2047e233c656578715f909a901c3f15d8f3a36"
   integrity sha512-fo640Lp8pU6EreL127XUc6d02Ix+cDqRHYdJFd38OYnLhFY5iEAKhoKd5YEi7WDzPZKQwYYOT2WOQcsrZ6qCAw==
