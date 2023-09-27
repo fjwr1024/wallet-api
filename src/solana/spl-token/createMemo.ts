@@ -1,5 +1,6 @@
 import { Memo, SplToken } from '@solana-suite/core';
 import { Node } from '@solana-suite/shared';
+// import { spl } from './spl';
 
 export const createMemo = async (splToken: any, comment: string, walletAddress: string, secretKey: string) => {
   const memo = Memo.create(comment, walletAddress, secretKey);

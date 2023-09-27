@@ -5,6 +5,7 @@ import {
   HttpCode,
   HttpStatus,
   Post,
+  Res,
   UploadedFile,
   UseInterceptors,
   ValidationPipe,
@@ -17,6 +18,7 @@ import { CreateSplTokenDto } from './dto/create-spl-token.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { CreateMemoDto } from './dto/create-memo.dto';
+import { Response } from 'express';
 
 @Controller('spl-token')
 export class SplTokenController {
@@ -53,10 +55,14 @@ export class SplTokenController {
   )
   async createSpl(
     @Body(new ValidationPipe()) createSplDto: CreateSplTokenDto,
-    @UploadedFile() file: Express.Multer.File
+    @UploadedFile() file: Express.Multer.File,
+    @Res() res: Response
   ) {
     const response = await this.splTokenService.createSpl(createSplDto, file);
-    return response;
+
+    console.log('Response:', response);
+
+    res.send(response);
   }
 
   @HttpCode(HttpStatus.OK)
