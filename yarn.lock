@@ -2801,10 +2801,10 @@ available-typed-arrays@^1.0.5:
   version "5.4.7"
   resolved "https://github.com/Bundlr-Network/avsc#a730cc8018b79e114b6a3381bbb57760a24c6cef"
 
-aws-sdk@^2.1458.0:
-  version "2.1458.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1458.0.tgz#557ecabbeaa7e236669eca85025c94be4dc7f719"
-  integrity sha512-FpUjBpPzRm7l0kQeMAWD8VRySpAOO8WVY3pfOd74w7wKO/CZ7RVsiqM1aiw8ybiVZ3lFnCw84VtRvssYk865TA==
+aws-sdk@^2.1465.0:
+  version "2.1465.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1465.0.tgz#0019591b4387ed6a448c57129d1e90cba39a686e"
+  integrity sha512-phOBz1yKV9oIS9zlm6J+qUT5Xu3rCXW+82C5ox/aJtvxRxkBzdw0GFlsNlBcuEtGHvuzkkCNBfigK5B0IrY4wg==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
