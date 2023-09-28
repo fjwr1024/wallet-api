@@ -49,3 +49,4 @@ src/migration/*
 
 # spl-token
 /src/solana/spl-token/spl.ts
+/src/solana/spl-token/token.ts
