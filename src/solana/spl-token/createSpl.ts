@@ -22,5 +22,5 @@ export const createSplToken = async (totalAmount, decimals, ownerWalletAddress, 
 
   console.log('# mint: ', mint);
 
-  return inst1;
+  return inst1.unwrap();
 };

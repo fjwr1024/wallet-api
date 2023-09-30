@@ -18,5 +18,5 @@ export const createMemo = async (splToken: any, comment: string, walletAddress: 
     error => console.log('error', error)
   );
 
-  return 'ok';
+  return memo;
 };
