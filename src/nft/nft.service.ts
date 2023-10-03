@@ -1,3 +1,4 @@
+import { burnNft } from './../solana/nft/burnNft';
 import { HttpException, HttpStatus, Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { GetNftListDto } from './dto/get-nftlist-dto';
@@ -90,6 +91,13 @@ export class NftService {
     const ownerWalletAddress = this.config.get<string>('SYSTEM_WALLET_ADDRESS');
     const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
     const res = await transferNft(mint, ownerWalletAddress, receiptWalletAddress, ownerSecretKey);
+    return res;
+  }
+
+  async burnNft() {
+    const ownerWalletAddress = this.config.get<string>('SYSTEM_WALLET_ADDRESS');
+    const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
+    const res = await burnNft('6YKFb8RLtMfhfLLnBJHD4JBA6oE8Aj2QrurwvNg538GV', ownerWalletAddress, ownerSecretKey);
     return res;
   }
 }

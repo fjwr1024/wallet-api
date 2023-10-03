@@ -2,6 +2,7 @@ import { transferNft } from './../solana/nft/transferNft';
 import {
   Body,
   Controller,
+  Get,
   HttpCode,
   HttpStatus,
   Post,
@@ -87,6 +88,12 @@ export class NftController {
   @Post('transfer-nft')
   async transferNft(@Body(new ValidationPipe()) transferNftDto: TransferNftDto) {
     const response = await this.nftService.transferNft(transferNftDto.mintId, transferNftDto.walletAddress);
+    return response;
+  }
+
+  @Get('burn-nft')
+  async burnNft() {
+    const response = await this.nftService.burnNft();
     return response;
   }
 }
