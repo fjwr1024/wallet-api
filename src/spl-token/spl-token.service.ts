@@ -1,3 +1,4 @@
+import { transferSplToken } from './../solana/spl-token/transfer-spl-token';
 import { deleteUploadFile } from 'src/utils/file-util/deleteUploadFile';
 import { GetSplHistoryDto } from './dto/get-spl-history.dto';
 import { Injectable } from '@nestjs/common';
@@ -61,6 +62,24 @@ export class SplTokenService {
     // const spltoken = '5QZsKY9dHxUXzYJUrgPJgueKkS6GpEy9LbcgH4SV1GSb';
 
     const response = await createMemo(token, createMemoDto.comment, ownerWalletAddress, ownerSecretKey);
+
+    console.log('response', response);
+
+    return 'ok';
+  }
+
+  async transferSplToken() {
+    const ownerWalletAddress = this.config.get<string>('SYSTEM_WALLET_ADDRESS');
+    const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
+
+    const response = await transferSplToken(
+      '2jm74gcmfZQJEXarPf1TVqVySmehM6xyHVRAkNsEinSp',
+      ownerWalletAddress,
+      'FtJ5RdwkrsLWgawAeLrPwdxgr6c4rqrbvFb6jPsxYgMF',
+      ownerSecretKey,
+      10,
+      1
+    );
 
     console.log('response', response);
 

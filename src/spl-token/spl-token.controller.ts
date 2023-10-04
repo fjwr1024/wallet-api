@@ -2,6 +2,7 @@ import { SubmitHexDto } from './dto/tramsfer-hex-dto';
 import {
   Body,
   Controller,
+  Get,
   HttpCode,
   HttpStatus,
   Post,
@@ -69,6 +70,13 @@ export class SplTokenController {
   @Post('comment')
   async commentSplToken(@Body(new ValidationPipe()) createMemoDto: CreateMemoDto) {
     const response = await this.splTokenService.createComment(createMemoDto);
+    return response;
+  }
+
+  @HttpCode(HttpStatus.OK)
+  @Get('transfer')
+  async transferSpl() {
+    const response = await this.splTokenService.transferSplToken();
     return response;
   }
 }
