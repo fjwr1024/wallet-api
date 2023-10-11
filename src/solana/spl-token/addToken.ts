@@ -4,5 +4,4 @@ export const addToken = async (tokenAddress, owner, secretKey, totalAmount, mint
   const result = await SplToken.add(tokenAddress, owner, secretKey, totalAmount, mintDecimal);
 
   return result;
-  t;
 };
