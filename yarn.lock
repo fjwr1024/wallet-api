@@ -809,10 +809,10 @@
     "@ethersproject/properties" "^5.7.0"
     "@ethersproject/strings" "^5.7.0"
 
-"@faker-js/faker@^8.0.2":
-  version "8.0.2"
-  resolved "https://registry.yarnpkg.com/@faker-js/faker/-/faker-8.0.2.tgz#bab698c5d3da9c52744e966e0e3eedb6c8b05c37"
-  integrity sha512-Uo3pGspElQW91PCvKSIAXoEgAUlRnH29sX2/p89kg7sP1m2PzCufHINd0FhTXQf6DYGiUlVncdSPa2F9wxed2A==
+"@faker-js/faker@^8.2.0":
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/@faker-js/faker/-/faker-8.2.0.tgz#d4656d2cb485fe6ec4e7b340da9f16fac2c36c4a"
+  integrity sha512-VacmzZqVxdWdf9y64lDOMZNDMM/FQdtM9IsaOPKOm2suYwEatb8VkdHqOzXcDnZbk7YDE2BmsJmy/2Hmkn563g==
 
 "@humanwhocodes/config-array@^0.11.11":
   version "0.11.11"
@@ -8027,10 +8027,10 @@ slash@^3.0.0:
   resolved "https://registry.yarnpkg.com/slash/-/slash-3.0.0.tgz#6539be870c165adbd5240220dbe361f1bc4d4634"
   integrity sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==
 
-smob@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/smob/-/smob-1.4.0.tgz#ac9751fe54b1fc1fc8286a628d4e7f824273b95a"
-  integrity sha512-MqR3fVulhjWuRNSMydnTlweu38UhQ0HXM4buStD/S3mc/BzX3CuM9OmhyQpmtYCvoYdl5ris6TI0ZqH355Ymqg==
+smob@^1.4.0, smob@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/smob/-/smob-1.4.1.tgz#66270e7df6a7527664816c5b577a23f17ba6f5b5"
+  integrity sha512-9LK+E7Hv5R9u4g4C3p+jjLstaLe11MDsL21UpYaCNmapvMkYhqCV4A/f/3gyH8QjMyh6l68q9xC85vihY9ahMQ==
 
 source-map-support@0.5.21, source-map-support@^0.5.20, source-map-support@^0.5.6, source-map-support@~0.5.20:
   version "0.5.21"
@@ -8651,18 +8651,18 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==
 
-typeorm-extension@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/typeorm-extension/-/typeorm-extension-3.0.2.tgz#34e7256bc24e070b204442ff497a5d28e38341e5"
-  integrity sha512-hV67zcFuJo1o3mslgbPTwCQMeMKAsV4ZcdPZiXDrbY+km6rdsbhIycn1iRfSfbb69aHeKPcbc/tpdJLXsdhBqg==
+typeorm-extension@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/typeorm-extension/-/typeorm-extension-3.1.0.tgz#42e22078747156bcfe68b69dcae4c5b84ea52a64"
+  integrity sha512-EhPNOjChIr8mkKOZ0s/Z0rE9j5BbZEMNmUu6D1tONJCTHg3q7sEW+8Y4YrqXpVlm6Q+RveN2LeiRsj2YJcB5eA==
   dependencies:
-    "@faker-js/faker" "^8.0.2"
+    "@faker-js/faker" "^8.2.0"
     consola "^3.2.3"
     locter "^1.2.2"
     pascal-case "^3.1.2"
     rapiq "^0.9.0"
     reflect-metadata "^0.1.13"
-    smob "^1.4.0"
+    smob "^1.4.1"
     yargs "^17.7.2"
 
 typeorm@^0.3.17:
