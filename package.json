@@ -38,7 +38,7 @@
     "@nestjs/typeorm": "10.0.0",
     "@sendgrid/mail": "^7.7.0",
     "@solana-suite/core": "0.6.8",
-    "@solana-suite/nft": "0.6.6",
+    "@solana-suite/nft": "0.6.7",
     "@solana-suite/shared": "0.6.8",
     "aws-sdk": "^2.1492.0",
     "class-transformer": "^0.5.1",
