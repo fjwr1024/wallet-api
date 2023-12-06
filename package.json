@@ -36,7 +36,7 @@
     "@nestjs/platform-express": "^9.3.12",
     "@nestjs/throttler": "^5.0.1",
     "@nestjs/typeorm": "10.0.1",
-    "@sendgrid/mail": "^7.7.0",
+    "@sendgrid/mail": "^8.0.0",
     "@solana-suite/core": "0.6.8",
     "@solana-suite/nft": "0.6.8",
     "@solana-suite/shared": "0.6.8",
