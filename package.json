@@ -36,7 +36,7 @@
     "@nestjs/platform-express": "^9.3.12",
     "@nestjs/throttler": "^5.1.0",
     "@nestjs/typeorm": "10.0.1",
-    "@sendgrid/mail": "^7.7.0",
+    "@sendgrid/mail": "^8.1.0",
     "@solana-suite/airdrop": "0.7.1",
     "@solana-suite/compressed-nft": "0.7.1",
     "@solana-suite/config": "0.7.1",
