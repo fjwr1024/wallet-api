@@ -34,7 +34,7 @@
     "@nestjs/jwt": "^10.2.0",
     "@nestjs/passport": "^10.0.1",
     "@nestjs/platform-express": "^9.3.12",
-    "@nestjs/throttler": "^5.1.0",
+    "@nestjs/throttler": "^5.1.1",
     "@nestjs/typeorm": "10.0.1",
     "@sendgrid/mail": "^8.1.0",
     "@solana-suite/airdrop": "0.7.1",
