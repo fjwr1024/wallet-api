@@ -1708,10 +1708,15 @@
     mpl-bubblegum-instruction "github:atonoy/mpl-bubblegum-instructions"
     nft.storage "^7.1.1"
 
-"@solana-suite/config@0.7.1", "@solana-suite/config@^0.7.1":
+"@solana-suite/config@0.7.1":
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/@solana-suite/config/-/config-0.7.1.tgz#3a88fad775fcc8a7f450210533efb3b06f292151"
   integrity sha512-8/KN1lgIL7rmn4Zk9u1eY0ShW80E8B3x+UshxygY/H/GRBar43/yPE4SFmbSMxZpmJeryLIe4LZL82Rf6v9How==
+
+"@solana-suite/config@^0.7.1", "@solana-suite/config@^0.7.2":
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/@solana-suite/config/-/config-0.7.2.tgz#2b4433757b6aa38508d1f686db4ed2a672f781ee"
+  integrity sha512-R66jzoK92N3i/e9Rrvu+oK2c468L2KCufJ64nNAcEJiYJRYjKLH/hXd8nitDRxBLEKts+J7mtVDoqVBwfSs/Sw==
 
 "@solana-suite/memo@0.7.1":
   version "0.7.1"
@@ -1746,15 +1751,15 @@
     mpl-bubblegum-instruction "github:atonoy/mpl-bubblegum-instructions"
     nft.storage "^7.1.1"
 
-"@solana-suite/spl-token@0.7.1":
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/@solana-suite/spl-token/-/spl-token-0.7.1.tgz#2bb12abac63fa3393f650503adcc739637d08a73"
-  integrity sha512-VKZkLiS1ZwN7xZFgLjOflWUfYhQZE8hqCmW+JEDiGjdW9hzQzJiHeqT8UR6oOQq8Uj3ULx+qx1hC276wsfbg5w==
+"@solana-suite/spl-token@0.7.2":
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/@solana-suite/spl-token/-/spl-token-0.7.2.tgz#afc28e4ee23b892cfb241fed87e236070f52fb96"
+  integrity sha512-9GmPIm+mtQVc978ffWP3OkiQiAErifbW/gb4eUFz8DzQyyZejzBWHfvcM68jJ/nIckOfbkvxfBgNeX7G4bJTEQ==
   dependencies:
     "@irys/sdk" "^0.0.3"
     "@metaplex-foundation/mpl-bubblegum" "^3.0.0"
     "@metaplex-foundation/mpl-token-metadata" "^2.13.0"
-    "@solana-suite/config" "^0.7.1"
+    "@solana-suite/config" "^0.7.2"
     "@solana/spl-token" "^0.3.8"
     "@solana/web3.js" "^1.78.5"
     bignumber.js "^9.1.2"
