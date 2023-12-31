@@ -39,7 +39,7 @@
     "@sendgrid/mail": "^8.1.0",
     "@solana-suite/airdrop": "0.7.1",
     "@solana-suite/compressed-nft": "0.7.1",
-    "@solana-suite/config": "0.7.1",
+    "@solana-suite/config": "0.7.2",
     "@solana-suite/memo": "0.7.1",
     "@solana-suite/regular-nft": "0.7.1",
     "@solana-suite/spl-token": "0.7.2",

@@ -1713,7 +1713,7 @@
   resolved "https://registry.yarnpkg.com/@solana-suite/config/-/config-0.7.1.tgz#3a88fad775fcc8a7f450210533efb3b06f292151"
   integrity sha512-8/KN1lgIL7rmn4Zk9u1eY0ShW80E8B3x+UshxygY/H/GRBar43/yPE4SFmbSMxZpmJeryLIe4LZL82Rf6v9How==
 
-"@solana-suite/config@^0.7.1", "@solana-suite/config@^0.7.2":
+"@solana-suite/config@0.7.2", "@solana-suite/config@^0.7.1", "@solana-suite/config@^0.7.2":
   version "0.7.2"
   resolved "https://registry.yarnpkg.com/@solana-suite/config/-/config-0.7.2.tgz#2b4433757b6aa38508d1f686db4ed2a672f781ee"
   integrity sha512-R66jzoK92N3i/e9Rrvu+oK2c468L2KCufJ64nNAcEJiYJRYjKLH/hXd8nitDRxBLEKts+J7mtVDoqVBwfSs/Sw==
