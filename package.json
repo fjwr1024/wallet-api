@@ -63,7 +63,7 @@
     "rimraf": "^5.0.5",
     "rxjs": "^7.8.0",
     "stripe": "^14.10.0",
-    "typeorm": "^0.3.17",
+    "typeorm": "^0.3.18",
     "typeorm-extension": "^3.2.0",
     "winston": "^3.11.0",
     "winston-daily-rotate-file": "^4.7.1"
