@@ -1674,14 +1674,14 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@solana-suite/airdrop@0.7.1":
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/@solana-suite/airdrop/-/airdrop-0.7.1.tgz#45e22144f03a22db55f0f0cf036d97d8c9306313"
-  integrity sha512-7Eu9pRhxCtGg9hIxy5P8soT7uJOwZuI0pDPH73JycdYfPuRTeR3Xw1dWJCLZaN7wK69WmyuzTV8/uv9bggtqqg==
+"@solana-suite/airdrop@0.7.2":
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/@solana-suite/airdrop/-/airdrop-0.7.2.tgz#dac5a006e48781f680bf0a3a69bee85579257156"
+  integrity sha512-PzvduOeWrwu6Rx7XbrL4LgEUs/2wPgU3+52ydLyLPp32EEEfbnj5ItMa03BjwYnfvM2m3Wd4THSmEXrxw7M0Ug==
   dependencies:
     "@metaplex-foundation/mpl-bubblegum" "^3.0.0"
     "@metaplex-foundation/mpl-token-metadata" "^2.13.0"
-    "@solana-suite/config" "^0.7.1"
+    "@solana-suite/config" "^0.7.2"
     "@solana/spl-token" "^0.3.8"
     "@solana/web3.js" "^1.78.5"
     bignumber.js "^9.1.2"
