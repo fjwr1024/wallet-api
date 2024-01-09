@@ -5,8 +5,7 @@ import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { getTokenAmount } from '../solana/spl-token/getTokenAmount';
 import { GetTokenAmountDto } from './dto/get-token-amount.dto';
-import { getTransactionHistory } from '../solana/spl-token/transactionHistory';
-import { submitHex } from '../solana/spl-token/submitHex';
+import { getTransactionHistory } from '../solana/spl-token/spl-find';
 import { createSplToken } from '../solana/spl-token/createSpl';
 import { CreateMemoDto } from './dto/create-memo.dto';
 import { createMemo } from 'src/solana/spl-token/createMemo';
@@ -27,12 +26,12 @@ export class SplTokenService {
     return splHistory;
   }
 
-  async submitHex(transferHexDto) {
-    const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
-    console.log('hex data', transferHexDto.hex);
-    const response = submitHex(transferHexDto.hex, ownerSecretKey);
-    return response;
-  }
+  // async submitHex(transferHexDto) {
+  //   const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
+  //   console.log('hex data', transferHexDto.hex);
+  //   const response = submitHex(transferHexDto.hex, ownerSecretKey);
+  //   return response;
+  // }
 
   async createSpl(createSplDto, file) {
     const ownerWalletAddress = this.config.get<string>('SYSTEM_WALLET_ADDRESS');

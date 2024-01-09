@@ -1,5 +1,4 @@
-import { Metaplex } from '@solana-suite/nft';
-import { KeypairAccount, Pubkey } from '@solana-suite/shared';
+import { RegularNft, Pubkey } from '@solana-suite/regular-nft';
 import assert from 'assert';
 
 type Attribute = {
@@ -10,7 +9,7 @@ type Attribute = {
 type Attributes = Attribute[];
 
 export const attributeMint = async (
-  file: ArrayBuffer,
+  file: any,
   name: string,
   description: string,
   walletAddress: string,
@@ -19,7 +18,7 @@ export const attributeMint = async (
 ) => {
   console.log('ファイル', file);
 
-  const inst = await Metaplex.mint(walletAddress, ownerSecretKey, {
+  const inst = await RegularNft.mint(ownerSecretKey, {
     filePath: file,
     storageType: 'nftStorage',
     name,

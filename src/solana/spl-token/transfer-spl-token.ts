@@ -1,5 +1,4 @@
-import { SplToken } from '@solana-suite/core';
-import { Node } from '@solana-suite/shared';
+import { Node, SplToken } from '@solana-suite/spl-token';
 
 export const transferSplToken = async (
   mintId: string,

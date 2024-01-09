@@ -1,4 +1,4 @@
-import { SplToken } from '@solana-suite/core';
+import { SplToken } from '@solana-suite/spl-token';
 import assert from 'assert';
 
 // 指定したSPLトークンの合計を取得

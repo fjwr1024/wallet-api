@@ -39,12 +39,13 @@ export class SplTokenController {
     return userSplHistory;
   }
 
-  @HttpCode(HttpStatus.OK)
-  @Post('submit-hex')
-  async getHex(@Body(new ValidationPipe()) submitrHexDto: SubmitHexDto) {
-    const response = await this.splTokenService.submitHex(submitrHexDto);
-    return response;
-  }
+  // TODO: update後修正
+  // @HttpCode(HttpStatus.OK)
+  // @Post('submit-hex')
+  // async getHex(@Body(new ValidationPipe()) submitrHexDto: SubmitHexDto) {
+  //   const response = await this.splTokenService.submitHex(submitrHexDto);
+  //   return response;
+  // }
 
   @Post('create-spl-token')
   @UseInterceptors(

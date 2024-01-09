@@ -1733,6 +1733,22 @@
     bs58 "^4.0.1"
     mpl-bubblegum-instruction "github:atonoy/mpl-bubblegum-instructions"
 
+"@solana-suite/multisig@0.7.1":
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/@solana-suite/multisig/-/multisig-0.7.1.tgz#eeaf4d9dfc74f47b2a92b4be0a85e849f7600dc5"
+  integrity sha512-LI4oZFUqpiIA0CnmjPTqJxfVcLoSKJw5t6RecEqPFWp9nPDYTXJHl7CjUuU9lD48b0N12cdBoN0hqnozae4JXw==
+  dependencies:
+    "@metaplex-foundation/mpl-bubblegum" "^3.0.0"
+    "@metaplex-foundation/mpl-token-metadata" "^2.13.0"
+    "@solana-suite/config" "^0.7.1"
+    "@solana/buffer-layout" "^4.0.1"
+    "@solana/spl-token" "^0.3.8"
+    "@solana/web3.js" "^1.78.5"
+    bignumber.js "^9.1.2"
+    bn.js "^5.2.1"
+    bs58 "^4.0.1"
+    mpl-bubblegum-instruction "github:atonoy/mpl-bubblegum-instructions"
+
 "@solana-suite/regular-nft@0.7.2":
   version "0.7.2"
   resolved "https://registry.yarnpkg.com/@solana-suite/regular-nft/-/regular-nft-0.7.2.tgz#79ba7e2b46d9f832350b7395667edd7cdf69d69e"
@@ -1779,7 +1795,7 @@
     bigint-buffer "^1.1.5"
     bignumber.js "^9.0.1"
 
-"@solana/buffer-layout@^4.0.0":
+"@solana/buffer-layout@^4.0.0", "@solana/buffer-layout@^4.0.1":
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/@solana/buffer-layout/-/buffer-layout-4.0.1.tgz#b996235eaec15b1e0b5092a8ed6028df77fa6c15"
   integrity sha512-E1ImOIAD1tBZFRdjeM4/pzTiTApC0AOBGwyAMS4fwIodCWArzJ3DWdoh8cKxeFM2fElkxBh2Aqts1BPC373rHA==

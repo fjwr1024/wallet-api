@@ -41,6 +41,7 @@
     "@solana-suite/compressed-nft": "0.7.1",
     "@solana-suite/config": "0.7.2",
     "@solana-suite/memo": "0.7.1",
+    "@solana-suite/multisig": "0.7.1",
     "@solana-suite/regular-nft": "0.7.2",
     "@solana-suite/spl-token": "0.7.2",
     "aws-sdk": "^2.1529.0",
