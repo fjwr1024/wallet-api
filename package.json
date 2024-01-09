@@ -44,7 +44,7 @@
     "@solana-suite/multisig": "0.7.1",
     "@solana-suite/regular-nft": "0.7.2",
     "@solana-suite/spl-token": "0.7.2",
-    "aws-sdk": "^2.1529.0",
+    "aws-sdk": "^2.1532.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
     "cookie-parser": "^1.4.5",
