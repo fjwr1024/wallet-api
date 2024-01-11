@@ -20,9 +20,7 @@ export class SplTokenService {
   }
 
   async getSplHistory(getSplTokenHistoryDto: GetSplHistoryDto) {
-    const tokenKey = this.config.get<string>('TOKEN_KEY');
-
-    const splHistory = await getTransactionHistory(tokenKey, getSplTokenHistoryDto.walletAddress);
+    const splHistory = await getTransactionHistory(getSplTokenHistoryDto.walletAddress);
     return splHistory;
   }
 
@@ -37,13 +35,7 @@ export class SplTokenService {
     const ownerWalletAddress = this.config.get<string>('SYSTEM_WALLET_ADDRESS');
     const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
 
-    const response = await createSplToken(
-      createSplDto.totalAmount,
-      createSplDto.decimals,
-      ownerWalletAddress,
-      ownerSecretKey,
-      file.path
-    );
+    const response = await createSplToken(createSplDto.totalAmount, createSplDto.decimals, ownerSecretKey, file.path);
 
     deleteUploadFile(file.path);
 

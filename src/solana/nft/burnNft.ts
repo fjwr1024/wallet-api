@@ -1,7 +1,7 @@
-import { Metaplex } from '@solana-suite/nft';
+import { RegularNft } from '@solana-suite/regular-nft';
 
 export const burnNft = async (mintId, walletAddress, secretKey) => {
-  const inst = Metaplex.burn(mintId, walletAddress, secretKey, secretKey);
+  const inst = RegularNft.burn(mintId, walletAddress, secretKey, secretKey);
   (await inst.submit()).match(
     (ok: string) => {
       console.log('# sig:', ok);

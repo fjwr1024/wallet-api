@@ -1,6 +1,6 @@
 import { CompressedNft } from '@solana-suite/compressed-nft';
 
-export const createSpace = async (secretKey: string, abountMintTotal: number) => {
+export const createSpace = async (secretKey: string, abountMintTotal: any) => {
   const spaceInst = await CompressedNft.createSpace(secretKey, abountMintTotal, {
     feePayer: secretKey,
   });

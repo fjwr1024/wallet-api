@@ -1,7 +1,7 @@
 import { Injectable, NestMiddleware } from '@nestjs/common';
 import { UserService } from '../user/user.service';
 import { Response } from 'express';
-import jwt_decode from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable()
 export class CurrentUserMiddleware implements NestMiddleware {
@@ -10,7 +10,7 @@ export class CurrentUserMiddleware implements NestMiddleware {
     console.log('middleware');
     try {
       const apiKey = req.cookies.access_token;
-      const decoded = jwt_decode<{ [name: string]: string }>(apiKey);
+      const decoded = jwtDecode<{ [name: string]: string }>(apiKey);
       console.log('decoded', decoded);
       const user = await this.userService.getUserInfo(decoded.sub);
       console.log('currentuserid', user.id);

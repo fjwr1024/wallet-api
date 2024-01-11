@@ -1,4 +1,3 @@
-import { transferNft } from './../solana/nft/transferNft';
 import {
   Body,
   Controller,
@@ -31,12 +30,12 @@ export class NftController {
     return response;
   }
 
-  @HttpCode(HttpStatus.OK)
-  @Post('submit-hex')
-  async getHex(@Body(new ValidationPipe()) submitHexDto: SubmitHexDto) {
-    const response = await this.nftService.submitHex(submitHexDto);
-    return response;
-  }
+  // @HttpCode(HttpStatus.OK)
+  // @Post('submit-hex')
+  // async getHex(@Body(new ValidationPipe()) submitHexDto: SubmitHexDto) {
+  //   const response = await this.nftService.submitHex(submitHexDto);
+  //   return response;
+  // }
 
   @Post('test-mint')
   @UseInterceptors(

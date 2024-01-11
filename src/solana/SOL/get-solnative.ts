@@ -1,4 +1,4 @@
-import { SolNative } from '@solana-suite/core';
+import { SolNative } from '@solana-suite/sol-native';
 
 export const getSolNative = async (walletAddress: string) => {
   const solRes = await SolNative.findByOwner(walletAddress);
