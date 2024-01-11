@@ -95,4 +95,20 @@ export class NftController {
     const response = await this.nftService.burnNft();
     return response;
   }
+
+  @Post('create-space')
+  @UseInterceptors(
+    FileInterceptor('file', {
+      storage: diskStorage({
+        destination: './uploads',
+      }),
+    })
+  )
+  async createSpace(
+    @Body(new ValidationPipe()) attributeMintDto: MintAttributeDto,
+    @UploadedFile() file: Express.Multer.File
+  ) {
+    const response = await this.nftService.createSpace(attributeMintDto, file);
+    return response;
+  }
 }

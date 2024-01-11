@@ -1,3 +1,4 @@
+import { compressMint } from './../solana/nft/compressMint';
 import { createSpace } from './../solana/nft/createSpace';
 import { burnNft } from './../solana/nft/burnNft';
 import { HttpException, HttpStatus, Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
@@ -13,6 +14,7 @@ import { User } from 'src/entities/user.entity';
 import { MintAttributeDto } from './dto/mint-attribute-nft-dto';
 import { attributeMint } from 'src/solana/nft/attributeMint';
 import { transferNft } from 'src/solana/nft/transferNft';
+import { createCollection } from 'src/solana/nft/createCollection';
 
 @Injectable()
 export class NftService {
@@ -91,9 +93,23 @@ export class NftService {
     return res;
   }
 
-  async createSpace() {
+  async createSpace(attributeMintDto: MintAttributeDto, file) {
+    const ownerWalletAddress = this.config.get<string>('SYSTEM_WALLET_ADDRESS');
     const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
-    const res = await createSpace(ownerSecretKey, 10000);
-    return res;
+    console.log('file', file);
+
+    const createRes = await createSpace(ownerSecretKey, 8);
+    console.log('createRes', createRes);
+
+    const createCollectionRes = await createCollection(ownerSecretKey, file.path);
+    console.log('createCollectionRes', createCollectionRes);
+
+    const compressMintRes = await compressMint(ownerSecretKey, file.path, ownerWalletAddress, createCollectionRes);
+
+    deleteUploadFile(file.path);
+
+    console.log('compressMintRes', compressMintRes);
+
+    return compressMintRes;
   }
 }
