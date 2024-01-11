@@ -120,8 +120,8 @@ dependencies:
     specifier: ^0.3.17
     version: 0.3.19(mysql2@3.7.0)(ts-node@10.9.2)
   typeorm-extension:
-    specifier: ^3.2.0
-    version: 3.2.0(typeorm@0.3.19)
+    specifier: ^3.3.0
+    version: 3.3.0(typeorm@0.3.19)
   winston:
     specifier: ^3.11.0
     version: 3.11.0
@@ -1375,7 +1375,7 @@ packages:
   /@metaplex-foundation/beet-solana@0.4.0:
     resolution: {integrity: sha512-B1L94N3ZGMo53b0uOSoznbuM5GBNJ8LwSeznxBxJ+OThvfHQ4B5oMUqb+0zdLRfkKGS7Q6tpHK9P+QK0j3w2cQ==}
     dependencies:
-      '@metaplex-foundation/beet': 0.7.1
+      '@metaplex-foundation/beet': 0.7.2
       '@solana/web3.js': 1.88.0
       bs58: 5.0.0
       debug: 4.3.4
@@ -2080,7 +2080,7 @@ packages:
       bignumber.js: 9.1.2
       bn.js: 5.2.1
       bs58: 4.0.1
-      mpl-bubblegum-instruction: github.com/atonoy/mpl-bubblegum-instructions/00f20bb7ed5ddc28e74056afd539a23257f04178(fastestsmallesttextencoderdecoder@1.0.22)
+      mpl-bubblegum-instruction: git/github.com+atonoy/mpl-bubblegum-instructions/00f20bb7ed5ddc28e74056afd539a23257f04178(fastestsmallesttextencoderdecoder@1.0.22)
     transitivePeerDependencies:
       - '@metaplex-foundation/umi'
       - bufferutil
@@ -2106,7 +2106,7 @@ packages:
       bn.js: 5.2.1
       bs58: 4.0.1
       cross-fetch: 4.0.0
-      mpl-bubblegum-instruction: github.com/atonoy/mpl-bubblegum-instructions/00f20bb7ed5ddc28e74056afd539a23257f04178(fastestsmallesttextencoderdecoder@1.0.22)
+      mpl-bubblegum-instruction: git/github.com+atonoy/mpl-bubblegum-instructions/00f20bb7ed5ddc28e74056afd539a23257f04178(fastestsmallesttextencoderdecoder@1.0.22)
       nft.storage: 7.1.1(node-fetch@3.3.2)
     transitivePeerDependencies:
       - '@metaplex-foundation/umi'
@@ -2145,7 +2145,7 @@ packages:
       bignumber.js: 9.1.2
       bn.js: 5.2.1
       bs58: 4.0.1
-      mpl-bubblegum-instruction: github.com/atonoy/mpl-bubblegum-instructions/00f20bb7ed5ddc28e74056afd539a23257f04178(fastestsmallesttextencoderdecoder@1.0.22)
+      mpl-bubblegum-instruction: git/github.com+atonoy/mpl-bubblegum-instructions/00f20bb7ed5ddc28e74056afd539a23257f04178(fastestsmallesttextencoderdecoder@1.0.22)
     transitivePeerDependencies:
       - '@metaplex-foundation/umi'
       - bufferutil
@@ -2169,7 +2169,7 @@ packages:
       bignumber.js: 9.1.2
       bn.js: 5.2.1
       bs58: 4.0.1
-      mpl-bubblegum-instruction: github.com/atonoy/mpl-bubblegum-instructions/00f20bb7ed5ddc28e74056afd539a23257f04178(fastestsmallesttextencoderdecoder@1.0.22)
+      mpl-bubblegum-instruction: git/github.com+atonoy/mpl-bubblegum-instructions/00f20bb7ed5ddc28e74056afd539a23257f04178(fastestsmallesttextencoderdecoder@1.0.22)
     transitivePeerDependencies:
       - '@metaplex-foundation/umi'
       - bufferutil
@@ -2194,7 +2194,7 @@ packages:
       bn.js: 5.2.1
       bs58: 4.0.1
       cross-fetch: 4.0.0
-      mpl-bubblegum-instruction: github.com/atonoy/mpl-bubblegum-instructions/00f20bb7ed5ddc28e74056afd539a23257f04178(fastestsmallesttextencoderdecoder@1.0.22)
+      mpl-bubblegum-instruction: git/github.com+atonoy/mpl-bubblegum-instructions/00f20bb7ed5ddc28e74056afd539a23257f04178(fastestsmallesttextencoderdecoder@1.0.22)
       nft.storage: 7.1.1(node-fetch@3.3.2)
     transitivePeerDependencies:
       - '@metaplex-foundation/umi'
@@ -2221,7 +2221,7 @@ packages:
       bignumber.js: 9.1.2
       bn.js: 5.2.1
       bs58: 4.0.1
-      mpl-bubblegum-instruction: github.com/atonoy/mpl-bubblegum-instructions/00f20bb7ed5ddc28e74056afd539a23257f04178(fastestsmallesttextencoderdecoder@1.0.22)
+      mpl-bubblegum-instruction: git/github.com+atonoy/mpl-bubblegum-instructions/00f20bb7ed5ddc28e74056afd539a23257f04178(fastestsmallesttextencoderdecoder@1.0.22)
     transitivePeerDependencies:
       - '@metaplex-foundation/umi'
       - bufferutil
@@ -2246,7 +2246,7 @@ packages:
       bn.js: 5.2.1
       bs58: 4.0.1
       cross-fetch: 4.0.0
-      mpl-bubblegum-instruction: github.com/atonoy/mpl-bubblegum-instructions/00f20bb7ed5ddc28e74056afd539a23257f04178(fastestsmallesttextencoderdecoder@1.0.22)
+      mpl-bubblegum-instruction: git/github.com+atonoy/mpl-bubblegum-instructions/00f20bb7ed5ddc28e74056afd539a23257f04178(fastestsmallesttextencoderdecoder@1.0.22)
       nft.storage: 7.1.1(node-fetch@3.3.2)
     transitivePeerDependencies:
       - '@metaplex-foundation/umi'
@@ -2322,8 +2322,8 @@ packages:
     peerDependencies:
       '@solana/web3.js': ^1.50.1
     dependencies:
-      '@metaplex-foundation/beet': 0.7.1
-      '@metaplex-foundation/beet-solana': 0.4.0
+      '@metaplex-foundation/beet': 0.7.2
+      '@metaplex-foundation/beet-solana': 0.4.1
       '@solana/web3.js': 1.88.0
       bn.js: 5.2.1
       borsh: 0.7.0
@@ -8074,6 +8074,10 @@ packages:
   /reflect-metadata@0.1.14:
     resolution: {integrity: sha512-ZhYeb6nRaXCfhnndflDK8qI6ZQ/YcWZCISRAWICW9XYqMUwjZM9Z0DveWX/ABN01oxSHwVxKQmxeYZSsm0jh5A==}
 
+  /reflect-metadata@0.2.1:
+    resolution: {integrity: sha512-i5lLI6iw9AU3Uu4szRNPPEkomnkjRTaVt9hy/bn5g/oSzekBSMeLZblcjP74AW0vBabqERLLIrz+gR8QYR54Tw==}
+    dev: false
+
   /regenerator-runtime@0.14.1:
     resolution: {integrity: sha512-dYnhHh0nJoMfnkZs6GmmhFknAGRrLznOu5nc9ML+EJxGvrx6H7teuevqVqCuPcPK//3eDrrjQhehXVx9cnkGdw==}
     dev: false
@@ -9029,8 +9033,8 @@ packages:
   /typedarray@0.0.6:
     resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
 
-  /typeorm-extension@3.2.0(typeorm@0.3.19):
-    resolution: {integrity: sha512-96mVEUiT78+n2jceTKUZ4WF1EYaii9ZnilI0FbOifoT0jUAOrNvQ1pfiCRfu3z2AlVg6l0wOr/n+MSlyCm3ALA==}
+  /typeorm-extension@3.3.0(typeorm@0.3.19):
+    resolution: {integrity: sha512-dCpiueMB2gef53PN2iG9uqLAPh6j3oWCE4U3a+JQozgGm1h+Lw4HkiOl4dDHF6dnefZymm8wHt1iY91TXi9/eg==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     peerDependencies:
@@ -9041,7 +9045,7 @@ packages:
       locter: 1.3.0
       pascal-case: 3.1.2
       rapiq: 0.9.0
-      reflect-metadata: 0.1.14
+      reflect-metadata: 0.2.1
       smob: 1.4.1
       typeorm: 0.3.19(mysql2@3.7.0)(ts-node@10.9.2)
       yargs: 17.7.2
@@ -9663,9 +9667,9 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  github.com/atonoy/mpl-bubblegum-instructions/00f20bb7ed5ddc28e74056afd539a23257f04178(fastestsmallesttextencoderdecoder@1.0.22):
-    resolution: {tarball: https://codeload.github.com/atonoy/mpl-bubblegum-instructions/tar.gz/00f20bb7ed5ddc28e74056afd539a23257f04178}
-    id: github.com/atonoy/mpl-bubblegum-instructions/00f20bb7ed5ddc28e74056afd539a23257f04178
+  git/github.com+atonoy/mpl-bubblegum-instructions/00f20bb7ed5ddc28e74056afd539a23257f04178(fastestsmallesttextencoderdecoder@1.0.22):
+    resolution: {commit: 00f20bb7ed5ddc28e74056afd539a23257f04178, repo: git@github.com:atonoy/mpl-bubblegum-instructions.git, type: git}
+    id: git@github.com+atonoy/mpl-bubblegum-instructions/00f20bb7ed5ddc28e74056afd539a23257f04178
     name: mpl-bubblegum-instruction
     version: 0.9.0
     dependencies:

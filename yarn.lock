@@ -4617,6 +4617,17 @@ fast-glob@^3.2.9:
     merge2 "^1.3.0"
     micromatch "^4.0.4"
 
+fast-glob@^3.3.2:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/fast-glob/-/fast-glob-3.3.2.tgz#a904501e57cfdd2ffcded45e99a54fef55e46129"
+  integrity sha512-oX2ruAFQwf/Orj8m737Y5adxDQO0LAB7/S5MnxCdTNDd4p6BsyIVsv9JQsATbTSq8KHRpLwIHbVlUNatxd+1Ow==
+  dependencies:
+    "@nodelib/fs.stat" "^2.0.2"
+    "@nodelib/fs.walk" "^1.2.3"
+    glob-parent "^5.1.2"
+    merge2 "^1.3.0"
+    micromatch "^4.0.4"
+
 fast-json-stable-stringify@2.x, fast-json-stable-stringify@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/fast-json-stable-stringify/-/fast-json-stable-stringify-2.1.0.tgz#874bf69c6f404c2b5d99c481341399fd55892633"
@@ -4937,7 +4948,7 @@ glob-to-regexp@^0.4.1:
   resolved "https://registry.yarnpkg.com/glob-to-regexp/-/glob-to-regexp-0.4.1.tgz#c75297087c851b9a578bd217dd59a92f59fe546e"
   integrity sha512-lkX1HJXwyMcprw/5YUZc2s7DrpAiHB21/V+E1rHUrVNokkvB6bqMzT0VfV6/86ZNabt1k14YOIaT7nDvOX3Iiw==
 
-glob@10.3.10, glob@^10.3.10, glob@^10.3.7:
+glob@10.3.10, glob@^10.3.7:
   version "10.3.10"
   resolved "https://registry.yarnpkg.com/glob/-/glob-10.3.10.tgz#0351ebb809fd187fe421ab96af83d3a70715df4b"
   integrity sha512-fa46+tv1Ak0UPK1TOy/pZrIybNNt4HCv7SDzwyfiOZkvZLEbjsZkJBPtDHVshZjbecAoAGSC20MjLDG/qr679g==
@@ -6488,16 +6499,17 @@ locate-path@^6.0.0:
   dependencies:
     p-locate "^5.0.0"
 
-locter@^1.2.3:
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/locter/-/locter-1.2.3.tgz#a8caa592413f0ae8cbcc2747735faf9bfb967a56"
-  integrity sha512-ew6nK4ejX+Z4bRvF94mErI38mBxn6Gvi61HL+vEU6X06Pa8RrmwvhmPqCX7784UzdhQ0+qeyYOYp8Rd5mOvh1A==
+locter@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/locter/-/locter-1.3.0.tgz#60032bfb6110d0aab627b89bd1c506c096d0db0c"
+  integrity sha512-HfyXUmhGZNSvWIgyjZBrFQQ1zH06Yy+4ucKV1ujwMxfGxscwzwi2p6r+FXX/ivD9xxflQwSrB7UYpZNFYPONbw==
   dependencies:
     destr "^2.0.2"
     ebec "^2.3.0"
+    fast-glob "^3.3.2"
     flat "^5.0.2"
-    glob "^10.3.10"
     jiti "^1.21.0"
+    yaml "^2.3.4"
 
 lodash.includes@^4.3.0:
   version "4.3.0"
@@ -7851,6 +7863,11 @@ reflect-metadata@^0.1.13, reflect-metadata@^0.1.14:
   resolved "https://registry.yarnpkg.com/reflect-metadata/-/reflect-metadata-0.1.14.tgz#24cf721fe60677146bb77eeb0e1f9dece3d65859"
   integrity sha512-ZhYeb6nRaXCfhnndflDK8qI6ZQ/YcWZCISRAWICW9XYqMUwjZM9Z0DveWX/ABN01oxSHwVxKQmxeYZSsm0jh5A==
 
+reflect-metadata@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/reflect-metadata/-/reflect-metadata-0.2.1.tgz#8d5513c0f5ef2b4b9c3865287f3c0940c1f67f74"
+  integrity sha512-i5lLI6iw9AU3Uu4szRNPPEkomnkjRTaVt9hy/bn5g/oSzekBSMeLZblcjP74AW0vBabqERLLIrz+gR8QYR54Tw==
+
 regenerator-runtime@^0.14.0:
   version "0.14.1"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.14.1.tgz#356ade10263f685dda125100cd862c1db895327f"
@@ -8840,17 +8857,17 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==
 
-typeorm-extension@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/typeorm-extension/-/typeorm-extension-3.2.0.tgz#c00d664f40f7007bbd6f93f691d584c568a9d070"
-  integrity sha512-96mVEUiT78+n2jceTKUZ4WF1EYaii9ZnilI0FbOifoT0jUAOrNvQ1pfiCRfu3z2AlVg6l0wOr/n+MSlyCm3ALA==
+typeorm-extension@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/typeorm-extension/-/typeorm-extension-3.3.0.tgz#583cfc1172372a1c239523b179d16487d811be33"
+  integrity sha512-dCpiueMB2gef53PN2iG9uqLAPh6j3oWCE4U3a+JQozgGm1h+Lw4HkiOl4dDHF6dnefZymm8wHt1iY91TXi9/eg==
   dependencies:
     "@faker-js/faker" "^8.3.1"
     consola "^3.2.3"
-    locter "^1.2.3"
+    locter "^1.3.0"
     pascal-case "^3.1.2"
     rapiq "^0.9.0"
-    reflect-metadata "^0.1.13"
+    reflect-metadata "^0.2.1"
     smob "^1.4.1"
     yargs "^17.7.2"
 
@@ -9373,6 +9390,11 @@ yallist@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-4.0.0.tgz#9bb92790d9c0effec63be73519e11a35019a3a72"
   integrity sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==
+
+yaml@^2.3.4:
+  version "2.3.4"
+  resolved "https://registry.yarnpkg.com/yaml/-/yaml-2.3.4.tgz#53fc1d514be80aabf386dc6001eb29bf3b7523b2"
+  integrity sha512-8aAvwVUSHpfEqTQ4w/KMlf3HcRdt50E5ODIQJBw1fQ5RL34xabzxtUlzTXVqc4rkZsPbvrXKWnABCD7kWSmocA==
 
 yargs-parser@20.x, yargs-parser@^20.2.2, yargs-parser@^20.2.3:
   version "20.2.9"
