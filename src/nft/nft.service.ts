@@ -98,8 +98,8 @@ export class NftService {
     const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
     console.log('file', file);
 
-    const createRes = await createSpace(ownerSecretKey, 8);
-    console.log('createRes', createRes);
+    const createSpaceRes = await createSpace(ownerSecretKey, 8);
+    console.log('createSpaceRes', createSpaceRes);
 
     const createCollectionRes = await createCollection(ownerSecretKey, file.path);
     console.log('createCollectionRes', createCollectionRes);
@@ -108,7 +108,7 @@ export class NftService {
       ownerWalletAddress,
       ownerSecretKey,
       file.path,
-      createCollectionRes,
+      createSpaceRes.treeOwner,
       createCollectionRes
     );
 
