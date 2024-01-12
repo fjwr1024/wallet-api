@@ -1,7 +1,15 @@
 import assert from 'assert';
 import { Node, Explorer, CompressedNft } from '@solana-suite/compressed-nft';
 
-export const compressMint = async (ownerSecretKey: string, file: any, treeOwner: any, mintCollection: any) => {
+export const compressMint = async (
+  walletAddress: string,
+  ownerSecretKey: string,
+  file: any,
+  treeOwner: any,
+  mintCollection: any
+) => {
+  console.log('#tree owner: ', treeOwner);
+
   const mintInst = await CompressedNft.mint(
     ownerSecretKey,
     {
@@ -13,12 +21,11 @@ export const compressMint = async (ownerSecretKey: string, file: any, treeOwner:
       isMutable: true,
       external_url: 'https://external_url',
     },
-    // treeOwner,
-    '65nUg2M1hq3tpbhapEoLypzF3gt2Kkm6oMDrHG3QinX5',
+    treeOwner,
     mintCollection,
     {
       feePayer: ownerSecretKey,
-      delegate: 'C2hQa7HUJmt819JEhELayi6HqXSQMYGa5qJYej9BUuCu',
+      delegate: walletAddress,
     }
   );
 

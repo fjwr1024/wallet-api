@@ -104,7 +104,13 @@ export class NftService {
     const createCollectionRes = await createCollection(ownerSecretKey, file.path);
     console.log('createCollectionRes', createCollectionRes);
 
-    const compressMintRes = await compressMint(ownerSecretKey, file.path, ownerWalletAddress, createCollectionRes);
+    const compressMintRes = await compressMint(
+      ownerWalletAddress,
+      ownerSecretKey,
+      file.path,
+      createCollectionRes,
+      createCollectionRes
+    );
 
     deleteUploadFile(file.path);
 
