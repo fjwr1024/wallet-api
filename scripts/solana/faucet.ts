@@ -3,7 +3,7 @@
 //////////////////////////////////////////////
 import { Airdrop } from '@solana-suite/airdrop';
 
-const testAddress = 'mckjwe77c8SX6pEAmCQS7y321PwbmBnZfiNVXaPUTXY';
+const testAddress = 'C2hQa7HUJmt819JEhELayi6HqXSQMYGa5qJYej9BUuCu';
 
 const addSol = async (walletAddress: string): Promise<string> => {
   try {
