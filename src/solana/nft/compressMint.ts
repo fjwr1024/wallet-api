@@ -5,8 +5,8 @@ export const compressMint = async (
   walletAddress: string,
   ownerSecretKey: string,
   file: any,
-  treeOwner: any,
-  mintCollection: any
+  treeOwner: string,
+  mintCollection: string
 ) => {
   console.log('#tree owner: ', treeOwner);
 
