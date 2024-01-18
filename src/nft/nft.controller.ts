@@ -1,3 +1,4 @@
+import { spaceCost } from './../solana/nft/caluculateSpaceCost';
 import {
   Body,
   Controller,
@@ -109,6 +110,12 @@ export class NftController {
     @UploadedFile() file: Express.Multer.File
   ) {
     const response = await this.nftService.createSpace(attributeMintDto, file);
+    return response;
+  }
+
+  @Get('space-cost')
+  async spaceCost() {
+    const response = await this.nftService.getSpaceCost(10000);
     return response;
   }
 }
