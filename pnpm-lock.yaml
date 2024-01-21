@@ -87,8 +87,8 @@ dependencies:
     specifier: ^1.4.5-lts.1
     version: 1.4.5-lts.1
   mysql2:
-    specifier: ^3.6.5
-    version: 3.7.0
+    specifier: ^3.7.1
+    version: 3.7.1
   node-rsa:
     specifier: ^1.1.1
     version: 1.1.1
@@ -118,7 +118,7 @@ dependencies:
     version: 14.11.0
   typeorm:
     specifier: ^0.3.17
-    version: 0.3.19(mysql2@3.7.0)(ts-node@10.9.2)
+    version: 0.3.19(mysql2@3.7.1)(ts-node@10.9.2)
   typeorm-extension:
     specifier: ^3.3.0
     version: 3.3.0(typeorm@0.3.19)
@@ -1877,7 +1877,7 @@ packages:
       '@nestjs/core': 9.4.3(@nestjs/common@9.4.3)(@nestjs/platform-express@9.4.3)(reflect-metadata@0.1.14)(rxjs@7.8.1)
       reflect-metadata: 0.1.14
       rxjs: 7.8.1
-      typeorm: 0.3.19(mysql2@3.7.0)(ts-node@10.9.2)
+      typeorm: 0.3.19(mysql2@3.7.1)(ts-node@10.9.2)
       uuid: 9.0.1
     dev: false
 
@@ -7293,8 +7293,8 @@ packages:
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dev: true
 
-  /mysql2@3.7.0:
-    resolution: {integrity: sha512-c45jA3Jc1X8yJKzrWu1GpplBKGwv/wIV6ITZTlCSY7npF2YfJR+6nMP5e+NTQhUeJPSyOQAbGDCGEHbAl8HN9w==}
+  /mysql2@3.7.1:
+    resolution: {integrity: sha512-4EEqYu57mnkW5+Bvp5wBebY7PpfyrmvJ3knHcmLkp8FyBu4kqgrF2GxIjsC2tbLNZWqJaL21v/MYH7bU5f03oA==}
     engines: {node: '>= 8.0'}
     dependencies:
       denque: 2.1.0
@@ -9046,11 +9046,11 @@ packages:
       rapiq: 0.9.0
       reflect-metadata: 0.2.1
       smob: 1.4.1
-      typeorm: 0.3.19(mysql2@3.7.0)(ts-node@10.9.2)
+      typeorm: 0.3.19(mysql2@3.7.1)(ts-node@10.9.2)
       yargs: 17.7.2
     dev: false
 
-  /typeorm@0.3.19(mysql2@3.7.0)(ts-node@10.9.2):
+  /typeorm@0.3.19(mysql2@3.7.1)(ts-node@10.9.2):
     resolution: {integrity: sha512-OGelrY5qEoAU80mR1iyvmUHiKCPUydL6xp6bebXzS7jyv/X70Gp/jBWRAfF4qGOfy2A7orMiGRfwsBUNbEL65g==}
     engines: {node: '>= 12.9.0'}
     hasBin: true
@@ -9118,7 +9118,7 @@ packages:
       dotenv: 16.3.1
       glob: 10.3.10
       mkdirp: 2.1.6
-      mysql2: 3.7.0
+      mysql2: 3.7.1
       reflect-metadata: 0.1.14
       sha.js: 2.4.11
       ts-node: 10.9.2(@types/node@20.11.5)(typescript@4.9.5)
