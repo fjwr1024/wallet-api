@@ -1,13 +1,6 @@
 #!/bin/bash
 set -eux
 
-SCRIPT_DIR=$(
-  cd $(dirname $0)
-  pwd
-)
-SOLANA_DIR="$SCRIPT_DIR/../node_modules/@solana-suite/shared"
-cd $SOLANA_DIR
-
 echo $PROJECT_ID
 if [ "$PROJECT_ID" = "wallet-api-dev" ]; then
   SOLANA_CLUSTER="dev"
@@ -21,4 +14,4 @@ else
 fi
 
 # command
-./solana-suite-config.js -c ${SOLANA_CLUSTER}
+npx solana-suite-config -c ${SOLANA_CLUSTER}
