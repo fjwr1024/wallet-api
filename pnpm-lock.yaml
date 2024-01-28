@@ -114,8 +114,8 @@ dependencies:
     specifier: ^7.8.0
     version: 7.8.1
   stripe:
-    specifier: ^14.10.0
-    version: 14.11.0
+    specifier: ^14.14.0
+    version: 14.14.0
   typeorm:
     specifier: ^0.3.17
     version: 0.3.19(mysql2@3.8.0)(ts-node@10.9.2)
@@ -8573,8 +8573,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /stripe@14.11.0:
-    resolution: {integrity: sha512-NmFEkDC0PldP7CQtdPgKs5dVZA/pF+IepldbmB+Kk9B4d7EBkWnbANp0y+/zJcbRGul48s8hmQzeqNWUlWW0wg==}
+  /stripe@14.14.0:
+    resolution: {integrity: sha512-P6lvKHxgDzZXto9VMstG1ucv4Ls0U9nOoQhVZABXJ33kRD7zMwkBy5Y4c3BO59O230uSTkOFPLh87YxVzkp0Mg==}
     engines: {node: '>=12.*'}
     dependencies:
       '@types/node': 20.11.5
