@@ -2,7 +2,7 @@
 // $ npx ts-node scripts/SystemWalletInitialize.ts
 //////////////////////////////////////////////
 import { Airdrop } from '@solana-suite/airdrop';
-import { Account } from '@solana-suite/regular-nft';
+import { Account } from '@solana-suite/utils';
 
 const createWallet = async () => {
   const account = await Account.Keypair.create();

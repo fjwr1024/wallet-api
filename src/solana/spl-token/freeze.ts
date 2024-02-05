@@ -1,4 +1,5 @@
-import { Node, SplToken } from '@solana-suite/spl-token';
+import { SplToken } from '@solana-suite/spl-token';
+import { Node } from '@solana-suite/utils';
 
 export const freeze = async (mintId, walletAddress, secretKey) => {
   const inst = await SplToken.freeze(mintId, walletAddress, secretKey);

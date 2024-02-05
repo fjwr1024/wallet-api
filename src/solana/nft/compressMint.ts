@@ -1,5 +1,6 @@
 import assert from 'assert';
-import { Node, Explorer, CompressedNft } from '@solana-suite/compressed-nft';
+import { CompressedNft } from '@solana-suite/compressed-nft';
+import { Node, Explorer } from '@solana-suite/utils';
 
 export const compressMint = async (
   walletAddress: string,

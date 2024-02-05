@@ -1,13 +1,14 @@
 import assert from 'assert';
-import { CompressedNft, Node } from '@solana-suite/compressed-nft';
+import { CompressedNft } from '@solana-suite/compressed-nft';
+import { Node, Pubkey } from '@solana-suite/utils';
 
-export const createCollection = async (ownerSecretKey: string, file: any) => {
+export const createCollection = async (ownerSecretKey: string, file: any): Promise<Pubkey> => {
   const collectionInst = await CompressedNft.mintCollection(
     ownerSecretKey,
     {
       filePath: file,
-      name: 'NFTCollection',
-      symbol: 'CNFT',
+      name: 'BCL',
+      symbol: 'BCL',
       royalty: 0,
       storageType: 'nftStorage',
       isMutable: true,

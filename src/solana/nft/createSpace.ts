@@ -1,7 +1,11 @@
 import assert from 'assert';
-import { Node, CompressedNft } from '@solana-suite/compressed-nft';
+import { CompressedNft } from '@solana-suite/compressed-nft';
+import { Node } from '@solana-suite/utils';
 
-export const createSpace = async (secretKey: string, abountMintTotal: any) => {
+export const createSpace = async (secretKey: string, abountMintTotal: any): Promise<any> => {
+  console.log('# secretKey: ', secretKey);
+  console.log('# abountMintTotal: ', abountMintTotal);
+
   const spaceInst = await CompressedNft.createSpace(secretKey, abountMintTotal, {
     feePayer: secretKey,
   });

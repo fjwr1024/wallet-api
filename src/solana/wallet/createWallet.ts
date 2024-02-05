@@ -1,4 +1,4 @@
-import { Account } from '@solana-suite/spl-token';
+import { Account } from '@solana-suite/utils';
 
 // Walletの公開鍵と秘密鍵を生成
 export const createWallet = async () => {

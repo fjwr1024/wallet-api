@@ -1,7 +1,8 @@
-import { Pubkey, SplToken } from '@solana-suite/spl-token';
+import { SplToken } from '@solana-suite/spl-token';
+import { Pubkey } from '@solana-suite/utils';
 import * as util from 'util';
 
-export const createSplToken = async (totalAmount, decimals, ownerSecretKey, file) => {
+export const createSplToken = async (totalAmount, decimals, ownerSecretKey, file): Promise<any> => {
   const tokenMetadata = {
     name: 'solana-suite-token',
     symbol: 'SST',

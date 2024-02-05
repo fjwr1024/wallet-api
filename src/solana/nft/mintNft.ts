@@ -1,4 +1,5 @@
-import { Node, Pubkey, RegularNft } from '@solana-suite/regular-nft';
+import { RegularNft } from '@solana-suite/regular-nft';
+import { Node, Pubkey } from '@solana-suite/utils';
 
 export const mintNft = async (
   name: string,

@@ -1,5 +1,5 @@
-import { RegularNft, Pubkey } from '@solana-suite/regular-nft';
-import assert from 'assert';
+import { RegularNft } from '@solana-suite/regular-nft';
+import { Pubkey, Node } from '@solana-suite/utils';
 
 type Attribute = {
   trait_type: string;
@@ -27,11 +27,13 @@ export const attributeMint = async (
     royalty: 0,
     attributes,
     isMutable: true,
-    external_url: 'https://github.com/atonoy/solana-suite',
+    // external_url: 'https://github.com/atonoy/solana-suite',
   });
 
   (await inst.submit()).match(
-    (ok: string) => {
+    async (ok: string) => {
+      await Node.confirmedSig(ok, 'finalized');
+
       const mint = inst.unwrap().data as Pubkey;
       console.log('# mint:', mint);
       console.log('# sig:', ok);
