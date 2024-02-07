@@ -326,17 +326,35 @@
   dependencies:
     regenerator-runtime "^0.14.0"
 
-"@babel/runtime@^7.21.0":
-  version "7.22.15"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.22.15.tgz#38f46494ccf6cf020bd4eed7124b425e83e523b8"
-  integrity sha512-T0O+aa+4w0u06iNmapipJXMV4HoUir03hpx3/YqXXhu9xim3w+dVphjFWl1OH8NbZHw5Lbm9k45drDkgq2VNNA==
-  dependencies:
-    regenerator-runtime "^0.14.0"
-
-"@babel/template@^7.22.15", "@babel/template@^7.22.5", "@babel/template@^7.3.3":
+"@babel/template@^7.22.15", "@babel/template@^7.3.3":
   version "7.22.15"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.22.15.tgz#09576efc3830f0430f4548ef971dde1350ef2f38"
   integrity sha512-QPErUVm4uyJa60rkI73qneDacvdvzxshT3kksGqlGWYdOTIUOwJ7RDUL8sGqslY1uXWSL6xMFKEXDS3ox2uF0w==
+  dependencies:
+    "@babel/code-frame" "^7.23.5"
+    "@babel/generator" "^7.23.6"
+    "@babel/helper-environment-visitor" "^7.22.20"
+    "@babel/helper-function-name" "^7.23.0"
+    "@babel/helper-hoist-variables" "^7.22.5"
+    "@babel/helper-split-export-declaration" "^7.22.6"
+    "@babel/parser" "^7.23.9"
+    "@babel/types" "^7.23.9"
+    debug "^4.3.1"
+    globals "^11.1.0"
+
+"@babel/template@^7.23.9":
+  version "7.23.9"
+  resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.23.9.tgz#f881d0487cba2828d3259dcb9ef5005a9731011a"
+  integrity sha512-+xrD2BWLpvHKNmX2QbpdpsBaWnRxahMwJjO+KZk2JOElj5nSmKezyS1B4u+QbHMTX69t4ukm6hh9lsYQ7GHCKA==
+  dependencies:
+    "@babel/code-frame" "^7.23.5"
+    "@babel/parser" "^7.23.9"
+    "@babel/types" "^7.23.9"
+
+"@babel/traverse@^7.23.9", "@babel/traverse@^7.7.2":
+  version "7.23.9"
+  resolved "https://registry.yarnpkg.com/@babel/traverse/-/traverse-7.23.9.tgz#2f9d6aead6b564669394c5ce0f9302bb65b9d950"
+  integrity sha512-I/4UJ9vs90OkBtY6iiiTORVMyIhJ4kAVmsKo9KFc8UOxMeUfi2hvtIBsET5u9GizXE6/GFSuKCTNfgCswuEjRg==
   dependencies:
     "@babel/code-frame" "^7.23.5"
     "@babel/generator" "^7.23.6"
@@ -1183,10 +1201,10 @@
   resolved "https://registry.yarnpkg.com/@metaplex-foundation/digital-asset-standard-api/-/digital-asset-standard-api-1.0.0.tgz#3f802d349bded885206d2240b2c9439ccee24f1f"
   integrity sha512-RShZFkLa3SKl8Rs13okG9vG3N3ZfRrcHBImEEds3Rb8mghHWGU3IL2+X9FdIRMnE44jNJ3vZlVeEBU3kIZPBvw==
 
-"@metaplex-foundation/mpl-bubblegum@3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@metaplex-foundation/mpl-bubblegum/-/mpl-bubblegum-3.0.0.tgz#b4e205854dd6640c31126290cb3f768e9ef8f3dd"
-  integrity sha512-L21TK2U/wdYMaW0w0Ih7KSJeiVswTSlftR6dMpi7x5E/GyO893z1HnNRzj1qwqF973bsJwfOekNhQIGZkfCONg==
+"@metaplex-foundation/mpl-bubblegum@^3.0.0":
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/@metaplex-foundation/mpl-bubblegum/-/mpl-bubblegum-3.1.2.tgz#e4de9b0750ab81db30cf8099b068e5379a167735"
+  integrity sha512-ETqr+JYacIfx0jb8RYq9GXFy53/7mrtWTrRf6mZYzu0x4L8lpTgSw7Zrb8EFITvBequTGTHe93bR/xjLrZF17Q==
   dependencies:
     "@metaplex-foundation/digital-asset-standard-api" "^1.0.0-alpha.0"
     "@metaplex-foundation/mpl-token-metadata" "3.0.0-alpha.27"
@@ -1672,14 +1690,14 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@solana-suite/airdrop@0.7.3":
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/@solana-suite/airdrop/-/airdrop-0.7.3.tgz#6fc37d116526751298214f2a0676dc215f311634"
-  integrity sha512-CMLW+1sWc4dXi3QpwSbXZNd+hWIrOA/xcY8VGBHrxUyEcp8J9AQMDWyw6NriVxz7fBFrXlreP2KX0n+cCsQovg==
+"@solana-suite/airdrop@0.7.2":
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/@solana-suite/airdrop/-/airdrop-0.7.2.tgz#dac5a006e48781f680bf0a3a69bee85579257156"
+  integrity sha512-PzvduOeWrwu6Rx7XbrL4LgEUs/2wPgU3+52ydLyLPp32EEEfbnj5ItMa03BjwYnfvM2m3Wd4THSmEXrxw7M0Ug==
   dependencies:
-    "@metaplex-foundation/mpl-bubblegum" "3.0.0"
+    "@metaplex-foundation/mpl-bubblegum" "^3.0.0"
     "@metaplex-foundation/mpl-token-metadata" "^2.13.0"
-    "@solana-suite/config" "^0.7.3"
+    "@solana-suite/config" "^0.7.2"
     "@solana/spl-token" "^0.3.8"
     "@solana/web3.js" "^1.78.5"
     bignumber.js "^9.1.2"
@@ -1687,15 +1705,15 @@
     bs58 "^4.0.1"
     mpl-bubblegum-instruction "github:atonoy/mpl-bubblegum-instructions"
 
-"@solana-suite/compressed-nft@0.7.3":
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/@solana-suite/compressed-nft/-/compressed-nft-0.7.3.tgz#357610cfdcaae278191f4691cfe99d9dffafe690"
-  integrity sha512-1KmstfZs64FC/HDGLFWpSXVFmvEkOMyFhPBu2PTm6DfYtzeM/pZkVrUbP3R2TK9HYnLtOJB9+uDenLi7APSUBA==
+"@solana-suite/compressed-nft@0.7.2":
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/@solana-suite/compressed-nft/-/compressed-nft-0.7.2.tgz#05a197e04d100a5f7625104f2b3c7a44d2c3f3b4"
+  integrity sha512-IuyQGuucpJvq29MEJKTBdXB/5aR3oAz9Sq//VHQBOVas4MDDyjQgVmKQapNDt8BhVne1oZdgKMXqRxmOyUgDXQ==
   dependencies:
     "@irys/sdk" "^0.0.3"
-    "@metaplex-foundation/mpl-bubblegum" "3.0.0"
+    "@metaplex-foundation/mpl-bubblegum" "^3.0.0"
     "@metaplex-foundation/mpl-token-metadata" "^2.13.0"
-    "@solana-suite/config" "0.7.3"
+    "@solana-suite/config" "0.7.2"
     "@solana/spl-account-compression" "^0.2.0"
     "@solana/spl-token" "^0.3.8"
     "@solana/web3.js" "^1.78.5"
@@ -1706,21 +1724,26 @@
     mpl-bubblegum-instruction "github:atonoy/mpl-bubblegum-instructions"
     nft.storage "^7.1.1"
 
-"@solana-suite/config@0.7.3", "@solana-suite/config@^0.7.3":
+"@solana-suite/config@0.7.2":
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/@solana-suite/config/-/config-0.7.2.tgz#2b4433757b6aa38508d1f686db4ed2a672f781ee"
+  integrity sha512-R66jzoK92N3i/e9Rrvu+oK2c468L2KCufJ64nNAcEJiYJRYjKLH/hXd8nitDRxBLEKts+J7mtVDoqVBwfSs/Sw==
+
+"@solana-suite/config@^0.7.2":
   version "0.7.3"
   resolved "https://registry.yarnpkg.com/@solana-suite/config/-/config-0.7.3.tgz#56b66f50646641bef842cdd40bde48fbcc50028a"
   integrity sha512-zSllXHYDwvmlIZUOZJPmwUl0DFz7eXgeoU0z/V9OvwQwXNXWmupJvemgIp1AqShiEKjvON4VdokoDp8vKR/Xfg==
   dependencies:
     commander "9.3.0"
 
-"@solana-suite/memo@0.7.3":
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/@solana-suite/memo/-/memo-0.7.3.tgz#02aacad90d677a01c8a97c63492f3cac2593ee17"
-  integrity sha512-qYkpW7dZp0KryN/jKKKIBnbfj4Yro5fXUo8zl16vwLsKaD7/zHrMbuQyDEzLAD8m3c4hKi22VWORQ1jlZ4P6hw==
+"@solana-suite/memo@0.7.2":
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/@solana-suite/memo/-/memo-0.7.2.tgz#70fde511ce71b78b962c8fcdb57efb37df06abfd"
+  integrity sha512-ux4VvclUc91IV3hUHOcq+MPlwQK5oNnDssu2V3ROVRM1JU4iSJQ00H7b+b0x9EjRMScXfPFcvIV3UVGpwz1qYQ==
   dependencies:
-    "@metaplex-foundation/mpl-bubblegum" "3.0.0"
+    "@metaplex-foundation/mpl-bubblegum" "^3.0.0"
     "@metaplex-foundation/mpl-token-metadata" "^2.13.0"
-    "@solana-suite/config" "^0.7.3"
+    "@solana-suite/config" "^0.7.2"
     "@solana/spl-token" "^0.3.8"
     "@solana/web3.js" "^1.78.5"
     bignumber.js "^9.1.2"
@@ -1728,14 +1751,14 @@
     bs58 "^4.0.1"
     mpl-bubblegum-instruction "github:atonoy/mpl-bubblegum-instructions"
 
-"@solana-suite/multisig@0.7.3":
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/@solana-suite/multisig/-/multisig-0.7.3.tgz#0dcf01c8eb5bdc201df9e1dd971a574d85cbe763"
-  integrity sha512-2VJLy0Yq3pMJ5EoOMNZzFC9FNxCdyNYKEgMJIze5/Kh8QCfy4rDidFsTIa3OPsUIq2mZmvdJjiZNIqOrLGPjxg==
+"@solana-suite/multisig@0.7.2":
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/@solana-suite/multisig/-/multisig-0.7.2.tgz#fdf226308de876431deb3d53742fa5a61f035a14"
+  integrity sha512-h4hOQPC+hzFpmq6FJUDtPEMLid2vdjfmB8rvVnrMEZi1fZQBBn1vEQn4KiIrUnq6JcLMf0qg5pD9nyWPnUa8pw==
   dependencies:
-    "@metaplex-foundation/mpl-bubblegum" "3.0.0"
+    "@metaplex-foundation/mpl-bubblegum" "^3.0.0"
     "@metaplex-foundation/mpl-token-metadata" "^2.13.0"
-    "@solana-suite/config" "^0.7.3"
+    "@solana-suite/config" "^0.7.2"
     "@solana/buffer-layout" "^4.0.1"
     "@solana/spl-token" "^0.3.8"
     "@solana/web3.js" "^1.78.5"
@@ -1744,15 +1767,15 @@
     bs58 "^4.0.1"
     mpl-bubblegum-instruction "github:atonoy/mpl-bubblegum-instructions"
 
-"@solana-suite/regular-nft@0.7.3":
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/@solana-suite/regular-nft/-/regular-nft-0.7.3.tgz#48db7b5ac4f547fb95f2eabe9d9f6529adeb5b59"
-  integrity sha512-QI/zMAII2PFmCU0UIyKQoVJE61a9rnHzZb9Dgxi0FLt28caP/GlMWj46KJL8QW4Vh3dkEcQEVPe1tfxb3qtdwA==
+"@solana-suite/regular-nft@0.7.2":
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/@solana-suite/regular-nft/-/regular-nft-0.7.2.tgz#79ba7e2b46d9f832350b7395667edd7cdf69d69e"
+  integrity sha512-RNQ2HFyWNxxrn1HP/YP2ohMnk+Dl9c/F9Ml0nVodlSCkR/oywj+sfMFu+K56eHVdElH9dGyNw/LIpstrkyXMIw==
   dependencies:
     "@irys/sdk" "^0.0.3"
-    "@metaplex-foundation/mpl-bubblegum" "3.0.0"
+    "@metaplex-foundation/mpl-bubblegum" "^3.0.0"
     "@metaplex-foundation/mpl-token-metadata" "^2.13.0"
-    "@solana-suite/config" "0.7.3"
+    "@solana-suite/config" "0.7.2"
     "@solana/spl-token" "^0.3.8"
     "@solana/web3.js" "^1.78.5"
     bignumber.js "^9.1.2"
@@ -1762,14 +1785,14 @@
     mpl-bubblegum-instruction "github:atonoy/mpl-bubblegum-instructions"
     nft.storage "^7.1.1"
 
-"@solana-suite/sol-native@0.7.3":
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/@solana-suite/sol-native/-/sol-native-0.7.3.tgz#20a9ae9e8eddd44a98f5f532a007e55d9b9cf24a"
-  integrity sha512-CRc+trSmy2EiqS0wIa1qV1vfqBX0wvoqwrj/srdoUPXANOfdAI6H28sm+8eJvKw29u6aV9ElZ7RcvWUtBjxKGg==
+"@solana-suite/sol-native@0.7.2":
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/@solana-suite/sol-native/-/sol-native-0.7.2.tgz#e384d358afa75e73a13843c70a33fd0a49d7ada8"
+  integrity sha512-kKl+/FqzhWjBI30owFyRLFKTk3aCeUVnSqR6wfhc4hp4Zx7Y/tzTRPa3s2djO66oQFIs7plL5rpDgrMPU0yNBQ==
   dependencies:
-    "@metaplex-foundation/mpl-bubblegum" "3.0.0"
+    "@metaplex-foundation/mpl-bubblegum" "^3.0.0"
     "@metaplex-foundation/mpl-token-metadata" "^2.13.0"
-    "@solana-suite/config" "^0.7.3"
+    "@solana-suite/config" "^0.7.2"
     "@solana/spl-token" "^0.3.8"
     "@solana/web3.js" "^1.78.5"
     bignumber.js "^9.1.2"
@@ -1777,15 +1800,15 @@
     bs58 "^4.0.1"
     mpl-bubblegum-instruction "github:atonoy/mpl-bubblegum-instructions"
 
-"@solana-suite/spl-token@0.7.3":
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/@solana-suite/spl-token/-/spl-token-0.7.3.tgz#25f2ffcc72623d614effbbd7e4f3df631e8bd7e0"
-  integrity sha512-tTnwErgHe1yEpRhFcJHdZ+BHiuS6CKsFNoMSm+EFCekNCBanDyZxkc2l85Pcikl719Kc1HCfAGOYkNhtzxy3NQ==
+"@solana-suite/spl-token@0.7.2":
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/@solana-suite/spl-token/-/spl-token-0.7.2.tgz#afc28e4ee23b892cfb241fed87e236070f52fb96"
+  integrity sha512-9GmPIm+mtQVc978ffWP3OkiQiAErifbW/gb4eUFz8DzQyyZejzBWHfvcM68jJ/nIckOfbkvxfBgNeX7G4bJTEQ==
   dependencies:
     "@irys/sdk" "^0.0.3"
-    "@metaplex-foundation/mpl-bubblegum" "3.0.0"
+    "@metaplex-foundation/mpl-bubblegum" "^3.0.0"
     "@metaplex-foundation/mpl-token-metadata" "^2.13.0"
-    "@solana-suite/config" "^0.7.3"
+    "@solana-suite/config" "^0.7.2"
     "@solana/spl-token" "^0.3.8"
     "@solana/web3.js" "^1.78.5"
     bignumber.js "^9.1.2"
@@ -1794,21 +1817,6 @@
     cross-fetch "^4.0.0"
     mpl-bubblegum-instruction "github:atonoy/mpl-bubblegum-instructions"
     nft.storage "^7.1.1"
-
-"@solana-suite/utils@0.7.3":
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/@solana-suite/utils/-/utils-0.7.3.tgz#a94b10e9599e13278aad87b7093da706947e17c3"
-  integrity sha512-kR1hfxgXHraNRSz5gHj3Qo4GZFJNqMo7UZVXFFtatfz3kgcMFCtc0Wp9ACJ4jvlRg+xT8ESk7Wz3k86MiTZ41w==
-  dependencies:
-    "@metaplex-foundation/mpl-bubblegum" "3.0.0"
-    "@metaplex-foundation/mpl-token-metadata" "^2.13.0"
-    "@solana-suite/config" "0.7.3"
-    "@solana/spl-token" "^0.3.8"
-    "@solana/web3.js" "^1.78.5"
-    bignumber.js "^9.1.2"
-    bn.js "^5.2.1"
-    bs58 "^4.0.1"
-    mpl-bubblegum-instruction "github:atonoy/mpl-bubblegum-instructions"
 
 "@solana/buffer-layout-utils@^0.2.0":
   version "0.2.0"
@@ -2974,10 +2982,10 @@ available-typed-arrays@^1.0.6:
   resolved "https://registry.yarnpkg.com/available-typed-arrays/-/available-typed-arrays-1.0.6.tgz#ac812d8ce5a6b976d738e1c45f08d0b00bc7d725"
   integrity sha512-j1QzY8iPNPG4o4xmO3ptzpRxTciqD3MgEHtifP/YnJpIo58Xu+ne4BejlbkuaLfXn/nz6HFiw29bLpj2PNMdGg==
 
-aws-sdk@^2.1548.0:
-  version "2.1548.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1548.0.tgz#f888f266b0675e5021f48704df7a56de9856caa1"
-  integrity sha512-kmo3FvO7xKuB7WfLKm6ABuecZeUTFtfwrbrGjWMiCC/yNwP1S3oSm/j/Yy7LO8sQfukWSOXpnPfMk5yhhqq3UQ==
+aws-sdk@^2.1552.0:
+  version "2.1552.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1552.0.tgz#b5b7b1b21d8cbd9647164485095608068b650761"
+  integrity sha512-sRuzlCeSHXUsdLqsV/E+nPrgBn1EI3BoA38D5qfNMRcPTd9j4G8M4AyMymKyNxLoWOKLqz7xFBa801MHflGwEg==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
@@ -6981,7 +6989,7 @@ mute-stream@1.0.0:
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-1.0.0.tgz#e31bd9fe62f0aed23520aa4324ea6671531e013e"
   integrity sha512-avsJQhyd+680gKXyG/sQc0nXaC6rBkPOfyHYcFb9+hdkqQkR9bdnkJ0AMZhke0oesPqIO+mFFJ+IdBc7mst4IA==
 
-mysql2@^3.6.5:
+mysql2@^3.8.0:
   version "3.9.1"
   resolved "https://registry.yarnpkg.com/mysql2/-/mysql2-3.9.1.tgz#d1d7dee5ea55ba07f18c445267b2846f6faf9c68"
   integrity sha512-3njoWAAhGBYy0tWBabqUQcLtczZUxrmmtc2vszQUekg3kTJyZ5/IeLC3Fo04u6y6Iy5Sba7pIIa2P/gs8D3ZeQ==
@@ -9216,6 +9224,7 @@ winston@^3.11.0:
     winston-transport "^4.5.0"
 
 "wrap-ansi-cjs@npm:wrap-ansi@^7.0.0", wrap-ansi@^7.0.0:
+  name wrap-ansi-cjs
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
   integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
