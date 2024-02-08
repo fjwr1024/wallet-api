@@ -1,6 +1,6 @@
-import { spaceCost } from './../solana/nft/caluculateSpaceCost';
-import { compressMint } from './../solana/nft/compressMint';
-import { createSpace } from './../solana/nft/createSpace';
+import { spaceCost } from '../solana/compress-nft/caluculateSpaceCost';
+import { compressMint } from '../solana/compress-nft/compressMint';
+import { createSpace } from '../solana/compress-nft/createSpace';
 import { burnNft } from './../solana/nft/burnNft';
 import { HttpException, HttpStatus, Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
@@ -15,7 +15,7 @@ import { User } from 'src/entities/user.entity';
 import { MintAttributeDto } from './dto/mint-attribute-nft-dto';
 import { attributeMint } from 'src/solana/nft/attributeMint';
 import { transferNft } from 'src/solana/nft/transferNft';
-import { createCollection } from 'src/solana/nft/createCollection';
+import { createCollection } from 'src/solana/compress-nft/createCollection';
 
 @Injectable()
 export class NftService {

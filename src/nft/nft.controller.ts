@@ -1,4 +1,4 @@
-import { spaceCost } from './../solana/nft/caluculateSpaceCost';
+import { spaceCost } from '../solana/compress-nft/caluculateSpaceCost';
 import {
   Body,
   Controller,

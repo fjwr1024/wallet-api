@@ -4,8 +4,8 @@ import * as util from 'util';
 
 export const createSplToken = async (totalAmount, decimals, ownerSecretKey, file): Promise<any> => {
   const tokenMetadata = {
-    name: 'solana-suite-token',
-    symbol: 'SST',
+    name: 'wallet-api-token',
+    symbol: 'WAT',
     royalty: 50,
     filePath: file,
     storageType: 'nftStorage',
