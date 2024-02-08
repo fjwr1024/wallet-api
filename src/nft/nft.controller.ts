@@ -19,6 +19,7 @@ import { SubmitHexDto } from './dto/submit-hex-dto';
 import { NftService } from './nft.service';
 import { MintAttributeDto } from './dto/mint-attribute-nft-dto';
 import { TransferNftDto } from './dto/transfer-nft-dto';
+import { SpaceCostDto } from './dto/space-cost';
 
 @Controller('nft')
 export class NftController {
@@ -113,9 +114,9 @@ export class NftController {
     return response;
   }
 
-  @Get('space-cost')
-  async spaceCost() {
-    const response = await this.nftService.getSpaceCost(10000);
+  @Post('space-cost')
+  async spaceCost(@Body(new ValidationPipe()) spaceCostDto: SpaceCostDto) {
+    const response = await this.nftService.getSpaceCost(spaceCostDto.spaceCost);
     return response;
   }
 }
