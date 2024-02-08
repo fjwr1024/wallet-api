@@ -1,8 +1,8 @@
 import assert from 'assert';
 import { CompressedNft } from '@solana-suite/compressed-nft';
-import { Node } from '@solana-suite/utils';
+import { Node, Pubkey } from '@solana-suite/utils';
 
-export const createSpace = async (secretKey: string, abountMintTotal: any): Promise<any> => {
+export const createSpace = async (secretKey: string, abountMintTotal: any): Promise<Pubkey> => {
   console.log('# secretKey: ', secretKey);
   console.log('# abountMintTotal: ', abountMintTotal);
 
@@ -26,5 +26,5 @@ export const createSpace = async (secretKey: string, abountMintTotal: any): Prom
   const treeOwner = spaceInst.unwrap().data;
   console.log('# treeOwner: ', treeOwner);
 
-  return { spaceOwner: spaceOwner, treeOwner: treeOwner };
+  return treeOwner;
 };

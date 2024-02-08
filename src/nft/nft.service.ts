@@ -111,7 +111,7 @@ export class NftService {
       ownerWalletAddress,
       ownerSecretKey,
       file.path,
-      createSpaceRes.treeOwner,
+      createSpaceRes,
       createCollectionRes
     );
 

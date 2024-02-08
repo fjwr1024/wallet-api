@@ -6,7 +6,7 @@ export const createSplToken = async (totalAmount, decimals, ownerSecretKey, file
   const tokenMetadata = {
     name: 'wallet-api-token',
     symbol: 'WAT',
-    royalty: 50,
+    royalty: 0,
     filePath: file,
     storageType: 'nftStorage',
     isMutable: false,
