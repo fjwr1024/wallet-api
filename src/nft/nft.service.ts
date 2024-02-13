@@ -52,7 +52,6 @@ export class NftService {
   }
 
   async attributeMint(attributeMintDto: MintAttributeDto, file) {
-    const ownerWalletAddress = this.config.get<string>('SYSTEM_WALLET_ADDRESS');
     const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
     const attributes = [
       {
@@ -71,7 +70,6 @@ export class NftService {
       file.path,
       attributeMintDto.name,
       attributeMintDto.description,
-      ownerWalletAddress,
       ownerSecretKey,
       attributes
     );
