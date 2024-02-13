@@ -12,7 +12,6 @@ export const attributeMint = async (
   file: any,
   name: string,
   description: string,
-  walletAddress: string,
   ownerSecretKey: string,
   attributes: Attributes
 ) => {
