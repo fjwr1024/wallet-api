@@ -33,29 +33,32 @@ dependencies:
     specifier: ^8.1.0
     version: 8.1.0
   '@solana-suite/airdrop':
-    specifier: 0.7.2
-    version: 0.7.2(@metaplex-foundation/umi@0.8.10)(commander@9.3.0)(fastestsmallesttextencoderdecoder@1.0.22)
+    specifier: 0.7.3
+    version: 0.7.3(@metaplex-foundation/umi@0.8.10)(fastestsmallesttextencoderdecoder@1.0.22)
   '@solana-suite/compressed-nft':
-    specifier: 0.7.2
-    version: 0.7.2(@metaplex-foundation/umi@0.8.10)(arweave@1.14.4)(commander@9.3.0)(fastestsmallesttextencoderdecoder@1.0.22)(node-fetch@3.3.2)
+    specifier: 0.7.3
+    version: 0.7.3(@metaplex-foundation/umi@0.8.10)(arweave@1.14.4)(fastestsmallesttextencoderdecoder@1.0.22)(node-fetch@3.3.2)
   '@solana-suite/config':
-    specifier: 0.7.2
-    version: 0.7.2(@solana/web3.js@1.88.0)(commander@9.3.0)
+    specifier: 0.7.3
+    version: 0.7.3
   '@solana-suite/memo':
-    specifier: 0.7.2
-    version: 0.7.2(@metaplex-foundation/umi@0.8.10)(commander@9.3.0)(fastestsmallesttextencoderdecoder@1.0.22)
+    specifier: 0.7.3
+    version: 0.7.3(@metaplex-foundation/umi@0.8.10)(fastestsmallesttextencoderdecoder@1.0.22)
   '@solana-suite/multisig':
-    specifier: 0.7.2
-    version: 0.7.2(@metaplex-foundation/umi@0.8.10)(commander@9.3.0)(fastestsmallesttextencoderdecoder@1.0.22)
+    specifier: 0.7.3
+    version: 0.7.3(@metaplex-foundation/umi@0.8.10)(fastestsmallesttextencoderdecoder@1.0.22)
   '@solana-suite/regular-nft':
-    specifier: 0.7.2
-    version: 0.7.2(@metaplex-foundation/umi@0.8.10)(arweave@1.14.4)(commander@9.3.0)(fastestsmallesttextencoderdecoder@1.0.22)(node-fetch@3.3.2)
+    specifier: 0.7.3
+    version: 0.7.3(@metaplex-foundation/umi@0.8.10)(arweave@1.14.4)(fastestsmallesttextencoderdecoder@1.0.22)(node-fetch@3.3.2)
   '@solana-suite/sol-native':
-    specifier: 0.7.2
-    version: 0.7.2(@metaplex-foundation/umi@0.8.10)(commander@9.3.0)(fastestsmallesttextencoderdecoder@1.0.22)
+    specifier: 0.7.3
+    version: 0.7.3(@metaplex-foundation/umi@0.8.10)(fastestsmallesttextencoderdecoder@1.0.22)
   '@solana-suite/spl-token':
-    specifier: 0.7.2
-    version: 0.7.2(@metaplex-foundation/umi@0.8.10)(arweave@1.14.4)(commander@9.3.0)(fastestsmallesttextencoderdecoder@1.0.22)(node-fetch@3.3.2)
+    specifier: 0.7.3
+    version: 0.7.3(@metaplex-foundation/umi@0.8.10)(arweave@1.14.4)(fastestsmallesttextencoderdecoder@1.0.22)(node-fetch@3.3.2)
+  '@solana-suite/utils':
+    specifier: 0.7.3
+    version: 0.7.3(@metaplex-foundation/umi@0.8.10)(fastestsmallesttextencoderdecoder@1.0.22)
   aws-sdk:
     specifier: ^2.1548.0
     version: 2.1548.0
@@ -155,8 +158,8 @@ devDependencies:
     specifier: ^1.4.10
     version: 1.4.11
   '@types/node':
-    specifier: ^20.11.5
-    version: 20.11.5
+    specifier: ^20.11.18
+    version: 20.11.18
   '@types/passport-jwt':
     specifier: ^4.0.0
     version: 4.0.0
@@ -198,10 +201,10 @@ devDependencies:
     version: 27.1.5(@babel/core@7.23.7)(@types/jest@27.0.2)(jest@27.5.1)(typescript@4.9.5)
   ts-loader:
     specifier: ^9.5.1
-    version: 9.5.1(typescript@4.9.5)(webpack@5.89.0)
+    version: 9.5.1(typescript@4.9.5)(webpack@5.90.1)
   ts-node:
     specifier: ^10.9.2
-    version: 10.9.2(@types/node@20.11.5)(typescript@4.9.5)
+    version: 10.9.2(@types/node@20.11.18)(typescript@4.9.5)
   tsconfig-paths:
     specifier: ^4.2.0
     version: 4.2.0
@@ -1147,7 +1150,7 @@ packages:
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
     dependencies:
       '@jest/types': 27.5.1
-      '@types/node': 20.11.5
+      '@types/node': 20.11.18
       chalk: 4.1.2
       jest-message-util: 27.5.1
       jest-util: 27.5.1
@@ -1168,7 +1171,7 @@ packages:
       '@jest/test-result': 27.5.1
       '@jest/transform': 27.5.1
       '@jest/types': 27.5.1
-      '@types/node': 20.11.5
+      '@types/node': 20.11.18
       ansi-escapes: 4.3.2
       chalk: 4.1.2
       emittery: 0.8.1
@@ -1205,7 +1208,7 @@ packages:
     dependencies:
       '@jest/fake-timers': 27.5.1
       '@jest/types': 27.5.1
-      '@types/node': 20.11.5
+      '@types/node': 20.11.18
       jest-mock: 27.5.1
     dev: true
 
@@ -1215,7 +1218,7 @@ packages:
     dependencies:
       '@jest/types': 27.5.1
       '@sinonjs/fake-timers': 8.1.0
-      '@types/node': 20.11.5
+      '@types/node': 20.11.18
       jest-message-util: 27.5.1
       jest-mock: 27.5.1
       jest-util: 27.5.1
@@ -1244,7 +1247,7 @@ packages:
       '@jest/test-result': 27.5.1
       '@jest/transform': 27.5.1
       '@jest/types': 27.5.1
-      '@types/node': 20.11.5
+      '@types/node': 20.11.18
       chalk: 4.1.2
       collect-v8-coverage: 1.0.2
       exit: 0.1.2
@@ -1328,7 +1331,7 @@ packages:
     dependencies:
       '@types/istanbul-lib-coverage': 2.0.6
       '@types/istanbul-reports': 3.0.4
-      '@types/node': 20.11.5
+      '@types/node': 20.11.18
       '@types/yargs': 16.0.9
       chalk: 4.1.2
     dev: true
@@ -2099,13 +2102,13 @@ packages:
       '@sinonjs/commons': 1.8.6
     dev: true
 
-  /@solana-suite/airdrop@0.7.2(@metaplex-foundation/umi@0.8.10)(commander@9.3.0)(fastestsmallesttextencoderdecoder@1.0.22):
-    resolution: {integrity: sha512-PzvduOeWrwu6Rx7XbrL4LgEUs/2wPgU3+52ydLyLPp32EEEfbnj5ItMa03BjwYnfvM2m3Wd4THSmEXrxw7M0Ug==}
+  /@solana-suite/airdrop@0.7.3(@metaplex-foundation/umi@0.8.10)(fastestsmallesttextencoderdecoder@1.0.22):
+    resolution: {integrity: sha512-CMLW+1sWc4dXi3QpwSbXZNd+hWIrOA/xcY8VGBHrxUyEcp8J9AQMDWyw6NriVxz7fBFrXlreP2KX0n+cCsQovg==}
     engines: {node: '>=16.*'}
     dependencies:
       '@metaplex-foundation/mpl-bubblegum': 3.0.0(@metaplex-foundation/umi@0.8.10)
       '@metaplex-foundation/mpl-token-metadata': 2.13.0(fastestsmallesttextencoderdecoder@1.0.22)
-      '@solana-suite/config': 0.7.2(@solana/web3.js@1.88.0)(commander@9.3.0)
+      '@solana-suite/config': 0.7.3
       '@solana/spl-token': 0.3.11(@solana/web3.js@1.88.0)(fastestsmallesttextencoderdecoder@1.0.22)
       '@solana/web3.js': 1.88.0
       bignumber.js: 9.1.2
@@ -2115,21 +2118,20 @@ packages:
     transitivePeerDependencies:
       - '@metaplex-foundation/umi'
       - bufferutil
-      - commander
       - encoding
       - fastestsmallesttextencoderdecoder
       - supports-color
       - utf-8-validate
     dev: false
 
-  /@solana-suite/compressed-nft@0.7.2(@metaplex-foundation/umi@0.8.10)(arweave@1.14.4)(commander@9.3.0)(fastestsmallesttextencoderdecoder@1.0.22)(node-fetch@3.3.2):
-    resolution: {integrity: sha512-IuyQGuucpJvq29MEJKTBdXB/5aR3oAz9Sq//VHQBOVas4MDDyjQgVmKQapNDt8BhVne1oZdgKMXqRxmOyUgDXQ==}
+  /@solana-suite/compressed-nft@0.7.3(@metaplex-foundation/umi@0.8.10)(arweave@1.14.4)(fastestsmallesttextencoderdecoder@1.0.22)(node-fetch@3.3.2):
+    resolution: {integrity: sha512-1KmstfZs64FC/HDGLFWpSXVFmvEkOMyFhPBu2PTm6DfYtzeM/pZkVrUbP3R2TK9HYnLtOJB9+uDenLi7APSUBA==}
     engines: {node: '>=16.*'}
     dependencies:
       '@irys/sdk': 0.0.3(arweave@1.14.4)
       '@metaplex-foundation/mpl-bubblegum': 3.0.0(@metaplex-foundation/umi@0.8.10)
       '@metaplex-foundation/mpl-token-metadata': 2.13.0(fastestsmallesttextencoderdecoder@1.0.22)
-      '@solana-suite/config': 0.7.2(@solana/web3.js@1.88.0)(commander@9.3.0)
+      '@solana-suite/config': 0.7.3
       '@solana/spl-account-compression': 0.2.0(@solana/web3.js@1.88.0)
       '@solana/spl-token': 0.3.11(@solana/web3.js@1.88.0)(fastestsmallesttextencoderdecoder@1.0.22)
       '@solana/web3.js': 1.88.0
@@ -2143,7 +2145,6 @@ packages:
       - '@metaplex-foundation/umi'
       - arweave
       - bufferutil
-      - commander
       - debug
       - encoding
       - fastestsmallesttextencoderdecoder
@@ -2152,25 +2153,21 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@solana-suite/config@0.7.2(@solana/web3.js@1.88.0)(commander@9.3.0):
-    resolution: {integrity: sha512-R66jzoK92N3i/e9Rrvu+oK2c468L2KCufJ64nNAcEJiYJRYjKLH/hXd8nitDRxBLEKts+J7mtVDoqVBwfSs/Sw==}
+  /@solana-suite/config@0.7.3:
+    resolution: {integrity: sha512-zSllXHYDwvmlIZUOZJPmwUl0DFz7eXgeoU0z/V9OvwQwXNXWmupJvemgIp1AqShiEKjvON4VdokoDp8vKR/Xfg==}
     engines: {node: '>=16.*'}
     hasBin: true
-    peerDependencies:
-      '@solana/web3.js': ^1.78.5
-      commander: 9.3.0
     dependencies:
-      '@solana/web3.js': 1.88.0
       commander: 9.3.0
     dev: false
 
-  /@solana-suite/memo@0.7.2(@metaplex-foundation/umi@0.8.10)(commander@9.3.0)(fastestsmallesttextencoderdecoder@1.0.22):
-    resolution: {integrity: sha512-ux4VvclUc91IV3hUHOcq+MPlwQK5oNnDssu2V3ROVRM1JU4iSJQ00H7b+b0x9EjRMScXfPFcvIV3UVGpwz1qYQ==}
+  /@solana-suite/memo@0.7.3(@metaplex-foundation/umi@0.8.10)(fastestsmallesttextencoderdecoder@1.0.22):
+    resolution: {integrity: sha512-qYkpW7dZp0KryN/jKKKIBnbfj4Yro5fXUo8zl16vwLsKaD7/zHrMbuQyDEzLAD8m3c4hKi22VWORQ1jlZ4P6hw==}
     engines: {node: '>=16.*'}
     dependencies:
       '@metaplex-foundation/mpl-bubblegum': 3.0.0(@metaplex-foundation/umi@0.8.10)
       '@metaplex-foundation/mpl-token-metadata': 2.13.0(fastestsmallesttextencoderdecoder@1.0.22)
-      '@solana-suite/config': 0.7.2(@solana/web3.js@1.88.0)(commander@9.3.0)
+      '@solana-suite/config': 0.7.3
       '@solana/spl-token': 0.3.11(@solana/web3.js@1.88.0)(fastestsmallesttextencoderdecoder@1.0.22)
       '@solana/web3.js': 1.88.0
       bignumber.js: 9.1.2
@@ -2180,20 +2177,19 @@ packages:
     transitivePeerDependencies:
       - '@metaplex-foundation/umi'
       - bufferutil
-      - commander
       - encoding
       - fastestsmallesttextencoderdecoder
       - supports-color
       - utf-8-validate
     dev: false
 
-  /@solana-suite/multisig@0.7.2(@metaplex-foundation/umi@0.8.10)(commander@9.3.0)(fastestsmallesttextencoderdecoder@1.0.22):
-    resolution: {integrity: sha512-h4hOQPC+hzFpmq6FJUDtPEMLid2vdjfmB8rvVnrMEZi1fZQBBn1vEQn4KiIrUnq6JcLMf0qg5pD9nyWPnUa8pw==}
+  /@solana-suite/multisig@0.7.3(@metaplex-foundation/umi@0.8.10)(fastestsmallesttextencoderdecoder@1.0.22):
+    resolution: {integrity: sha512-2VJLy0Yq3pMJ5EoOMNZzFC9FNxCdyNYKEgMJIze5/Kh8QCfy4rDidFsTIa3OPsUIq2mZmvdJjiZNIqOrLGPjxg==}
     engines: {node: '>=16.*'}
     dependencies:
       '@metaplex-foundation/mpl-bubblegum': 3.0.0(@metaplex-foundation/umi@0.8.10)
       '@metaplex-foundation/mpl-token-metadata': 2.13.0(fastestsmallesttextencoderdecoder@1.0.22)
-      '@solana-suite/config': 0.7.2(@solana/web3.js@1.88.0)(commander@9.3.0)
+      '@solana-suite/config': 0.7.3
       '@solana/buffer-layout': 4.0.1
       '@solana/spl-token': 0.3.11(@solana/web3.js@1.88.0)(fastestsmallesttextencoderdecoder@1.0.22)
       '@solana/web3.js': 1.88.0
@@ -2204,21 +2200,20 @@ packages:
     transitivePeerDependencies:
       - '@metaplex-foundation/umi'
       - bufferutil
-      - commander
       - encoding
       - fastestsmallesttextencoderdecoder
       - supports-color
       - utf-8-validate
     dev: false
 
-  /@solana-suite/regular-nft@0.7.2(@metaplex-foundation/umi@0.8.10)(arweave@1.14.4)(commander@9.3.0)(fastestsmallesttextencoderdecoder@1.0.22)(node-fetch@3.3.2):
-    resolution: {integrity: sha512-RNQ2HFyWNxxrn1HP/YP2ohMnk+Dl9c/F9Ml0nVodlSCkR/oywj+sfMFu+K56eHVdElH9dGyNw/LIpstrkyXMIw==}
+  /@solana-suite/regular-nft@0.7.3(@metaplex-foundation/umi@0.8.10)(arweave@1.14.4)(fastestsmallesttextencoderdecoder@1.0.22)(node-fetch@3.3.2):
+    resolution: {integrity: sha512-QI/zMAII2PFmCU0UIyKQoVJE61a9rnHzZb9Dgxi0FLt28caP/GlMWj46KJL8QW4Vh3dkEcQEVPe1tfxb3qtdwA==}
     engines: {node: '>=16.*'}
     dependencies:
       '@irys/sdk': 0.0.3(arweave@1.14.4)
       '@metaplex-foundation/mpl-bubblegum': 3.0.0(@metaplex-foundation/umi@0.8.10)
       '@metaplex-foundation/mpl-token-metadata': 2.13.0(fastestsmallesttextencoderdecoder@1.0.22)
-      '@solana-suite/config': 0.7.2(@solana/web3.js@1.88.0)(commander@9.3.0)
+      '@solana-suite/config': 0.7.3
       '@solana/spl-token': 0.3.11(@solana/web3.js@1.88.0)(fastestsmallesttextencoderdecoder@1.0.22)
       '@solana/web3.js': 1.88.0
       bignumber.js: 9.1.2
@@ -2231,7 +2226,6 @@ packages:
       - '@metaplex-foundation/umi'
       - arweave
       - bufferutil
-      - commander
       - debug
       - encoding
       - fastestsmallesttextencoderdecoder
@@ -2240,13 +2234,13 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@solana-suite/sol-native@0.7.2(@metaplex-foundation/umi@0.8.10)(commander@9.3.0)(fastestsmallesttextencoderdecoder@1.0.22):
-    resolution: {integrity: sha512-kKl+/FqzhWjBI30owFyRLFKTk3aCeUVnSqR6wfhc4hp4Zx7Y/tzTRPa3s2djO66oQFIs7plL5rpDgrMPU0yNBQ==}
+  /@solana-suite/sol-native@0.7.3(@metaplex-foundation/umi@0.8.10)(fastestsmallesttextencoderdecoder@1.0.22):
+    resolution: {integrity: sha512-CRc+trSmy2EiqS0wIa1qV1vfqBX0wvoqwrj/srdoUPXANOfdAI6H28sm+8eJvKw29u6aV9ElZ7RcvWUtBjxKGg==}
     engines: {node: '>=16.*'}
     dependencies:
       '@metaplex-foundation/mpl-bubblegum': 3.0.0(@metaplex-foundation/umi@0.8.10)
       '@metaplex-foundation/mpl-token-metadata': 2.13.0(fastestsmallesttextencoderdecoder@1.0.22)
-      '@solana-suite/config': 0.7.2(@solana/web3.js@1.88.0)(commander@9.3.0)
+      '@solana-suite/config': 0.7.3
       '@solana/spl-token': 0.3.11(@solana/web3.js@1.88.0)(fastestsmallesttextencoderdecoder@1.0.22)
       '@solana/web3.js': 1.88.0
       bignumber.js: 9.1.2
@@ -2256,21 +2250,20 @@ packages:
     transitivePeerDependencies:
       - '@metaplex-foundation/umi'
       - bufferutil
-      - commander
       - encoding
       - fastestsmallesttextencoderdecoder
       - supports-color
       - utf-8-validate
     dev: false
 
-  /@solana-suite/spl-token@0.7.2(@metaplex-foundation/umi@0.8.10)(arweave@1.14.4)(commander@9.3.0)(fastestsmallesttextencoderdecoder@1.0.22)(node-fetch@3.3.2):
-    resolution: {integrity: sha512-9GmPIm+mtQVc978ffWP3OkiQiAErifbW/gb4eUFz8DzQyyZejzBWHfvcM68jJ/nIckOfbkvxfBgNeX7G4bJTEQ==}
+  /@solana-suite/spl-token@0.7.3(@metaplex-foundation/umi@0.8.10)(arweave@1.14.4)(fastestsmallesttextencoderdecoder@1.0.22)(node-fetch@3.3.2):
+    resolution: {integrity: sha512-tTnwErgHe1yEpRhFcJHdZ+BHiuS6CKsFNoMSm+EFCekNCBanDyZxkc2l85Pcikl719Kc1HCfAGOYkNhtzxy3NQ==}
     engines: {node: '>=16.*'}
     dependencies:
       '@irys/sdk': 0.0.3(arweave@1.14.4)
       '@metaplex-foundation/mpl-bubblegum': 3.0.0(@metaplex-foundation/umi@0.8.10)
       '@metaplex-foundation/mpl-token-metadata': 2.13.0(fastestsmallesttextencoderdecoder@1.0.22)
-      '@solana-suite/config': 0.7.2(@solana/web3.js@1.88.0)(commander@9.3.0)
+      '@solana-suite/config': 0.7.3
       '@solana/spl-token': 0.3.11(@solana/web3.js@1.88.0)(fastestsmallesttextencoderdecoder@1.0.22)
       '@solana/web3.js': 1.88.0
       bignumber.js: 9.1.2
@@ -2283,11 +2276,32 @@ packages:
       - '@metaplex-foundation/umi'
       - arweave
       - bufferutil
-      - commander
       - debug
       - encoding
       - fastestsmallesttextencoderdecoder
       - node-fetch
+      - supports-color
+      - utf-8-validate
+    dev: false
+
+  /@solana-suite/utils@0.7.3(@metaplex-foundation/umi@0.8.10)(fastestsmallesttextencoderdecoder@1.0.22):
+    resolution: {integrity: sha512-kR1hfxgXHraNRSz5gHj3Qo4GZFJNqMo7UZVXFFtatfz3kgcMFCtc0Wp9ACJ4jvlRg+xT8ESk7Wz3k86MiTZ41w==}
+    engines: {node: '>=16.*'}
+    dependencies:
+      '@metaplex-foundation/mpl-bubblegum': 3.0.0(@metaplex-foundation/umi@0.8.10)
+      '@metaplex-foundation/mpl-token-metadata': 2.13.0(fastestsmallesttextencoderdecoder@1.0.22)
+      '@solana-suite/config': 0.7.3
+      '@solana/spl-token': 0.3.11(@solana/web3.js@1.88.0)(fastestsmallesttextencoderdecoder@1.0.22)
+      '@solana/web3.js': 1.88.0
+      bignumber.js: 9.1.2
+      bn.js: 5.2.1
+      bs58: 4.0.1
+      mpl-bubblegum-instruction: git/github.com+atonoy/mpl-bubblegum-instructions/00f20bb7ed5ddc28e74056afd539a23257f04178(fastestsmallesttextencoderdecoder@1.0.22)
+    transitivePeerDependencies:
+      - '@metaplex-foundation/umi'
+      - bufferutil
+      - encoding
+      - fastestsmallesttextencoderdecoder
       - supports-color
       - utf-8-validate
     dev: false
@@ -2527,20 +2541,20 @@ packages:
   /@types/bcrypt@5.0.2:
     resolution: {integrity: sha512-6atioO8Y75fNcbmj0G7UjI9lXN2pQ/IGJ2FWT4a/btd0Lk9lQalHLKhkgKVZ3r+spnmWUKfbMi1GEe9wyHQfNQ==}
     dependencies:
-      '@types/node': 20.11.5
+      '@types/node': 20.11.18
     dev: true
 
   /@types/body-parser@1.19.5:
     resolution: {integrity: sha512-fB3Zu92ucau0iQ0JMCFQE7b/dv8Ot07NI3KaZIkIUNXq82k4eBAqUaneXfleGY9JWskeS9y+u0nXMyspcuQrCg==}
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 20.11.5
+      '@types/node': 20.11.18
     dev: true
 
   /@types/connect@3.4.38:
     resolution: {integrity: sha512-K6uROf1LD88uDQqJCktA4yzL1YYAK6NgfsI0v/mTgyPKWsX1CnJ0XPSDhViejru1GcRkLWb8RlzFYJRqGUbaug==}
     dependencies:
-      '@types/node': 20.11.5
+      '@types/node': 20.11.18
 
   /@types/cookiejar@2.1.5:
     resolution: {integrity: sha512-he+DHOWReW0nghN24E1WUqM0efK4kI9oTqDm6XmK8ZPe2djZ90BSNdGnIyCLzCPw7/pogPlGbzI2wHGGmi4O/Q==}
@@ -2573,7 +2587,7 @@ packages:
   /@types/express-serve-static-core@4.17.41:
     resolution: {integrity: sha512-OaJ7XLaelTgrvlZD8/aa0vvvxZdUmlCn6MtWeB7TkiKW70BQLc9XEPpDLPdbo52ZhXUCrznlWdCHWxJWtdyajA==}
     dependencies:
-      '@types/node': 20.11.5
+      '@types/node': 20.11.18
       '@types/qs': 6.9.11
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.4
@@ -2591,7 +2605,7 @@ packages:
   /@types/graceful-fs@4.1.9:
     resolution: {integrity: sha512-olP3sd1qOEe5dXTSaFvQG+02VdRXcdytWLAZsAq1PecU8uqQAhkrnbli7DagjtXKW/Bl7YJbUsa8MPcuc8LHEQ==}
     dependencies:
-      '@types/node': 20.11.5
+      '@types/node': 20.11.18
     dev: true
 
   /@types/http-errors@2.0.4:
@@ -2628,7 +2642,7 @@ packages:
   /@types/jsonwebtoken@9.0.5:
     resolution: {integrity: sha512-VRLSGzik+Unrup6BsouBeHsf4d1hOEgYWTm/7Nmw1sXoN1+tRly/Gy/po3yeahnP4jfnQWWAhQAqcNfH7ngOkA==}
     dependencies:
-      '@types/node': 20.11.5
+      '@types/node': 20.11.18
 
   /@types/long@4.0.2:
     resolution: {integrity: sha512-MqTGEo5bj5t157U6fA/BiDynNkn0YknVdh48CMPkTSpFTVmvao5UQmm7uEF6xBEo7qIMAlY/JSleYaE6VOdpaA==}
@@ -2668,8 +2682,8 @@ packages:
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
     dev: false
 
-  /@types/node@20.11.5:
-    resolution: {integrity: sha512-g557vgQjUUfN76MZAN/dt1z3dzcUsimuysco0KeluHgrPdJXkP/XdAURgyO2W9fZWHRtRBiVKzKn8vyOAwlG+w==}
+  /@types/node@20.11.18:
+    resolution: {integrity: sha512-ABT5VWnnYneSBcNWYSCuR05M826RoMyMSGiFivXGx6ZUIsXb9vn4643IEwkg2zbEOSgAiSogtapN2fgc4mAPlw==}
     dependencies:
       undici-types: 5.26.5
 
@@ -2721,7 +2735,7 @@ packages:
     resolution: {integrity: sha512-x2EM6TJOybec7c52BX0ZspPodMsQUd5L6PRwOunVyVUhXiBSKf3AezDL8Dgvgt5o0UfKNfuA0eMLr2wLT4AiBA==}
     dependencies:
       '@types/mime': 1.3.5
-      '@types/node': 20.11.5
+      '@types/node': 20.11.18
     dev: true
 
   /@types/serve-static@1.15.5:
@@ -2729,7 +2743,7 @@ packages:
     dependencies:
       '@types/http-errors': 2.0.4
       '@types/mime': 3.0.4
-      '@types/node': 20.11.5
+      '@types/node': 20.11.18
     dev: true
 
   /@types/stack-utils@2.0.3:
@@ -2741,7 +2755,7 @@ packages:
     dependencies:
       '@types/cookiejar': 2.1.5
       '@types/methods': 1.1.4
-      '@types/node': 20.11.5
+      '@types/node': 20.11.18
     dev: true
 
   /@types/supertest@2.0.16:
@@ -2760,7 +2774,7 @@ packages:
   /@types/ws@7.4.7:
     resolution: {integrity: sha512-JQbbmxZTZehdc2iszGKs5oC3NFnjeay7mtAWrdt7qNtAVK0g19muApzAy4bm9byz79xa2ZnO/BOBC2R8RC5Lww==}
     dependencies:
-      '@types/node': 20.11.5
+      '@types/node': 20.11.18
     dev: false
 
   /@types/yargs-parser@21.0.3:
@@ -6166,7 +6180,7 @@ packages:
       '@jest/environment': 27.5.1
       '@jest/test-result': 27.5.1
       '@jest/types': 27.5.1
-      '@types/node': 20.11.5
+      '@types/node': 20.11.18
       chalk: 4.1.2
       co: 4.6.0
       dedent: 0.7.0
@@ -6249,7 +6263,7 @@ packages:
       pretty-format: 27.5.1
       slash: 3.0.0
       strip-json-comments: 3.1.1
-      ts-node: 10.9.2(@types/node@20.11.5)(typescript@4.9.5)
+      ts-node: 10.9.2(@types/node@20.11.18)(typescript@4.9.5)
     transitivePeerDependencies:
       - bufferutil
       - canvas
@@ -6292,7 +6306,7 @@ packages:
       '@jest/environment': 27.5.1
       '@jest/fake-timers': 27.5.1
       '@jest/types': 27.5.1
-      '@types/node': 20.11.5
+      '@types/node': 20.11.18
       jest-mock: 27.5.1
       jest-util: 27.5.1
       jsdom: 16.7.0
@@ -6310,7 +6324,7 @@ packages:
       '@jest/environment': 27.5.1
       '@jest/fake-timers': 27.5.1
       '@jest/types': 27.5.1
-      '@types/node': 20.11.5
+      '@types/node': 20.11.18
       jest-mock: 27.5.1
       jest-util: 27.5.1
     dev: true
@@ -6326,7 +6340,7 @@ packages:
     dependencies:
       '@jest/types': 27.5.1
       '@types/graceful-fs': 4.1.9
-      '@types/node': 20.11.5
+      '@types/node': 20.11.18
       anymatch: 3.1.3
       fb-watchman: 2.0.2
       graceful-fs: 4.2.11
@@ -6348,7 +6362,7 @@ packages:
       '@jest/source-map': 27.5.1
       '@jest/test-result': 27.5.1
       '@jest/types': 27.5.1
-      '@types/node': 20.11.5
+      '@types/node': 20.11.18
       chalk: 4.1.2
       co: 4.6.0
       expect: 27.5.1
@@ -6403,7 +6417,7 @@ packages:
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
     dependencies:
       '@jest/types': 27.5.1
-      '@types/node': 20.11.5
+      '@types/node': 20.11.18
     dev: true
 
   /jest-pnp-resolver@1.2.3(jest-resolve@27.5.1):
@@ -6459,7 +6473,7 @@ packages:
       '@jest/test-result': 27.5.1
       '@jest/transform': 27.5.1
       '@jest/types': 27.5.1
-      '@types/node': 20.11.5
+      '@types/node': 20.11.18
       chalk: 4.1.2
       emittery: 0.8.1
       graceful-fs: 4.2.11
@@ -6516,7 +6530,7 @@ packages:
     resolution: {integrity: sha512-jZCyo6iIxO1aqUxpuBlwTDMkzOAJS4a3eYz3YzgxxVQFwLeSA7Jfq5cbqCY+JLvTDrWirgusI/0KwxKMgrdf7w==}
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
     dependencies:
-      '@types/node': 20.11.5
+      '@types/node': 20.11.18
       graceful-fs: 4.2.11
     dev: true
 
@@ -6555,7 +6569,7 @@ packages:
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
     dependencies:
       '@jest/types': 27.5.1
-      '@types/node': 20.11.5
+      '@types/node': 20.11.18
       chalk: 4.1.2
       ci-info: 3.9.0
       graceful-fs: 4.2.11
@@ -6580,7 +6594,7 @@ packages:
     dependencies:
       '@jest/test-result': 27.5.1
       '@jest/types': 27.5.1
-      '@types/node': 20.11.5
+      '@types/node': 20.11.18
       ansi-escapes: 4.3.2
       chalk: 4.1.2
       jest-util: 27.5.1
@@ -6591,7 +6605,7 @@ packages:
     resolution: {integrity: sha512-7vuh85V5cdDofPyxn58nrPjBktZo0u9x1g8WtjQol+jZDaE+fhN+cIvTj11GndBnMnyfrUOG1sZQxCdjKh+DKg==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 20.11.5
+      '@types/node': 20.11.18
       merge-stream: 2.0.0
       supports-color: 8.1.1
     dev: true
@@ -7908,7 +7922,7 @@ packages:
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
       '@types/long': 4.0.2
-      '@types/node': 20.11.5
+      '@types/node': 20.11.18
       long: 4.0.0
     dev: false
 
@@ -8608,7 +8622,7 @@ packages:
     resolution: {integrity: sha512-P6lvKHxgDzZXto9VMstG1ucv4Ls0U9nOoQhVZABXJ33kRD7zMwkBy5Y4c3BO59O230uSTkOFPLh87YxVzkp0Mg==}
     engines: {node: '>=12.*'}
     dependencies:
-      '@types/node': 20.11.5
+      '@types/node': 20.11.18
       qs: 6.11.2
     dev: false
 
@@ -8707,30 +8721,6 @@ packages:
     dependencies:
       ansi-escapes: 4.3.2
       supports-hyperlinks: 2.3.0
-    dev: true
-
-  /terser-webpack-plugin@5.3.10(webpack@5.89.0):
-    resolution: {integrity: sha512-BKFPWlPDndPs+NGGCr1U59t0XScL5317Y0UReNrHaw9/FwhPENlq6bfgs+4yPfyP51vqC1bQ4rp1EfXW5ZSH9w==}
-    engines: {node: '>= 10.13.0'}
-    peerDependencies:
-      '@swc/core': '*'
-      esbuild: '*'
-      uglify-js: '*'
-      webpack: ^5.1.0
-    peerDependenciesMeta:
-      '@swc/core':
-        optional: true
-      esbuild:
-        optional: true
-      uglify-js:
-        optional: true
-    dependencies:
-      '@jridgewell/trace-mapping': 0.3.20
-      jest-worker: 27.5.1
-      schema-utils: 3.3.0
-      serialize-javascript: 6.0.2
-      terser: 5.26.0
-      webpack: 5.89.0
     dev: true
 
   /terser-webpack-plugin@5.3.10(webpack@5.90.1):
@@ -8942,7 +8932,7 @@ packages:
       yargs-parser: 20.2.9
     dev: true
 
-  /ts-loader@9.5.1(typescript@4.9.5)(webpack@5.89.0):
+  /ts-loader@9.5.1(typescript@4.9.5)(webpack@5.90.1):
     resolution: {integrity: sha512-rNH3sK9kGZcH9dYzC7CewQm4NtxJTjSEVRJ2DyBZR7f8/wcta+iV44UPCXc5+nzDzivKtlzV6c9P4e+oFhDLYg==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
@@ -8955,10 +8945,10 @@ packages:
       semver: 7.5.4
       source-map: 0.7.4
       typescript: 4.9.5
-      webpack: 5.89.0
+      webpack: 5.90.1
     dev: true
 
-  /ts-node@10.9.2(@types/node@20.11.5)(typescript@4.9.5):
+  /ts-node@10.9.2(@types/node@20.11.18)(typescript@4.9.5):
     resolution: {integrity: sha512-f0FFpIdcHgn8zcPSbf1dRevwt047YMnaiJM3u2w2RewrB+fob/zePZcrOyQoLMMO7aBIddLcQIEK5dYjkLnGrQ==}
     hasBin: true
     peerDependencies:
@@ -8977,7 +8967,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 20.11.5
+      '@types/node': 20.11.18
       acorn: 8.11.3
       acorn-walk: 8.3.1
       arg: 4.1.3
@@ -9176,7 +9166,7 @@ packages:
       mysql2: 3.8.0
       reflect-metadata: 0.2.1
       sha.js: 2.4.11
-      ts-node: 10.9.2(@types/node@20.11.5)(typescript@4.9.5)
+      ts-node: 10.9.2(@types/node@20.11.18)(typescript@4.9.5)
       tslib: 2.6.2
       uuid: 9.0.1
       yargs: 17.7.2
@@ -9431,46 +9421,6 @@ packages:
   /webpack-sources@3.2.3:
     resolution: {integrity: sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==}
     engines: {node: '>=10.13.0'}
-    dev: true
-
-  /webpack@5.89.0:
-    resolution: {integrity: sha512-qyfIC10pOr70V+jkmud8tMfajraGCZMBWJtrmuBymQKCrLTRejBI8STDp1MCyZu/QTdZSeacCQYpYNQVOzX5kw==}
-    engines: {node: '>=10.13.0'}
-    hasBin: true
-    peerDependencies:
-      webpack-cli: '*'
-    peerDependenciesMeta:
-      webpack-cli:
-        optional: true
-    dependencies:
-      '@types/eslint-scope': 3.7.7
-      '@types/estree': 1.0.5
-      '@webassemblyjs/ast': 1.11.6
-      '@webassemblyjs/wasm-edit': 1.11.6
-      '@webassemblyjs/wasm-parser': 1.11.6
-      acorn: 8.11.3
-      acorn-import-assertions: 1.9.0(acorn@8.11.3)
-      browserslist: 4.22.2
-      chrome-trace-event: 1.0.3
-      enhanced-resolve: 5.15.0
-      es-module-lexer: 1.4.1
-      eslint-scope: 5.1.1
-      events: 3.3.0
-      glob-to-regexp: 0.4.1
-      graceful-fs: 4.2.11
-      json-parse-even-better-errors: 2.3.1
-      loader-runner: 4.3.0
-      mime-types: 2.1.35
-      neo-async: 2.6.2
-      schema-utils: 3.3.0
-      tapable: 2.2.1
-      terser-webpack-plugin: 5.3.10(webpack@5.89.0)
-      watchpack: 2.4.0
-      webpack-sources: 3.2.3
-    transitivePeerDependencies:
-      - '@swc/core'
-      - esbuild
-      - uglify-js
     dev: true
 
   /webpack@5.90.1:
