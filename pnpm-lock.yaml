@@ -33,32 +33,35 @@ dependencies:
     specifier: ^8.1.0
     version: 8.1.0
   '@solana-suite/airdrop':
-    specifier: 0.7.2
-    version: 0.7.2(@metaplex-foundation/umi@0.8.10)(commander@9.3.0)(fastestsmallesttextencoderdecoder@1.0.22)
+    specifier: 0.7.3
+    version: 0.7.3(@metaplex-foundation/umi@0.8.10)(fastestsmallesttextencoderdecoder@1.0.22)
   '@solana-suite/compressed-nft':
-    specifier: 0.7.2
-    version: 0.7.2(@metaplex-foundation/umi@0.8.10)(arweave@1.14.4)(commander@9.3.0)(fastestsmallesttextencoderdecoder@1.0.22)(node-fetch@3.3.2)
+    specifier: 0.7.3
+    version: 0.7.3(@metaplex-foundation/umi@0.8.10)(arweave@1.14.4)(fastestsmallesttextencoderdecoder@1.0.22)(node-fetch@3.3.2)
   '@solana-suite/config':
-    specifier: 0.7.2
-    version: 0.7.2(@solana/web3.js@1.88.0)(commander@9.3.0)
+    specifier: 0.7.3
+    version: 0.7.3
   '@solana-suite/memo':
-    specifier: 0.7.2
-    version: 0.7.2(@metaplex-foundation/umi@0.8.10)(commander@9.3.0)(fastestsmallesttextencoderdecoder@1.0.22)
+    specifier: 0.7.3
+    version: 0.7.3(@metaplex-foundation/umi@0.8.10)(fastestsmallesttextencoderdecoder@1.0.22)
   '@solana-suite/multisig':
-    specifier: 0.7.2
-    version: 0.7.2(@metaplex-foundation/umi@0.8.10)(commander@9.3.0)(fastestsmallesttextencoderdecoder@1.0.22)
+    specifier: 0.7.3
+    version: 0.7.3(@metaplex-foundation/umi@0.8.10)(fastestsmallesttextencoderdecoder@1.0.22)
   '@solana-suite/regular-nft':
-    specifier: 0.7.2
-    version: 0.7.2(@metaplex-foundation/umi@0.8.10)(arweave@1.14.4)(commander@9.3.0)(fastestsmallesttextencoderdecoder@1.0.22)(node-fetch@3.3.2)
+    specifier: 0.7.3
+    version: 0.7.3(@metaplex-foundation/umi@0.8.10)(arweave@1.14.4)(fastestsmallesttextencoderdecoder@1.0.22)(node-fetch@3.3.2)
   '@solana-suite/sol-native':
-    specifier: 0.7.2
-    version: 0.7.2(@metaplex-foundation/umi@0.8.10)(commander@9.3.0)(fastestsmallesttextencoderdecoder@1.0.22)
+    specifier: 0.7.3
+    version: 0.7.3(@metaplex-foundation/umi@0.8.10)(fastestsmallesttextencoderdecoder@1.0.22)
   '@solana-suite/spl-token':
-    specifier: 0.7.2
-    version: 0.7.2(@metaplex-foundation/umi@0.8.10)(arweave@1.14.4)(commander@9.3.0)(fastestsmallesttextencoderdecoder@1.0.22)(node-fetch@3.3.2)
+    specifier: 0.7.3
+    version: 0.7.3(@metaplex-foundation/umi@0.8.10)(arweave@1.14.4)(fastestsmallesttextencoderdecoder@1.0.22)(node-fetch@3.3.2)
+  '@solana-suite/utils':
+    specifier: 0.7.3
+    version: 0.7.3(@metaplex-foundation/umi@0.8.10)(fastestsmallesttextencoderdecoder@1.0.22)
   aws-sdk:
-    specifier: ^2.1548.0
-    version: 2.1548.0
+    specifier: ^2.1558.0
+    version: 2.1558.0
   class-transformer:
     specifier: ^0.5.1
     version: 0.5.1
@@ -198,7 +201,7 @@ devDependencies:
     version: 27.1.5(@babel/core@7.23.7)(@types/jest@27.0.2)(jest@27.5.1)(typescript@4.9.5)
   ts-loader:
     specifier: ^9.5.1
-    version: 9.5.1(typescript@4.9.5)(webpack@5.89.0)
+    version: 9.5.1(typescript@4.9.5)(webpack@5.90.1)
   ts-node:
     specifier: ^10.9.2
     version: 10.9.2(@types/node@20.11.5)(typescript@4.9.5)
@@ -2099,13 +2102,13 @@ packages:
       '@sinonjs/commons': 1.8.6
     dev: true
 
-  /@solana-suite/airdrop@0.7.2(@metaplex-foundation/umi@0.8.10)(commander@9.3.0)(fastestsmallesttextencoderdecoder@1.0.22):
-    resolution: {integrity: sha512-PzvduOeWrwu6Rx7XbrL4LgEUs/2wPgU3+52ydLyLPp32EEEfbnj5ItMa03BjwYnfvM2m3Wd4THSmEXrxw7M0Ug==}
+  /@solana-suite/airdrop@0.7.3(@metaplex-foundation/umi@0.8.10)(fastestsmallesttextencoderdecoder@1.0.22):
+    resolution: {integrity: sha512-CMLW+1sWc4dXi3QpwSbXZNd+hWIrOA/xcY8VGBHrxUyEcp8J9AQMDWyw6NriVxz7fBFrXlreP2KX0n+cCsQovg==}
     engines: {node: '>=16.*'}
     dependencies:
       '@metaplex-foundation/mpl-bubblegum': 3.0.0(@metaplex-foundation/umi@0.8.10)
       '@metaplex-foundation/mpl-token-metadata': 2.13.0(fastestsmallesttextencoderdecoder@1.0.22)
-      '@solana-suite/config': 0.7.2(@solana/web3.js@1.88.0)(commander@9.3.0)
+      '@solana-suite/config': 0.7.3
       '@solana/spl-token': 0.3.11(@solana/web3.js@1.88.0)(fastestsmallesttextencoderdecoder@1.0.22)
       '@solana/web3.js': 1.88.0
       bignumber.js: 9.1.2
@@ -2115,21 +2118,20 @@ packages:
     transitivePeerDependencies:
       - '@metaplex-foundation/umi'
       - bufferutil
-      - commander
       - encoding
       - fastestsmallesttextencoderdecoder
       - supports-color
       - utf-8-validate
     dev: false
 
-  /@solana-suite/compressed-nft@0.7.2(@metaplex-foundation/umi@0.8.10)(arweave@1.14.4)(commander@9.3.0)(fastestsmallesttextencoderdecoder@1.0.22)(node-fetch@3.3.2):
-    resolution: {integrity: sha512-IuyQGuucpJvq29MEJKTBdXB/5aR3oAz9Sq//VHQBOVas4MDDyjQgVmKQapNDt8BhVne1oZdgKMXqRxmOyUgDXQ==}
+  /@solana-suite/compressed-nft@0.7.3(@metaplex-foundation/umi@0.8.10)(arweave@1.14.4)(fastestsmallesttextencoderdecoder@1.0.22)(node-fetch@3.3.2):
+    resolution: {integrity: sha512-1KmstfZs64FC/HDGLFWpSXVFmvEkOMyFhPBu2PTm6DfYtzeM/pZkVrUbP3R2TK9HYnLtOJB9+uDenLi7APSUBA==}
     engines: {node: '>=16.*'}
     dependencies:
       '@irys/sdk': 0.0.3(arweave@1.14.4)
       '@metaplex-foundation/mpl-bubblegum': 3.0.0(@metaplex-foundation/umi@0.8.10)
       '@metaplex-foundation/mpl-token-metadata': 2.13.0(fastestsmallesttextencoderdecoder@1.0.22)
-      '@solana-suite/config': 0.7.2(@solana/web3.js@1.88.0)(commander@9.3.0)
+      '@solana-suite/config': 0.7.3
       '@solana/spl-account-compression': 0.2.0(@solana/web3.js@1.88.0)
       '@solana/spl-token': 0.3.11(@solana/web3.js@1.88.0)(fastestsmallesttextencoderdecoder@1.0.22)
       '@solana/web3.js': 1.88.0
@@ -2143,7 +2145,6 @@ packages:
       - '@metaplex-foundation/umi'
       - arweave
       - bufferutil
-      - commander
       - debug
       - encoding
       - fastestsmallesttextencoderdecoder
@@ -2152,25 +2153,21 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@solana-suite/config@0.7.2(@solana/web3.js@1.88.0)(commander@9.3.0):
-    resolution: {integrity: sha512-R66jzoK92N3i/e9Rrvu+oK2c468L2KCufJ64nNAcEJiYJRYjKLH/hXd8nitDRxBLEKts+J7mtVDoqVBwfSs/Sw==}
+  /@solana-suite/config@0.7.3:
+    resolution: {integrity: sha512-zSllXHYDwvmlIZUOZJPmwUl0DFz7eXgeoU0z/V9OvwQwXNXWmupJvemgIp1AqShiEKjvON4VdokoDp8vKR/Xfg==}
     engines: {node: '>=16.*'}
     hasBin: true
-    peerDependencies:
-      '@solana/web3.js': ^1.78.5
-      commander: 9.3.0
     dependencies:
-      '@solana/web3.js': 1.88.0
       commander: 9.3.0
     dev: false
 
-  /@solana-suite/memo@0.7.2(@metaplex-foundation/umi@0.8.10)(commander@9.3.0)(fastestsmallesttextencoderdecoder@1.0.22):
-    resolution: {integrity: sha512-ux4VvclUc91IV3hUHOcq+MPlwQK5oNnDssu2V3ROVRM1JU4iSJQ00H7b+b0x9EjRMScXfPFcvIV3UVGpwz1qYQ==}
+  /@solana-suite/memo@0.7.3(@metaplex-foundation/umi@0.8.10)(fastestsmallesttextencoderdecoder@1.0.22):
+    resolution: {integrity: sha512-qYkpW7dZp0KryN/jKKKIBnbfj4Yro5fXUo8zl16vwLsKaD7/zHrMbuQyDEzLAD8m3c4hKi22VWORQ1jlZ4P6hw==}
     engines: {node: '>=16.*'}
     dependencies:
       '@metaplex-foundation/mpl-bubblegum': 3.0.0(@metaplex-foundation/umi@0.8.10)
       '@metaplex-foundation/mpl-token-metadata': 2.13.0(fastestsmallesttextencoderdecoder@1.0.22)
-      '@solana-suite/config': 0.7.2(@solana/web3.js@1.88.0)(commander@9.3.0)
+      '@solana-suite/config': 0.7.3
       '@solana/spl-token': 0.3.11(@solana/web3.js@1.88.0)(fastestsmallesttextencoderdecoder@1.0.22)
       '@solana/web3.js': 1.88.0
       bignumber.js: 9.1.2
@@ -2180,20 +2177,19 @@ packages:
     transitivePeerDependencies:
       - '@metaplex-foundation/umi'
       - bufferutil
-      - commander
       - encoding
       - fastestsmallesttextencoderdecoder
       - supports-color
       - utf-8-validate
     dev: false
 
-  /@solana-suite/multisig@0.7.2(@metaplex-foundation/umi@0.8.10)(commander@9.3.0)(fastestsmallesttextencoderdecoder@1.0.22):
-    resolution: {integrity: sha512-h4hOQPC+hzFpmq6FJUDtPEMLid2vdjfmB8rvVnrMEZi1fZQBBn1vEQn4KiIrUnq6JcLMf0qg5pD9nyWPnUa8pw==}
+  /@solana-suite/multisig@0.7.3(@metaplex-foundation/umi@0.8.10)(fastestsmallesttextencoderdecoder@1.0.22):
+    resolution: {integrity: sha512-2VJLy0Yq3pMJ5EoOMNZzFC9FNxCdyNYKEgMJIze5/Kh8QCfy4rDidFsTIa3OPsUIq2mZmvdJjiZNIqOrLGPjxg==}
     engines: {node: '>=16.*'}
     dependencies:
       '@metaplex-foundation/mpl-bubblegum': 3.0.0(@metaplex-foundation/umi@0.8.10)
       '@metaplex-foundation/mpl-token-metadata': 2.13.0(fastestsmallesttextencoderdecoder@1.0.22)
-      '@solana-suite/config': 0.7.2(@solana/web3.js@1.88.0)(commander@9.3.0)
+      '@solana-suite/config': 0.7.3
       '@solana/buffer-layout': 4.0.1
       '@solana/spl-token': 0.3.11(@solana/web3.js@1.88.0)(fastestsmallesttextencoderdecoder@1.0.22)
       '@solana/web3.js': 1.88.0
@@ -2204,21 +2200,20 @@ packages:
     transitivePeerDependencies:
       - '@metaplex-foundation/umi'
       - bufferutil
-      - commander
       - encoding
       - fastestsmallesttextencoderdecoder
       - supports-color
       - utf-8-validate
     dev: false
 
-  /@solana-suite/regular-nft@0.7.2(@metaplex-foundation/umi@0.8.10)(arweave@1.14.4)(commander@9.3.0)(fastestsmallesttextencoderdecoder@1.0.22)(node-fetch@3.3.2):
-    resolution: {integrity: sha512-RNQ2HFyWNxxrn1HP/YP2ohMnk+Dl9c/F9Ml0nVodlSCkR/oywj+sfMFu+K56eHVdElH9dGyNw/LIpstrkyXMIw==}
+  /@solana-suite/regular-nft@0.7.3(@metaplex-foundation/umi@0.8.10)(arweave@1.14.4)(fastestsmallesttextencoderdecoder@1.0.22)(node-fetch@3.3.2):
+    resolution: {integrity: sha512-QI/zMAII2PFmCU0UIyKQoVJE61a9rnHzZb9Dgxi0FLt28caP/GlMWj46KJL8QW4Vh3dkEcQEVPe1tfxb3qtdwA==}
     engines: {node: '>=16.*'}
     dependencies:
       '@irys/sdk': 0.0.3(arweave@1.14.4)
       '@metaplex-foundation/mpl-bubblegum': 3.0.0(@metaplex-foundation/umi@0.8.10)
       '@metaplex-foundation/mpl-token-metadata': 2.13.0(fastestsmallesttextencoderdecoder@1.0.22)
-      '@solana-suite/config': 0.7.2(@solana/web3.js@1.88.0)(commander@9.3.0)
+      '@solana-suite/config': 0.7.3
       '@solana/spl-token': 0.3.11(@solana/web3.js@1.88.0)(fastestsmallesttextencoderdecoder@1.0.22)
       '@solana/web3.js': 1.88.0
       bignumber.js: 9.1.2
@@ -2231,7 +2226,6 @@ packages:
       - '@metaplex-foundation/umi'
       - arweave
       - bufferutil
-      - commander
       - debug
       - encoding
       - fastestsmallesttextencoderdecoder
@@ -2240,13 +2234,13 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@solana-suite/sol-native@0.7.2(@metaplex-foundation/umi@0.8.10)(commander@9.3.0)(fastestsmallesttextencoderdecoder@1.0.22):
-    resolution: {integrity: sha512-kKl+/FqzhWjBI30owFyRLFKTk3aCeUVnSqR6wfhc4hp4Zx7Y/tzTRPa3s2djO66oQFIs7plL5rpDgrMPU0yNBQ==}
+  /@solana-suite/sol-native@0.7.3(@metaplex-foundation/umi@0.8.10)(fastestsmallesttextencoderdecoder@1.0.22):
+    resolution: {integrity: sha512-CRc+trSmy2EiqS0wIa1qV1vfqBX0wvoqwrj/srdoUPXANOfdAI6H28sm+8eJvKw29u6aV9ElZ7RcvWUtBjxKGg==}
     engines: {node: '>=16.*'}
     dependencies:
       '@metaplex-foundation/mpl-bubblegum': 3.0.0(@metaplex-foundation/umi@0.8.10)
       '@metaplex-foundation/mpl-token-metadata': 2.13.0(fastestsmallesttextencoderdecoder@1.0.22)
-      '@solana-suite/config': 0.7.2(@solana/web3.js@1.88.0)(commander@9.3.0)
+      '@solana-suite/config': 0.7.3
       '@solana/spl-token': 0.3.11(@solana/web3.js@1.88.0)(fastestsmallesttextencoderdecoder@1.0.22)
       '@solana/web3.js': 1.88.0
       bignumber.js: 9.1.2
@@ -2256,21 +2250,20 @@ packages:
     transitivePeerDependencies:
       - '@metaplex-foundation/umi'
       - bufferutil
-      - commander
       - encoding
       - fastestsmallesttextencoderdecoder
       - supports-color
       - utf-8-validate
     dev: false
 
-  /@solana-suite/spl-token@0.7.2(@metaplex-foundation/umi@0.8.10)(arweave@1.14.4)(commander@9.3.0)(fastestsmallesttextencoderdecoder@1.0.22)(node-fetch@3.3.2):
-    resolution: {integrity: sha512-9GmPIm+mtQVc978ffWP3OkiQiAErifbW/gb4eUFz8DzQyyZejzBWHfvcM68jJ/nIckOfbkvxfBgNeX7G4bJTEQ==}
+  /@solana-suite/spl-token@0.7.3(@metaplex-foundation/umi@0.8.10)(arweave@1.14.4)(fastestsmallesttextencoderdecoder@1.0.22)(node-fetch@3.3.2):
+    resolution: {integrity: sha512-tTnwErgHe1yEpRhFcJHdZ+BHiuS6CKsFNoMSm+EFCekNCBanDyZxkc2l85Pcikl719Kc1HCfAGOYkNhtzxy3NQ==}
     engines: {node: '>=16.*'}
     dependencies:
       '@irys/sdk': 0.0.3(arweave@1.14.4)
       '@metaplex-foundation/mpl-bubblegum': 3.0.0(@metaplex-foundation/umi@0.8.10)
       '@metaplex-foundation/mpl-token-metadata': 2.13.0(fastestsmallesttextencoderdecoder@1.0.22)
-      '@solana-suite/config': 0.7.2(@solana/web3.js@1.88.0)(commander@9.3.0)
+      '@solana-suite/config': 0.7.3
       '@solana/spl-token': 0.3.11(@solana/web3.js@1.88.0)(fastestsmallesttextencoderdecoder@1.0.22)
       '@solana/web3.js': 1.88.0
       bignumber.js: 9.1.2
@@ -2283,11 +2276,32 @@ packages:
       - '@metaplex-foundation/umi'
       - arweave
       - bufferutil
-      - commander
       - debug
       - encoding
       - fastestsmallesttextencoderdecoder
       - node-fetch
+      - supports-color
+      - utf-8-validate
+    dev: false
+
+  /@solana-suite/utils@0.7.3(@metaplex-foundation/umi@0.8.10)(fastestsmallesttextencoderdecoder@1.0.22):
+    resolution: {integrity: sha512-kR1hfxgXHraNRSz5gHj3Qo4GZFJNqMo7UZVXFFtatfz3kgcMFCtc0Wp9ACJ4jvlRg+xT8ESk7Wz3k86MiTZ41w==}
+    engines: {node: '>=16.*'}
+    dependencies:
+      '@metaplex-foundation/mpl-bubblegum': 3.0.0(@metaplex-foundation/umi@0.8.10)
+      '@metaplex-foundation/mpl-token-metadata': 2.13.0(fastestsmallesttextencoderdecoder@1.0.22)
+      '@solana-suite/config': 0.7.3
+      '@solana/spl-token': 0.3.11(@solana/web3.js@1.88.0)(fastestsmallesttextencoderdecoder@1.0.22)
+      '@solana/web3.js': 1.88.0
+      bignumber.js: 9.1.2
+      bn.js: 5.2.1
+      bs58: 4.0.1
+      mpl-bubblegum-instruction: git/github.com+atonoy/mpl-bubblegum-instructions/00f20bb7ed5ddc28e74056afd539a23257f04178(fastestsmallesttextencoderdecoder@1.0.22)
+    transitivePeerDependencies:
+      - '@metaplex-foundation/umi'
+      - bufferutil
+      - encoding
+      - fastestsmallesttextencoderdecoder
       - supports-color
       - utf-8-validate
     dev: false
@@ -3465,8 +3479,8 @@ packages:
     engines: {node: '>= 0.4'}
     dev: false
 
-  /aws-sdk@2.1548.0:
-    resolution: {integrity: sha512-kmo3FvO7xKuB7WfLKm6ABuecZeUTFtfwrbrGjWMiCC/yNwP1S3oSm/j/Yy7LO8sQfukWSOXpnPfMk5yhhqq3UQ==}
+  /aws-sdk@2.1558.0:
+    resolution: {integrity: sha512-lxaPHlLg5EfVK5yg2dAJ1k1BJgxUoTODYk8yMPFAjMwNIN302b8D8XYNucstm7urgiykW3zEtRDeNaX9oc6RQA==}
     engines: {node: '>= 10.0.0'}
     dependencies:
       buffer: 4.9.2
@@ -8709,30 +8723,6 @@ packages:
       supports-hyperlinks: 2.3.0
     dev: true
 
-  /terser-webpack-plugin@5.3.10(webpack@5.89.0):
-    resolution: {integrity: sha512-BKFPWlPDndPs+NGGCr1U59t0XScL5317Y0UReNrHaw9/FwhPENlq6bfgs+4yPfyP51vqC1bQ4rp1EfXW5ZSH9w==}
-    engines: {node: '>= 10.13.0'}
-    peerDependencies:
-      '@swc/core': '*'
-      esbuild: '*'
-      uglify-js: '*'
-      webpack: ^5.1.0
-    peerDependenciesMeta:
-      '@swc/core':
-        optional: true
-      esbuild:
-        optional: true
-      uglify-js:
-        optional: true
-    dependencies:
-      '@jridgewell/trace-mapping': 0.3.20
-      jest-worker: 27.5.1
-      schema-utils: 3.3.0
-      serialize-javascript: 6.0.2
-      terser: 5.26.0
-      webpack: 5.89.0
-    dev: true
-
   /terser-webpack-plugin@5.3.10(webpack@5.90.1):
     resolution: {integrity: sha512-BKFPWlPDndPs+NGGCr1U59t0XScL5317Y0UReNrHaw9/FwhPENlq6bfgs+4yPfyP51vqC1bQ4rp1EfXW5ZSH9w==}
     engines: {node: '>= 10.13.0'}
@@ -8942,7 +8932,7 @@ packages:
       yargs-parser: 20.2.9
     dev: true
 
-  /ts-loader@9.5.1(typescript@4.9.5)(webpack@5.89.0):
+  /ts-loader@9.5.1(typescript@4.9.5)(webpack@5.90.1):
     resolution: {integrity: sha512-rNH3sK9kGZcH9dYzC7CewQm4NtxJTjSEVRJ2DyBZR7f8/wcta+iV44UPCXc5+nzDzivKtlzV6c9P4e+oFhDLYg==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
@@ -8955,7 +8945,7 @@ packages:
       semver: 7.5.4
       source-map: 0.7.4
       typescript: 4.9.5
-      webpack: 5.89.0
+      webpack: 5.90.1
     dev: true
 
   /ts-node@10.9.2(@types/node@20.11.5)(typescript@4.9.5):
@@ -9431,46 +9421,6 @@ packages:
   /webpack-sources@3.2.3:
     resolution: {integrity: sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==}
     engines: {node: '>=10.13.0'}
-    dev: true
-
-  /webpack@5.89.0:
-    resolution: {integrity: sha512-qyfIC10pOr70V+jkmud8tMfajraGCZMBWJtrmuBymQKCrLTRejBI8STDp1MCyZu/QTdZSeacCQYpYNQVOzX5kw==}
-    engines: {node: '>=10.13.0'}
-    hasBin: true
-    peerDependencies:
-      webpack-cli: '*'
-    peerDependenciesMeta:
-      webpack-cli:
-        optional: true
-    dependencies:
-      '@types/eslint-scope': 3.7.7
-      '@types/estree': 1.0.5
-      '@webassemblyjs/ast': 1.11.6
-      '@webassemblyjs/wasm-edit': 1.11.6
-      '@webassemblyjs/wasm-parser': 1.11.6
-      acorn: 8.11.3
-      acorn-import-assertions: 1.9.0(acorn@8.11.3)
-      browserslist: 4.22.2
-      chrome-trace-event: 1.0.3
-      enhanced-resolve: 5.15.0
-      es-module-lexer: 1.4.1
-      eslint-scope: 5.1.1
-      events: 3.3.0
-      glob-to-regexp: 0.4.1
-      graceful-fs: 4.2.11
-      json-parse-even-better-errors: 2.3.1
-      loader-runner: 4.3.0
-      mime-types: 2.1.35
-      neo-async: 2.6.2
-      schema-utils: 3.3.0
-      tapable: 2.2.1
-      terser-webpack-plugin: 5.3.10(webpack@5.89.0)
-      watchpack: 2.4.0
-      webpack-sources: 3.2.3
-    transitivePeerDependencies:
-      - '@swc/core'
-      - esbuild
-      - uglify-js
     dev: true
 
   /webpack@5.90.1:
