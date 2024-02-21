@@ -7,8 +7,8 @@ export const createCollection = async (ownerSecretKey: string, file: any): Promi
     ownerSecretKey,
     {
       filePath: file,
-      name: 'BCL',
-      symbol: 'BCL',
+      name: 'WAPI',
+      symbol: 'WAPI',
       royalty: 0,
       storageType: 'nftStorage',
       isMutable: true,
