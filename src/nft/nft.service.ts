@@ -92,12 +92,9 @@ export class NftService {
     return res;
   }
 
-  async createSpace(attributeMintDto: MintAttributeDto, file) {
+  async mintCompressNft(attributeMintDto: MintAttributeDto, file) {
     const ownerWalletAddress = this.config.get<string>('SYSTEM_WALLET_ADDRESS');
     const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
-
-    console.log('ownerWalletAddress', ownerWalletAddress);
-    console.log('ownerSecretKey', ownerSecretKey);
 
     const createSpaceRes = await createSpace(ownerSecretKey, 8);
     console.log('createSpaceRes', createSpaceRes);
@@ -118,6 +115,23 @@ export class NftService {
     console.log('compressMintRes', compressMintRes);
 
     return compressMintRes;
+  }
+
+  async createSpace(abountMintTotal: number) {
+    const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
+
+    const createSpaceRes = await createSpace(ownerSecretKey, abountMintTotal);
+    console.log('createSpaceRes', createSpaceRes);
+    return createSpaceRes;
+  }
+
+  async createCollection(file) {
+    const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
+
+    const createCollectionRes = await createCollection(ownerSecretKey, file.path);
+    console.log('createCollectionRes', createCollectionRes);
+
+    return createCollectionRes;
   }
 
   async getSpaceCost(spaceNumber: number) {

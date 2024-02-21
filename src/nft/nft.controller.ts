@@ -19,7 +19,8 @@ import { SubmitHexDto } from './dto/submit-hex-dto';
 import { NftService } from './nft.service';
 import { MintAttributeDto } from './dto/mint-attribute-nft-dto';
 import { TransferNftDto } from './dto/transfer-nft-dto';
-import { SpaceCostDto } from './dto/space-cost';
+import { SpaceCostDto } from './dto/space-cost.dto';
+import { CreateSpaceDto } from './dto/create-space.dto';
 
 @Controller('nft')
 export class NftController {
@@ -98,6 +99,22 @@ export class NftController {
     return response;
   }
 
+  @Post('mint-cnft')
+  @UseInterceptors(
+    FileInterceptor('file', {
+      storage: diskStorage({
+        destination: './uploads',
+      }),
+    })
+  )
+  async createCompressNft(
+    @Body(new ValidationPipe()) attributeMintDto: MintAttributeDto,
+    @UploadedFile() file: Express.Multer.File
+  ) {
+    const response = await this.nftService.mintCompressNft(attributeMintDto, file);
+    return response;
+  }
+
   @Post('create-space')
   @UseInterceptors(
     FileInterceptor('file', {
@@ -106,11 +123,24 @@ export class NftController {
       }),
     })
   )
-  async createSpace(
+  async createSpace(@Body(new ValidationPipe()) createSpaceDto: CreateSpaceDto) {
+    const response = await this.nftService.createSpace(createSpaceDto.aboutMintTotal);
+    return response;
+  }
+
+  @Post('create-collection')
+  @UseInterceptors(
+    FileInterceptor('file', {
+      storage: diskStorage({
+        destination: './uploads',
+      }),
+    })
+  )
+  async createCollection(
     @Body(new ValidationPipe()) attributeMintDto: MintAttributeDto,
     @UploadedFile() file: Express.Multer.File
   ) {
-    const response = await this.nftService.createSpace(attributeMintDto, file);
+    const response = await this.nftService.createCollection(file);
     return response;
   }
 
