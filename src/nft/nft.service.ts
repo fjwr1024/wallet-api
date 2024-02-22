@@ -6,7 +6,7 @@ import { burnNft } from './../solana/nft/burnNft';
 import { HttpException, HttpStatus, Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { GetNftListDto } from './dto/get-nftlist-dto';
-import { getOwnedTokenInfo } from '../solana/nft/getMetadata';
+import { getCompressTokenList, getOwnedTokenInfo } from '../solana/nft/getMetadata';
 import { MintAdminNftDto } from './dto/mint-admin-nft-dto';
 import { mintNft } from '../solana/nft/mintNft';
 import { deleteUploadFile } from 'src/utils/file-util/deleteUploadFile';
@@ -23,7 +23,7 @@ export class NftService {
   constructor(private readonly config: ConfigService) {}
 
   async getNftList(getNftListDto: GetNftListDto) {
-    const res = await getOwnedTokenInfo(getNftListDto.walletAddress);
+    const res = await getCompressTokenList(getNftListDto.walletAddress);
     console.log('res', res);
     return res;
   }
@@ -103,7 +103,13 @@ export class NftService {
     const createCollectionRes = await createCollection(ownerSecretKey, file.path);
     console.log('createCollectionRes', createCollectionRes);
 
-    const compressMintRes = await compressMint(ownerSecretKey, file.path, createSpaceRes, createCollectionRes);
+    const compressMintRes = await compressMint(
+      ownerSecretKey,
+      file.path,
+      createSpaceRes,
+      createCollectionRes,
+      '2X2u2DUYVNpGw2VxAWoB3Jh2biwicPkfGox8q7BaqHNi'
+    );
 
     deleteUploadFile(file.path);
 

@@ -15,9 +15,9 @@ export const compressMint = async (
     ownerSecretKey,
     {
       filePath: file,
-      name: 'sample',
-      symbol: 'SAMPLE',
-      royalty: 20,
+      name: 'wapi',
+      symbol: 'WAPI',
+      royalty: 0,
       storageType: 'nftStorage',
       isMutable: true,
       external_url: 'https://external_url',
