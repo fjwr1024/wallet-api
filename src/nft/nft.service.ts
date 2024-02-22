@@ -1,3 +1,4 @@
+import { CompressedNft } from '@solana-suite/compressed-nft';
 import { spaceCost } from '../solana/compress-nft/caluculateSpaceCost';
 import { compressMint } from '../solana/compress-nft/compressMint';
 import { createSpace } from '../solana/compress-nft/createSpace';
@@ -102,13 +103,7 @@ export class NftService {
     const createCollectionRes = await createCollection(ownerSecretKey, file.path);
     console.log('createCollectionRes', createCollectionRes);
 
-    const compressMintRes = await compressMint(
-      ownerWalletAddress,
-      ownerSecretKey,
-      file.path,
-      createSpaceRes,
-      createCollectionRes
-    );
+    const compressMintRes = await compressMint(ownerSecretKey, file.path, createSpaceRes, createCollectionRes);
 
     deleteUploadFile(file.path);
 
@@ -132,6 +127,12 @@ export class NftService {
     console.log('createCollectionRes', createCollectionRes);
 
     return createCollectionRes;
+  }
+
+  async compressedNft(attributeMintDto: MintAttributeDto, file) {
+    const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
+    const res = await compressMint(ownerSecretKey, file, attributeMintDto.name, attributeMintDto.description);
+    return res;
   }
 
   async getSpaceCost(spaceNumber: number) {

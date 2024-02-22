@@ -3,11 +3,11 @@ import { CompressedNft } from '@solana-suite/compressed-nft';
 import { Node, Explorer } from '@solana-suite/utils';
 
 export const compressMint = async (
-  walletAddress: string,
   ownerSecretKey: string,
   file: any,
   treeOwner: string,
-  mintCollection: string
+  mintCollection: string,
+  recieveWalletAddress?: string
 ) => {
   console.log('#tree owner: ', treeOwner);
 
@@ -25,8 +25,8 @@ export const compressMint = async (
     treeOwner,
     mintCollection,
     {
+      receiver: recieveWalletAddress,
       feePayer: ownerSecretKey,
-      delegate: walletAddress,
     }
   );
 
