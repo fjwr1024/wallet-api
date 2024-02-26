@@ -5,11 +5,12 @@ import { Node, Explorer } from '@solana-suite/utils';
 export const compressMint = async (
   ownerSecretKey: string,
   file: any,
-  treeOwner: string,
-  mintCollection: string,
+  treeOwner?: string,
+  mintCollection?: string,
   recieveWalletAddress?: string
 ) => {
   console.log('#tree owner: ', treeOwner);
+  console.log('#mint collection: ', mintCollection);
 
   const mintInst = await CompressedNft.mint(
     ownerSecretKey,
@@ -29,6 +30,8 @@ export const compressMint = async (
       feePayer: ownerSecretKey,
     }
   );
+
+  console.log('# mintInst: ', mintInst);
 
   // this is NFT ID
   (await mintInst.submit()).match(

@@ -17,6 +17,7 @@ import { MintAttributeDto } from './dto/mint-attribute-nft-dto';
 import { attributeMint } from 'src/solana/nft/attributeMint';
 import { transferNft } from 'src/solana/nft/transferNft';
 import { createCollection } from 'src/solana/compress-nft/createCollection';
+import { MintCnftDto } from './dto/mint-cnft-dto';
 
 @Injectable()
 export class NftService {
@@ -135,9 +136,9 @@ export class NftService {
     return createCollectionRes;
   }
 
-  async compressedNft(attributeMintDto: MintAttributeDto, file) {
+  async compressedNft(mintCnftDto: MintCnftDto, file) {
     const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
-    const res = await compressMint(ownerSecretKey, file, attributeMintDto.name, attributeMintDto.description);
+    const res = await compressMint(ownerSecretKey, file.path, mintCnftDto.treeOwner, mintCnftDto.mintCollection);
     return res;
   }
 

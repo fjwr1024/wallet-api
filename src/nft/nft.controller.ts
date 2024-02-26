@@ -21,6 +21,7 @@ import { MintAttributeDto } from './dto/mint-attribute-nft-dto';
 import { TransferNftDto } from './dto/transfer-nft-dto';
 import { SpaceCostDto } from './dto/space-cost.dto';
 import { CreateSpaceDto } from './dto/create-space.dto';
+import { MintCnftDto } from './dto/mint-cnft-dto';
 
 @Controller('nft')
 export class NftController {
@@ -141,6 +142,22 @@ export class NftController {
     @UploadedFile() file: Express.Multer.File
   ) {
     const response = await this.nftService.createCollection(file);
+    return response;
+  }
+
+  @Post('mint-specific-cnft')
+  @UseInterceptors(
+    FileInterceptor('file', {
+      storage: diskStorage({
+        destination: './uploads',
+      }),
+    })
+  )
+  async createCompressNftSpecificOwner(
+    @Body(new ValidationPipe()) mintCnftDto: MintCnftDto,
+    @UploadedFile() file: Express.Multer.File
+  ) {
+    const response = await this.nftService.compressedNft(mintCnftDto, file);
     return response;
   }
 
