@@ -13,20 +13,29 @@ export const attributeMint = async (
   name: string,
   description: string,
   ownerSecretKey: string,
-  attributes: Attributes
+  attributes: Attributes,
+  video?: any
 ) => {
   console.log('ファイル', file);
+  console.log('video', video);
 
   const inst = await RegularNft.mint(ownerSecretKey, {
     filePath: file,
     storageType: 'nftStorage',
     name,
-    symbol: 'NFT',
+    symbol: 'test',
     description,
     royalty: 0,
     attributes,
     isMutable: true,
-    // external_url: 'https://github.com/atonoy/solana-suite',
+    properties: {
+      files: [
+        {
+          filePath: video.path,
+          type: video.mimetype,
+        },
+      ],
+    },
   });
 
   (await inst.submit()).match(

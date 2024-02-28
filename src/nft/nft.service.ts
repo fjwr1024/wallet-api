@@ -53,7 +53,7 @@ export class NftService {
     return res;
   }
 
-  async attributeMint(attributeMintDto: MintAttributeDto, file) {
+  async attributeMint(attributeMintDto: MintAttributeDto, image, video?) {
     const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
     const attributes = [
       {
@@ -66,16 +66,18 @@ export class NftService {
       },
     ];
 
-    console.log('file', file);
+    console.log('file', image);
+    console.log('file', video);
 
     const res = await attributeMint(
-      file.path,
+      image.path,
       attributeMintDto.name,
       attributeMintDto.description,
       ownerSecretKey,
-      attributes
+      attributes,
+      video
     );
-    deleteUploadFile(file.path);
+    deleteUploadFile(image.path);
 
     return res;
   }

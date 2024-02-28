@@ -7,10 +7,11 @@ import {
   HttpStatus,
   Post,
   UploadedFile,
+  UploadedFiles,
   UseInterceptors,
   ValidationPipe,
 } from '@nestjs/common';
-import { FileInterceptor } from '@nestjs/platform-express';
+import { FileInterceptor, FileFieldsInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { GetNftListDto } from './dto/get-nftlist-dto';
 import { MintAdminNftDto } from './dto/mint-admin-nft-dto';
@@ -72,18 +73,26 @@ export class NftController {
 
   @Post('attribute-mint')
   @UseInterceptors(
-    FileInterceptor('file', {
-      storage: diskStorage({
-        destination: './uploads',
-      }),
-    })
+    FileFieldsInterceptor(
+      [
+        { name: 'image', maxCount: 1 },
+        { name: 'video', maxCount: 1 },
+      ],
+      {
+        storage: diskStorage({
+          destination: './uploads',
+        }),
+      }
+    )
   )
   async mintNftAttribute(
     @Body(new ValidationPipe()) attributeMintDto: MintAttributeDto,
-    @UploadedFile() file: Express.Multer.File
+    @UploadedFiles() files: { image?: Express.Multer.File[]; video?: Express.Multer.File[] }
   ) {
-    console.log('file', file);
-    const response = await this.nftService.attributeMint(attributeMintDto, file);
+    console.log('file', files);
+    const image = files.image ? files.image[0] : null;
+    const video = files.video ? files.video[0] : null;
+    const response = await this.nftService.attributeMint(attributeMintDto, image, video);
     // const response = await this.nftService.getImageFromS3();
     return response;
   }
