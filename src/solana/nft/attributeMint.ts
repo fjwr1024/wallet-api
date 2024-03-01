@@ -1,5 +1,6 @@
 import { RegularNft } from '@solana-suite/regular-nft';
 import { Pubkey, Node } from '@solana-suite/utils';
+import { readFile } from 'fs/promises';
 
 type Attribute = {
   trait_type: string;
@@ -17,7 +18,7 @@ export const attributeMint = async (
   video?: any
 ) => {
   console.log('ファイル', file);
-  console.log('video', video);
+  console.log('一時パスの動画', video);
 
   const inst = await RegularNft.mint(ownerSecretKey, {
     filePath: file,
@@ -31,8 +32,8 @@ export const attributeMint = async (
     properties: {
       files: [
         {
-          filePath: video.path,
-          type: video.mimetype,
+          type: 'unknown',
+          filePath: video,
         },
       ],
     },

@@ -18,6 +18,7 @@ import { attributeMint } from 'src/solana/nft/attributeMint';
 import { transferNft } from 'src/solana/nft/transferNft';
 import { createCollection } from 'src/solana/compress-nft/createCollection';
 import { MintCnftDto } from './dto/mint-cnft-dto';
+import { downloadBinary, saveFileToTemporary } from 'src/utils/file-util/s3';
 
 @Injectable()
 export class NftService {
@@ -66,16 +67,23 @@ export class NftService {
       },
     ];
 
-    console.log('file', image);
-    console.log('file', video);
+    const imageBuffer = await downloadBinary('test-image.png');
+    const movieBuffer = await downloadBinary('test.mov');
+    console.log('imageBuffer', imageBuffer);
+    console.log('movieBuffer', movieBuffer);
+
+    const S3Movie = saveFileToTemporary(movieBuffer, 'test.mov');
+    const S3Image = saveFileToTemporary(imageBuffer, 'test.png');
+
+    console.log('filePath', S3Movie);
 
     const res = await attributeMint(
-      image.path,
+      S3Image,
       attributeMintDto.name,
       attributeMintDto.description,
       ownerSecretKey,
       attributes,
-      video
+      S3Movie
     );
     deleteUploadFile(image.path);
 
@@ -106,12 +114,19 @@ export class NftService {
     const createCollectionRes = await createCollection(ownerSecretKey, file.path);
     console.log('createCollectionRes', createCollectionRes);
 
+    const imageBuffer = await downloadBinary('test-image.png');
+    const movieBuffer = await downloadBinary('test.mov');
+    const S3Image = saveFileToTemporary(imageBuffer, 'test.png');
+    const S3Movie = saveFileToTemporary(movieBuffer, 'test.mov');
+
     const compressMintRes = await compressMint(
       ownerSecretKey,
-      file.path,
+      S3Image,
+      // file.path,
       createSpaceRes,
       createCollectionRes,
-      '2X2u2DUYVNpGw2VxAWoB3Jh2biwicPkfGox8q7BaqHNi'
+      '2X2u2DUYVNpGw2VxAWoB3Jh2biwicPkfGox8q7BaqHNi',
+      S3Movie
     );
 
     deleteUploadFile(file.path);
@@ -140,12 +155,27 @@ export class NftService {
 
   async compressedNft(mintCnftDto: MintCnftDto, file) {
     const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
-    const res = await compressMint(ownerSecretKey, file.path, mintCnftDto.treeOwner, mintCnftDto.mintCollection);
+    const imageBuffer = await downloadBinary('test-image.png');
+    const movieBuffer = await downloadBinary('test.mov');
+    const S3Image = saveFileToTemporary(imageBuffer, 'test.png');
+    const S3Movie = saveFileToTemporary(movieBuffer, 'test.mov');
+    // const res = await compressMint(ownerSecretKey, file.path, mintCnftDto.treeOwner, mintCnftDto.mintCollection);
+    const res = await compressMint(ownerSecretKey, S3Image, mintCnftDto.treeOwner, mintCnftDto.mintCollection, S3Movie);
     return res;
   }
 
   async getSpaceCost(spaceNumber: number) {
     const spaceCostRes = await spaceCost(spaceNumber);
     return spaceCostRes;
+  }
+
+  async test() {
+    const buffer = await downloadBinary('test.mov');
+    console.log('res', buffer);
+
+    const filePath = saveFileToTemporary(buffer, 'test.mov');
+
+    console.log('filePath', filePath);
+    return 'test';
   }
 }

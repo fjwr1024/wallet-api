@@ -4,24 +4,37 @@ import { Node, Explorer } from '@solana-suite/utils';
 
 export const compressMint = async (
   ownerSecretKey: string,
-  file: any,
+  imageData: any,
   treeOwner?: string,
   mintCollection?: string,
-  recieveWalletAddress?: string
+  recieveWalletAddress?: string,
+  videoData?: any
 ) => {
   console.log('#tree owner: ', treeOwner);
   console.log('#mint collection: ', mintCollection);
 
+  console.log('#imageData: ', imageData);
+  console.log('#videoData: ', videoData);
+
   const mintInst = await CompressedNft.mint(
     ownerSecretKey,
     {
-      filePath: file,
-      name: 'wapi',
+      filePath: imageData,
+      name: 'WAPIC',
       symbol: 'WAPI',
+      description: '12:22',
       royalty: 0,
       storageType: 'nftStorage',
       isMutable: true,
       external_url: 'https://external_url',
+      properties: {
+        files: [
+          {
+            type: 'video/mp4',
+            filePath: videoData,
+          },
+        ],
+      },
     },
     treeOwner,
     mintCollection,

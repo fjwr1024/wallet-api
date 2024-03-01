@@ -175,4 +175,10 @@ export class NftController {
     const response = await this.nftService.getSpaceCost(spaceCostDto.spaceCost);
     return response;
   }
+
+  @Get('test')
+  async test() {
+    const response = await this.nftService.test();
+    return response;
+  }
 }

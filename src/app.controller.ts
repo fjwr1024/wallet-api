@@ -8,10 +8,10 @@ export class AppController {
 
   @Get('healthcheck')
   healthCheck() {
-    this.logger.debug('Debug Message');
-    this.logger.log('Info Message');
-    this.logger.warn('Warn Message');
-    this.logger.error('Error Message', 'error in AppController');
+    // this.logger.debug('Debug Message');
+    // this.logger.log('Info Message');
+    // this.logger.warn('Warn Message');
+    // this.logger.error('Error Message', 'error in AppController');
     return { message: 'ok' };
   }
 }

@@ -43,6 +43,10 @@ docker/db/data
 
 # image file
 /uploads/*
+/tmp/*
 
 # migration files
 src/migration/*
+
+# misc
+src/utils/file-util/s3.ts
