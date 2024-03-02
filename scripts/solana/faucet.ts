@@ -1,22 +1,24 @@
 //////////////////////////////////////////////
-// $ npx ts-node scripts/solana/faucet.ts
+// $ npx ts-node scripts/solana/faucet.ts {walletAddress}
 //////////////////////////////////////////////
 import { Airdrop } from '@solana-suite/airdrop';
+import assert from 'assert';
 
-const testAddress = 'C2hQa7HUJmt819JEhELayi6HqXSQMYGa5qJYej9BUuCu';
+const [, , walletAddress] = process.argv;
 
-const addSol = async (walletAddress: string): Promise<string> => {
+assert(walletAddress, 'No wallet address provided');
+
+const addSol = async (address: string): Promise<string> => {
   try {
-    await Airdrop.request(walletAddress);
-    return `Successfully added SOL to ${walletAddress}.`;
+    await Airdrop.request(address);
+    return `Successfully added SOL to ${address}.`;
   } catch (error) {
-    console.error(`Error while trying to airdrop SOL to ${walletAddress}:`, error);
-    return `Failed to add SOL to ${walletAddress}. Check the logs for details.`;
+    console.error(`Error while trying to airdrop SOL to ${address}:`, error);
+    return `Failed to add SOL to ${address}. Check the logs for details.`;
   }
 };
 
 (async () => {
-  // wallet addressは各自変更
-  const result = await addSol(testAddress);
+  const result = await addSol(walletAddress);
   console.log(result);
 })();

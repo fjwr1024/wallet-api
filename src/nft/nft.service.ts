@@ -105,7 +105,6 @@ export class NftService {
   }
 
   async mintCompressNft(attributeMintDto: MintAttributeDto, file) {
-    const ownerWalletAddress = this.config.get<string>('SYSTEM_WALLET_ADDRESS');
     const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
 
     const createSpaceRes = await createSpace(ownerSecretKey, 8);
@@ -153,13 +152,12 @@ export class NftService {
     return createCollectionRes;
   }
 
-  async compressedNft(mintCnftDto: MintCnftDto, file) {
+  async mintCompressedNft(mintCnftDto: MintCnftDto, file) {
     const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
     const imageBuffer = await downloadBinary('test-image.png');
     const movieBuffer = await downloadBinary('test.mov');
     const S3Image = saveFileToTemporary(imageBuffer, 'test.png');
     const S3Movie = saveFileToTemporary(movieBuffer, 'test.mov');
-    // const res = await compressMint(ownerSecretKey, file.path, mintCnftDto.treeOwner, mintCnftDto.mintCollection);
     const res = await compressMint(ownerSecretKey, S3Image, mintCnftDto.treeOwner, mintCnftDto.mintCollection, S3Movie);
     return res;
   }
@@ -167,6 +165,10 @@ export class NftService {
   async getSpaceCost(spaceNumber: number) {
     const spaceCostRes = await spaceCost(spaceNumber);
     return spaceCostRes;
+  }
+
+  async mintCompressNftWithMovie() {
+    return 'ok';
   }
 
   async test() {

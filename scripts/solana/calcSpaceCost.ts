@@ -1,5 +1,5 @@
 //////////////////////////////////////////////
-// $ npx ts-node scripts/solana/calcSpaceCost.ts
+// $ npx ts-node scripts/solana/calcSpaceCost.ts {number}
 //////////////////////////////////////////////
 import { CompressedNft } from '@solana-suite/compressed-nft';
 async function calculateCost(spaceSize: number) {

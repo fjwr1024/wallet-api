@@ -1,4 +1,3 @@
-import { spaceCost } from '../solana/compress-nft/caluculateSpaceCost';
 import {
   Body,
   Controller,
@@ -166,7 +165,7 @@ export class NftController {
     @Body(new ValidationPipe()) mintCnftDto: MintCnftDto,
     @UploadedFile() file: Express.Multer.File
   ) {
-    const response = await this.nftService.compressedNft(mintCnftDto, file);
+    const response = await this.nftService.mintCompressedNft(mintCnftDto, file);
     return response;
   }
 
