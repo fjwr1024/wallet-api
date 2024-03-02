@@ -1,8 +1,6 @@
-// 必要なモジュールやクラスをインポートします。
 import { CompressedNft } from '@solana-suite/compressed-nft';
 import assert from 'assert';
 
-// コマンドライン引数からミントアドレスを取得します。
 const [, , cnft] = process.argv;
 
 // 関数を定義します。
