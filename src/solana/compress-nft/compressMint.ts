@@ -10,8 +10,11 @@ export const compressMint = async (
   recieveWalletAddress?: string,
   videoData?: any
 ) => {
+  console.log('#ownerSecretKey: ', ownerSecretKey);
   console.log('#tree owner: ', treeOwner);
   console.log('#mint collection: ', mintCollection);
+
+  console.log('#recieveWalletAddress: ', recieveWalletAddress);
 
   console.log('#imageData: ', imageData);
   console.log('#videoData: ', videoData);
@@ -22,24 +25,16 @@ export const compressMint = async (
       filePath: imageData,
       name: 'WAPIC',
       symbol: 'WAPI',
-      description: '12:22',
+      description: '18:09',
       royalty: 0,
       storageType: 'nftStorage',
       isMutable: true,
       external_url: 'https://external_url',
-      properties: {
-        files: [
-          {
-            type: 'video/mp4',
-            filePath: videoData,
-          },
-        ],
-      },
     },
     treeOwner,
     mintCollection,
     {
-      receiver: recieveWalletAddress,
+      // receiver: recieveWalletAddress,
       feePayer: ownerSecretKey,
     }
   );

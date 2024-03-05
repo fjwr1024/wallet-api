@@ -8,6 +8,8 @@ const [, , cnft] = process.argv;
 const findNFTByMint = async (mint: string) => {
   const resMint = await CompressedNft.findByMint(mint);
 
+  console.log('# mint: ', mint);
+
   resMint.match(
     ok => console.log('# mint info: ', ok),
     err => console.error(err)

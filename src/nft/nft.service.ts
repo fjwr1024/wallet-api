@@ -158,7 +158,13 @@ export class NftService {
     const movieBuffer = await downloadBinary('test.mov');
     const S3Image = saveFileToTemporary(imageBuffer, 'test.png');
     const S3Movie = saveFileToTemporary(movieBuffer, 'test.mov');
-    const res = await compressMint(ownerSecretKey, S3Image, mintCnftDto.treeOwner, mintCnftDto.mintCollection, S3Movie);
+    const res = await compressMint(
+      ownerSecretKey,
+      file.path,
+      mintCnftDto.treeOwner,
+      mintCnftDto.mintCollection,
+      '2X2u2DUYVNpGw2VxAWoB3Jh2biwicPkfGox8q7BaqHNi'
+    );
     return res;
   }
 
