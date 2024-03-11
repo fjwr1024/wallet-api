@@ -156,15 +156,29 @@ export class NftService {
     const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
     const imageBuffer = await downloadBinary('test-image.png');
     const movieBuffer = await downloadBinary('test.mov');
-    const S3Image = saveFileToTemporary(imageBuffer, 'test.png');
-    const S3Movie = saveFileToTemporary(movieBuffer, 'test.mov');
-    const res = await compressMint(
-      ownerSecretKey,
-      file.path,
-      mintCnftDto.treeOwner,
-      mintCnftDto.mintCollection,
-      '2X2u2DUYVNpGw2VxAWoB3Jh2biwicPkfGox8q7BaqHNi'
-    );
+    // const S3Image = saveFileToTemporary(imageBuffer, 'test.png');
+    // const S3Movie = saveFileToTemporary(movieBuffer, 'test.mov');
+    // const res = await compressMint(
+    //   ownerSecretKey,
+    //   file.path,
+    //   mintCnftDto.treeOwner,
+    //   mintCnftDto.mintCollection,
+    //   '2X2u2DUYVNpGw2VxAWoB3Jh2biwicPkfGox8q7BaqHNi'
+    // );
+    const res = (async () => {
+      for (let i = 0; i < 5; i++) {
+        console.log('##### START ######');
+        await compressMint(
+          ownerSecretKey,
+          file.path,
+          mintCnftDto.treeOwner,
+          mintCnftDto.mintCollection,
+          '2X2u2DUYVNpGw2VxAWoB3Jh2biwicPkfGox8q7BaqHNi'
+        );
+        console.log('##### END ######');
+      }
+    })();
+
     return res;
   }
 

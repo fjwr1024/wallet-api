@@ -25,7 +25,7 @@ export const compressMint = async (
       filePath: imageData,
       name: 'WAPIC',
       symbol: 'WAPI',
-      description: '18:09',
+      description: '11:42',
       royalty: 0,
       storageType: 'nftStorage',
       isMutable: true,
