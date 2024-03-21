@@ -47,4 +47,6 @@ export const compressMint = async (
   console.log('# sig: ', sig.toExplorerUrl(Explorer.Xray));
   const mint = (await CompressedNft.findMintIdBySignature(sig)).unwrap();
   console.log('# mint: ', mint);
+
+  return mint;
 };

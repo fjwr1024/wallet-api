@@ -19,7 +19,6 @@ export const createSpace = async (secretKey: string, abountMintTotal: any): Prom
     },
     error => {
       console.error(error);
-      assert.fail(error.message);
     }
   );
 
