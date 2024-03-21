@@ -42,14 +42,16 @@ export const compressMint = async (
   console.log('# mintInst: ', mintInst);
 
   // this is NFT ID
-  (await mintInst.submit()).match(
-    async value => {
-      await Node.confirmedSig(value, 'finalized');
-      console.log('# sig: ', value.toExplorerUrl(Explorer.Xray));
-    },
-    error => assert.fail(error)
+  const res = (await mintInst.submit()).map(
+    async value => value,
+    (ng: Error) => {
+      console.error(ng.message);
+      throw ng;
+    }
   );
 
-  const mint = await mintInst.unwrap().data.getAssetId();
+  const sig = await res.unwrap();
+  console.log('# sig: ', sig.toExplorerUrl(Explorer.Xray));
+  const mint = (await CompressedNft.findMintIdBySignature(sig)).unwrap();
   console.log('# mint: ', mint);
 };

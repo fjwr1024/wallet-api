@@ -39,7 +39,7 @@ export const attributeMint = async (
     },
   });
 
-  (await inst.submit()).match(
+  (await inst.submit({ addSolPriorityFee: 0.00033 })).match(
     async (ok: string) => {
       await Node.confirmedSig(ok, 'finalized');
 
