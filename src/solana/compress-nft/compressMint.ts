@@ -1,6 +1,5 @@
-import assert from 'assert';
 import { CompressedNft } from '@solana-suite/compressed-nft';
-import { Node, Explorer } from '@solana-suite/utils';
+import { Explorer } from '@solana-suite/utils';
 
 export const compressMint = async (
   ownerSecretKey: string,
@@ -13,11 +12,6 @@ export const compressMint = async (
   console.log('#ownerSecretKey: ', ownerSecretKey);
   console.log('#tree owner: ', treeOwner);
   console.log('#mint collection: ', mintCollection);
-
-  console.log('#recieveWalletAddress: ', recieveWalletAddress);
-
-  console.log('#imageData: ', imageData);
-  console.log('#videoData: ', videoData);
 
   const mintInst = await CompressedNft.mint(
     ownerSecretKey,
@@ -34,14 +28,13 @@ export const compressMint = async (
     treeOwner,
     mintCollection,
     {
-      // receiver: recieveWalletAddress,
+      receiver: recieveWalletAddress,
       feePayer: ownerSecretKey,
     }
   );
 
   console.log('# mintInst: ', mintInst);
 
-  // this is NFT ID
   const res = (await mintInst.submit()).map(
     async value => value,
     (ng: Error) => {
