@@ -1,5 +1,6 @@
 import { CompressedNft } from '@solana-suite/compressed-nft';
 import { Explorer } from '@solana-suite/utils';
+import { Pubkey } from '@solana-suite/utils';
 
 export const compressMint = async (
   ownerSecretKey: string,
@@ -8,7 +9,7 @@ export const compressMint = async (
   mintCollection?: string,
   recieveWalletAddress?: string,
   videoData?: any
-) => {
+): Promise<Pubkey> => {
   console.log('#ownerSecretKey: ', ownerSecretKey);
   console.log('#tree owner: ', treeOwner);
   console.log('#mint collection: ', mintCollection);

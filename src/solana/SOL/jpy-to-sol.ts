@@ -18,7 +18,6 @@ export const convertJPYToSol = async (amountInJPY: number): Promise<number> => {
   return amountInSOL;
 };
 
-// 実際の使用例
 convertJPYToSol(5)
   .then(amountInSOL => console.log(`¥5 is approximately equal to ${amountInSOL} SOL`))
   .catch(error => console.error('Error converting JPY to SOL:', error));
