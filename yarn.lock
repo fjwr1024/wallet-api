@@ -836,6 +836,37 @@
     mime-types "^2.1.34"
     near-seed-phrase "^0.2.0"
 
+"@irys/sdk@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@irys/sdk/-/sdk-0.0.4.tgz#23228b98444083c3244bb9a2b5b5ad89fe1ef21e"
+  integrity sha512-H49hnWLoLa1HLTVHnm12F/ZwD5iMsV6DEGKK9gte8EBH7tJ/EmUU0RZOLGalaitHAyuoMk79Bg4Bkn7zJFdPGA==
+  dependencies:
+    "@ethersproject/bignumber" "^5.7.0"
+    "@ethersproject/contracts" "^5.7.0"
+    "@ethersproject/providers" "^5.7.2"
+    "@ethersproject/wallet" "^5.7.0"
+    "@irys/query" "^0.0.1"
+    "@near-js/crypto" "^0.0.3"
+    "@near-js/keystores-browser" "^0.0.3"
+    "@near-js/providers" "^0.0.4"
+    "@near-js/transactions" "^0.1.0"
+    "@solana/web3.js" "^1.36.0"
+    "@supercharge/promise-pool" "^3.0.0"
+    algosdk "^1.13.1"
+    aptos "=1.8.5"
+    arbundles "^0.10.0"
+    async-retry "^1.3.3"
+    axios "^1.4.0"
+    base64url "^3.0.1"
+    bignumber.js "^9.0.1"
+    bs58 "5.0.0"
+    commander "^8.2.0"
+    csv "5.5.3"
+    inquirer "^8.2.0"
+    js-sha256 "^0.9.0"
+    mime-types "^2.1.34"
+    near-seed-phrase "^0.2.0"
+
 "@isaacs/cliui@^8.0.2":
   version "8.0.2"
   resolved "https://registry.yarnpkg.com/@isaacs/cliui/-/cliui-8.0.2.tgz#b37667b7bc181c168782259bab42474fbf52b550"
@@ -1722,6 +1753,22 @@
     bn.js "^5.2.1"
     bs58 "^4.0.1"
     cross-fetch "^4.0.0"
+    mpl-bubblegum-instructions "github:fukaoi/mpl-bubblegum-instructions"
+    nft.storage "^7.1.1"
+
+"@solana-suite/storage@^0.7.10":
+  version "0.7.10"
+  resolved "https://registry.yarnpkg.com/@solana-suite/storage/-/storage-0.7.10.tgz#9fc49a77d2981cac67301f5d22d91fd2f33a1ead"
+  integrity sha512-uV5JnIUQm72ghUhG33OcLRgvlOd+BDhfDRj6YZHyM/+3MBs0XR4z+tO1jShcPKmxUzrwNS5Q5Ayn1JkxM2g+WQ==
+  dependencies:
+    "@irys/sdk" "^0.0.4"
+    "@metaplex-foundation/mpl-token-metadata" "^2.13.0"
+    "@solana-suite/config" "0.7.10"
+    "@solana/spl-token" "^0.3.8"
+    "@solana/web3.js" "^1.78.5"
+    bignumber.js "^9.1.2"
+    bn.js "^5.2.1"
+    bs58 "^4.0.1"
     mpl-bubblegum-instructions "github:fukaoi/mpl-bubblegum-instructions"
     nft.storage "^7.1.1"
 

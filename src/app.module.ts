@@ -18,6 +18,7 @@ import { OrdersController } from './orders/orders.controller';
 import { OrdersService } from './orders/orders.service';
 import { OrdersModule } from './orders/orders.module';
 import { BatchTasksModule } from './batch-tasks/batch-tasks.module';
+import { ArweaveModule } from './arweave/arweave.module';
 
 // TODO: 実際のプロダクトでは DB設定は env からの読み取りに変更する
 @Module({
@@ -39,6 +40,7 @@ import { BatchTasksModule } from './batch-tasks/batch-tasks.module';
     NewsModule,
     OrdersModule,
     BatchTasksModule,
+    ArweaveModule,
   ],
   controllers: [AppController, OrdersController],
   providers: [AppService, LoggingService, OrdersService],

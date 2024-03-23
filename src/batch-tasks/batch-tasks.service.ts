@@ -12,7 +12,7 @@ export class BatchTasksService {
   constructor(private readonly config: ConfigService) {}
 
   // X分ごとに実行
-  @Cron('*/2 * * * *')
+  // @Cron('*/2 * * * *')
   // 毎日3時に実行
   //   @Cron('0 3 * * *')
   async handleCron() {

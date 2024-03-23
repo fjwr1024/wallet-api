@@ -46,6 +46,7 @@
     "@solana-suite/regular-nft": "0.7.10",
     "@solana-suite/sol-native": "0.7.10",
     "@solana-suite/spl-token": "0.7.10",
+    "@solana-suite/storage": "^0.7.10",
     "@solana-suite/utils": "0.7.10",
     "aws-sdk": "^2.1572.0",
     "class-transformer": "^0.5.1",
