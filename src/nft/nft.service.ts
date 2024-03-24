@@ -190,14 +190,4 @@ export class NftService {
   async mintCompressNftWithMovie() {
     return 'ok';
   }
-
-  async test() {
-    const buffer = await downloadBinary('test.mov');
-    console.log('res', buffer);
-
-    const filePath = saveFileToTemporary(buffer, 'test.mov');
-
-    console.log('filePath', filePath);
-    return 'test';
-  }
 }

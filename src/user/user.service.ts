@@ -3,7 +3,6 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { User } from '../entities/user.entity';
 import { AppDataSource } from '../data-source';
 import * as bcrypt from 'bcrypt';
-import { AddressBook } from 'src/entities/address-book.entity';
 
 @Injectable()
 export class UserService {
