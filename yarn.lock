@@ -1603,13 +1603,13 @@
     "@noble/hashes" "~1.1.1"
     "@scure/base" "~1.1.0"
 
-"@sendgrid/client@^8.1.0":
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/@sendgrid/client/-/client-8.1.0.tgz#502865bbffe9442f778a14af1995892f5d4adf14"
-  integrity sha512-Kp2kKLr307v/HnR3uGuySt0AbCkeG7naDVOzfPOtWvKHVZIEHmKidQjJjzytVZNYWtoRdYgNfBw6GyUznGqa6w==
+"@sendgrid/client@^8.1.1":
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/@sendgrid/client/-/client-8.1.1.tgz#5c15b59973da3e108257883e408c4afd74844248"
+  integrity sha512-pg0gYhAdyQil3Aga7/xHVcZFpvDAjAQMNBgMy5njTSkjACoWHmpSi1nWBZM7nIH/ptcRNMpnBbm9B5EvQ8fX2w==
   dependencies:
     "@sendgrid/helpers" "^8.0.0"
-    axios "^1.6.0"
+    axios "^1.6.4"
 
 "@sendgrid/helpers@^8.0.0":
   version "8.0.0"
@@ -1618,12 +1618,12 @@
   dependencies:
     deepmerge "^4.2.2"
 
-"@sendgrid/mail@^8.1.0":
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/@sendgrid/mail/-/mail-8.1.0.tgz#873486233c511f41d98f69290f9664c1d14e205e"
-  integrity sha512-WkE0qwOrJMX9oQ+Xvtl3CdmucD6/iKw6go0VPoPieVlfXc43rbIf91wvtO6m7sKPnzxw3G+8rekBgXibmP4S8Q==
+"@sendgrid/mail@^8.1.1":
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/@sendgrid/mail/-/mail-8.1.1.tgz#506bc02c3a884d5c979278d6966f118afce37f93"
+  integrity sha512-tNtmgWLtBA7ZxKtPuEGOaIdEZP1vZSXsj5zg9iuoDBPVj/fNz+7LWzndvTcKumHk5eaDrS0UPXJqBm61m3+H1A==
   dependencies:
-    "@sendgrid/client" "^8.1.0"
+    "@sendgrid/client" "^8.1.1"
     "@sendgrid/helpers" "^8.0.0"
 
 "@sinonjs/commons@^1.7.0":
@@ -2979,12 +2979,21 @@ axios@0.27.2:
     follow-redirects "^1.14.9"
     form-data "^4.0.0"
 
-axios@^1.4.0, axios@^1.6.0:
+axios@^1.4.0:
   version "1.6.7"
   resolved "https://registry.yarnpkg.com/axios/-/axios-1.6.7.tgz#7b48c2e27c96f9c68a2f8f31e2ab19f59b06b0a7"
   integrity sha512-/hDJGff6/c7u0hDkvkGxR/oy6CbCs8ziCsC7SqmhjfozqiJGc8Z11wrv9z9lYfY4K8l+H9TpjcMDX0xOZmx+RA==
   dependencies:
     follow-redirects "^1.15.4"
+    form-data "^4.0.0"
+    proxy-from-env "^1.1.0"
+
+axios@^1.6.4:
+  version "1.6.8"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-1.6.8.tgz#66d294951f5d988a00e87a0ffb955316a619ea66"
+  integrity sha512-v/ZHtJDU39mDpyBoFVkETcd/uNdxrWRrg3bKpOKzXFA6Bvqopts6ALSMU3y6ijYxbw2B+wPrIv46egTzJXCLGQ==
+  dependencies:
+    follow-redirects "^1.15.6"
     form-data "^4.0.0"
     proxy-from-env "^1.1.0"
 
@@ -4690,6 +4699,11 @@ follow-redirects@^1.14.9, follow-redirects@^1.15.4:
   version "1.15.5"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.5.tgz#54d4d6d062c0fa7d9d17feb008461550e3ba8020"
   integrity sha512-vSFWUON1B+yAw1VN4xMfxgn5fTUiaOzAJCKBwIIgT/+7CuGy9+r+5gITvP62j3RmaD5Ph65UaERdOSRGUzZtgw==
+
+follow-redirects@^1.15.6:
+  version "1.15.6"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.6.tgz#7f815c0cda4249c74ff09e95ef97c23b5fd0399b"
+  integrity sha512-wWN62YITEaOpSK584EZXJafH1AGpO8RVgElfkuXbTOrPX4fIfOyEpW/CsiNd8JdYrAoOvafRTOEnvsO++qCqFA==
 
 for-each@^0.3.3:
   version "0.3.3"
