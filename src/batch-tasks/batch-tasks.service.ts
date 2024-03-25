@@ -20,9 +20,7 @@ export class BatchTasksService {
       const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
 
       const imageBuffer = await downloadBinary('test-image.png');
-      const movieBuffer = await downloadBinary('test.mov');
       const S3Image = saveFileToTemporary(imageBuffer, 'test.png');
-      const S3Movie = saveFileToTemporary(movieBuffer, 'test.mov');
 
       const compressMintRes = await compressMint(
         ownerSecretKey,
