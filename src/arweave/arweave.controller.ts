@@ -16,7 +16,7 @@ export class ArweaveController {
     })
   )
   async upload(@UploadedFile() file: Express.Multer.File) {
-    const response = await this.arweaveService.upload(file);
+    const response = await this.arweaveService.arweaveUpload(file);
     return response;
   }
 }

@@ -1,6 +1,6 @@
 import { Storage } from '@solana-suite/storage';
 
-export const upload = async (filePath: string, ownerSecretKey: string): Promise<any> => {
+export const uploadFileArweave = async (filePath: string, ownerSecretKey: string): Promise<any> => {
   const res = await Storage.uploadFile(filePath, 'arweave', {
     feePayer: ownerSecretKey,
   });
