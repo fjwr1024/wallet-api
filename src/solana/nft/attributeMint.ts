@@ -15,6 +15,7 @@ export const attributeMint = async (
   description: string,
   ownerSecretKey: string,
   attributes: Attributes,
+  fee: number,
   video?: any
 ) => {
   console.log('ファイル', file);
@@ -39,7 +40,7 @@ export const attributeMint = async (
     },
   });
 
-  (await inst.submit({ addSolPriorityFee: 0.00033 })).match(
+  (await inst.submit({ addSolPriorityFee: fee })).match(
     async (ok: string) => {
       await Node.confirmedSig(ok, 'finalized');
 
