@@ -83,6 +83,7 @@ export class NftService {
       attributeMintDto.description,
       ownerSecretKey,
       attributes,
+      0,
       S3Movie
     );
     deleteUploadFile(image.path);
