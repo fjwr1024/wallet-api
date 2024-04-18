@@ -2,11 +2,8 @@
 // $ npx ts-node scripts/solana/faucet.ts {walletAddress}
 //////////////////////////////////////////////
 import { Airdrop } from '@solana-suite/airdrop';
-import assert from 'assert';
 
 const [, , walletAddress] = process.argv;
-
-assert(walletAddress, 'No wallet address provided');
 
 const addSol = async (address: string): Promise<string> => {
   try {
