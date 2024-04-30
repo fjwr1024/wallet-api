@@ -48,7 +48,7 @@
     "@solana-suite/spl-token": "0.7.13",
     "@solana-suite/storage": "^0.7.13",
     "@solana-suite/utils": "0.7.13",
-    "aws-sdk": "^2.1572.0",
+    "aws-sdk": "^2.1609.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
     "cookie-parser": "^1.4.5",
