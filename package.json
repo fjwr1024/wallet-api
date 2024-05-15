@@ -34,7 +34,7 @@
     "@nestjs/jwt": "^10.2.0",
     "@nestjs/passport": "^10.0.1",
     "@nestjs/platform-express": "^9.3.12",
-    "@nestjs/schedule": "^4.0.1",
+    "@nestjs/schedule": "^4.0.2",
     "@nestjs/throttler": "^5.1.1",
     "@nestjs/typeorm": "10.0.2",
     "@sendgrid/mail": "^8.1.3",
