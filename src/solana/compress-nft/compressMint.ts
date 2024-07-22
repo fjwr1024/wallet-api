@@ -22,7 +22,7 @@ export const compressMint = async (
       symbol: 'WAPI',
       description: '11:42',
       royalty: 0,
-      storageType: 'nftStorage',
+      storageType: 'filebase',
       isMutable: true,
       external_url: 'https://external_url',
     },

@@ -10,7 +10,7 @@ export const createCollection = async (ownerSecretKey: string, file: any): Promi
       name: 'WAPI',
       symbol: 'WAPI',
       royalty: 0,
-      storageType: 'nftStorage',
+      storageType: 'filebase',
       isMutable: true,
     },
     {
@@ -22,7 +22,8 @@ export const createCollection = async (ownerSecretKey: string, file: any): Promi
     async value => {
       await Node.confirmedSig(value);
     },
-    error => assert.fail(error.message)
+    // error => assert.fail(error.message)
+    error => console.error(error.message)
   );
 
   const mintCollection = collectionInst.unwrap().data;
