@@ -1,5 +1,5 @@
 import { SplToken } from '@solana-suite/spl-token';
-import { Pubkey } from '@solana-suite/utils';
+import { Pubkey, Node } from '@solana-suite/utils';
 import * as util from 'util';
 
 export const createSplToken = async (totalAmount, decimals, ownerSecretKey, file): Promise<any> => {
@@ -8,7 +8,7 @@ export const createSplToken = async (totalAmount, decimals, ownerSecretKey, file
     symbol: 'WAT',
     royalty: 0,
     filePath: file,
-    storageType: 'nftStorage',
+    storageType: 'filebase',
     isMutable: false,
   };
 
@@ -19,7 +19,18 @@ export const createSplToken = async (totalAmount, decimals, ownerSecretKey, file
 
   const mint = inst1.unwrap().data as Pubkey;
 
+  const token = await (
+    await inst1.submit()
+  ).match(
+    async value => {
+      console.log('# Mint sig: ', value.toExplorerUrl());
+      await Node.confirmedSig(value);
+    },
+    error => console.error(error)
+  );
+
   console.log('# mint: ', mint);
+  console.log('# token: ', token);
 
   return inst1.unwrap();
 };

@@ -60,6 +60,7 @@ export class SplTokenController {
     @UploadedFile() file: Express.Multer.File,
     @Res() res: Response
   ) {
+    console.log('CreateSplTokenDto:', createSplDto);
     const response = await this.splTokenService.createSpl(createSplDto, file);
 
     console.log('Response:', response);

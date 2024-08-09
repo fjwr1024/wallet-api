@@ -39,9 +39,9 @@ export class SplTokenService {
 
     deleteUploadFile(file.path);
 
-    const res = await createMemo(response, 'comment', ownerWalletAddress, ownerSecretKey);
+    // const res = await createMemo(response, 'comment', ownerWalletAddress, ownerSecretKey);
 
-    console.log('res', res);
+    // console.log('res', res);
 
     return response;
   }
