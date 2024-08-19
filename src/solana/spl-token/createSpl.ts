@@ -4,8 +4,8 @@ import * as util from 'util';
 
 export const createSplToken = async (totalAmount, decimals, ownerSecretKey, file): Promise<any> => {
   const tokenMetadata = {
-    name: 'wallet-api-token',
-    symbol: 'WAT',
+    name: '0819TUE',
+    symbol: 'API',
     royalty: 0,
     filePath: file,
     storageType: 'filebase',

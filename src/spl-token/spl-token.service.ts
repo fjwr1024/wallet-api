@@ -63,7 +63,7 @@ export class SplTokenService {
     const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
 
     const response = await transferSplToken(
-      '2jm74gcmfZQJEXarPf1TVqVySmehM6xyHVRAkNsEinSp',
+      'qDWh96s44G7qys26UsRmnHDtvS4Szhkune5NY9oa4kr',
       ownerWalletAddress,
       'FtJ5RdwkrsLWgawAeLrPwdxgr6c4rqrbvFb6jPsxYgMF',
       ownerSecretKey,
