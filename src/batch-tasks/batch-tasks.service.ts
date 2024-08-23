@@ -38,5 +38,9 @@ export class BatchTasksService {
       console.error('Error in compressMint: ' + error);
       throw new InternalServerErrorException('Mint failed');
     }
+
+    const tokenTransferBatch = () => {
+      console.log('tokenTransferBatch');
+    };
   }
 }
