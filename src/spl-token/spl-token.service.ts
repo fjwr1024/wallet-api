@@ -1,3 +1,4 @@
+import { clientCreateHex } from './../solana/spl-token/clientCreateHex';
 import { transferSplToken } from './../solana/spl-token/transfer-spl-token';
 import { deleteUploadFile } from 'src/utils/file-util/deleteUploadFile';
 import { GetSplHistoryDto } from './dto/get-spl-history.dto';
@@ -74,5 +75,21 @@ export class SplTokenService {
     console.log('response', response);
 
     return 'ok';
+  }
+
+  async clientCreateHex() {
+    const ownerWalletAddress = this.config.get<string>('SYSTEM_WALLET_ADDRESS');
+    const ownerSecretKey = this.config.get<string>('SYSTEM_WALLET_SECRET');
+
+    const response = await clientCreateHex(
+      'qDWh96s44G7qys26UsRmnHDtvS4Szhkune5NY9oa4kr',
+      ownerWalletAddress,
+      ownerSecretKey,
+      'FtJ5RdwkrsLWgawAeLrPwdxgr6c4rqrbvFb6jPsxYgMF'
+    );
+
+    console.log('response', response);
+
+    return response;
   }
 }
