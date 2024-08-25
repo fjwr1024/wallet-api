@@ -81,4 +81,18 @@ export class SplTokenController {
     const response = await this.splTokenService.transferSplToken();
     return response;
   }
+
+  @HttpCode(HttpStatus.OK)
+  @Get('client-create-hex')
+  async createHex() {
+    const response = await this.splTokenService.clientCreateHex();
+    return response;
+  }
+
+  @HttpCode(HttpStatus.OK)
+  @Get('submit-hex')
+  async submitHex() {
+    const response = await this.splTokenService.clientCreateHex();
+    return response;
+  }
 }
